@@ -42,3 +42,13 @@
 - [正交化与最小二乘法](QRLS.muse)
 - [特殊线性方程组](SpecialLinearEquation.muse)
 - [对称特征值问题](SymmetricEigenvalueProblem.muse)
+
+
+## 版权
+
+本书已由清华大学出版社出版。
+
+[《计算机代数系统的数学原理》](http://www.tup.tsinghua.edu.cn/booksCenter/book_03490801.html#)
++ 作者：李超、阮威、张龙、张翔
++ ISBN：9787302230106
++ 出版日期：2010.10.01
