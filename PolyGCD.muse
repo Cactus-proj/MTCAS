@@ -1,130 +1,130 @@
-#title Ò»Ôª¶àÏîÊ½µÄ×î´ó¹«Òò×Ó
+#title ä¸€å…ƒå¤šé¡¹å¼çš„æœ€å¤§å…¬å› å­
 
 <contents>
-Éè$D$ÎªUFD(¼´Î¨Ò»ÎöÒòÕû»·,ÀıÈç$\mathbb{Z}$),$F$ÎªÓò(ÀıÈç$\mathbb{R}$)£¬Ôò$D[x],F[x]$Ò²ÊÇUFD£¬¶ÔÆäÉÏÁ½¶àÏîÊ½¿ÉÌÖÂÛ×î´ó¹«Òò×Ó(GCD)ÎÊÌâ.×î¹ÅµäµÄ·½·¨¼´ÊÇEuclidËã·¨¡£È»¶ø£¬ÔÚÉÏÊÀ¼ÍÁùÊ®Äê´úÄ©Ò»Ğ©ÊÔÑéÖĞ(²Î¼û<cite>mca</cite>×¢¼Ç 6.1)·¢ÏÖÕâÖÖËã·¨ÔÚ$D[x]$»ò$F[x]$ÖĞµÄÏµÊıÔö³¤ºÜ¿ì£¬ÉõÖÁÓÚÖ¸Êı½×Ôö³¤¡£±¾Êé¿ªÍ·¼´Õ¹Ê¾ÁËÕâÑùµÄ¡°ÖĞ¼ä±íÊ¾ÅòÕÍ¡±µÄÀı×Ó.
-; CollinsÔõÃ´Ã»³öÏÖÔÚÎÄÕÂ×÷ÕßÀï£¿
-ÎªÁË½â¾ö¼ÆËã¹ı³ÌÖĞÏµÊıÅòÕÍµÄÎÊÌâ,Collins,Brown·¢ÏÖÁËUFDÉÏµÄ¶àÏîÊ½Ä£×î´ó¹«Òò×ÓËã·¨,²¢Ê×ÏÈÓÉBrown<cite>wsb71</cite>ÓÚ1971ÄêÌá³ö¡£¶ÔÓÚ¶àÔªÇéĞÎ£¬MozesºÍYun<cite>jmdyyy73</cite>ÓÚ1973ÄêÌá³öÁË»ùÓÚHenselÌáÉı·½·¨µÄÄ£Òò×ÓËã·¨¡£ÏÂÃæ¶Ô¾­µäµÄEuclidËã·¨ºÍ¸Ä½øËã·¨½øĞĞÂÛÊö¡£
+è®¾$D$ä¸ºUFD(å³å”¯ä¸€æå› æ•´ç¯,ä¾‹å¦‚$\mathbb{Z}$),$F$ä¸ºåŸŸ(ä¾‹å¦‚$\mathbb{R}$)ï¼Œåˆ™$D[x],F[x]$ä¹Ÿæ˜¯UFDï¼Œå¯¹å…¶ä¸Šä¸¤å¤šé¡¹å¼å¯è®¨è®ºæœ€å¤§å…¬å› å­(GCD)é—®é¢˜.æœ€å¤å…¸çš„æ–¹æ³•å³æ˜¯Euclidç®—æ³•ã€‚ç„¶è€Œï¼Œåœ¨ä¸Šä¸–çºªå…­åå¹´ä»£æœ«ä¸€äº›è¯•éªŒä¸­(å‚è§<cite>mca</cite>æ³¨è®° 6.1)å‘ç°è¿™ç§ç®—æ³•åœ¨$D[x]$æˆ–$F[x]$ä¸­çš„ç³»æ•°å¢é•¿å¾ˆå¿«ï¼Œç”šè‡³äºæŒ‡æ•°é˜¶å¢é•¿ã€‚æœ¬ä¹¦å¼€å¤´å³å±•ç¤ºäº†è¿™æ ·çš„â€œä¸­é—´è¡¨ç¤ºè†¨èƒ€â€çš„ä¾‹å­.
+; Collinsæ€ä¹ˆæ²¡å‡ºç°åœ¨æ–‡ç« ä½œè€…é‡Œï¼Ÿ
+ä¸ºäº†è§£å†³è®¡ç®—è¿‡ç¨‹ä¸­ç³»æ•°è†¨èƒ€çš„é—®é¢˜,Collins,Brownå‘ç°äº†UFDä¸Šçš„å¤šé¡¹å¼æ¨¡æœ€å¤§å…¬å› å­ç®—æ³•,å¹¶é¦–å…ˆç”±Brown<cite>wsb71</cite>äº1971å¹´æå‡ºã€‚å¯¹äºå¤šå…ƒæƒ…å½¢ï¼ŒMozeså’ŒYun<cite>jmdyyy73</cite>äº1973å¹´æå‡ºäº†åŸºäºHenselæå‡æ–¹æ³•çš„æ¨¡å› å­ç®—æ³•ã€‚ä¸‹é¢å¯¹ç»å…¸çš„Euclidç®—æ³•å’Œæ”¹è¿›ç®—æ³•è¿›è¡Œè®ºè¿°ã€‚
 
-±¾ÕÂ¼ÙÉè¶ÁÕß¾ßÓĞÒ»¶¨µÄ´úÊıÖªÊ¶,¶ÔUFD,PID£¨Ö÷ÀíÏëÕû»·£©,¶àÏîÊ½¼°ÆäGCDÒÔ¼°EuclidËã·¨µÈÓĞÒ»¶¨µÄÁË½â.¹ØÓÚ»ù±¾µÄ´úÊıÖªÊ¶,¿É²Î¿¼¸ßµÈ´úÊıÑ§·½ÃæµÄÊé,Èç<cite>ZhaXu04</cite>.
+æœ¬ç« å‡è®¾è¯»è€…å…·æœ‰ä¸€å®šçš„ä»£æ•°çŸ¥è¯†,å¯¹UFD,PIDï¼ˆä¸»ç†æƒ³æ•´ç¯ï¼‰,å¤šé¡¹å¼åŠå…¶GCDä»¥åŠEuclidç®—æ³•ç­‰æœ‰ä¸€å®šçš„äº†è§£.å…³äºåŸºæœ¬çš„ä»£æ•°çŸ¥è¯†,å¯å‚è€ƒé«˜ç­‰ä»£æ•°å­¦æ–¹é¢çš„ä¹¦,å¦‚<cite>ZhaXu04</cite>.
 
-* EuclidËã·¨
+* Euclidç®—æ³•
 
-ÔÚEuclidÕû»·$F[x]$ÖĞ,ÎÒÃÇÓĞÈçÏÂµÄ<index>Euclid³ı·¨</index>:
+åœ¨Euclidæ•´ç¯$F[x]$ä¸­,æˆ‘ä»¬æœ‰å¦‚ä¸‹çš„<index>Euclidé™¤æ³•</index>:
 
-<definition name="Euclid³ı·¨">
-Éè$f,g\in F[x]$,ÆäÖĞ$g\neq 0$,Ôò´æÔÚÎ¨Ò»µÄ$q,r\in F[x]$Ê¹µÃ
+<definition name="Euclidé™¤æ³•">
+è®¾$f,g\in F[x]$,å…¶ä¸­$g\neq 0$,åˆ™å­˜åœ¨å”¯ä¸€çš„$q,r\in F[x]$ä½¿å¾—
 $$f=qg+r,$$
-ÆäÖĞ$\deg r<\deg g$.ÎÒÃÇ³Æ´Ë³ı·¨¹ı³ÌÎªEuclid³ı·¨,²¢ÒÔ$f\quo g$¼ÇÉÌ$q$,$f\rem g$¼ÇÓàÊ½$r$.
+å…¶ä¸­$\deg r<\deg g$.æˆ‘ä»¬ç§°æ­¤é™¤æ³•è¿‡ç¨‹ä¸ºEuclidé™¤æ³•,å¹¶ä»¥$f\quo g$è®°å•†$q$,$f\rem g$è®°ä½™å¼$r$.
 </definition>
 
-ÔÚÒ»°ã¸ßµÈ´úÊı½Ì²Ä(Èç<cite>ZhaXu04</cite>)ÖĞ¶¼Ö¤Ã÷ÁËÈçÏÂ¶¨Àí.
+åœ¨ä¸€èˆ¬é«˜ç­‰ä»£æ•°æ•™æ(å¦‚<cite>ZhaXu04</cite>)ä¸­éƒ½è¯æ˜äº†å¦‚ä¸‹å®šç†.
 
 <theorem>
-ÔÚEuclidÕû»·$F[x]$ÖĞ,Èô$h=\gcd(f,g)$,ÔòÓĞÎ¨Ò»µÄ·ÇÆ½·²¶àÏîÊ½$s,t$Ê¹µÃ
+åœ¨Euclidæ•´ç¯$F[x]$ä¸­,è‹¥$h=\gcd(f,g)$,åˆ™æœ‰å”¯ä¸€çš„éå¹³å‡¡å¤šé¡¹å¼$s,t$ä½¿å¾—
 $$sf+tg=h$$
-ÇÒ$\deg s<\deg g,\deg t<\deg f$.µÈÊ½$sf+tg=h$³ÆÎª<index>BezoutµÈÊ½</index>,$s,t$³ÆÎªBezoutÏµÊı.
+ä¸”$\deg s<\deg g,\deg t<\deg f$.ç­‰å¼$sf+tg=h$ç§°ä¸º<index>Bezoutç­‰å¼</index>,$s,t$ç§°ä¸ºBezoutç³»æ•°.
 </theorem>
 
-¶ÔÓÚEuclidÕû»·$F[x]$£¬ÎÒÃÇÊìÖªÓĞÒÔÏÂµÄÀ©Õ¹<index sub="¶àÏîÊ½!À©Õ¹EucliadËã·¨">EuclidËã·¨</index>##al:EEA .×¢Òâµ½½«Ëã·¨ÖĞµÄ$s,t$µÈ¼ÆËãÉáÈ¥¼´ÎªÆÕÍ¨µÄ<index sub="¶àÏîÊ½">EuclidËã·¨</index>.
+å¯¹äºEuclidæ•´ç¯$F[x]$ï¼Œæˆ‘ä»¬ç†ŸçŸ¥æœ‰ä»¥ä¸‹çš„æ‰©å±•<index sub="å¤šé¡¹å¼!æ‰©å±•Eucliadç®—æ³•">Euclidç®—æ³•</index>##al:EEA .æ³¨æ„åˆ°å°†ç®—æ³•ä¸­çš„$s,t$ç­‰è®¡ç®—èˆå»å³ä¸ºæ™®é€šçš„<index sub="å¤šé¡¹å¼">Euclidç®—æ³•</index>.
 
-<algorithm label="al:EEA" name="À©Õ¹EuclidËã·¨">
+<algorithm label="al:EEA" name="æ‰©å±•Euclidç®—æ³•">
 
-ÊäÈë£º$F[x]$ÉÏ¶àÏîÊ½$f$,$g$,
+è¾“å…¥ï¼š$F[x]$ä¸Šå¤šé¡¹å¼$f$,$g$,
 
-Êä³ö£º$f$,$g$µÄ×î´ó¹«Òò×Ó$u$,BezoutµÈÊ½ÖĞµÄÏµÊı$S=(s,t)$Ê¹µÃ$sf+tg=u$.
+è¾“å‡ºï¼š$f$,$g$çš„æœ€å¤§å…¬å› å­$u$,Bezoutç­‰å¼ä¸­çš„ç³»æ•°$S=(s,t)$ä½¿å¾—$sf+tg=u$.
 
  1. $u=f,v=g,S=(1,0),T=(0,1)$,
 
- 2. Èç¹û$v=0$,Ôò×ªµ½µÚ4²½,
+ 2. å¦‚æœ$v=0$,åˆ™è½¬åˆ°ç¬¬4æ­¥,
 
- 3. $r=u\rem v,q=u\quo v,L=S-qT,u=v,v=r,S=T,T=L$,²¢×ª»ØµÚ2²½,
+ 3. $r=u\rem v,q=u\quo v,L=S-qT,u=v,v=r,S=T,T=L$,å¹¶è½¬å›ç¬¬2æ­¥,
 
- 4. Êä³ö$u$£¬$S$.
+ 4. è¾“å‡º$u$ï¼Œ$S$.
 </algorithm>
 
-ÓÉÓÚÎÒÃÇÒªÌÖÂÛµÄÊÇ¡°¾«È·¡±µÄ·ûºÅ¼ÆËã,ËùÒÔ¶àÏîÊ½µÄÏµÊıÒ»°ãÎªÕûÊı»òÓĞÀíÊı.¶ø¶ÔÓÚ$\mathbb{Q}[x]$ÖĞµÄ¶àÏîÊ½,ÎÒÃÇ×Ü¿ÉÒÔÕÒµ½ÕûÊı³ËÒÔ¸Ã¶àÏîÊ½Ê¹Æä»¯Îª$\mathbb{Z}[x]$ÖĞµÄÎÊÌâ.Òò´Ë,ºóÃæ¹ØÓÚ¶àÏîÊ½µÄ·ûºÅÔËËã¼¯ÖĞÌÖÂÛ$\mathbb{Z}[x]$ÖĞµÄÇéĞÎ.
+ç”±äºæˆ‘ä»¬è¦è®¨è®ºçš„æ˜¯â€œç²¾ç¡®â€çš„ç¬¦å·è®¡ç®—,æ‰€ä»¥å¤šé¡¹å¼çš„ç³»æ•°ä¸€èˆ¬ä¸ºæ•´æ•°æˆ–æœ‰ç†æ•°.è€Œå¯¹äº$\mathbb{Q}[x]$ä¸­çš„å¤šé¡¹å¼,æˆ‘ä»¬æ€»å¯ä»¥æ‰¾åˆ°æ•´æ•°ä¹˜ä»¥è¯¥å¤šé¡¹å¼ä½¿å…¶åŒ–ä¸º$\mathbb{Z}[x]$ä¸­çš„é—®é¢˜.å› æ­¤,åé¢å…³äºå¤šé¡¹å¼çš„ç¬¦å·è¿ç®—é›†ä¸­è®¨è®º$\mathbb{Z}[x]$ä¸­çš„æƒ…å½¢.
 
-ÎªÁËÒı³ö$\mathbb{Z}[x]$ÖĞÇóGCDµÄËã·¨,ÎÒÃÇÏÈÒı½øÈçÏÂÒ»Ğ©¶¨ÒåºÍ¶¨Àí.
+ä¸ºäº†å¼•å‡º$\mathbb{Z}[x]$ä¸­æ±‚GCDçš„ç®—æ³•,æˆ‘ä»¬å…ˆå¼•è¿›å¦‚ä¸‹ä¸€äº›å®šä¹‰å’Œå®šç†.
 
-<definition label="def:cont" name="±¾Ô­¶àÏîÊ½">
-<index>Èİ¶È</index>$\mathrm{cont}(f)$¶¨ÒåÎª£º$$\mathrm{cont}(f)=\mathrm{sgn}(a_n)\gcd (a_0,a_1,\ldots,a_n),$$ÆäÖĞ$f=\sum a_ix^i\in\mathbb{Z}[x]$£¬ÇÒgcd¶Ôµ¥ÏîµÄ¶¨ÒåÎª
+<definition label="def:cont" name="æœ¬åŸå¤šé¡¹å¼">
+<index>å®¹åº¦</index>$\mathrm{cont}(f)$å®šä¹‰ä¸ºï¼š$$\mathrm{cont}(f)=\mathrm{sgn}(a_n)\gcd (a_0,a_1,\ldots,a_n),$$å…¶ä¸­$f=\sum a_ix^i\in\mathbb{Z}[x]$ï¼Œä¸”gcdå¯¹å•é¡¹çš„å®šä¹‰ä¸º
 $$\gcd (a_0)=a_0,$$
-$f$µÄ<index>±¾Ô­²¿·Ö</index>(primitive part)¶¨ÒåÎª$\mathrm{pp}(f)=f/\mathrm{cont}(f)$£¬Èô$f=\mathrm{pp}(f)$,Ôò³ÆÆäÎª<index>±¾Ô­¶àÏîÊ½</index>¡£
+$f$çš„<index>æœ¬åŸéƒ¨åˆ†</index>(primitive part)å®šä¹‰ä¸º$\mathrm{pp}(f)=f/\mathrm{cont}(f)$ï¼Œè‹¥$f=\mathrm{pp}(f)$,åˆ™ç§°å…¶ä¸º<index>æœ¬åŸå¤šé¡¹å¼</index>ã€‚
 </definition>
 
 <remark>
-¶¨ÒåÖĞ¹ØÓÚ¶à¸öÕûÊıµÄGCDÊÇÖ¸È¡ÁË¾ø¶ÔÖµÖ®ºóµÄ×î´ó¹«Òò×Ó,Ö®ËùÒÔÔÚÈİ¶ÈµÄ¶¨ÒåÖĞ³ËÉÏ$\mathrm{sgn}(a_n)$Ò»Ïî,ÊÇÎªÁËÊ¹µÃÆäºó¶¨ÒåµÄ±¾Ô­¶àÏîÊ½µÄÊ×ÏîÏµÊıÎªÕıÊı.
+å®šä¹‰ä¸­å…³äºå¤šä¸ªæ•´æ•°çš„GCDæ˜¯æŒ‡å–äº†ç»å¯¹å€¼ä¹‹åçš„æœ€å¤§å…¬å› å­,ä¹‹æ‰€ä»¥åœ¨å®¹åº¦çš„å®šä¹‰ä¸­ä¹˜ä¸Š$\mathrm{sgn}(a_n)$ä¸€é¡¹,æ˜¯ä¸ºäº†ä½¿å¾—å…¶åå®šä¹‰çš„æœ¬åŸå¤šé¡¹å¼çš„é¦–é¡¹ç³»æ•°ä¸ºæ­£æ•°.
 </remark>
 
 <proposition>
-Éè$f\in \mathbb{Z}[x],c\in \mathbb{Z}$,ÎÒÃÇÓĞ$\mathrm{cont}(cf)=\mathrm{cont}(c)\mathrm{cont}(f),\mathrm{pp}(cf)=\mathrm{pp}(c)\mathrm{pp}(f)$.
+è®¾$f\in \mathbb{Z}[x],c\in \mathbb{Z}$,æˆ‘ä»¬æœ‰$\mathrm{cont}(cf)=\mathrm{cont}(c)\mathrm{cont}(f),\mathrm{pp}(cf)=\mathrm{pp}(c)\mathrm{pp}(f)$.
 </proposition>
 
-<theorem label="th:Gauss' Lemma" name="GaussÒıÀí">
-Éè$f,g\in \mathbb{Z}[x]$,Èô$f,g$±¾Ô­£¬Ôò$h=fg$Ò²ÊÇ±¾Ô­µÄ¡£
+<theorem label="th:Gauss' Lemma" name="Gausså¼•ç†">
+è®¾$f,g\in \mathbb{Z}[x]$,è‹¥$f,g$æœ¬åŸï¼Œåˆ™$h=fg$ä¹Ÿæ˜¯æœ¬åŸçš„ã€‚
 </theorem>
 
-ÀàËÆ»¹ÓĞÒÔÏÂÒ»Ğ©ÃüÌâ£¬Ïà¹ØÄÚÈİ¿É²ÎÔÄÏà¹ØµÄ¸ßµÈ´úÊıÑ§ÄÚÈİ(ÀıÈç<cite>nlzdss00</cite>).
+ç±»ä¼¼è¿˜æœ‰ä»¥ä¸‹ä¸€äº›å‘½é¢˜ï¼Œç›¸å…³å†…å®¹å¯å‚é˜…ç›¸å…³çš„é«˜ç­‰ä»£æ•°å­¦å†…å®¹(ä¾‹å¦‚<cite>nlzdss00</cite>).
 
 <proposition>
-Éè$f,g\in \mathbb{Z}[x],\mathrm{cont}(fg)=\mathrm{cont}(f)\mathrm{cont}(g),\mathrm{pp}(fg)=\mathrm{pp}(f)\mathrm{pp}(g)$.
+è®¾$f,g\in \mathbb{Z}[x],\mathrm{cont}(fg)=\mathrm{cont}(f)\mathrm{cont}(g),\mathrm{pp}(fg)=\mathrm{pp}(f)\mathrm{pp}(g)$.
 </proposition>
 
 <proposition>
-Éè$f,g\in \mathbb{Z}[x],h=\gcd (f,g)\in \mathbb{Z}[x]$,Ôò$$\mathrm{cont}(h)=\gcd (\mathrm{cont}(f),\mathrm{cont}(g))\in \mathbb{Z},$$
+è®¾$f,g\in \mathbb{Z}[x],h=\gcd (f,g)\in \mathbb{Z}[x]$,åˆ™$$\mathrm{cont}(h)=\gcd (\mathrm{cont}(f),\mathrm{cont}(g))\in \mathbb{Z},$$
 $$\mathrm{pp}(h)=\gcd (\mathrm{pp}(f),\mathrm{pp}(g))\in \mathbb{Z}[x].$$
 </proposition>
 
-ÓÚÊÇÓĞÏÂÃæµÄ£º
+äºæ˜¯æœ‰ä¸‹é¢çš„ï¼š
 
-<algorithm name="Ò»¸öÕûÏµÊı¶àÏîÊ½µÄEuclidËã·¨" >
+<algorithm name="ä¸€ä¸ªæ•´ç³»æ•°å¤šé¡¹å¼çš„Euclidç®—æ³•" >
 
-ÊäÈë£º$\mathbb{Z}[x]$ÉÏµÄ¶àÏîÊ½$f$,$g$,
+è¾“å…¥ï¼š$\mathbb{Z}[x]$ä¸Šçš„å¤šé¡¹å¼$f$,$g$,
 
-Êä³ö£º$f,g$ÔÚ$\mathbb{Z}[x]$ÉÏµÄ×î´ó¹«Òò×Ó$h$.
+è¾“å‡ºï¼š$f,g$åœ¨$\mathbb{Z}[x]$ä¸Šçš„æœ€å¤§å…¬å› å­$h$.
 
  1. $h=\gcd (f,g)\in\mathbb{Q}[x]$,
 
  2. $b=\gcd (\plc{f},\plc{g})$,
 
- 3. Êä³ö$bh$.
+ 3. è¾“å‡º$bh$.
 </algorithm>
 
-¾¡¹Ü$\mathbb{Z}[x]$²»ÊÇEuclidÕû»·£¬µ«ÎÒÃÇ¿ÉÒıÈë$\mathbb{Z}[x]$ÉÏµÄÎ±³ı·¨£¬À´¹¹ÔìÀàËÆEuclidÓàÊ½ĞòÁĞ,ÒÔ´ËÀ´Çó×Ü´ó¹«Òò×Ó.µ±È»ÕâÀïµÄ$\mathbb{Z}$»»ÎªÒ»°ãµÄUFDÒ²ÊÇ¿ÉÒÔµÄ.
+å°½ç®¡$\mathbb{Z}[x]$ä¸æ˜¯Euclidæ•´ç¯ï¼Œä½†æˆ‘ä»¬å¯å¼•å…¥$\mathbb{Z}[x]$ä¸Šçš„ä¼ªé™¤æ³•ï¼Œæ¥æ„é€ ç±»ä¼¼Euclidä½™å¼åºåˆ—,ä»¥æ­¤æ¥æ±‚æ€»å¤§å…¬å› å­.å½“ç„¶è¿™é‡Œçš„$\mathbb{Z}$æ¢ä¸ºä¸€èˆ¬çš„UFDä¹Ÿæ˜¯å¯ä»¥çš„.
 
-<definition  name="Î±³ı·¨">
-Éè$f,g\in \mathbb{Z}[x]$,ÈôÓĞ$\alpha,\beta\in\mathbb{Z}$,$q,r\in \mathbb{Z}[x]$Ê¹µÃ
+<definition  name="ä¼ªé™¤æ³•">
+è®¾$f,g\in \mathbb{Z}[x]$,è‹¥æœ‰$\alpha,\beta\in\mathbb{Z}$,$q,r\in \mathbb{Z}[x]$ä½¿å¾—
 $$\alpha f=qg+\beta r,$$
-ÆäÖĞ$\deg r<\deg g$,$r$ÊÇ±¾Ô­¶àÏîÊ½,ÎÒÃÇ³Æ´Ë¹ı³ÌÎª¶àÏîÊ½µÄ<index>Î±³ı·¨</index>,²¢ÒÔ$f\pquo g$¼ÇÎ±ÉÌ$q$,$f\prem g$¼ÇÎ±ÓàÊ½$r$.
+å…¶ä¸­$\deg r<\deg g$,$r$æ˜¯æœ¬åŸå¤šé¡¹å¼,æˆ‘ä»¬ç§°æ­¤è¿‡ç¨‹ä¸ºå¤šé¡¹å¼çš„<index>ä¼ªé™¤æ³•</index>,å¹¶ä»¥$f\pquo g$è®°ä¼ªå•†$q$,$f\prem g$è®°ä¼ªä½™å¼$r$.
 </definition>
 
-<definition  name="¶àÏîÊ½ÓàÊ½ĞòÁĞ">
-Èô$f,g\in \mathbb{Z}[x]$,ÇÒ$\deg (f)\ge\deg (g)$£¬Áî$R_0=f,R_1=g$, ÒÀ´Î×÷Î±³ı·¨$\alpha_iR_{i-1}=Q_iR_i+\beta_iR_{i+1}$,$i=1,2,\ldots,k$,Âú×ã$R_{k-1}\prem R_k=0$,Ôò$R_0,R_1,\ldots,R_k$³ÆÎª$f,g$µÄ<index>¶àÏîÊ½ÓàÊ½ĞòÁĞ</index>.
+<definition  name="å¤šé¡¹å¼ä½™å¼åºåˆ—">
+è‹¥$f,g\in \mathbb{Z}[x]$,ä¸”$\deg (f)\ge\deg (g)$ï¼Œä»¤$R_0=f,R_1=g$, ä¾æ¬¡ä½œä¼ªé™¤æ³•$\alpha_iR_{i-1}=Q_iR_i+\beta_iR_{i+1}$,$i=1,2,\ldots,k$,æ»¡è¶³$R_{k-1}\prem R_k=0$,åˆ™$R_0,R_1,\ldots,R_k$ç§°ä¸º$f,g$çš„<index>å¤šé¡¹å¼ä½™å¼åºåˆ—</index>.
 </definition>
 
-Ê¹ÓÃÎ±³ı·¨Çó×î´ó¹«Òò×ÓÊ±¾Í»áµ¼ÖÂÓàÊ½ĞòÁĞµÄÏµÊıÔö³¤ºÜ¿ì£¬ÎÒÃÇ¿ÉÒÔÓÃÏÂÃæ¶¨ÒåµÄ¼¸ÖÖ¶àÏîÊ½ÓàÊ½ĞòÁĞÒ»¶¨³Ì¶ÈÉÏ¼õĞ¡ÏµÊıÔö³¤ËÙ¶È£¨²Î¼û<cite>zsg05</cite>£©¡£±¾ÕÂÉÔºó½éÉÜµÄËØÊıÄ£·½·¨ÄÜ¹»ÓĞĞ§ÒÖÖÆÏµÊıÅòÕÍĞ§Ó¦¡£
+ä½¿ç”¨ä¼ªé™¤æ³•æ±‚æœ€å¤§å…¬å› å­æ—¶å°±ä¼šå¯¼è‡´ä½™å¼åºåˆ—çš„ç³»æ•°å¢é•¿å¾ˆå¿«ï¼Œæˆ‘ä»¬å¯ä»¥ç”¨ä¸‹é¢å®šä¹‰çš„å‡ ç§å¤šé¡¹å¼ä½™å¼åºåˆ—ä¸€å®šç¨‹åº¦ä¸Šå‡å°ç³»æ•°å¢é•¿é€Ÿåº¦ï¼ˆå‚è§<cite>zsg05</cite>ï¼‰ã€‚æœ¬ç« ç¨åä»‹ç»çš„ç´ æ•°æ¨¡æ–¹æ³•èƒ½å¤Ÿæœ‰æ•ˆæŠ‘åˆ¶ç³»æ•°è†¨èƒ€æ•ˆåº”ã€‚
 
-<definition label="def:quo-series" name="¼¸ÖÖ¶àÏîÊ½ÓàÊ½ĞòÁĞ">
-Èô¼Ç$\delta_i=\deg (R_{i-1})-\deg (R_i)$,ÔòÓĞÈçÏÂ¶¨Òå:
+<definition label="def:quo-series" name="å‡ ç§å¤šé¡¹å¼ä½™å¼åºåˆ—">
+è‹¥è®°$\delta_i=\deg (R_{i-1})-\deg (R_i)$,åˆ™æœ‰å¦‚ä¸‹å®šä¹‰:
 
-(1)Í¨³£µÄÎ±ÓàÊ½ĞòÁĞ£º$\alpha_i=(\plc{R_i})^{\delta_i+1},\beta_i=\mathrm{cont}(R_{i-1}\prem R_i)$.
+(1)é€šå¸¸çš„ä¼ªä½™å¼åºåˆ—ï¼š$\alpha_i=(\plc{R_i})^{\delta_i+1},\beta_i=\mathrm{cont}(R_{i-1}\prem R_i)$.
 
-(2)×Ó½áÊ½ÓàÊ½ĞòÁĞ£º$$\alpha_i=(\plc{R_i})^{\delta_i+1},\beta_1=(-1)^{\delta_1+1},$$
+(2)å­ç»“å¼ä½™å¼åºåˆ—ï¼š$$\alpha_i=(\plc{R_i})^{\delta_i+1},\beta_1=(-1)^{\delta_1+1},$$
 $$\beta_i=-(\plc{R_{i-1}})\psi_i^{\delta_i},(2\le i\le k),$$
 $$\psi_1=-1,\psi_i=(-\plc{R_{i-1}})^{\delta_{i-1}}\psi_{i-1}^{1-\delta_{i-1}},(2\le i\le k),$$
 
-´Ë·½·¨¼ÆËãÁ¿×îĞ¡¡£
+æ­¤æ–¹æ³•è®¡ç®—é‡æœ€å°ã€‚
 
-(3)Ô¼»¯¶àÏîÊ½ÓàÊ½ĞòÁĞ£º$$\alpha_i=(\plc{R_{i-1}})^{\delta_i+1},$$
+(3)çº¦åŒ–å¤šé¡¹å¼ä½™å¼åºåˆ—ï¼š$$\alpha_i=(\plc{R_{i-1}})^{\delta_i+1},$$
 $$\beta_1=1,\beta_i=\alpha_{i-1},(2\le i\le k).$$
 </definition>
 
-* ÓòÉÏ¶àÏîÊ½µÄ¿ìËÙEuclidËã·¨
+* åŸŸä¸Šå¤šé¡¹å¼çš„å¿«é€ŸEuclidç®—æ³•
 
-1938ÄêLehmer×îÏÈÌá³öÁË<index name="EuclidËã·¨" sub="¶àÏîÊ½!¿ìËÙEuclidËã·¨">¿ìËÙEuclidËã·¨</index><cite>dhl38</cite>£¬ºóÀ´Knuth<cite>dek70</cite>£¬Sch\"onhage<cite>as71</cite>,Moenck<cite>rtm73</cite>,Schwartz<cite>jts80</cite>,Strassen<cite>vs83</cite>¶ÔÕâĞ©Ëã·¨Ò²ÓĞÂÛÊö¡£
+1938å¹´Lehmeræœ€å…ˆæå‡ºäº†<index name="Euclidç®—æ³•" sub="å¤šé¡¹å¼!å¿«é€ŸEuclidç®—æ³•">å¿«é€ŸEuclidç®—æ³•</index><cite>dhl38</cite>ï¼Œåæ¥Knuth<cite>dek70</cite>ï¼ŒSch\"onhage<cite>as71</cite>,Moenck<cite>rtm73</cite>,Schwartz<cite>jts80</cite>,Strassen<cite>vs83</cite>å¯¹è¿™äº›ç®—æ³•ä¹Ÿæœ‰è®ºè¿°ã€‚
 
-ÔÚÓò$F$(ÀıÈç$\mathbb{F}_p$)ÉÏµÄ¶àÏîÊ½»·ÖĞ£¬EuclidËã·¨¿É±íÊ¾Îª£¨ÆäÖĞ¸÷$r_i$¾ùÎªÊ×Ò»µÄ£©:
-$$r_0=f,\quad r_1=g,\quad s_0=t_1=1,\quad s_1=t_0=0,$$¼°
+åœ¨åŸŸ$F$(ä¾‹å¦‚$\mathbb{F}_p$)ä¸Šçš„å¤šé¡¹å¼ç¯ä¸­ï¼ŒEuclidç®—æ³•å¯è¡¨ç¤ºä¸ºï¼ˆå…¶ä¸­å„$r_i$å‡ä¸ºé¦–ä¸€çš„ï¼‰:
+$$r_0=f,\quad r_1=g,\quad s_0=t_1=1,\quad s_1=t_0=0,$$åŠ
 <latex>
 \begin{align}
 \rho_2r_2&=r_0-q_1r_1,&\rho_2s_2&=s_0-q_1s_1,&\rho_2t_2&=t_0-q_1t_1,\nonumber\\
@@ -133,58 +133,58 @@ $$r_0=f,\quad r_1=g,\quad s_0=t_1=1,\quad s_1=t_0=0,$$¼°
 \end{align}
 </latex>
 
-ÈôÉè$\rho_{l+1}=1,r_{l+1}=0$£¬¼Ç$$Q_i=\begin{pmatrix}0 &1\\ \rho_{i+1}^{-1} &-q_i\rho_{i+1}^{-1}\end{pmatrix},$$ÔòÓĞ$$\begin{pmatrix}r_i \\ r_{i+1}\end{pmatrix}=Q_i\begin{pmatrix}r_{i-1}\\r_i\end{pmatrix}.$$¼Ç$R_i=Q_iQ_{i-1}\cdots Q_1$,ÔòÓĞ$$R_i=\begin{pmatrix}s_i & t_i\\s_{i+1}& t_{i+1}\end{pmatrix},\quad\begin{pmatrix}r_i\\r_{i+1}\end{pmatrix}=R_i\begin{pmatrix}r_0\\r_1\end{pmatrix}.$$
+è‹¥è®¾$\rho_{l+1}=1,r_{l+1}=0$ï¼Œè®°$$Q_i=\begin{pmatrix}0 &1\\ \rho_{i+1}^{-1} &-q_i\rho_{i+1}^{-1}\end{pmatrix},$$åˆ™æœ‰$$\begin{pmatrix}r_i \\ r_{i+1}\end{pmatrix}=Q_i\begin{pmatrix}r_{i-1}\\r_i\end{pmatrix}.$$è®°$R_i=Q_iQ_{i-1}\cdots Q_1$,åˆ™æœ‰$$R_i=\begin{pmatrix}s_i & t_i\\s_{i+1}& t_{i+1}\end{pmatrix},\quad\begin{pmatrix}r_i\\r_{i+1}\end{pmatrix}=R_i\begin{pmatrix}r_0\\r_1\end{pmatrix}.$$
 
-ÔÚËæ»úÇé¿öÏÂ£¬¿ÉÖ¤Ã÷Óò$\mathbb{F}_p$ÖĞ$\deg r_2<\deg r_1-1$µÄ¸ÅÂÊ$\mathrm{P}(\deg r_2<\deg r_1 - 1)=\displaystyle\frac{1}{p}$£¬µ±ËØÊı$p$ºÜ´óÊ±£¬¿ÉÈÏÎª$r_i$ĞòÁĞµÄÏÂ½µËÙ¶ÈºÜÂı¡£Èç¹ûÊÇÓĞÀíÊıÓòÉÏµÄ¶àÏîÊ½,¿ÉÒÔÏëµ½,ÓàÊ½´ÎÊıÏÂ½µµÃÓ¦¸Ã¸üÂı¡£ÒıÈë¿ìËÙEuclidËã·¨ÄÜÔÚÒ»¶¨³Ì¶ÈÉÏ²¹³¥´ÎÊıÏÂ½µ¹ıÂıµ¼ÖÂµÄ¼ÆËã´ú¼Û.ÎªÁËËµÃ÷¿ìËÙEuclidËã·¨£¬ÎÒÃÇÏÈÒıÈëÏÂÃæÒ»Ğ©¶¨ÒåºÍ¶¨Àí¡£¸ÃËã·¨µÄ»ù±¾Ô­ÀíÔÚÓÚÀûÓÃ¶àÏîÊ½µÄÇ°Èô¸ÉÏîÏµÊıÀ´¼ÆËãÓàÊ½ĞòÁĞ.
+åœ¨éšæœºæƒ…å†µä¸‹ï¼Œå¯è¯æ˜åŸŸ$\mathbb{F}_p$ä¸­$\deg r_2<\deg r_1-1$çš„æ¦‚ç‡$\mathrm{P}(\deg r_2<\deg r_1 - 1)=\displaystyle\frac{1}{p}$ï¼Œå½“ç´ æ•°$p$å¾ˆå¤§æ—¶ï¼Œå¯è®¤ä¸º$r_i$åºåˆ—çš„ä¸‹é™é€Ÿåº¦å¾ˆæ…¢ã€‚å¦‚æœæ˜¯æœ‰ç†æ•°åŸŸä¸Šçš„å¤šé¡¹å¼,å¯ä»¥æƒ³åˆ°,ä½™å¼æ¬¡æ•°ä¸‹é™å¾—åº”è¯¥æ›´æ…¢ã€‚å¼•å…¥å¿«é€ŸEuclidç®—æ³•èƒ½åœ¨ä¸€å®šç¨‹åº¦ä¸Šè¡¥å¿æ¬¡æ•°ä¸‹é™è¿‡æ…¢å¯¼è‡´çš„è®¡ç®—ä»£ä»·.ä¸ºäº†è¯´æ˜å¿«é€ŸEuclidç®—æ³•ï¼Œæˆ‘ä»¬å…ˆå¼•å…¥ä¸‹é¢ä¸€äº›å®šä¹‰å’Œå®šç†ã€‚è¯¥ç®—æ³•çš„åŸºæœ¬åŸç†åœ¨äºåˆ©ç”¨å¤šé¡¹å¼çš„å‰è‹¥å¹²é¡¹ç³»æ•°æ¥è®¡ç®—ä½™å¼åºåˆ—.
 
-ÒÔÏÂÎÒÃÇ¼ò¼Ç¶àÏîÊ½ÏµÊıÓòÎª$F$,µ±È»,Ëü¿ÉÒÔÊÇ$\mathbb{F}_p$»òÕß$\mathbb{Q}$.
+ä»¥ä¸‹æˆ‘ä»¬ç®€è®°å¤šé¡¹å¼ç³»æ•°åŸŸä¸º$F$,å½“ç„¶,å®ƒå¯ä»¥æ˜¯$\mathbb{F}_p$æˆ–è€…$\mathbb{Q}$.
 
-<definition  name="½ØÊ½">
-¶ÔÓÚ$f=\sum_{i=0}^{n} f_ix^i\in F[x],k\in\mathbb{Z},k$-½ØÊ½($k$-truncated polynomial)¶¨ÒåÎª$$f \upharpoonright k=f_nx^k+f_{n-1}x^{k-1}+\cdots+f_{n-k},$$µ±$i<0$ÎÒÃÇÔ¼¶¨$f_i=0$¡£Òò´Ëµ±$k\ge0$Ê±£¬$f\upharpoonright k$¼´È¡$f$µÄÇ°$k+1$¸öÏµÊı×÷Ò»¸öĞÂµÄ$k$´Î¶àÏîÊ½,¶øµ±$k<0$Ê±$f\upharpoonright k=0$.
+<definition  name="æˆªå¼">
+å¯¹äº$f=\sum_{i=0}^{n} f_ix^i\in F[x],k\in\mathbb{Z},k$-æˆªå¼($k$-truncated polynomial)å®šä¹‰ä¸º$$f \upharpoonright k=f_nx^k+f_{n-1}x^{k-1}+\cdots+f_{n-k},$$å½“$i<0$æˆ‘ä»¬çº¦å®š$f_i=0$ã€‚å› æ­¤å½“$k\ge0$æ—¶ï¼Œ$f\upharpoonright k$å³å–$f$çš„å‰$k+1$ä¸ªç³»æ•°ä½œä¸€ä¸ªæ–°çš„$k$æ¬¡å¤šé¡¹å¼,è€Œå½“$k<0$æ—¶$f\upharpoonright k=0$.
 </definition>
 
 <remark>
-µ±$k\le n$Ê±,ÓĞ$f\upharpoonright k=f \quo x^{n-k}$,¶øµ±$k>n$Ê±ÓĞ$f\upharpoonright k=fx^{k-n}$.
+å½“$k\le n$æ—¶,æœ‰$f\upharpoonright k=f \quo x^{n-k}$,è€Œå½“$k>n$æ—¶æœ‰$f\upharpoonright k=fx^{k-n}$.
 </remark>
 
 <remark>
 $\forall i\ge 0,(fx^i)\upharpoonright k=f\upharpoonright k$.
 </remark>
 
-<definition  name="$k$-¶ÈÖØºÏ">
-Éè·ÇÁã¶àÏîÊ½$f,g,f^*,g^*\in F[x]$,ÇÒ$\deg f\ge\deg g,\deg f^*\ge\deg g^*,k\in\mathbb{Z}$£¬Ôò³Æ$(f,g)$Óë$(f^*,g^*)$ $k$-¶ÈÖØºÏ(coincide up to $k$)£¬Èç¹û$$f\upharpoonright k=f^*\upharpoonright k$$ÇÒ<latex>\begin{equation} @@eq:ggstar g\upharpoonright(k-\deg f+\deg g)=g^*\upharpoonright(k-\deg f^*+\deg g^*),\end{equation}</latex>
-´ËÊ±¼ÇÎª$(f,g)\overset{k}{\sim}(f^*,g^*)$,¿ÉÑéÖ¤$\sim$ÎªÒ»µÈ¼Û¹ØÏµ¡£
+<definition  name="$k$-åº¦é‡åˆ">
+è®¾éé›¶å¤šé¡¹å¼$f,g,f^*,g^*\in F[x]$,ä¸”$\deg f\ge\deg g,\deg f^*\ge\deg g^*,k\in\mathbb{Z}$ï¼Œåˆ™ç§°$(f,g)$ä¸$(f^*,g^*)$ $k$-åº¦é‡åˆ(coincide up to $k$)ï¼Œå¦‚æœ$$f\upharpoonright k=f^*\upharpoonright k$$ä¸”<latex>\begin{equation} @@eq:ggstar g\upharpoonright(k-\deg f+\deg g)=g^*\upharpoonright(k-\deg f^*+\deg g^*),\end{equation}</latex>
+æ­¤æ—¶è®°ä¸º$(f,g)\overset{k}{\sim}(f^*,g^*)$,å¯éªŒè¯$\sim$ä¸ºä¸€ç­‰ä»·å…³ç³»ã€‚
 </definition>
 
-¸ù¾İÊ½##eq:ggstar £¬´ËµÈ¼Û¹ØÏµÓĞÈçÏÂĞÔÖÊ£º
+æ ¹æ®å¼##eq:ggstar ï¼Œæ­¤ç­‰ä»·å…³ç³»æœ‰å¦‚ä¸‹æ€§è´¨ï¼š
 
 <proposition  label="pr:ksimpro">
-Èô$(f,g)\overset{k}{\sim}(f^*,g^*)$ÇÒ$k\ge\deg f-\deg g$,Ôò$\deg f-\deg g=\deg f^*-\deg g^*$.
+è‹¥$(f,g)\overset{k}{\sim}(f^*,g^*)$ä¸”$k\ge\deg f-\deg g$,åˆ™$\deg f-\deg g=\deg f^*-\deg g^*$.
 </proposition>
 
-¹ØÓÚ$k$-¶ÈÖØºÏ£¬ÓĞÈçÏÂÖØÒªµÄÃüÌâ£º
+å…³äº$k$-åº¦é‡åˆï¼Œæœ‰å¦‚ä¸‹é‡è¦çš„å‘½é¢˜ï¼š
 
 <theorem  label="th:baseforFEEA">
-¶ÔÓÚ$k\in\mathbb{Z}$£¬Èô·ÇÁã¶àÏîÊ½$f,g,f^*,g^*$Âú×ã$(f,g)\overset{2k}{\sim}(f^*,g^*)$,ÇÒ$k\ge\deg f-\deg g\ge 0$,ÈôÓĞEuclid³ı·¨$$f=qg+r,\quad f^*=q^*g^*+r^*,$$Ôò
+å¯¹äº$k\in\mathbb{Z}$ï¼Œè‹¥éé›¶å¤šé¡¹å¼$f,g,f^*,g^*$æ»¡è¶³$(f,g)\overset{2k}{\sim}(f^*,g^*)$,ä¸”$k\ge\deg f-\deg g\ge 0$,è‹¥æœ‰Euclidé™¤æ³•$$f=qg+r,\quad f^*=q^*g^*+r^*,$$åˆ™
  1. $q=q^*$,
- 2. $(g,r)\overset{2(k-\deg q)}{\sim}(g^*,r^*)$»òÕß$r=0$»òÕß$k-\deg q<\deg g-\deg r$.
+ 2. $(g,r)\overset{2(k-\deg q)}{\sim}(g^*,r^*)$æˆ–è€…$r=0$æˆ–è€…$k-\deg q<\deg g-\deg r$.
 </theorem>
 
 <proof>
-¶Ô$(f,g)$ºÍ$(f^*,g^*)$³ËÒÔ$x$µÄÊÊµ±Ãİ´Îºó£¬¿ÉÊ¹$\deg f=\deg f^*> 2k$³ÉÁ¢£¬²»·ÁÉèÃüÌâÖĞµÄ¶àÏîÊ½ÒÑÂú×ã´ËÊ½£¬ÔòÓÉÃüÌâ##pr:ksimpro ÓĞ$\deg g=\deg g^*$¼°$k\ge\deg q=\deg f-\deg g=\deg f^*-\deg g^*=\deg q^*$.ÏÂÃæ·ÖÁ½²¿·ÖÖ¤Ã÷±¾¶¨Àí¡£
+å¯¹$(f,g)$å’Œ$(f^*,g^*)$ä¹˜ä»¥$x$çš„é€‚å½“å¹‚æ¬¡åï¼Œå¯ä½¿$\deg f=\deg f^*> 2k$æˆç«‹ï¼Œä¸å¦¨è®¾å‘½é¢˜ä¸­çš„å¤šé¡¹å¼å·²æ»¡è¶³æ­¤å¼ï¼Œåˆ™ç”±å‘½é¢˜##pr:ksimpro æœ‰$\deg g=\deg g^*$åŠ$k\ge\deg q=\deg f-\deg g=\deg f^*-\deg g^*=\deg q^*$.ä¸‹é¢åˆ†ä¸¤éƒ¨åˆ†è¯æ˜æœ¬å®šç†ã€‚
 
-(1)Ê×ÏÈÎÒÃÇÓĞÈçÏÂÈı¸ö²»µÈÊ½:<latex>
+(1)é¦–å…ˆæˆ‘ä»¬æœ‰å¦‚ä¸‹ä¸‰ä¸ªä¸ç­‰å¼:<latex>
 \begin{align*}
-\deg (f-f^*)&<\deg f-2k\le\deg g-k\text{(×¢Òâ}k\text{-½ØÊ½È¡¶àÏîÊ½µÄÇ°}k+1\text{Ïî)},\\
+\deg (f-f^*)&<\deg f-2k\le\deg g-k\text{(æ³¨æ„}k\text{-æˆªå¼å–å¤šé¡¹å¼çš„å‰}k+1\text{é¡¹)},\\
 \deg (g-g^*)&<\deg g-(2k-(\deg f-\deg g)) \\
 &=\deg f-2k\le\deg g-k\le\deg g-\deg q,\\
 \deg (r-r^*)&\le\max\{\deg r,\deg r^*\}<\deg g,
 \end{align*}
 </latex>
-¸ù¾İÉÏÃæµÄ²»µÈÊ½,ÓÉ$f-f^*=q(g-g^*)+(q-q^*)g^*+(r-r^*)$¿ÉÖª$\deg [(q-q^*)g^*]<\deg g$,¹Ê$q=q^*$.
+æ ¹æ®ä¸Šé¢çš„ä¸ç­‰å¼,ç”±$f-f^*=q(g-g^*)+(q-q^*)g^*+(r-r^*)$å¯çŸ¥$\deg [(q-q^*)g^*]<\deg g$,æ•…$q=q^*$.
 
-(2)¼Ù¶¨$r\neq 0$ÇÒ$k-\deg q\ge\deg g-\deg r$£¬ÔòÓÉ$(f,g)\overset{2k}{\sim}(f^*,g^*)$ÓĞ$$g\upharpoonright 2(k-\deg q)=g^*\upharpoonright 2(k-\deg q),$$
-ÁíÍâ£¬<latex>
+(2)å‡å®š$r\neq 0$ä¸”$k-\deg q\ge\deg g-\deg r$ï¼Œåˆ™ç”±$(f,g)\overset{2k}{\sim}(f^*,g^*)$æœ‰$$g\upharpoonright 2(k-\deg q)=g^*\upharpoonright 2(k-\deg q),$$
+å¦å¤–ï¼Œ<latex>
 \begin{align}
 \deg (r-r^*)&\le\max\{\deg (f-f^*),\deg q+\deg (g-g^*)\}\notag\\
 &<\deg q+\deg f-2k\notag\\
@@ -193,118 +193,118 @@ $\forall i\ge 0,(fx^i)\upharpoonright k=f\upharpoonright k$.
 \end{align}
 </latex>
 
-ÓÖÓÉ¼ÙÉèÓĞ$\deg r\ge\deg q+\deg g-k\ge\deg q+\deg f-2k\Rightarrow\deg r=\deg r^*$, ÓÚÊÇ$r\upharpoonright[2(k-\deg q)-(\deg g-\deg r)]=r^*\upharpoonright[2(k-\deg q)-(\deg g^*-\deg r^*)]$,
-¹Ê$(g,r)\overset{2(k-\deg q)}{\sim}(g^*,r^*)$.
+åˆç”±å‡è®¾æœ‰$\deg r\ge\deg q+\deg g-k\ge\deg q+\deg f-2k\Rightarrow\deg r=\deg r^*$, äºæ˜¯$r\upharpoonright[2(k-\deg q)-(\deg g-\deg r)]=r^*\upharpoonright[2(k-\deg q)-(\deg g^*-\deg r^*)]$,
+æ•…$(g,r)\overset{2(k-\deg q)}{\sim}(g^*,r^*)$.
 </proof>
 
-ÏÂÃæ¿¼ÂÇÁ½¸öÊ×Ò»µÄ¶àÏîÊ½EuclidÓàÊ½ĞòÁĞ£º<latex>
+ä¸‹é¢è€ƒè™‘ä¸¤ä¸ªé¦–ä¸€çš„å¤šé¡¹å¼Euclidä½™å¼åºåˆ—ï¼š<latex>
 \begin{align*}
 r_0&=q_1r_1+\rho_2r_2 &r_0^*&=q_1^*r_1^*+\rho_2^*r_2^*\\
 &\ \,\vdots &&\ \,\vdots\\
 r_{l-1}&=q_lr_l &r_{l^*-1}^*&=q_{l^*}^*r_{l^*}^*
 \end{align*}
 </latex>
-·Ö±ğÁî$m_i=\deg q_i,m_i^*=\deg q_i^*,n_i=\deg r_i=n_0-m_1-\cdots-m_i$,¶Ô$k\in\mathbb{N}$,¶¨Òå$\eta(k)=\max\{0\le j\le l\mid\sum_{1\le i\le j}m_i\le k\}$,ÔòÎÒÃÇÓĞ$$n_0-n_{\eta(k)}=\sum_{1\le i\le \eta(k)}m_i\le k<\sum_{1\le i\le\eta(k)+1}m_i=n_0-n_{\eta(k)+1}.$$
+åˆ†åˆ«ä»¤$m_i=\deg q_i,m_i^*=\deg q_i^*,n_i=\deg r_i=n_0-m_1-\cdots-m_i$,å¯¹$k\in\mathbb{N}$,å®šä¹‰$\eta(k)=\max\{0\le j\le l\mid\sum_{1\le i\le j}m_i\le k\}$,åˆ™æˆ‘ä»¬æœ‰$$n_0-n_{\eta(k)}=\sum_{1\le i\le \eta(k)}m_i\le k<\sum_{1\le i\le\eta(k)+1}m_i=n_0-n_{\eta(k)+1}.$$
 
-ÏÂÃæµÄ¶¨ÀíÊÇ¿ìËÙEuclidËã·¨µÄ»ù´¡£º
+ä¸‹é¢çš„å®šç†æ˜¯å¿«é€ŸEuclidç®—æ³•çš„åŸºç¡€ï¼š
 <theorem>
-¶ÔÓÚ$k\in\mathbb{N},h=\eta(k),h^*=\eta^*(k)$,Èô$$(r_0,r_1)\overset{2k}{\sim}(r_0^*,r_1^*),$$Ôò$h=h^*,ÇÒq_i=q_i^*,\rho_{i+1}=\rho_{i+1}^*$¶Ô$1\le i\le h$³ÉÁ¢¡£
+å¯¹äº$k\in\mathbb{N},h=\eta(k),h^*=\eta^*(k)$,è‹¥$$(r_0,r_1)\overset{2k}{\sim}(r_0^*,r_1^*),$$åˆ™$h=h^*,ä¸”q_i=q_i^*,\rho_{i+1}=\rho_{i+1}^*$å¯¹$1\le i\le h$æˆç«‹ã€‚
 </theorem>
 
 <proof>
-Ö»Ğè¶Ô$0\le j\le h$µÄ$j$½øĞĞ¹éÄÉ£¬Ö¤Ã÷ÈçÏÂÃüÌâ£º$j\le h^*,q_i=q_i^*,\rho_{i+1}=\rho_{i+1}^*$¶ÔÓÚ$1\le i\le j$³ÉÁ¢£¬ÇÒ$j=h$»ò$$(r_j,r_{j+1})\overset{s}{\sim}(r_j^*,r_{j+1}^*),\text{ÆäÖĞ}s=2(k-\displaystyle\sum_{1\le i\le j}m_i).$$
+åªéœ€å¯¹$0\le j\le h$çš„$j$è¿›è¡Œå½’çº³ï¼Œè¯æ˜å¦‚ä¸‹å‘½é¢˜ï¼š$j\le h^*,q_i=q_i^*,\rho_{i+1}=\rho_{i+1}^*$å¯¹äº$1\le i\le j$æˆç«‹ï¼Œä¸”$j=h$æˆ–$$(r_j,r_{j+1})\overset{s}{\sim}(r_j^*,r_{j+1}^*),\text{å…¶ä¸­}s=2(k-\displaystyle\sum_{1\le i\le j}m_i).$$
 
-$j=0$Ê±ÃüÌâÎŞĞëÂÛÖ¤£¬ÓÉ¶¨Àí##th:baseforFEEA ¿ÉÒÔÖ¤Ã÷¹éÄÉ¹ı³Ì¡£ÁíÍâ$$\sum_{1\le i\le j}\deg q_i^*=\sum_{1\le i\le j}\deg q_i\le\sum_{1\le i\le h}\deg q_i\le k$$¿ÉÖª$j\le\eta^*(k)=h^*,$Ö¤±Ï¡£
+$j=0$æ—¶å‘½é¢˜æ— é¡»è®ºè¯ï¼Œç”±å®šç†##th:baseforFEEA å¯ä»¥è¯æ˜å½’çº³è¿‡ç¨‹ã€‚å¦å¤–$$\sum_{1\le i\le j}\deg q_i^*=\sum_{1\le i\le j}\deg q_i\le\sum_{1\le i\le h}\deg q_i\le k$$å¯çŸ¥$j\le\eta^*(k)=h^*,$è¯æ¯•ã€‚
 </proof>
 
-ÓÉ´ËÎÒÃÇ¿ÉÒÔµÃµ½ÏÂÃæµÄËã·¨£º
+ç”±æ­¤æˆ‘ä»¬å¯ä»¥å¾—åˆ°ä¸‹é¢çš„ç®—æ³•ï¼š
 
-<algorithm label="al:FEEA" name="¿ìËÙÀ©Õ¹EuclidËã·¨">
+<algorithm label="al:FEEA" name="å¿«é€Ÿæ‰©å±•Euclidç®—æ³•">
 
-ÊäÈë£ºÊ×Ò»¶àÏîÊ½$r_0,r_1\in F[x],k\in\mathbb{N}(0\le k\le n)$,ÆäÖĞ$n=n_0=\deg r_0>n_1=\deg r_1$,
+è¾“å…¥ï¼šé¦–ä¸€å¤šé¡¹å¼$r_0,r_1\in F[x],k\in\mathbb{N}(0\le k\le n)$,å…¶ä¸­$n=n_0=\deg r_0>n_1=\deg r_1$,
 
-Êä³ö£º$h=\eta(k)$ÒÔ¼°$R_h\in M_{2\times 2}(F[x])$.
+è¾“å‡ºï¼š$h=\eta(k)$ä»¥åŠ$R_h\in M_{2\times 2}(F[x])$.
 
- 1. Èç¹û$r_1=0$»ò$k<n_0-n_1$,ÔòÊä³ö$0,\begin{pmatrix}1\quad 0\\0\quad 1\end{pmatrix}$,
+ 1. å¦‚æœ$r_1=0$æˆ–$k<n_0-n_1$,åˆ™è¾“å‡º$0,\begin{pmatrix}1\quad 0\\0\quad 1\end{pmatrix}$,
 
  2. $d=\lfloor k/2\rfloor$,
 
- 3. µİ¹éµ÷ÓÃ±¾Ëã·¨£¬ÊäÈë$r_0\upharpoonright 2d,r_1\upharpoonright (2d-(n_0-n_1)),d$,²¢½«½á¹ûÊä³öÖÁ$j-1=\eta(d),R=Q_{j-1}\cdots Q_1$,
+ 3. é€’å½’è°ƒç”¨æœ¬ç®—æ³•ï¼Œè¾“å…¥$r_0\upharpoonright 2d,r_1\upharpoonright (2d-(n_0-n_1)),d$,å¹¶å°†ç»“æœè¾“å‡ºè‡³$j-1=\eta(d),R=Q_{j-1}\cdots Q_1$,
 
- 4. ¸³Öµ$\begin{pmatrix}r_{j-1}\\r_j\end{pmatrix}=R\begin{pmatrix}r_0\\r_1\end{pmatrix}$,$\begin{pmatrix}n_{j-1}\\n_j\end{pmatrix}=\begin{pmatrix}\deg r_{j-1}\\ \deg r_j\end{pmatrix}$,
+ 4. èµ‹å€¼$\begin{pmatrix}r_{j-1}\\r_j\end{pmatrix}=R\begin{pmatrix}r_0\\r_1\end{pmatrix}$,$\begin{pmatrix}n_{j-1}\\n_j\end{pmatrix}=\begin{pmatrix}\deg r_{j-1}\\ \deg r_j\end{pmatrix}$,
 
- 5. Èç¹û$r_j=0$»òÕß$k<n_0-n_j$ÔòÊä³ö$j-1,R$,
+ 5. å¦‚æœ$r_j=0$æˆ–è€…$k<n_0-n_j$åˆ™è¾“å‡º$j-1,R$,
 
- 6. ¸³Öµ$q_j=r_{j-1}\quo r_j$,$\rho_{j+1}=\plc{r_{j-1}\rem r_j}$,$r_{j+1}=\mathrm{monic}(r_{j-1}\rem r_j)$,$n_{j+1}=\deg r_{j+1}$,$d^*=k-(n_0-n_j)$,
+ 6. èµ‹å€¼$q_j=r_{j-1}\quo r_j$,$\rho_{j+1}=\plc{r_{j-1}\rem r_j}$,$r_{j+1}=\mathrm{monic}(r_{j-1}\rem r_j)$,$n_{j+1}=\deg r_{j+1}$,$d^*=k-(n_0-n_j)$,
 
- 7. µİ¹éµ÷ÓÃ±¾Ëã·¨£¬ÊäÈë$r_j\upharpoonright 2d^*,r_{j+1}\upharpoonright(2d^*-(n_j-n_{j+1})),d^*$,²¢½«½á¹ûÊä³öÖÁ$h-j=\eta(d^*),S=Q_h\cdots Q_{j+1}$,
+ 7. é€’å½’è°ƒç”¨æœ¬ç®—æ³•ï¼Œè¾“å…¥$r_j\upharpoonright 2d^*,r_{j+1}\upharpoonright(2d^*-(n_j-n_{j+1})),d^*$,å¹¶å°†ç»“æœè¾“å‡ºè‡³$h-j=\eta(d^*),S=Q_h\cdots Q_{j+1}$,
 
- 8. ¸³Öµ$Q_j=\begin{pmatrix}0 &1\\ \rho_{j+1}^{-1} &-q_j\rho_{j+1}^{-1}\end{pmatrix}$,
+ 8. èµ‹å€¼$Q_j=\begin{pmatrix}0 &1\\ \rho_{j+1}^{-1} &-q_j\rho_{j+1}^{-1}\end{pmatrix}$,
 
- 9. Êä³ö$h,SQ_jR$.
+ 9. è¾“å‡º$h,SQ_jR$.
 
 </algorithm>
 
 <remark>
-ÀíÂÛÉÏÃ¿´ÎÈ¡$k$Ê±Ó¦µ±Ê¹Ç¡ºÃÖ»¼ÆËãÒ»²½£¬ÕâÑù¿ÉÒÔ´ïµ½×î¸ßµÄĞ§ÂÊ£¬¼´¼È²»¶àÈ¡ÁË²»±ØÒªµÄÏµÊı½øĞĞ¼ÆËã£¬ÓÖ²»ÖÂÓÚÏµÊıÈ¡µÃ²»¹»¡£µ±ÓàÊ½ĞòÁĞµÄ´ÎÊı$n_i$ÏÂ½µµÃ»ºÂıÊ±£¬ÏàÓ¦µÄ$k$¾Í¿ÉÒÔÈ¡µÃ±È½ÏĞ¡¡£Êµ¼ÊÖĞÎŞ·¨¸ù¾İ$n_i$µÄĞÅÏ¢Ñ¡Ôñ£¬Òò¶øÓĞÉÏÃæµÄ¶ş·Öµİ¹éµÄ²ßÂÔÀ´Ñ¡Ôñ.
+ç†è®ºä¸Šæ¯æ¬¡å–$k$æ—¶åº”å½“ä½¿æ°å¥½åªè®¡ç®—ä¸€æ­¥ï¼Œè¿™æ ·å¯ä»¥è¾¾åˆ°æœ€é«˜çš„æ•ˆç‡ï¼Œå³æ—¢ä¸å¤šå–äº†ä¸å¿…è¦çš„ç³»æ•°è¿›è¡Œè®¡ç®—ï¼Œåˆä¸è‡´äºç³»æ•°å–å¾—ä¸å¤Ÿã€‚å½“ä½™å¼åºåˆ—çš„æ¬¡æ•°$n_i$ä¸‹é™å¾—ç¼“æ…¢æ—¶ï¼Œç›¸åº”çš„$k$å°±å¯ä»¥å–å¾—æ¯”è¾ƒå°ã€‚å®é™…ä¸­æ— æ³•æ ¹æ®$n_i$çš„ä¿¡æ¯é€‰æ‹©ï¼Œå› è€Œæœ‰ä¸Šé¢çš„äºŒåˆ†é€’å½’çš„ç­–ç•¥æ¥é€‰æ‹©.
 </remark>
 
 <remark>
-³õÊ¼½øĞĞº¯Êıµ÷ÓÃÊ±£¬ÎÒÃÇ¿ÉÈ¡$k=n$,¸ù¾İ$\eta(k)$µÄ¶¨ÒåÎÒÃÇÖªµÀ$\eta(k)=l$,Òò¶øËã·¨±Ø½«·µ»Ø$l$ºÍ$R_l$,¸ù¾İ$R_l$¿ÉÒÔµÃµ½$r_l$,¼´×î´ó¹«Òò×Ó.
+åˆå§‹è¿›è¡Œå‡½æ•°è°ƒç”¨æ—¶ï¼Œæˆ‘ä»¬å¯å–$k=n$,æ ¹æ®$\eta(k)$çš„å®šä¹‰æˆ‘ä»¬çŸ¥é“$\eta(k)=l$,å› è€Œç®—æ³•å¿…å°†è¿”å›$l$å’Œ$R_l$,æ ¹æ®$R_l$å¯ä»¥å¾—åˆ°$r_l$,å³æœ€å¤§å…¬å› å­.
 </remark>
 
 
-±¾ÕÂÉÔºó½«»á½éÉÜ$\mathbb{Z}[x]$ÉÏµÄËØÊıÄ£¹«Òò×ÓËã·¨£¬ÓÉÓÚ$\mathbb{F}_p$ÎªÓò£¬¿ÉÀûÓÃ±¾½ÚËùÌáµ½µÄ¿ìËÙEuclidËã·¨Ìá¸ß¼ÆËãĞ§ÂÊ¡£
+æœ¬ç« ç¨åå°†ä¼šä»‹ç»$\mathbb{Z}[x]$ä¸Šçš„ç´ æ•°æ¨¡å…¬å› å­ç®—æ³•ï¼Œç”±äº$\mathbb{F}_p$ä¸ºåŸŸï¼Œå¯åˆ©ç”¨æœ¬èŠ‚æ‰€æåˆ°çš„å¿«é€ŸEuclidç®—æ³•æé«˜è®¡ç®—æ•ˆç‡ã€‚
 
-* ½áÊ½ĞÔÖÊ¼°Æä¼ÆËã
+* ç»“å¼æ€§è´¨åŠå…¶è®¡ç®—
 
-** ½áÊ½
+** ç»“å¼
 
-¶ÔÓÚ¶àÏîÊ½×î´ó¹«Òò×ÓÎÊÌâ£¬<index>½áÊ½</index>ÀíÂÛ´¿´âÊÇÒ»¸ö¸ÅÄîÉÏµÄ¹¤¾ß£¬²¢Ã»ÓĞÖ±½ÓÓÃÓÚÊµ¼ÊËã·¨ÖĞ¡£µ«½áÊ½ÀíÂÛ¶ÔºóÃæµÄGCDËã·¨ÀíÂÛÓĞÖØÒªµÄ×÷ÓÃ. ÁíÍâ½áÊ½µÄ¼ÆËãÔÚÄ³Ğ©ÎÊÌâÖĞÒ²Ê®·ÖÖØÒª,Èç·ûºÅ»ı·ÖÖĞµÄRothstein-Trager½áÊ½µÈµÈ.±¾Ğ¡½ÚÏÈ½éÉÜ½áÊ½µÄ¶¨Òå¼°Ò»Ğ©Ïà¹ØĞÔÖÊ,ºóÃæ½«»á½éÉÜÀûÓÃ¶àÏîÊ½ÓàÊ½ĞòÁĞ£¨PRS£©À´¼ÆËãËüµÄ·½·¨.
+å¯¹äºå¤šé¡¹å¼æœ€å¤§å…¬å› å­é—®é¢˜ï¼Œ<index>ç»“å¼</index>ç†è®ºçº¯ç²¹æ˜¯ä¸€ä¸ªæ¦‚å¿µä¸Šçš„å·¥å…·ï¼Œå¹¶æ²¡æœ‰ç›´æ¥ç”¨äºå®é™…ç®—æ³•ä¸­ã€‚ä½†ç»“å¼ç†è®ºå¯¹åé¢çš„GCDç®—æ³•ç†è®ºæœ‰é‡è¦çš„ä½œç”¨. å¦å¤–ç»“å¼çš„è®¡ç®—åœ¨æŸäº›é—®é¢˜ä¸­ä¹Ÿååˆ†é‡è¦,å¦‚ç¬¦å·ç§¯åˆ†ä¸­çš„Rothstein-Tragerç»“å¼ç­‰ç­‰.æœ¬å°èŠ‚å…ˆä»‹ç»ç»“å¼çš„å®šä¹‰åŠä¸€äº›ç›¸å…³æ€§è´¨,åé¢å°†ä¼šä»‹ç»åˆ©ç”¨å¤šé¡¹å¼ä½™å¼åºåˆ—ï¼ˆPRSï¼‰æ¥è®¡ç®—å®ƒçš„æ–¹æ³•.
 
 <lemma label="le:resultant1">
-Éè$F$ÊÇÓò£¬·ÇÁã¶àÏîÊ½$f$,$g\in F[x]$¡£ÄÇÃ´$\gcd(f,g)\neq 1$µ±ÇÒ½öµ±$\exists s,t\in F[x]\setminus\{0\}$Ê¹µÃ$sf+tg=0$£¬ÇÒ$\deg s<\deg g$,$\deg t<\deg f$.
+è®¾$F$æ˜¯åŸŸï¼Œéé›¶å¤šé¡¹å¼$f$,$g\in F[x]$ã€‚é‚£ä¹ˆ$\gcd(f,g)\neq 1$å½“ä¸”ä»…å½“$\exists s,t\in F[x]\setminus\{0\}$ä½¿å¾—$sf+tg=0$ï¼Œä¸”$\deg s<\deg g$,$\deg t<\deg f$.
 </lemma>
 
 <proof>
-Áî$h=\gcd(f,g)$£¬Èô$f\neq 1$,Ôò$\deg h\ge 1$£¬Áî$s=-g/h$,$t=f/h$ÔòÂú×ã¡£
+ä»¤$h=\gcd(f,g)$ï¼Œè‹¥$f\neq 1$,åˆ™$\deg h\ge 1$ï¼Œä»¤$s=-g/h$,$t=f/h$åˆ™æ»¡è¶³ã€‚
 
-·´¹ıÀ´£¬Éè´æÔÚÕâÑùµÄ$s$,$t$£¬Èô$f$,$g$»¥ËØ£¬Ôò$sf=-tg\Rightarrow f\mid t$£¬ÕâÓë$t\neq 0$ÇÒ$\deg f>\deg t$Ã¬¶Ü£¬Òò´Ë$h=1$.
+åè¿‡æ¥ï¼Œè®¾å­˜åœ¨è¿™æ ·çš„$s$,$t$ï¼Œè‹¥$f$,$g$äº’ç´ ï¼Œåˆ™$sf=-tg\Rightarrow f\mid t$ï¼Œè¿™ä¸$t\neq 0$ä¸”$\deg f>\deg t$çŸ›ç›¾ï¼Œå› æ­¤$h=1$.
 </proof>
 
 <remark>
-µ±$F$Ö»ÊÇUFDÊ±ÉÏÃæµÄÒıÀíÈÔ³ÉÁ¢,²»¹ıÒıÀíµÄÌõ¼ş$\gcd(f,g)\neq 1$Ó¦Àí½âÎª$f,g$ÔÚ¸ÃUFD·ÖÊ½ÓòÎªÏµÊıµÄ¶àÏîÊ½»·ÖĞµÄ×î´ó¹«Òò×Ó,»òÕßËµ$\gcd(f,g)$·ÇÆ½·²,¼´·Ç³£Êı¶àÏîÊ½.
+å½“$F$åªæ˜¯UFDæ—¶ä¸Šé¢çš„å¼•ç†ä»æˆç«‹,ä¸è¿‡å¼•ç†çš„æ¡ä»¶$\gcd(f,g)\neq 1$åº”ç†è§£ä¸º$f,g$åœ¨è¯¥UFDåˆ†å¼åŸŸä¸ºç³»æ•°çš„å¤šé¡¹å¼ç¯ä¸­çš„æœ€å¤§å…¬å› å­,æˆ–è€…è¯´$\gcd(f,g)$éå¹³å‡¡,å³éå¸¸æ•°å¤šé¡¹å¼.
 </remark>
 
-ÎªÁËÒı³ö½áÊ½µÄ¶¨Òå,ÎÒÃÇÈÔĞè¸ø³öÈçÏÂÒ»Ğ©¶¨Òå¼°¶¨Àí.
+ä¸ºäº†å¼•å‡ºç»“å¼çš„å®šä¹‰,æˆ‘ä»¬ä»éœ€ç»™å‡ºå¦‚ä¸‹ä¸€äº›å®šä¹‰åŠå®šç†.
 
 <definition>
-¶ÔÓÚ$d\in\mathbb{N}$£¬¶¨Òå$P_d=\{a\in F[x]|\deg a<d\}$.
+å¯¹äº$d\in\mathbb{N}$ï¼Œå®šä¹‰$P_d=\{a\in F[x]|\deg a<d\}$.
 </definition>
 
 <definition>
-¶ÔÓÚ¸ø¶¨µÄ$n $,$m $´Î¶àÏîÊ½$f$,$g\in F[x]$£¬¶¨Òå
+å¯¹äºç»™å®šçš„$n $,$m $æ¬¡å¤šé¡¹å¼$f$,$g\in F[x]$ï¼Œå®šä¹‰
 $$\varphi=\varphi_{f,g}:F[x]\times F[x]\rightarrow F[x],\qquad(s,t)\mapsto sf+tg,$$
-²¢Áî$\varphi_0:P_m\times P_n\rightarrow P_{n+m}$Îª$\varphi$ÔÚ$P_m\times P_n$ÉÏµÄÏŞÖÆ¡£
+å¹¶ä»¤$\varphi_0:P_m\times P_n\rightarrow P_{n+m}$ä¸º$\varphi$åœ¨$P_m\times P_n$ä¸Šçš„é™åˆ¶ã€‚
 </definition>
 
 <theorem>
-Éè$f$,$g\in F[x]$Îª$n $,$m $´Î·ÇÁã¶àÏîÊ½£¬ÄÇÃ´ÓĞÏÂÃæµÄ½áÂÛ£º
+è®¾$f$,$g\in F[x]$ä¸º$n $,$m $æ¬¡éé›¶å¤šé¡¹å¼ï¼Œé‚£ä¹ˆæœ‰ä¸‹é¢çš„ç»“è®ºï¼š
 
- 1. $\gcd(f,g)=1\Leftrightarrow \varphi_0$ÊÇÍ¬¹¹.
+ 1. $\gcd(f,g)=1\Leftrightarrow \varphi_0$æ˜¯åŒæ„.
 
- 2. Èô$\gcd(f,g)=1$£¬Ôò$f$,$g$µÄBezoutÏµÊı$s$,$t$¹¹³É$\varphi_0(s,t)=1$µÄÎ¨Ò»½â.
+ 2. è‹¥$\gcd(f,g)=1$ï¼Œåˆ™$f$,$g$çš„Bezoutç³»æ•°$s$,$t$æ„æˆ$\varphi_0(s,t)=1$çš„å”¯ä¸€è§£.
 
 </theorem>
 
 <proof>
-ÓÉÒıÀí##le:resultant1 Öª$\gcd(f,g)= 1\Leftrightarrow \varphi_0$ÊÇµ¥Éä.
-; ÏÂĞĞÖ¤Ã÷Óëmca²»Í¬£¬ÊÇÕıÈ·µÄÃ´£¿£¨ÏàÍ¬Î¬ÊıµÄÏßĞÔ¿Õ¼äÖ®¼äµÄÏßĞÔÓ³Éä£¬µ¥ÉäµÈ¼ÛÓÚÍ¬¹¹£¬PIDÔÚÕâÀïÓĞÊ²Ã´×÷ÓÃ£¿£©
-; ÓÉÓÚ$F[x]$ÊÇPID(Ö÷ÀíÏëÕû»·),Ôò$\gcd(f,g)=1\Leftrightarrow\varphi_0$ÊÇÂúÉä.
-ÒòÎª¶ÔÓÚÏàÍ¬Î¬ÊıÏßĞÔ¿Õ¼äÖ®¼äµÄÏßĞÔÓ³Éä,µ¥ÉäµÈ¼ÛÓÚÍ¬¹¹,ËùÒÔµÚÒ»Ìõ½áÂÛÂú×ã¡£ÓÉ$\varphi_0$ÎªÍ¬¹¹ÖªÕâÑùµÄ$s$,$t$Ò²ÊÇÎ¨Ò»µÄ¡£
+ç”±å¼•ç†##le:resultant1 çŸ¥$\gcd(f,g)= 1\Leftrightarrow \varphi_0$æ˜¯å•å°„.
+; ä¸‹è¡Œè¯æ˜ä¸mcaä¸åŒï¼Œæ˜¯æ­£ç¡®çš„ä¹ˆï¼Ÿï¼ˆç›¸åŒç»´æ•°çš„çº¿æ€§ç©ºé—´ä¹‹é—´çš„çº¿æ€§æ˜ å°„ï¼Œå•å°„ç­‰ä»·äºåŒæ„ï¼ŒPIDåœ¨è¿™é‡Œæœ‰ä»€ä¹ˆä½œç”¨ï¼Ÿï¼‰
+; ç”±äº$F[x]$æ˜¯PID(ä¸»ç†æƒ³æ•´ç¯),åˆ™$\gcd(f,g)=1\Leftrightarrow\varphi_0$æ˜¯æ»¡å°„.
+å› ä¸ºå¯¹äºç›¸åŒç»´æ•°çº¿æ€§ç©ºé—´ä¹‹é—´çš„çº¿æ€§æ˜ å°„,å•å°„ç­‰ä»·äºåŒæ„,æ‰€ä»¥ç¬¬ä¸€æ¡ç»“è®ºæ»¡è¶³ã€‚ç”±$\varphi_0$ä¸ºåŒæ„çŸ¥è¿™æ ·çš„$s$,$t$ä¹Ÿæ˜¯å”¯ä¸€çš„ã€‚
 </proof>
 
-Èç¹û¼Ç$(s,t)=(y_{m-1},\ldots,y_0,z_{n-1},\ldots,z_0)^T$£¬ÆäÖĞ$s=\sum_{0\le j<m}y_jx^j$,$t=\sum_{0\le j<n}z_jx^j$,ÔòÏßĞÔÓ³Éä$\varphi_0$¿ÉÔÚ×ÔÈ»»ù$\{(x^j,0)\}_{0\le j\le m-1},\{(0,x^j)\}_{0\le j\le n-1}$ÏÂ±íÊ¾ÎªÈçÏÂ¾ØÕó$S$£¬³ÆÎª$f$,$g$µÄ<index>Sylvester¾ØÕó</index>£º
+å¦‚æœè®°$(s,t)=(y_{m-1},\ldots,y_0,z_{n-1},\ldots,z_0)^T$ï¼Œå…¶ä¸­$s=\sum_{0\le j<m}y_jx^j$,$t=\sum_{0\le j<n}z_jx^j$,åˆ™çº¿æ€§æ˜ å°„$\varphi_0$å¯åœ¨è‡ªç„¶åŸº$\{(x^j,0)\}_{0\le j\le m-1},\{(0,x^j)\}_{0\le j\le n-1}$ä¸‹è¡¨ç¤ºä¸ºå¦‚ä¸‹çŸ©é˜µ$S$ï¼Œç§°ä¸º$f$,$g$çš„<index>SylvesterçŸ©é˜µ</index>ï¼š
 
 $$S=\begin{pmatrix}f_n&\qquad &\qquad &\qquad  &g_m& \qquad &\qquad &\qquad &\qquad &\qquad  \\
 f_{n-1} &f_n & & &g_{m-1} &g_m & & & &\\
@@ -318,68 +318,68 @@ f_0 &\vdots & &\vdots & & &\ddots & & &\vdots\\
 & & &f_0 & & & & & &g_0
 \end{pmatrix}.$$
 
-ÉÏÃæµÄ¶¨ÀíÓÃ¾ØÕóÓïÑÔÃèÊö¼´Îª:
+ä¸Šé¢çš„å®šç†ç”¨çŸ©é˜µè¯­è¨€æè¿°å³ä¸º:
 <corollary>
-Éè$S$Îª$f$,$g$µÄSylvester¾ØÕó£¬ÔòÓĞ
+è®¾$S$ä¸º$f$,$g$çš„SylvesterçŸ©é˜µï¼Œåˆ™æœ‰
  1. $\gcd(f,g)=1\Leftrightarrow \det S\neq 0$,
- 2. Èô$\gcd(f,g)=1$,ÇÒ$y_0,y_1,\ldots,y_{m-1},z_0,\ldots,z_{n-1}\in F$Âú×ã
+ 2. è‹¥$\gcd(f,g)=1$,ä¸”$y_0,y_1,\ldots,y_{m-1},z_0,\ldots,z_{n-1}\in F$æ»¡è¶³
 $$S(y_{m-1},\ldots,y_0,z_{n-1},\ldots,z_0)^T=(0,0,\ldots,0,1)^T,$$
-ÄÇÃ´$s=\sum_{i=0}^{m-k} y_ix^i$,$t=\sum_{i=0}^{n-k} z_ix^i$Îª$f$,$g$µÄBezoutÏµÊı,Ê¹µÃ$sf+tg=1$.
+é‚£ä¹ˆ$s=\sum_{i=0}^{m-k} y_ix^i$,$t=\sum_{i=0}^{n-k} z_ix^i$ä¸º$f$,$g$çš„Bezoutç³»æ•°,ä½¿å¾—$sf+tg=1$.
 </corollary>
 
-µ½´Ë,ÎÒÃÇ¿ÉÒÔ¸ø³ö½áÊ½µÄ¶¨ÒåÁË.
+åˆ°æ­¤,æˆ‘ä»¬å¯ä»¥ç»™å‡ºç»“å¼çš„å®šä¹‰äº†.
 
 <definition>
-Éè$R$ÎªUFD£¬$f,g\in R[x]$£¬$S=\mathrm{Syl}(f,g)$ÎªËüÃÇµÄSylvester¾ØÕó£¬ÎÒÃÇ³ÆĞĞÁĞÊ½$\det S$Îª<index>½áÊ½</index>,¼Ç×÷$\mathrm{res}(f,g)$.
+è®¾$R$ä¸ºUFDï¼Œ$f,g\in R[x]$ï¼Œ$S=\mathrm{Syl}(f,g)$ä¸ºå®ƒä»¬çš„SylvesterçŸ©é˜µï¼Œæˆ‘ä»¬ç§°è¡Œåˆ—å¼$\det S$ä¸º<index>ç»“å¼</index>,è®°ä½œ$\mathrm{res}(f,g)$.
 </definition>
 
 <remark>
-µ±$n=m=0$Ê±$S$ÊÇ¿Õ¾ØÕó£¬ÎÒÃÇÔ¼¶¨½áÊ½Îª1¡£Èô$f$Îª0»ò·Ç³£Êı¶àÏîÊ½£¬ÎÒÃÇÔ¼¶¨$\mathrm{res}(f,0)=\mathrm{res}(0,f)=0$£¬Èô$f$ÊÇ·ÇÁã³£ÊıÔòÔ¼¶¨$\mathrm{res}(f,0)=\mathrm{res}(0,f)=1$.Ç°Ãæ¶¨ÀíÔÚÕâĞ©ÇéĞÎÏÂÈÔÈ»³ÉÁ¢.
+å½“$n=m=0$æ—¶$S$æ˜¯ç©ºçŸ©é˜µï¼Œæˆ‘ä»¬çº¦å®šç»“å¼ä¸º1ã€‚è‹¥$f$ä¸º0æˆ–éå¸¸æ•°å¤šé¡¹å¼ï¼Œæˆ‘ä»¬çº¦å®š$\mathrm{res}(f,0)=\mathrm{res}(0,f)=0$ï¼Œè‹¥$f$æ˜¯éé›¶å¸¸æ•°åˆ™çº¦å®š$\mathrm{res}(f,0)=\mathrm{res}(0,f)=1$.å‰é¢å®šç†åœ¨è¿™äº›æƒ…å½¢ä¸‹ä»ç„¶æˆç«‹.
 </remark>
 
-ÏÂÃæÊÇÒ»Ğ©¹ØÓÚ½áÊ½µÄĞÔÖÊ,¶ÔÓÚÒÔºóµÄËã·¨·ÖÎöÊÇºÜÓĞÓÃµÄ.
+ä¸‹é¢æ˜¯ä¸€äº›å…³äºç»“å¼çš„æ€§è´¨,å¯¹äºä»¥åçš„ç®—æ³•åˆ†ææ˜¯å¾ˆæœ‰ç”¨çš„.
 
 <corollary label="cor:resultant1">
-Éè$F$ÎªÓò£¬·ÇÁã¶àÏîÊ½$f,g\in F[x] $£¬ÔòÏÂÃæ¸÷Ìõ¼şµÈ¼Û£º
+è®¾$F$ä¸ºåŸŸï¼Œéé›¶å¤šé¡¹å¼$f,g\in F[x] $ï¼Œåˆ™ä¸‹é¢å„æ¡ä»¶ç­‰ä»·ï¼š
 
  1. $\gcd(f,g)=1$,
  2. $\mathrm{res}(f,g)=\deg S\neq 0$,
- 3. ²»´æÔÚ·ÇÁã¶àÏîÊ½$s,t\in F[x]$Ê¹µÃ$$sf+tg=0,\quad\deg s<\deg g,\quad\deg t<\deg f.$$
+ 3. ä¸å­˜åœ¨éé›¶å¤šé¡¹å¼$s,t\in F[x]$ä½¿å¾—$$sf+tg=0,\quad\deg s<\deg g,\quad\deg t<\deg f.$$
 
 </corollary>
 
 <corollary label="cor:resultantforeq">
-Éè$R$ÎªUFD,·ÇÁã¶àÏîÊ½$f,g\in R[x]$.Ôò$\gcd(f,g)$·ÇÆ½·²µ±ÇÒ½öµ±$\mathrm{res}(f,g)=0$.
+è®¾$R$ä¸ºUFD,éé›¶å¤šé¡¹å¼$f,g\in R[x]$.åˆ™$\gcd(f,g)$éå¹³å‡¡å½“ä¸”ä»…å½“$\mathrm{res}(f,g)=0$.
 </corollary>
 
 <corollary label="cor:resultant3">
-Èô$R$ÎªUFD,·ÇÁã¶àÏîÊ½$f,g\in R[x]$£¬Ôò´æÔÚ·ÇÁã¶àÏîÊ½$s,t\in R[x]$Ê¹µÃ$sf+tg=\mathrm{res}(f,g)$ÇÒ$\deg s<\deg g,\deg t<\deg f$.
+è‹¥$R$ä¸ºUFD,éé›¶å¤šé¡¹å¼$f,g\in R[x]$ï¼Œåˆ™å­˜åœ¨éé›¶å¤šé¡¹å¼$s,t\in R[x]$ä½¿å¾—$sf+tg=\mathrm{res}(f,g)$ä¸”$\deg s<\deg g,\deg t<\deg f$.
 </corollary>
 
 <proof>
-Áî$F$ÊÇ$R$µÄ·ÖÊ½Óò¡£Èô$r=\mathrm{res}(f,g)=0$£¬ÔòÓÉÍÆÂÛ##cor:resultant1 Öª´æÔÚÂú×ãÒªÇóµÄ$s,t\in F[x]$£¬ÔÙ½«Æä³ËÒ»¸ö¹«·ÖÄ¸¼´¿É¡£Èô$r\neq 0$£¬Ôò$f,g$»¥ËØ£¬ÓÚÊÇ´æÔÚ$s^*,t^*\in F[x]$Âú×ã$\deg s^*<\deg g,\deg t^*<\deg f$ÇÒ$s^*f+t^*g=1$,ÓÉÏßĞÔ·½³Ì×éµÄCramer·¨ÔòÖª$s=rs^*,t=rt^*$Âú×ãËùĞèÒªÇó¡£
+ä»¤$F$æ˜¯$R$çš„åˆ†å¼åŸŸã€‚è‹¥$r=\mathrm{res}(f,g)=0$ï¼Œåˆ™ç”±æ¨è®º##cor:resultant1 çŸ¥å­˜åœ¨æ»¡è¶³è¦æ±‚çš„$s,t\in F[x]$ï¼Œå†å°†å…¶ä¹˜ä¸€ä¸ªå…¬åˆ†æ¯å³å¯ã€‚è‹¥$r\neq 0$ï¼Œåˆ™$f,g$äº’ç´ ï¼Œäºæ˜¯å­˜åœ¨$s^*,t^*\in F[x]$æ»¡è¶³$\deg s^*<\deg g,\deg t^*<\deg f$ä¸”$s^*f+t^*g=1$,ç”±çº¿æ€§æ–¹ç¨‹ç»„çš„Crameræ³•åˆ™çŸ¥$s=rs^*,t=rt^*$æ»¡è¶³æ‰€éœ€è¦æ±‚ã€‚
 </proof>
 
 <lemma label="le:resultant2">
-Éè$R$ÎªUFD£¬·ÇÁã¶àÏîÊ½$f,g\in R[x]$£¬$r=\mathrm{res}(f,g)\in R$£¬$I\subset R$ÎªÒ»ÀíÏë£¬¼Ç$R$ÖĞÔªËØ$a$Ä£$I$µÄÏñÎª$\overline{a}$,Éè$\overline{\plc{f}}\neq 0$.Ôò
+è®¾$R$ä¸ºUFDï¼Œéé›¶å¤šé¡¹å¼$f,g\in R[x]$ï¼Œ$r=\mathrm{res}(f,g)\in R$ï¼Œ$I\subset R$ä¸ºä¸€ç†æƒ³ï¼Œè®°$R$ä¸­å…ƒç´ $a$æ¨¡$I$çš„åƒä¸º$\overline{a}$,è®¾$\overline{\plc{f}}\neq 0$.åˆ™
 
  1. $\overline{r}=0\Leftrightarrow \mathrm{res}(\overline{f},\overline{g})=0$,
- 2. Èô$R/I$ÊÇUFD£¬Ôò$\overline{r}=0\Leftrightarrow\gcd(\overline{f},\overline{g})$·ÇÆ½·²¡£
+ 2. è‹¥$R/I$æ˜¯UFDï¼Œåˆ™$\overline{r}=0\Leftrightarrow\gcd(\overline{f},\overline{g})$éå¹³å‡¡ã€‚
 </lemma>
 
 <proof>
-ÓÉ$\overline{\plc{f}}\neq 0$¿ÉÖª$\mathrm{Syl}(\overline{f},\overline{g})$µÄ"³ß´ç"²¢²»»á¼õĞ¡,Òò´ËÓĞ$\overline{r}=0\Leftrightarrow\mathrm{res}(\overline{f},\overline{g})=0$.
+ç”±$\overline{\plc{f}}\neq 0$å¯çŸ¥$\mathrm{Syl}(\overline{f},\overline{g})$çš„"å°ºå¯¸"å¹¶ä¸ä¼šå‡å°,å› æ­¤æœ‰$\overline{r}=0\Leftrightarrow\mathrm{res}(\overline{f},\overline{g})=0$.
 
-ÔÙ¼ÙÉè$\overline{g}\neq 0$,Áî$i$Îª×îĞ¡µÄÖ¸±êÊ¹µÃ$\overline{g_{m-i}}\neq 0$,´ËÊ±½«Sylvester¾ØÕó·Ö¿é£¬È¥µô×ó$i$ÁĞºÍÉÏ$i$ĞĞ£¬Ö»ÁôÏÂÓÒÏÂ$(m+n-i)\times(m+n-i)$µÄ·½Õó$M$£¬ÏÔÈ»$M=\mathrm{Syl}(\overline{f},\overline{g})$,ÓÚÊÇ$\overline{r}=\overline{f_n^i\det M}=\overline{f_n^i}\mathrm{res}(\overline{f},\overline{g})$£¬¿ÉÖªµÚÒ»Ìõ³ÉÁ¢¡£ÔÙÓÉÍÆÂÛ##cor:resultantforeq ¿ÉÖªµÚ¶şÌõ³ÉÁ¢¡£
+å†å‡è®¾$\overline{g}\neq 0$,ä»¤$i$ä¸ºæœ€å°çš„æŒ‡æ ‡ä½¿å¾—$\overline{g_{m-i}}\neq 0$,æ­¤æ—¶å°†SylvesterçŸ©é˜µåˆ†å—ï¼Œå»æ‰å·¦$i$åˆ—å’Œä¸Š$i$è¡Œï¼Œåªç•™ä¸‹å³ä¸‹$(m+n-i)\times(m+n-i)$çš„æ–¹é˜µ$M$ï¼Œæ˜¾ç„¶$M=\mathrm{Syl}(\overline{f},\overline{g})$,äºæ˜¯$\overline{r}=\overline{f_n^i\det M}=\overline{f_n^i}\mathrm{res}(\overline{f},\overline{g})$ï¼Œå¯çŸ¥ç¬¬ä¸€æ¡æˆç«‹ã€‚å†ç”±æ¨è®º##cor:resultantforeq å¯çŸ¥ç¬¬äºŒæ¡æˆç«‹ã€‚
 </proof>
 
-** EuclidËã·¨¼ÆËã½áÊ½
+** Euclidç®—æ³•è®¡ç®—ç»“å¼
 @@sec:prsalg
 
-ÏÂÃæÎÒÃÇ½«Òª½éÉÜÓÃEuclidÕ·×ªÏà³ıËã·¨¼ÆËã½áÊ½µÄ·½·¨,¼´<index>¶àÏîÊ½ÓàÊ½ĞòÁĞËã·¨</index>(PRS).
+ä¸‹é¢æˆ‘ä»¬å°†è¦ä»‹ç»ç”¨Euclidè¾—è½¬ç›¸é™¤ç®—æ³•è®¡ç®—ç»“å¼çš„æ–¹æ³•,å³<index>å¤šé¡¹å¼ä½™å¼åºåˆ—ç®—æ³•</index>(PRS).
 
-ÎÒÃÇÏÈ¶ÔEuclidÕ·×ªÏà³ıÇó×î´ó¹«Òò×ÓµÄ¹ı³Ì×÷Ò»Ğ©Ï¸ÖÂµÄ¿¼ÂÇ.Éè$F$ÎªÓò£¬$f$,$g$ÊÇ$F[x] $ÉÏ·ÇÁã¶àÏîÊ½£¬$\deg f=n>m=\deg g$. ÎÒÃÇÈÔ²ÉÓÃÊ½##eq:euclidalg ÖĞµÄ¼ÇºÅ,½«EuclidËã·¨µÄ¹ı³Ì±íÊ¾Îª
-$$\rho_0r_0=f,\quad\rho_1r_1=g,\quad\rho_0s_0=\rho_1t_1=1,\quad\rho_1s_1=\rho_0t_0=0,$$¼°
+æˆ‘ä»¬å…ˆå¯¹Euclidè¾—è½¬ç›¸é™¤æ±‚æœ€å¤§å…¬å› å­çš„è¿‡ç¨‹ä½œä¸€äº›ç»†è‡´çš„è€ƒè™‘.è®¾$F$ä¸ºåŸŸï¼Œ$f$,$g$æ˜¯$F[x] $ä¸Šéé›¶å¤šé¡¹å¼ï¼Œ$\deg f=n>m=\deg g$. æˆ‘ä»¬ä»é‡‡ç”¨å¼##eq:euclidalg ä¸­çš„è®°å·,å°†Euclidç®—æ³•çš„è¿‡ç¨‹è¡¨ç¤ºä¸º
+$$\rho_0r_0=f,\quad\rho_1r_1=g,\quad\rho_0s_0=\rho_1t_1=1,\quad\rho_1s_1=\rho_0t_0=0,$$åŠ
 <latex>
 \begin{align}
 \rho_2r_2&=r_0-q_1r_1,&\rho_2s_2&=s_0-q_1s_1,&\rho_2t_2&=t_0-q_1t_1,\nonumber\\
@@ -389,42 +389,42 @@ $$\rho_0r_0=f,\quad\rho_1r_1=g,\quad\rho_0s_0=\rho_1t_1=1,\quad\rho_1s_1=\rho_0t
 </latex>
 
 <remark>
-×¢Òâ´ËÊ±¸÷$r_i$¾ùÎªÊ×Ò»µÄ,ÓÉÓÚÎÒÃÇÃ»ÓĞ¼ÙÉè$f,g$ÊÇÊ×Ò»µÄ,Òò´Ë$\rho_0,\rho_1$µÄ³öÏÖÊÇÊ¹µÃ$f,g$Ê×Ò»»¯.
+æ³¨æ„æ­¤æ—¶å„$r_i$å‡ä¸ºé¦–ä¸€çš„,ç”±äºæˆ‘ä»¬æ²¡æœ‰å‡è®¾$f,g$æ˜¯é¦–ä¸€çš„,å› æ­¤$\rho_0,\rho_1$çš„å‡ºç°æ˜¯ä½¿å¾—$f,g$é¦–ä¸€åŒ–.
 </remark>
 
 <definition>
-$n_i=\deg r_i(0\le i\le l+1)$³ÆÎª´ÎÊıĞòÁĞ.
+$n_i=\deg r_i(0\le i\le l+1)$ç§°ä¸ºæ¬¡æ•°åºåˆ—.
 </definition>
 
 <theorem>
-Éè$0\le k\le m\le n$,Ôò$k$²»³öÏÖÔÚ´ÎÊıĞòÁĞµ±ÇÒ½öµ±´æÔÚ$s$,$t\in F[x]$,Âú×ã$$t\neq 0,\quad\deg s<m-k,\quad\deg t<n-k,\quad\deg(sf+tg)<k.$$
+è®¾$0\le k\le m\le n$,åˆ™$k$ä¸å‡ºç°åœ¨æ¬¡æ•°åºåˆ—å½“ä¸”ä»…å½“å­˜åœ¨$s$,$t\in F[x]$,æ»¡è¶³$$t\neq 0,\quad\deg s<m-k,\quad\deg t<n-k,\quad\deg(sf+tg)<k.$$
 </theorem>
 
 <proof>
-±ØÒªĞÔ:Èô$k$²»ÔÚ´ÎÊıĞòÁĞÖĞ£¬Ôò´æÔÚ$i(2\le i\le l+1)$Ê¹µÃ$n_i<k<n_{i-1}$,ÓÚÊÇ$s_if+t_ig=r_i,\deg r_i=n_i<k$,ÇÒ$\deg s_i=m-n_{i-1}<m-k$,$\deg t_i=n-n_{i-1}<n-k$.×îºóÁ½¸ö²»µÈÊ½¿ÉÒÔÓÃEuclidÕ·×ªÏà³ıµÄ¹ı³Ì¹éÄÉÖ¤Ã÷.ÕâÑùµÄ$s_i,t_i$¼´¿Éµ±×÷Âú×ã¶¨ÀíÌõ¼şµÄ$s,t$.¶øµ±$i=l+1$Ê±,Çé¿öÉÔÓĞ²»Í¬,´ËÊ±Áî$s=g/r_l,t=-f/r_l,k<n_l$Ôò$sf+tg=r_{l+1}=0$,ÓÚÊÇ$\deg r_{l+1}=-\infty<k$ÈÔÈ»Âú×ã¶¨ÀíÌõ¼ş.
+å¿…è¦æ€§:è‹¥$k$ä¸åœ¨æ¬¡æ•°åºåˆ—ä¸­ï¼Œåˆ™å­˜åœ¨$i(2\le i\le l+1)$ä½¿å¾—$n_i<k<n_{i-1}$,äºæ˜¯$s_if+t_ig=r_i,\deg r_i=n_i<k$,ä¸”$\deg s_i=m-n_{i-1}<m-k$,$\deg t_i=n-n_{i-1}<n-k$.æœ€åä¸¤ä¸ªä¸ç­‰å¼å¯ä»¥ç”¨Euclidè¾—è½¬ç›¸é™¤çš„è¿‡ç¨‹å½’çº³è¯æ˜.è¿™æ ·çš„$s_i,t_i$å³å¯å½“ä½œæ»¡è¶³å®šç†æ¡ä»¶çš„$s,t$.è€Œå½“$i=l+1$æ—¶,æƒ…å†µç¨æœ‰ä¸åŒ,æ­¤æ—¶ä»¤$s=g/r_l,t=-f/r_l,k<n_l$åˆ™$sf+tg=r_{l+1}=0$,äºæ˜¯$\deg r_{l+1}=-\infty<k$ä»ç„¶æ»¡è¶³å®šç†æ¡ä»¶.
 
-³ä·ÖĞÔ:ÓÉ<cite>mca</cite>ÒıÀí5.15¿ÉÖª$\exists i(1\le i\le l+1)$ºÍ$\alpha\in F[x]\setminus\{0\}$Ê¹µÃ$t=\alpha t_i,$,$s=\alpha s_i$,$r=sf+tg=\alpha r_i$,ÓÚÊÇ<latex>
+å……åˆ†æ€§:ç”±<cite>mca</cite>å¼•ç†5.15å¯çŸ¥$\exists i(1\le i\le l+1)$å’Œ$\alpha\in F[x]\setminus\{0\}$ä½¿å¾—$t=\alpha t_i,$,$s=\alpha s_i$,$r=sf+tg=\alpha r_i$,äºæ˜¯<latex>
 \begin{align*}
 n-n_{i-1}&\le\deg\alpha+n-n_{i-1}=\deg(\alpha t_i)=\deg t<n-k, \\
 n_i&\le\deg \alpha+n_i=\deg(\alpha r_i)=\deg r<k,
 \end{align*}
 </latex>
-¹Ê$n_i<k<n_{i-1}$. 
+æ•…$n_i<k<n_{i-1}$. 
 </proof>
 
-ÎªÁË½«ÉÏÃæµÄÄÚÈİ·­Òë³ÉÒ»ÖÖ´úÊıÓïÑÔ,ÎÒÃÇ¿¼ÂÇÉÏÒ»½Ú¶¨ÒåµÄÏßĞÔÓ³Éä$\varphi$ÔÚ$P_{m-k}\times P_{n-k}$ÉÏµÄÏŞÖÆ.ÈİÒ×ÖªµÀ,$\varphi$µÄÏóÊÇÔÚ¿Õ¼ä$P_{n+m-k}$ÖĞ,ÎªÁËÊ¹µÃÆä³ÉÎªÍ¬¹¹,ÎÒÃÇÒªÊ¹Á½¸ö¿Õ¼äÎ¬ÊıÏàµÈ.½ø¶øÎÒÃÇ¿¼ÂÇÁËÈçÏÂµÄÏßĞÔÓ³Éä:$$\varphi_k:P_{m-k}\times P_{n-k}\rightarrow P_{n+m-2k},\quad (s,t)\mapsto (sf+tg)\ \mathrm{quo}\ x^k.$$
+ä¸ºäº†å°†ä¸Šé¢çš„å†…å®¹ç¿»è¯‘æˆä¸€ç§ä»£æ•°è¯­è¨€,æˆ‘ä»¬è€ƒè™‘ä¸Šä¸€èŠ‚å®šä¹‰çš„çº¿æ€§æ˜ å°„$\varphi$åœ¨$P_{m-k}\times P_{n-k}$ä¸Šçš„é™åˆ¶.å®¹æ˜“çŸ¥é“,$\varphi$çš„è±¡æ˜¯åœ¨ç©ºé—´$P_{n+m-k}$ä¸­,ä¸ºäº†ä½¿å¾—å…¶æˆä¸ºåŒæ„,æˆ‘ä»¬è¦ä½¿ä¸¤ä¸ªç©ºé—´ç»´æ•°ç›¸ç­‰.è¿›è€Œæˆ‘ä»¬è€ƒè™‘äº†å¦‚ä¸‹çš„çº¿æ€§æ˜ å°„:$$\varphi_k:P_{m-k}\times P_{n-k}\rightarrow P_{n+m-2k},\quad (s,t)\mapsto (sf+tg)\ \mathrm{quo}\ x^k.$$
 
-ÎÒÃÇÓĞÈçÏÂµÄÍÆÂÛ:
+æˆ‘ä»¬æœ‰å¦‚ä¸‹çš„æ¨è®º:
 
 <corollary>
-¼ÇºÅÍ¬Ç°,ÎÒÃÇÓĞ£º
+è®°å·åŒå‰,æˆ‘ä»¬æœ‰ï¼š
 
- 1. $k$ÔÚ´ÎÊıĞòÁĞ$\{n_i\}$ÖĞµ±ÇÒ½öµ±$\varphi_k$ÊÇÍ¬¹¹.
+ 1. $k$åœ¨æ¬¡æ•°åºåˆ—$\{n_i\}$ä¸­å½“ä¸”ä»…å½“$\varphi_k$æ˜¯åŒæ„.
 
- 2. Èô$k=n_i$,Ôò$s_i,t_i$ÊÇ$\varphi_k(s_i,t_i)=1$µÄÎ¨Ò»½â.
+ 2. è‹¥$k=n_i$,åˆ™$s_i,t_i$æ˜¯$\varphi_k(s_i,t_i)=1$çš„å”¯ä¸€è§£.
 </corollary>
 
-ÎÒÃÇ¼Ç$\varphi_k$µÄÔÚ×ÔÈ»»ùÏÂµÄ¾ØÕóÎª$S_k$,Ôò$S_k$ÎªSylvester¾ØÕóµÄ×Ó¾ØÕó:
+æˆ‘ä»¬è®°$\varphi_k$çš„åœ¨è‡ªç„¶åŸºä¸‹çš„çŸ©é˜µä¸º$S_k$,åˆ™$S_k$ä¸ºSylvesterçŸ©é˜µçš„å­çŸ©é˜µ:
 
 <latex>
 \begin{equation}
@@ -443,24 +443,24 @@ f_{2k-m+1} &\cdots &\cdots &f_k &g_{2k-n+1} &\cdots &\cdots &g_k
 </latex>
 
 <corollary label="cor:subres">
-¼ÇºÅÍ¬Ç°,ÎÒÃÇÓĞ
- 1. $k$ÔÚ´ÎÊıĞòÁĞÖĞµ±ÇÒ½öµ±$\det S_k\neq 0$.
+è®°å·åŒå‰,æˆ‘ä»¬æœ‰
+ 1. $k$åœ¨æ¬¡æ•°åºåˆ—ä¸­å½“ä¸”ä»…å½“$\det S_k\neq 0$.
 
- 2. Èô$k=n_i$,ÇÒ$y_0,\ldots,y_{m-k-1},z_0,\ldots,z_{n-k-1}\in F$ÊÇÏÂÃæµÄÏßĞÔ·½³Ì$$S_k(y_{m-k-1},\ldots,y_0,z_{n-k-1},\ldots,z_0)^T=(0,\ldots,0,1)^T$$µÄÎ¨Ò»½â,Ôò$s_i=\sum y_jx^j$,$t_i=\sum z_jx^j$.
+ 2. è‹¥$k=n_i$,ä¸”$y_0,\ldots,y_{m-k-1},z_0,\ldots,z_{n-k-1}\in F$æ˜¯ä¸‹é¢çš„çº¿æ€§æ–¹ç¨‹$$S_k(y_{m-k-1},\ldots,y_0,z_{n-k-1},\ldots,z_0)^T=(0,\ldots,0,1)^T$$çš„å”¯ä¸€è§£,åˆ™$s_i=\sum y_jx^j$,$t_i=\sum z_jx^j$.
 </corollary>
 
 <definition>
-¼Ç$\sigma_k=\det S_k$.
+è®°$\sigma_k=\det S_k$.
 </definition>
 
-ÏÖÔÚÎÒÃÇÀ´Öğ²½ÍÆµ¼$\sigma_k$µÄ¼ÆËã·½·¨,×¢Òâµ½Çó³ö$\sigma_0$¼´ÊÇÇó³öÁË½áÊ½.Ê×ÏÈÎÒÃÇÓĞÈçÏÂÒıÀí:
+ç°åœ¨æˆ‘ä»¬æ¥é€æ­¥æ¨å¯¼$\sigma_k$çš„è®¡ç®—æ–¹æ³•,æ³¨æ„åˆ°æ±‚å‡º$\sigma_0$å³æ˜¯æ±‚å‡ºäº†ç»“å¼.é¦–å…ˆæˆ‘ä»¬æœ‰å¦‚ä¸‹å¼•ç†:
 
 <lemma>
-Éè$f,g,r\in F[x]$Ê×Ò»ÇÒ´ÎÊı·Ö±ğÎª$n,m,d$,ÆäÖĞ$n\ge m$,ÇÒ$$\rho r=f\rem g,\rho\in F\setminus\{0\},$$Ôò¶ÔÓÚ$k(0\le k\le d)$ÓĞ$$\sigma_k(f,g)=(-1)^{(n-k)(m-k)}\rho^{m-k}\sigma_k(g,r).$$
+è®¾$f,g,r\in F[x]$é¦–ä¸€ä¸”æ¬¡æ•°åˆ†åˆ«ä¸º$n,m,d$,å…¶ä¸­$n\ge m$,ä¸”$$\rho r=f\rem g,\rho\in F\setminus\{0\},$$åˆ™å¯¹äº$k(0\le k\le d)$æœ‰$$\sigma_k(f,g)=(-1)^{(n-k)(m-k)}\rho^{m-k}\sigma_k(g,r).$$
 </lemma>
 
 <proof>
-Éè$f=qg+\rho r$,$q$Îª$(n-m)$´Î¶àÏîÊ½,ÓÚÊÇ
+è®¾$f=qg+\rho r$,$q$ä¸º$(n-m)$æ¬¡å¤šé¡¹å¼,äºæ˜¯
 $$\begin{pmatrix}
 1\\f_{n-1}\\ \vdots\\ f_0
 \end{pmatrix}-\begin{pmatrix}
@@ -472,7 +472,7 @@ q_{n-m}\\ \vdots\\ q_0
 \end{pmatrix}.
 $$
 
-¶Ô$\det S_k$×÷³õµÈÁĞ±ä»»,²¢½»»»Ò»Ğ©ÁĞµÄË³Ğò,ÒÔÊ½##eq:subresultant ÎªÀı,½«×ó±ß$(m-k)$ÁĞ$f$µÄÏµÊıÒÀÕÕÉÏÊ½¼õÈ¥$g$ÏµÊıÁĞµÄ±¶Êı,¿ÉÒÔÏûÎª$\rho r$µÄÏµÊıÁĞ,½«$\rho r$µÄ$(m-k)$¸öÏµÊıÁĞÏòÓÒÆ½ÒÆ$(n-k)$ÁĞ,ÒÆ¶¯µ½ÓÒ±ß,Óë$g$µÄÏµÊıÁĞ½»»».ÓÚÊÇÎÒÃÇ¿ÉµÃµ½
+å¯¹$\det S_k$ä½œåˆç­‰åˆ—å˜æ¢,å¹¶äº¤æ¢ä¸€äº›åˆ—çš„é¡ºåº,ä»¥å¼##eq:subresultant ä¸ºä¾‹,å°†å·¦è¾¹$(m-k)$åˆ—$f$çš„ç³»æ•°ä¾ç…§ä¸Šå¼å‡å»$g$ç³»æ•°åˆ—çš„å€æ•°,å¯ä»¥æ¶ˆä¸º$\rho r$çš„ç³»æ•°åˆ—,å°†$\rho r$çš„$(m-k)$ä¸ªç³»æ•°åˆ—å‘å³å¹³ç§»$(n-k)$åˆ—,ç§»åŠ¨åˆ°å³è¾¹,ä¸$g$çš„ç³»æ•°åˆ—äº¤æ¢.äºæ˜¯æˆ‘ä»¬å¯å¾—åˆ°
 $$\sigma_k=\det S_k=(-1)^{(n-k)(m-k)}\det\begin{pmatrix}
 1 & & & & &\\
 g_{m-1} &\ddots & &\rho r_d & &\\
@@ -481,19 +481,19 @@ g_{m-1} &\ddots & &\rho r_d & &\\
 g_{2k-n+1} &\cdots &g_k &\rho r_{2k-m+1} &\cdots &\rho r_k
 \end{pmatrix}.
 $$
-ÉÏÃæµÄ¾ØÕóÓÃ·Ö¿é¿É±íÊ¾ÎªÈçÏÂĞÎÊ½:
+ä¸Šé¢çš„çŸ©é˜µç”¨åˆ†å—å¯è¡¨ç¤ºä¸ºå¦‚ä¸‹å½¢å¼:
 $$\begin{pmatrix}
 \Lambda &0\\ * &S_k(g,\rho r)
 \end{pmatrix},$$
-ÆäÖĞ$\Lambda$ÎªÏÂÈı½ÇÕó,ÇÒ¶Ô½ÇÔª¾ùÎª1,´Ó¶ø$\det\Lambda=1$.Òò´Ë,$\sigma_k=(-1)^{(n-k)(m-k)}\sigma_k(g,\rho r)=(-1)^{(n-k)(m-k)}\rho^{m-k}\sigma_k(g,r)$.
+å…¶ä¸­$\Lambda$ä¸ºä¸‹ä¸‰è§’é˜µ,ä¸”å¯¹è§’å…ƒå‡ä¸º1,ä»è€Œ$\det\Lambda=1$.å› æ­¤,$\sigma_k=(-1)^{(n-k)(m-k)}\sigma_k(g,\rho r)=(-1)^{(n-k)(m-k)}\rho^{m-k}\sigma_k(g,r)$.
 </proof>
 
-½ø¶øÎÒÃÇÓĞÏÂÃæµÄ¶¨Àí:
+è¿›è€Œæˆ‘ä»¬æœ‰ä¸‹é¢çš„å®šç†:
 
 <theorem>
-Éè$f=\rho_0r_0,g=\rho_1r_1\in F[x]$,$\deg f=n\ge\deg g=m$,ÇÒ$r_0,r_1$Ê×Ò»,Ôò:
+è®¾$f=\rho_0r_0,g=\rho_1r_1\in F[x]$,$\deg f=n\ge\deg g=m$,ä¸”$r_0,r_1$é¦–ä¸€,åˆ™:
 
- 1. ¶ÔÓÚ$k(0\le k\le m)$,ÓĞ
+ 1. å¯¹äº$k(0\le k\le m)$,æœ‰
 <latex>
 \begin{equation*}
 \sigma_k=\det S_k=\begin{cases}
@@ -502,16 +502,16 @@ $$\begin{pmatrix}
 \end{cases}
 \end{equation*}
 </latex>
-ÆäÖĞ$\tau_i=\sum_{1\le j< i}(n_{j-1}-n_i)(n_j-n_i)$.
+å…¶ä¸­$\tau_i=\sum_{1\le j< i}(n_{j-1}-n_i)(n_j-n_i)$.
 
  2. $\sigma_m=\rho_1^{n-m}$,$\sigma_{n_{i+1}}=(-1)^{(n_i-n_{i+1})(n-n_{i+1}+i+1)}(\rho_0\cdots\rho_{i+1})^{n_i-n_{i+1}}\sigma_{n_i}$.
 
 </theorem>
 
 <proof>
-¶ÔÓÚ1ÖĞµÚÒ»ÖÖÇé¿ö,Ö»Ğè¹éÄÉÖ¤Ã÷²¢ÇÒ×¢Òâ$\sigma_k(r_{i-1},r_i)=1$.¸ù¾İÍÆÂÛ##cor:subres ¿ÉµÃµÚ¶şÖÖÇé¿ö.
+å¯¹äº1ä¸­ç¬¬ä¸€ç§æƒ…å†µ,åªéœ€å½’çº³è¯æ˜å¹¶ä¸”æ³¨æ„$\sigma_k(r_{i-1},r_i)=1$.æ ¹æ®æ¨è®º##cor:subres å¯å¾—ç¬¬äºŒç§æƒ…å†µ.
 
-¶ÔÓÚ2,Ö»Ğè»¯¼ò$\tau_{i+1}-\tau_i\pmod{2}$,ÎÒÃÇÓĞ
+å¯¹äº2,åªéœ€åŒ–ç®€$\tau_{i+1}-\tau_i\pmod{2}$,æˆ‘ä»¬æœ‰
 <latex>
 \begin{align*}
 \tau_{i+1}-\tau_i&\equiv\sum_{1\le j<i+1}(n_{j-1}-n_{i+1})(n_j-n_{i+1})-\sum_{1\le j<i}(n_{j-1}-n_i)(n_j-n_i)\\
@@ -521,23 +521,23 @@ $$\begin{pmatrix}
 &\equiv (n-n_{i+1}+i+1)(n_i-n_{i+1})\pmod{2},
 \end{align*}
 </latex>
-ÓÚÊÇ¿ÉÒÔµÃµ½(2)ÖĞµÄµİÍÆÊ½.
+äºæ˜¯å¯ä»¥å¾—åˆ°(2)ä¸­çš„é€’æ¨å¼.
 </proof>
 
-È¡$k=0$,Ôò$\sigma_k$¼´Îª½áÊ½,Òò´ËÎÒÃÇºÜ×ÔÈ»µØµÃµ½ÈçÏÂ¼ÆËã½áÊ½µÄ·½·¨:
+å–$k=0$,åˆ™$\sigma_k$å³ä¸ºç»“å¼,å› æ­¤æˆ‘ä»¬å¾ˆè‡ªç„¶åœ°å¾—åˆ°å¦‚ä¸‹è®¡ç®—ç»“å¼çš„æ–¹æ³•:
 
 <corollary>
-Èô$\deg\gcd(f,g)\ge 1$,Ôò$\mathrm{res}(f,g)=0$,·ñÔò
+è‹¥$\deg\gcd(f,g)\ge 1$,åˆ™$\mathrm{res}(f,g)=0$,å¦åˆ™
 $$\mathrm{res}(f,g)=(-1)^{\tau}\rho_0^{n_1}\prod_{1\le j\le l}\rho_j^{n_{j-1}},$$
-ÆäÖĞ$\tau=\sum_{1\le j<l}n_{j-1}n_j$.
+å…¶ä¸­$\tau=\sum_{1\le j<l}n_{j-1}n_j$.
 </corollary>
 
-ÊÂÊµÉÏ,¶ÔÓÚ$F$ÊÇUFDµÄÇé¿ö,ÈôÔÚ¸ÃUFDµÄ·ÖÊ½ÓòÎªÏµÊıµÄ¶àÏîÊ½»·ÖĞ¼ÆËã,ÉÏÃæÍÆÂÛÒ»°ãÒ²ÊÇ³ÉÁ¢µÄ.ÎÒÃÇ¾ÙÒ»¸ö$F=\mathbb{R}[y]$µÄÀı×Ó×÷ÎªËµÃ÷,¼ÆËãÊ±,ÎÒÃÇÔÚ$\mathbb{R}(y)[x]$ÖĞ¼ÆËã.
+äº‹å®ä¸Š,å¯¹äº$F$æ˜¯UFDçš„æƒ…å†µ,è‹¥åœ¨è¯¥UFDçš„åˆ†å¼åŸŸä¸ºç³»æ•°çš„å¤šé¡¹å¼ç¯ä¸­è®¡ç®—,ä¸Šé¢æ¨è®ºä¸€èˆ¬ä¹Ÿæ˜¯æˆç«‹çš„.æˆ‘ä»¬ä¸¾ä¸€ä¸ª$F=\mathbb{R}[y]$çš„ä¾‹å­ä½œä¸ºè¯´æ˜,è®¡ç®—æ—¶,æˆ‘ä»¬åœ¨$\mathbb{R}(y)[x]$ä¸­è®¡ç®—.
 
 <problem>
-¿¼ÂÇ$f=x^2-y$,$g=yx+1$,¶şÕßµÄ½áÊ½Îª:$$\mathrm{res}_x(f,g)=1-y^3.$$
+è€ƒè™‘$f=x^2-y$,$g=yx+1$,äºŒè€…çš„ç»“å¼ä¸º:$$\mathrm{res}_x(f,g)=1-y^3.$$
 
-µ±ÓÃÉÏÃæµÄÍÆÂÛÀ´¼ÆËãÊ±,ÎÒÃÇÓĞ
+å½“ç”¨ä¸Šé¢çš„æ¨è®ºæ¥è®¡ç®—æ—¶,æˆ‘ä»¬æœ‰
 <latex>
 \begin{align*}
 &n_0=2&& r_0=x^2-y&& \rho_0=1,\\
@@ -546,34 +546,34 @@ $$\mathrm{res}(f,g)=(-1)^{\tau}\rho_0^{n_1}\prod_{1\le j\le l}\rho_j^{n_{j-1}},$
 \end{align*}
 </latex>
 
-ÓÚÊÇ½áÊ½Îª$\mathrm{res}(f,g)=(-1)^{2\cdot 1}1^1\times y^2\times(1/y^2-y)^1=1-y^3$.
+äºæ˜¯ç»“å¼ä¸º$\mathrm{res}(f,g)=(-1)^{2\cdot 1}1^1\times y^2\times(1/y^2-y)^1=1-y^3$.
 </problem>
 
-* $\mathbb{Z}[x]$ÖĞµÄÄ£GCDËã·¨
+* $\mathbb{Z}[x]$ä¸­çš„æ¨¡GCDç®—æ³•
 
-Ä£Ëã·¨»ùÓÚµÄË¼ÏëÊÇ½«ÕûÊı»·ÖĞµÄÔËËã»¯ÎªÓĞÏŞÓòÉÏµÄÔËËã,Í¨¹ıÖĞ¹úÊ£Óà¶¨ÀíËã·¨½«ÓĞÏŞÓòÖĞ½á¹û»¹Ô­µ½ÕûÊı»·ÖĞ.Éè$f,g\in\mathbb{Z}[x]$,$p$ÎªËØÊı,Áî$h=\gcd(f,g),h_p=h\bmod p,v_p=\gcd(f_p,g_p)$,ÈôÓĞ$h=h_p=v_p$,ÄÇÃ´¾Í¿ÉÒÔÓÃÓĞÏŞÓòÖĞµÄ¼ÆËã½á¹û$v_p$À´´úÌæ$h$.ÎÒÃÇĞèÒªMignotte½çÌõ¼şÀ´±£Ö¤$h=h_p$,¶ø¶ÔÓÚ$h_p=v_p$³ÉÁ¢µÄÌõ¼ş,ÎÒÃÇºóÃæÒ²»áÔÚÃ¿¸öËã·¨ºóÃæ¾ßÌå¸ø³öÀíÂÛÉÏµÄ·ÖÎö.
+æ¨¡ç®—æ³•åŸºäºçš„æ€æƒ³æ˜¯å°†æ•´æ•°ç¯ä¸­çš„è¿ç®—åŒ–ä¸ºæœ‰é™åŸŸä¸Šçš„è¿ç®—,é€šè¿‡ä¸­å›½å‰©ä½™å®šç†ç®—æ³•å°†æœ‰é™åŸŸä¸­ç»“æœè¿˜åŸåˆ°æ•´æ•°ç¯ä¸­.è®¾$f,g\in\mathbb{Z}[x]$,$p$ä¸ºç´ æ•°,ä»¤$h=\gcd(f,g),h_p=h\bmod p,v_p=\gcd(f_p,g_p)$,è‹¥æœ‰$h=h_p=v_p$,é‚£ä¹ˆå°±å¯ä»¥ç”¨æœ‰é™åŸŸä¸­çš„è®¡ç®—ç»“æœ$v_p$æ¥ä»£æ›¿$h$.æˆ‘ä»¬éœ€è¦Mignotteç•Œæ¡ä»¶æ¥ä¿è¯$h=h_p$,è€Œå¯¹äº$h_p=v_p$æˆç«‹çš„æ¡ä»¶,æˆ‘ä»¬åé¢ä¹Ÿä¼šåœ¨æ¯ä¸ªç®—æ³•åé¢å…·ä½“ç»™å‡ºç†è®ºä¸Šçš„åˆ†æ.
 
-** Mignotte½ç
+** Mignotteç•Œ
 
-Ê×ÏÈÎÒÃÇ¼òÒªËµÃ÷Ò»ÏÂÎªÊ²Ã´ÎÒÃÇĞèÒª¶Ô¶àÏîÊ½ÏµÊıµÄÉÏ½ç×÷³ö¹À¼Æ.¸ù¾İÇ°ÃæµÄ·ÖÎö,ÀûÓÃÄ£Ëã·¨Çó×î´ó¹«Òò×ÓĞèÒª±£Ö¤$h=h_p( = h\bmod p)$.ºÜ×ÔÈ»µØ,ÔÚÈ¡¶Ô³Æ±íÊ¾Ê±,Ö»ĞèÒª$h$µÄÏµÊı¾ø¶ÔÖµµÄÉÏ½ç±È$p/2$Ğ¡¼´¿É.Mignotte½ç¼´ÊÇ¹ØÓÚÕûÏµÊı¶àÏîÊ½ÈÎÒ»·ÇÆ½·²Òò×ÓµÄÏµÊı¾ø¶ÔÖµÉÏ½çµÄÒ»¸ö¹À¼Æ.¶ÁÕß¿ÉÒÔÑ¡ÔñÌø¹ı±¾Ğ¡½ÚÖ»½ÓÔÄ¶ÁÄ£Ëã·¨,Ö»ĞèÒª¼Ç×¡¶¨Àí##th:MignotteBound µÄ½áÂÛ¼´¿É.
+é¦–å…ˆæˆ‘ä»¬ç®€è¦è¯´æ˜ä¸€ä¸‹ä¸ºä»€ä¹ˆæˆ‘ä»¬éœ€è¦å¯¹å¤šé¡¹å¼ç³»æ•°çš„ä¸Šç•Œä½œå‡ºä¼°è®¡.æ ¹æ®å‰é¢çš„åˆ†æ,åˆ©ç”¨æ¨¡ç®—æ³•æ±‚æœ€å¤§å…¬å› å­éœ€è¦ä¿è¯$h=h_p( = h\bmod p)$.å¾ˆè‡ªç„¶åœ°,åœ¨å–å¯¹ç§°è¡¨ç¤ºæ—¶,åªéœ€è¦$h$çš„ç³»æ•°ç»å¯¹å€¼çš„ä¸Šç•Œæ¯”$p/2$å°å³å¯.Mignotteç•Œå³æ˜¯å…³äºæ•´ç³»æ•°å¤šé¡¹å¼ä»»ä¸€éå¹³å‡¡å› å­çš„ç³»æ•°ç»å¯¹å€¼ä¸Šç•Œçš„ä¸€ä¸ªä¼°è®¡.è¯»è€…å¯ä»¥é€‰æ‹©è·³è¿‡æœ¬å°èŠ‚åªæ¥é˜…è¯»æ¨¡ç®—æ³•,åªéœ€è¦è®°ä½å®šç†##th:MignotteBound çš„ç»“è®ºå³å¯.
 
-<definition  label="def:norm" name="¶àÏîÊ½µÄ·¶Êı">
-Éè$f=\sum\limits_{i=0}^{n} f_ix^i\in\mathbb{C}[x]$,¶¨ÒåÆä$k$-·¶ÊıÎª£º
+<definition  label="def:norm" name="å¤šé¡¹å¼çš„èŒƒæ•°">
+è®¾$f=\sum\limits_{i=0}^{n} f_ix^i\in\mathbb{C}[x]$,å®šä¹‰å…¶$k$-èŒƒæ•°ä¸ºï¼š
 $$\lVert f\rVert_k=\left(\sum\limits_{i=0}^{n}|f_i|^k\right)^{\frac{1}{k}}.$$
 </definition>
 
 <remark>
-ÓÉÏßĞÔ¸³·¶¿Õ¼äµÄÏà¹ØÄÚÈİ,ÎÒÃÇÊìÖªÓĞÈçÏÂ½áÂÛ£º$$\lVert f\rVert_{\infty}\le\lVert f\rVert _2\le\lVert f\rVert _1\le(n+1)\lVert f\rVert _{\infty}.$$
+ç”±çº¿æ€§èµ‹èŒƒç©ºé—´çš„ç›¸å…³å†…å®¹,æˆ‘ä»¬ç†ŸçŸ¥æœ‰å¦‚ä¸‹ç»“è®ºï¼š$$\lVert f\rVert_{\infty}\le\lVert f\rVert _2\le\lVert f\rVert _1\le(n+1)\lVert f\rVert _{\infty}.$$
 </remark>
 
-Ê×ÏÈÎÒÃÇÓĞÈçÏÂµÄÒıÀí£º
+é¦–å…ˆæˆ‘ä»¬æœ‰å¦‚ä¸‹çš„å¼•ç†ï¼š
 
 <lemma  label="le:forLandauIneq">
-Éè$f\in\mathbb{C}[x]$,$z\in\mathbb{C}$,ÎÒÃÇÓĞ$\lVert (x-z)f\rVert _2=\lVert(\overline{z}x-1)f\rVert_2$.
+è®¾$f\in\mathbb{C}[x]$,$z\in\mathbb{C}$,æˆ‘ä»¬æœ‰$\lVert (x-z)f\rVert _2=\lVert(\overline{z}x-1)f\rVert_2$.
 </lemma>
 
 <proof>
-Éè$\deg f=n$£¬²¢¼Ç$f_{-1}=f_{n+1}=0$£¬Ôò
+è®¾$\deg f=n$ï¼Œå¹¶è®°$f_{-1}=f_{n+1}=0$ï¼Œåˆ™
 <latex>
 \begin{align*}
 \lVert (x-z)f\rVert _2^2=&\sum\limits_{i=0}^{n+1}|f_{i-1}-zf_i|^2=\sum\limits_{i=0}^{n+1}(f_{i-1}-zf_i)(\overline{f_{i-1}}-\overline{z}\overline{f_i})\\
@@ -583,17 +583,17 @@ $$\lVert f\rVert_k=\left(\sum\limits_{i=0}^{n}|f_i|^k\right)^{\frac{1}{k}}.$$
 &=\lVert(\overline{z}x-1)f\rVert_2^2,
 \end{align*}
 </latex>
-Ö¤±Ï.
+è¯æ¯•.
 </proof>
 
 <remark>
-¶ÔÓÚÉÏÃæµÄÒıÀí,ÎÒÃÇ¿ÉÒÔ¸ø³öÈçÏÂ¸ü¼ÓÇÉÃîµÄÖ¤Ã÷:
+å¯¹äºä¸Šé¢çš„å¼•ç†,æˆ‘ä»¬å¯ä»¥ç»™å‡ºå¦‚ä¸‹æ›´åŠ å·§å¦™çš„è¯æ˜:
 </remark>
 
 <proof>
-ÎÒÃÇ¸ø³ö¶ÏÑÔ,$\forall f\in\mathbb{C}[x]$,$$\|f\|_2^2=\frac{1}{2\pi}\int_0^{2\pi}|f(e^{i\phi})|^2\mathrm{d}\phi.$$
+æˆ‘ä»¬ç»™å‡ºæ–­è¨€,$\forall f\in\mathbb{C}[x]$,$$\|f\|_2^2=\frac{1}{2\pi}\int_0^{2\pi}|f(e^{i\phi})|^2\mathrm{d}\phi.$$
 
-´ËÓÉÈı½Çº¯ÊıÏµµÄÕı½»¹éÒ»ĞÔÏÔÈ»¿ÉÒÔ¿´³ö.ÓÚÊÇ
+æ­¤ç”±ä¸‰è§’å‡½æ•°ç³»çš„æ­£äº¤å½’ä¸€æ€§æ˜¾ç„¶å¯ä»¥çœ‹å‡º.äºæ˜¯
 <latex>
 \begin{align*}
 \|(x-z)f\|_2^2&=\frac{1}{2\pi}\int_0^{2\pi}|(e^{i\phi}-z)f(e^{i\phi})|^2\mathrm{d}\phi=\frac{1}{2\pi}\int_0^{2\pi}|(ze^{-i\phi}-1)f(e^{i\phi})|^2\mathrm{d}\phi\\
@@ -601,23 +601,23 @@ $$\lVert f\rVert_k=\left(\sum\limits_{i=0}^{n}|f_i|^k\right)^{\frac{1}{k}}.$$
 &=\|(\overline{z}x-1)f\|_2^2,
 \end{align*}
 </latex>
-Ö¤±Ï.
+è¯æ¯•.
 </proof>
 
 <definition>
-Éè$f\in\mathbb{C}[x]$, $z_1,z_2,\ldots,z_n$ÊÇ$f(x)=0$µÄ$n $¸ö¸´¸ù£¬¶¨Òå$M(f)=|f_n|\prod\limits_{i=1}^n\max\{1,|z_i|\}$.
+è®¾$f\in\mathbb{C}[x]$, $z_1,z_2,\ldots,z_n$æ˜¯$f(x)=0$çš„$n $ä¸ªå¤æ ¹ï¼Œå®šä¹‰$M(f)=|f_n|\prod\limits_{i=1}^n\max\{1,|z_i|\}$.
 </definition>
 
-ÓÉ¶¨Òå¿ÉÖª$M(f)\ge|f_n|$ÇÒ$f=gh\Rightarrow M(f)=M(g)M(h)$.¹ØÓÚ$M(f)$£¬»¹ÓĞÏÂÃæµÄLandau²»µÈÊ½³ÉÁ¢.
+ç”±å®šä¹‰å¯çŸ¥$M(f)\ge|f_n|$ä¸”$f=gh\Rightarrow M(f)=M(g)M(h)$.å…³äº$M(f)$ï¼Œè¿˜æœ‰ä¸‹é¢çš„Landauä¸ç­‰å¼æˆç«‹.
 
-<index name="Landau²»µÈÊ½"></index>
-<theorem label="th:Landauineq" name="Landau²»µÈÊ½">
+<index name="Landauä¸ç­‰å¼"></index>
+<theorem label="th:Landauineq" name="Landauä¸ç­‰å¼">
 $\forall f\in\mathbb{C}[x]$,$M(f)\le\lVert f\rVert_2$.
 </theorem>
 
 <proof>
-²»·ÁÉè$|z_1|,|z_2|,\ldots,|z_k|>1$ÇÒ$|z_{k+1}|,\ldots,|z_n|\le 1$,Ôò$$M(f)=|f_nz_1z_2\cdots z_k|.$$
-Áî$g=f_n\prod\limits_{i=1}^{k}(\overline{z_i}x-1)\prod\limits_{k+1}^n(x-z_i)=g_nx^n+\cdots+g_0\in\mathbb{C}[x]$£¬ÔòÓÉÒıÀí##le:forLandauIneq ÓĞ
+ä¸å¦¨è®¾$|z_1|,|z_2|,\ldots,|z_k|>1$ä¸”$|z_{k+1}|,\ldots,|z_n|\le 1$,åˆ™$$M(f)=|f_nz_1z_2\cdots z_k|.$$
+ä»¤$g=f_n\prod\limits_{i=1}^{k}(\overline{z_i}x-1)\prod\limits_{k+1}^n(x-z_i)=g_nx^n+\cdots+g_0\in\mathbb{C}[x]$ï¼Œåˆ™ç”±å¼•ç†##le:forLandauIneq æœ‰
 <latex>
 \begin{align*}
   M^2(f)&=|f_n\overline{z_1}\overline{z_2}\cdots\overline{z_k}|^2=|g_n|^2\le\lVert g\rVert_2^2\\
@@ -626,26 +626,26 @@ $\forall f\in\mathbb{C}[x]$,$M(f)\le\lVert f\rVert_2$.
 &=\lVert f\rVert_2^2,
 \end{align*}
 </latex>
-Ö¤±Ï.
+è¯æ¯•.
 </proof>
 
-ÓÉLandau²»µÈÊ½Ò×µÃ³öÏÂÃæµÄÃüÌâ.
+ç”±Landauä¸ç­‰å¼æ˜“å¾—å‡ºä¸‹é¢çš„å‘½é¢˜.
 
 <lemma label="le:forMignotte">
-Èô$h=\sum\limits_{i=0}^mh_ix^i\in\mathbb{C}[x]$Õû³ı$f=\sum\limits_{i=0}^nf_ix^i\in\mathbb{C}[x]$,$n\ge m$£¬Ôò$\lVert h\rVert_2\le\lVert h\rVert_1\le 2^mM(h)\le \displaystyle\left|\frac{h_m}{f_n}\right|2^m\lVert f\rVert_2$.
+è‹¥$h=\sum\limits_{i=0}^mh_ix^i\in\mathbb{C}[x]$æ•´é™¤$f=\sum\limits_{i=0}^nf_ix^i\in\mathbb{C}[x]$,$n\ge m$ï¼Œåˆ™$\lVert h\rVert_2\le\lVert h\rVert_1\le 2^mM(h)\le \displaystyle\left|\frac{h_m}{f_n}\right|2^m\lVert f\rVert_2$.
 </lemma>
 
 <proof>
-Éè$h=h_m\prod\limits_{i=1}^m(x-u_i)$,ÔòÓÉÎ¤´ï¶¨Àí£¬$$h_i=(-1)^{m-i}h_m\sum\limits_{\substack{S\subset\{1,2,\ldots,m\}\\\#S=m-i}}\prod\limits_{j\in S}u_j,$$
-ÓÚÊÇ$|h_i|\le|h_m|\sum\limits_{S}\prod\limits_{j\in S}|u_j|\le|h_m|\binom{m}{i}\prod\limits_{i=1}^m|u_j|\le\binom{m}{i}M(h)$,
-¹ÊÓĞ$$\lVert h\rVert_2\le\lVert h\rVert_1=\sum\limits_{i=0}^m|h_i|\le 2^mM(h)\le\left|\frac{h_m}{f_n}\right|2^mM(f)\le\left|\frac{h_m}{f_n}\right|2^m\lVert f\rVert_2.$$
-Ö¤±Ï.
+è®¾$h=h_m\prod\limits_{i=1}^m(x-u_i)$,åˆ™ç”±éŸ¦è¾¾å®šç†ï¼Œ$$h_i=(-1)^{m-i}h_m\sum\limits_{\substack{S\subset\{1,2,\ldots,m\}\\\#S=m-i}}\prod\limits_{j\in S}u_j,$$
+äºæ˜¯$|h_i|\le|h_m|\sum\limits_{S}\prod\limits_{j\in S}|u_j|\le|h_m|\binom{m}{i}\prod\limits_{i=1}^m|u_j|\le\binom{m}{i}M(h)$,
+æ•…æœ‰$$\lVert h\rVert_2\le\lVert h\rVert_1=\sum\limits_{i=0}^m|h_i|\le 2^mM(h)\le\left|\frac{h_m}{f_n}\right|2^mM(f)\le\left|\frac{h_m}{f_n}\right|2^m\lVert f\rVert_2.$$
+è¯æ¯•.
 </proof>
 
-ÓÉ´Ë,ÎÒÃÇ¿ÉÒÔµÃµ½<index>Mignotte½ç</index>.
+ç”±æ­¤,æˆ‘ä»¬å¯ä»¥å¾—åˆ°<index>Mignotteç•Œ</index>.
 
-<theorem label="th:MignotteBound" name="Mignotte½ç">
-Éè$f,g,h\in\mathbb{Z}[x]$ÇÒ$\deg f=n\ge 1$,$\deg g=m$,$\deg h=k$,$gh\mid f$,Ôò£º
+<theorem label="th:MignotteBound" name="Mignotteç•Œ">
+è®¾$f,g,h\in\mathbb{Z}[x]$ä¸”$\deg f=n\ge 1$,$\deg g=m$,$\deg h=k$,$gh\mid f$,åˆ™ï¼š
  1. $\lVert g\rVert_{\infty}\lVert h\rVert_{\infty}\le\lVert g\rVert_2\lVert h\rVert_2\le\lVert g\rVert_1\lVert h\rVert_1\le 2^{m+k}\lVert f\rVert_2\le (n+1)^{1/2}2^{m+k}\lVert f\rVert_{\infty}$,
  2. $\lVert h\rVert_{\infty}\le\lVert h\rVert_2\le 2^k\lVert f\rVert_2\le 2^n\lVert f\rVert_1$,
  3. $\lVert h\rVert_{\infty}\le\lVert h\rVert_2\le (n+1)^{1/2}2^k\lVert f\rVert_{\infty}$.
@@ -653,80 +653,80 @@ $\forall f\in\mathbb{C}[x]$,$M(f)\le\lVert f\rVert_2$.
 </theorem>
 
 <proof>
-ÓÉÒıÀí##le:forMignotte ,ÎÒÃÇÓĞ$$\lVert g\rVert_1\lVert h\rVert_1\le 2^{m+k}M(g)M(h)\le 2^{m+k}M(f)\le 2^{m+k}\lVert f\rVert_2,$$
-´Ë¼´µÚÒ»Ê½¡£ÔÙÁî$g=1$¿ÉµÃºóÁ½Ê½¡£
+ç”±å¼•ç†##le:forMignotte ,æˆ‘ä»¬æœ‰$$\lVert g\rVert_1\lVert h\rVert_1\le 2^{m+k}M(g)M(h)\le 2^{m+k}M(f)\le 2^{m+k}\lVert f\rVert_2,$$
+æ­¤å³ç¬¬ä¸€å¼ã€‚å†ä»¤$g=1$å¯å¾—åä¸¤å¼ã€‚
 </proof>
 
-** ´óËØÊıÄ£¹«Òò×ÓËã·¨
+** å¤§ç´ æ•°æ¨¡å…¬å› å­ç®—æ³•
 
-Èç²»×÷ÌØÊâËµÃ÷£¬±¾Ğ¡½ÚÖĞ$\mathbb{F}_p$ÓòÈ¡¶Ô³Æ´ú±íÔª$\mathbb{F}_p=\left\{i\in\mathbb{Z}\mid \displaystyle -\frac{p}{2}<i<\frac{p}{2}\right\}$.´óËØÊıÄ£Ëã·¨ÒªÓÃµ½$\mathbb{F}_p$ÖĞEuclidËã·¨£¬µ«ÊÇËØÊı$p$Ò»°ã»áºÜ´ó,ÓÈÆä¶ÔÓÚ´ÎÊı½Ï¸ßµÄ¶àÏîÊ½,ÆäMignotte½ç»á±äµÃºÜ´ó,ÕâÑùÔÚ´óËØÊıÓĞÏŞÓòÖĞµÄ¼ÆËãÎ´±ØÄÇÃ´»®Ëã.ÊÂÊµÉÏ,ÎÒÃÇ²ÉÓÃµÄÒ»°ã¶¼ÊÇĞ¡ËØÊıÄ£·½·¨,¸Ã·½·¨½«ÔÚÏÂÒ»Ğ¡½Ú½éÉÜ.¾¡¹ÜÈç´Ë,ÎÒÃÇ»¹ÊÇÒª½éÉÜÒ»ÏÂ´óËØÊıÄ£·½·¨,ÒÔÊ¹¶ÁÕßÄÜ¶ÔÄ£·½·¨µÄ»ù±¾Ë¼Â·ÓĞÒ»¸öÖ±¹ÛµÄÈÏÊ¶,±ãÓÚºóÃæÀí½âĞ¡ËØÊıÄ£·½·¨.
+å¦‚ä¸ä½œç‰¹æ®Šè¯´æ˜ï¼Œæœ¬å°èŠ‚ä¸­$\mathbb{F}_p$åŸŸå–å¯¹ç§°ä»£è¡¨å…ƒ$\mathbb{F}_p=\left\{i\in\mathbb{Z}\mid \displaystyle -\frac{p}{2}<i<\frac{p}{2}\right\}$.å¤§ç´ æ•°æ¨¡ç®—æ³•è¦ç”¨åˆ°$\mathbb{F}_p$ä¸­Euclidç®—æ³•ï¼Œä½†æ˜¯ç´ æ•°$p$ä¸€èˆ¬ä¼šå¾ˆå¤§,å°¤å…¶å¯¹äºæ¬¡æ•°è¾ƒé«˜çš„å¤šé¡¹å¼,å…¶Mignotteç•Œä¼šå˜å¾—å¾ˆå¤§,è¿™æ ·åœ¨å¤§ç´ æ•°æœ‰é™åŸŸä¸­çš„è®¡ç®—æœªå¿…é‚£ä¹ˆåˆ’ç®—.äº‹å®ä¸Š,æˆ‘ä»¬é‡‡ç”¨çš„ä¸€èˆ¬éƒ½æ˜¯å°ç´ æ•°æ¨¡æ–¹æ³•,è¯¥æ–¹æ³•å°†åœ¨ä¸‹ä¸€å°èŠ‚ä»‹ç».å°½ç®¡å¦‚æ­¤,æˆ‘ä»¬è¿˜æ˜¯è¦ä»‹ç»ä¸€ä¸‹å¤§ç´ æ•°æ¨¡æ–¹æ³•,ä»¥ä½¿è¯»è€…èƒ½å¯¹æ¨¡æ–¹æ³•çš„åŸºæœ¬æ€è·¯æœ‰ä¸€ä¸ªç›´è§‚çš„è®¤è¯†,ä¾¿äºåé¢ç†è§£å°ç´ æ•°æ¨¡æ–¹æ³•.
 
-ÎÒÃÇÏÈ¸ø³ö<index name="×î´ó¹«Òò×Ó" sub="´óËØÊıÄ£Ëã·¨" >´óËØÊıÄ£Ëã·¨</index>,ÔÙ¶ÔÆä½øĞĞ·ÖÎö.
+æˆ‘ä»¬å…ˆç»™å‡º<index name="æœ€å¤§å…¬å› å­" sub="å¤§ç´ æ•°æ¨¡ç®—æ³•" >å¤§ç´ æ•°æ¨¡ç®—æ³•</index>,å†å¯¹å…¶è¿›è¡Œåˆ†æ.
 
-<algorithm label="al:BPMGA" name="´óËØÊıÄ£¹«Òò×ÓËã·¨">
+<algorithm label="al:BPMGA" name="å¤§ç´ æ•°æ¨¡å…¬å› å­ç®—æ³•">
 
-ÊäÈë£º$\mathbb{Z}[x]$ÖĞ±¾Ô­Ê½$f$,$g$,ÇÒ$\deg f=n\ge\deg g\ge 1$,$\|f\|_{\infty}\le A$,$\|g\|_{\infty}\le A$,
+è¾“å…¥ï¼š$\mathbb{Z}[x]$ä¸­æœ¬åŸå¼$f$,$g$,ä¸”$\deg f=n\ge\deg g\ge 1$,$\|f\|_{\infty}\le A$,$\|g\|_{\infty}\le A$,
 
-Êä³ö£º$h=\gcd (f,g)\in\mathbb{Z}[x]$.
+è¾“å‡ºï¼š$h=\gcd (f,g)\in\mathbb{Z}[x]$.
 
- 1. ¸³Öµ$b=\gcd (\plc{f},\plc{g})$,$B=(n+1)^{1/2}2^nAb$,
+ 1. èµ‹å€¼$b=\gcd (\plc{f},\plc{g})$,$B=(n+1)^{1/2}2^nAb$,
 
- 2. ÈÎÈ¡ËØÊı$p\in(2B,4B]$,
+ 2. ä»»å–ç´ æ•°$p\in(2B,4B]$,
 
  3. $f_p=f \bmod{p}$,$g_p=g \bmod{p}$,
 
  4. $v_p=\gcd (f_p,g_p)\in\mathbb{F}_p[x]$,
 
- 5. ¼ÆËã$w,f^*,g^*\in\mathbb{F}_p[x]$Ê¹µÃ$$w\equiv bv_p\pmod{p},\quad f^*w\equiv bf\pmod{p},\quad g^*w\equiv bg\pmod{p},$$
+ 5. è®¡ç®—$w,f^*,g^*\in\mathbb{F}_p[x]$ä½¿å¾—$$w\equiv bv_p\pmod{p},\quad f^*w\equiv bf\pmod{p},\quad g^*w\equiv bg\pmod{p},$$
 
- 6. Èô$\|f^*\|_1\|w\|_1\le B$ÇÒ$\|g^*\|_1\|w\|_1\le B$Ôò¼ÌĞøÏÂ²½£¬·ñÔòÌø»ØµÚ2²½,
+ 6. è‹¥$\|f^*\|_1\|w\|_1\le B$ä¸”$\|g^*\|_1\|w\|_1\le B$åˆ™ç»§ç»­ä¸‹æ­¥ï¼Œå¦åˆ™è·³å›ç¬¬2æ­¥,
 
- 7. Êä³ö$\mathrm{pp}(w)$.
+ 7. è¾“å‡º$\mathrm{pp}(w)$.
 
 </algorithm>
 
 <remark>
-Ö®ËùÒÔÔÚ$(2B,4B]$ÈÎÈ¡ËØÊı,¿ÉÒÔ²Î¿¼<cite>mca</cite>18.4½ÚÓĞ¹ØÄÚÈİ.¸Ã´¦Ìá¹©ÁËÔÚ´ËÇø¼äÖĞËæ»úÉú³ÉËØÊıµÄ·½·¨²¢ÇÒ×÷ÁËÏà¹Ø¸´ÔÓ¶ÈµÄ·ÖÎö.
+ä¹‹æ‰€ä»¥åœ¨$(2B,4B]$ä»»å–ç´ æ•°,å¯ä»¥å‚è€ƒ<cite>mca</cite>18.4èŠ‚æœ‰å…³å†…å®¹.è¯¥å¤„æä¾›äº†åœ¨æ­¤åŒºé—´ä¸­éšæœºç”Ÿæˆç´ æ•°çš„æ–¹æ³•å¹¶ä¸”ä½œäº†ç›¸å…³å¤æ‚åº¦çš„åˆ†æ.
 </remark>
-; ´Ë¶ÎËÆÓÃÓÚ¸´ÔÓ¶È¼ÆËã£¬µ«ÏÂÎÄÓÖÃ»ÓĞÌáµ½¸´ÔÓ¶È
-; Éè$h=\gcd(f,g)\in\mathbb{Z}[x]$,ÇÒ$\plc{h}>0$,Ôò$r=\mathrm{res}(f/h,g/h)$ÊÇÒ»·ÇÁã³£Êı£¬ÇÒÂú×ã$|r|\le (n+1)^nA^{2n}$.´ËÓÉHadamard²»µÈÊ½
+; æ­¤æ®µä¼¼ç”¨äºå¤æ‚åº¦è®¡ç®—ï¼Œä½†ä¸‹æ–‡åˆæ²¡æœ‰æåˆ°å¤æ‚åº¦
+; è®¾$h=\gcd(f,g)\in\mathbb{Z}[x]$,ä¸”$\plc{h}>0$,åˆ™$r=\mathrm{res}(f/h,g/h)$æ˜¯ä¸€éé›¶å¸¸æ•°ï¼Œä¸”æ»¡è¶³$|r|\le (n+1)^nA^{2n}$.æ­¤ç”±Hadamardä¸ç­‰å¼
 ; $$|\mathrm{res}(f,g)|\le\|f\|_2^m\|g\|_2^n\le (n+1)^{m/2+n/2}\|f\|_{\infty}^m\|g\|_{\infty}^n$$
-; ¿ÉÖª,¼û<cite>mca</cite>.
+; å¯çŸ¥,è§<cite>mca</cite>.
 
-ÏÂÃæµÄ¶¨Àí±£Ö¤ÁËËã·¨##al:BPMGA ÖĞÅĞ¶¨Ìõ¼şµÄÕıÈ·ĞÔ.
+ä¸‹é¢çš„å®šç†ä¿è¯äº†ç®—æ³•##al:BPMGA ä¸­åˆ¤å®šæ¡ä»¶çš„æ­£ç¡®æ€§.
 
 <theorem label="th:conditionforbigprimemodulargcd">
-Ëã·¨##al:BPMGA ÖĞ¸ø¶¨µÄÌõ¼ş$$\|f^*\|_1\|w\|_1\le B,\quad\|g^*\|_1\|w\|_1\le B$$
-µÈ¼ÛÓÚ$p\nmid r$,ÇÒ´ËÊ±Ëã·¨##al:BPMGA Êä³öÕıÈ·µÄ×î´ó¹«Òò×Ó¡£
+ç®—æ³•##al:BPMGA ä¸­ç»™å®šçš„æ¡ä»¶$$\|f^*\|_1\|w\|_1\le B,\quad\|g^*\|_1\|w\|_1\le B$$
+ç­‰ä»·äº$p\nmid r$,ä¸”æ­¤æ—¶ç®—æ³•##al:BPMGA è¾“å‡ºæ­£ç¡®çš„æœ€å¤§å…¬å› å­ã€‚
 </theorem>
 
 <proof>
-ÈôÌõ¼şÂú×ã£¬Ôò$$\|f^*w\|_{\infty}\le\|f^*w\|_1\le\|f^*\|_1\|w\|_1\le B<p/2.$$
-Í¬Àí$\|bf\|_{\infty}<p/2$,ÓÉÓÚ$f^*w\equiv bf\pmod{p}$,¿ÉÖª$f^*w=bf$,Í¬ÑùÎÒÃÇÒ²¿ÉÖ¤Ã÷$g^*w=bg$.
-ÓÚÊÇ$\deg w=\deg\gcd(bf,bg)\Rightarrow \mathrm{pp}(w)=\gcd(f,g)$.
+è‹¥æ¡ä»¶æ»¡è¶³ï¼Œåˆ™$$\|f^*w\|_{\infty}\le\|f^*w\|_1\le\|f^*\|_1\|w\|_1\le B<p/2.$$
+åŒç†$\|bf\|_{\infty}<p/2$,ç”±äº$f^*w\equiv bf\pmod{p}$,å¯çŸ¥$f^*w=bf$,åŒæ ·æˆ‘ä»¬ä¹Ÿå¯è¯æ˜$g^*w=bg$.
+äºæ˜¯$\deg w=\deg\gcd(bf,bg)\Rightarrow \mathrm{pp}(w)=\gcd(f,g)$.
 
-ÁíÒ»·½Ãæ£¬Èô$\mathrm{pp}(w)=\gcd(f,g)$,ÔòÓÉ¶¨Àí##th:MignotteBound ¿ÉÍÆ³öËùĞèÌõ¼ş¡£
+å¦ä¸€æ–¹é¢ï¼Œè‹¥$\mathrm{pp}(w)=\gcd(f,g)$,åˆ™ç”±å®šç†##th:MignotteBound å¯æ¨å‡ºæ‰€éœ€æ¡ä»¶ã€‚
 </proof>
 
-¶¨ÀíÖĞËùËµµÄÌõ¼ş¼´ÊÇÓÃÀ´±£Ö¤±¾½Ú¿ªÊ¼Ìáµ½µÄ$h_p=v_p$µÄÌõ¼ş,Õâ´Ó¶¨Àí##th:conditionforbigprimemodulargcd µÄÖ¤Ã÷¿ÉÒÔ¿´³ö.ÎÒÃÇ»¹¿ÉÒÔÓÃÊÔ³ı·¨À´´úÌæÕâÒ»Ìõ¼ş,Ëã·¨¼°ÆäËµÃ÷¼ûÏÂ:
+å®šç†ä¸­æ‰€è¯´çš„æ¡ä»¶å³æ˜¯ç”¨æ¥ä¿è¯æœ¬èŠ‚å¼€å§‹æåˆ°çš„$h_p=v_p$çš„æ¡ä»¶,è¿™ä»å®šç†##th:conditionforbigprimemodulargcd çš„è¯æ˜å¯ä»¥çœ‹å‡º.æˆ‘ä»¬è¿˜å¯ä»¥ç”¨è¯•é™¤æ³•æ¥ä»£æ›¿è¿™ä¸€æ¡ä»¶,ç®—æ³•åŠå…¶è¯´æ˜è§ä¸‹:
 
-<algorithm label="al:BPMGA1" name="´óËØÊıÄ£¹«Òò×ÓËã·¨">
-¿É½«Ëã·¨##al:BPMGA µÚ6²½ÖĞÌõ¼ş¸ÄÎª$\mathrm{pp}(w_p)\mid f$ÇÒ$\mathrm{pp}(w_p)\mid g$,µÚ5²½Ö»¼ÆËã$w$¡£
+<algorithm label="al:BPMGA1" name="å¤§ç´ æ•°æ¨¡å…¬å› å­ç®—æ³•">
+å¯å°†ç®—æ³•##al:BPMGA ç¬¬6æ­¥ä¸­æ¡ä»¶æ”¹ä¸º$\mathrm{pp}(w_p)\mid f$ä¸”$\mathrm{pp}(w_p)\mid g$,ç¬¬5æ­¥åªè®¡ç®—$w$ã€‚
 </algorithm>
 
-<proof name="Ëã·¨ÓĞĞ§ĞÔ">
-ÔÚ$\mathbb{Q}[x]$ÖĞÊ×Ò»¶àÏîÊ½µÄÒâÒåÏÂ,ÓÉÊÔ³ıÌõ¼şÓĞ$v_p\mid \gcd(f,g)$.Æä´Î£¬ÓÉ$\gcd(f,g)\mid f$Öª$\gcd(f,g)=\gcd(f,g)_p\mid f_p$,Í¬ÑùµØ£¬$\gcd(f,g)\mid g_p$.ÓÚÊÇ,$\gcd(f,g)\mid \gcd(f_p,g_p)=v_p$,Òò¶ø$v_p=\gcd(f,g)$.
+<proof name="ç®—æ³•æœ‰æ•ˆæ€§">
+åœ¨$\mathbb{Q}[x]$ä¸­é¦–ä¸€å¤šé¡¹å¼çš„æ„ä¹‰ä¸‹,ç”±è¯•é™¤æ¡ä»¶æœ‰$v_p\mid \gcd(f,g)$.å…¶æ¬¡ï¼Œç”±$\gcd(f,g)\mid f$çŸ¥$\gcd(f,g)=\gcd(f,g)_p\mid f_p$,åŒæ ·åœ°ï¼Œ$\gcd(f,g)\mid g_p$.äºæ˜¯,$\gcd(f,g)\mid \gcd(f_p,g_p)=v_p$,å› è€Œ$v_p=\gcd(f,g)$.
 </proof>
 
-Ëã·¨ÖĞÊÇËæ»ú´ÓÇø¼ä$(2B,4B]$ÖĞÑ¡È¡Ò»¸öËØÊı£¬ÕâÖÖËæ»úĞÔÊÇ·ñ±£Ö¤ÎÒÃÇÄÜ½Ï¿ìµØµÃµ½ÕıÈ·µÄ½á¹ûÄØ£¿ÏÂÃæµÄ¶¨Àí×÷³öÁË»Ø´ğ¡£
+ç®—æ³•ä¸­æ˜¯éšæœºä»åŒºé—´$(2B,4B]$ä¸­é€‰å–ä¸€ä¸ªç´ æ•°ï¼Œè¿™ç§éšæœºæ€§æ˜¯å¦ä¿è¯æˆ‘ä»¬èƒ½è¾ƒå¿«åœ°å¾—åˆ°æ­£ç¡®çš„ç»“æœå‘¢ï¼Ÿä¸‹é¢çš„å®šç†ä½œå‡ºäº†å›ç­”ã€‚
 
 <theorem  label="th:sdsf">
-Ê¹µÃËã·¨##al:BPMGA1 Ìõ¼şÂú×ãµÄËØÊı$p$ÊÇËØÊı¼¯ÖĞ½ö³ıÁËÓĞÏŞ¸öËØÊıºóµÄ¼¯ºÏ¡£
+ä½¿å¾—ç®—æ³•##al:BPMGA1 æ¡ä»¶æ»¡è¶³çš„ç´ æ•°$p$æ˜¯ç´ æ•°é›†ä¸­ä»…é™¤äº†æœ‰é™ä¸ªç´ æ•°åçš„é›†åˆã€‚
 </theorem>
 
 <proof>
-Éè$h=\mathrm{monic}(\gcd(f,g)),h_p=h\bmod p$.Ö»ĞèÖ¤Èô$p$²»Í¬Ê±Õû³ı$\plc{f}$,$\plc{g}$,ÇÒ$p\nmid \mathrm{res}(f/h,g/h)$,Ôò$h=h_p=v_p$.
-Ê×ÏÈÏÔÈ»ÓĞ$h_p\mid v_p$.Èô$\deg v_p=\deg h_p=0$,ÔòÓÉÊ×Ò»ĞÔÖª$v_p=h_p$,·ñÔò$\deg v_p\ge 1$,´ËÊ±ÓÉ$p\nmid \gcd(\plc{f},\plc{g})$¿ÉµÃ$h_p\neq 0$.¶ø´æÔÚ$s,t$Ê¹
+è®¾$h=\mathrm{monic}(\gcd(f,g)),h_p=h\bmod p$.åªéœ€è¯è‹¥$p$ä¸åŒæ—¶æ•´é™¤$\plc{f}$,$\plc{g}$,ä¸”$p\nmid \mathrm{res}(f/h,g/h)$,åˆ™$h=h_p=v_p$.
+é¦–å…ˆæ˜¾ç„¶æœ‰$h_p\mid v_p$.è‹¥$\deg v_p=\deg h_p=0$,åˆ™ç”±é¦–ä¸€æ€§çŸ¥$v_p=h_p$,å¦åˆ™$\deg v_p\ge 1$,æ­¤æ—¶ç”±$p\nmid \gcd(\plc{f},\plc{g})$å¯å¾—$h_p\neq 0$.è€Œå­˜åœ¨$s,t$ä½¿
 <latex>
 \begin{align*}
 &\quad sf/h+tg/h=\mathrm{res}(f/h,g/h)\\
@@ -735,24 +735,24 @@ $\forall f\in\mathbb{C}[x]$,$M(f)\le\lVert f\rVert_2$.
 \Rightarrow&\quad v_p\mid h_p,
 \end{align*}
 </latex>
-¹ÊÓĞ$h_p=v_p$.
+æ•…æœ‰$h_p=v_p$.
 </proof>
 
-** Ğ¡ËØÊıÄ£¹«Òò×ÓËã·¨
+** å°ç´ æ•°æ¨¡å…¬å› å­ç®—æ³•
 
-Ğ¡ËØÊı½×ÓĞÏŞÓòÉÏµÄ¶àÏîÊ½¼ÆËãÊµÏÖÆğÀ´ÏÔÈ»Òª±È´óËØÊı¸ßĞ§ºÜ¶à.±¾½Ú½«ÒªÌáµ½µÄËã·¨»ùÓÚµÄË¼ÏëºÜ¼òµ¥.¿¼ÂÇ$h=\gcd(f,g)$,ÎÒÃÇËæ»úÑ¡È¡Ò»ÏµÁĞµÄĞ¡ËØÊı$p_1,p_2,\ldots,p_k$,ÔÚÖîÓĞÏŞÓò$\mathbb{Z}_{p_i}(1\le i\le k)$ÉÏ¼ÆËã$v_{p_i}=\gcd(f_{p_i},g_{p_i})$,ÓÉ¶¨Àí##th:sdsf ,ÎÒÃÇ¿ÉÒÔÆÚÍû$h_{p_i}=v_{p_i}$ÓĞºÜ´ó¸ÅÂÊÊÇ³ÉÁ¢µÄ.Ãü$m=\prod_{1\le i\le k}p_i$,ÀûÓÃÖĞ¹úÊ£Óà¶¨Àí,¿ÉÒÔÓÉÖî¶à$v_{p_i}$Çó³ö$h_m=h \bmod m$,ËüÂú×ã$h_m\equiv v_{p_i}\pmod{p_i}$.µ±$m$´óÓÚMignotte½çÊ±,¼´ÓĞ$h=h_m$.
+å°ç´ æ•°é˜¶æœ‰é™åŸŸä¸Šçš„å¤šé¡¹å¼è®¡ç®—å®ç°èµ·æ¥æ˜¾ç„¶è¦æ¯”å¤§ç´ æ•°é«˜æ•ˆå¾ˆå¤š.æœ¬èŠ‚å°†è¦æåˆ°çš„ç®—æ³•åŸºäºçš„æ€æƒ³å¾ˆç®€å•.è€ƒè™‘$h=\gcd(f,g)$,æˆ‘ä»¬éšæœºé€‰å–ä¸€ç³»åˆ—çš„å°ç´ æ•°$p_1,p_2,\ldots,p_k$,åœ¨è¯¸æœ‰é™åŸŸ$\mathbb{Z}_{p_i}(1\le i\le k)$ä¸Šè®¡ç®—$v_{p_i}=\gcd(f_{p_i},g_{p_i})$,ç”±å®šç†##th:sdsf ,æˆ‘ä»¬å¯ä»¥æœŸæœ›$h_{p_i}=v_{p_i}$æœ‰å¾ˆå¤§æ¦‚ç‡æ˜¯æˆç«‹çš„.å‘½$m=\prod_{1\le i\le k}p_i$,åˆ©ç”¨ä¸­å›½å‰©ä½™å®šç†,å¯ä»¥ç”±è¯¸å¤š$v_{p_i}$æ±‚å‡º$h_m=h \bmod m$,å®ƒæ»¡è¶³$h_m\equiv v_{p_i}\pmod{p_i}$.å½“$m$å¤§äºMignotteç•Œæ—¶,å³æœ‰$h=h_m$.
 
-ÏÂÃæ½ö¸ø³ö<index name="×î´ó¹«Òò×Ó" sub="Ğ¡ËØÊıÄ£Ëã·¨">Ğ¡ËØÊıÄ£Ëã·¨</index>µÄÁ½ÖÖÊµÏÖ¡£ÆäÖĞËã·¨##al:SPMGA ²Î¿¼<cite>mca</cite>,Ëã·¨##al:SPMGA1 ²Î¿¼<cite>zsg05</cite>,Á½ÕßµÄË¼Ïë»ù±¾ÉÏÊÇÒ»ÑùµÄ.Á½¸öËã·¨ÖĞÈÎÈ¡ËØÊıÊ±¶¼¼ÓÉÏÁËÏŞÖÆ$p<2k\ln k$,´Ë²Î¿´<cite>mca</cite>Éú³ÉËØÊıµÄÓĞ¹ØÕÂ½Ú.´ÓËã·¨µÄÊµÏÖÏ¸½ÚÉÏÀ´Ëµ,µÚ¶ş¸öËã·¨±ÈµÚÒ»¸öËã·¨ÂÔÓÅ,ÆäÄÜ¼õÉÙºÜ¶à²»±ØÒªµÄ¼ÆËã.
+ä¸‹é¢ä»…ç»™å‡º<index name="æœ€å¤§å…¬å› å­" sub="å°ç´ æ•°æ¨¡ç®—æ³•">å°ç´ æ•°æ¨¡ç®—æ³•</index>çš„ä¸¤ç§å®ç°ã€‚å…¶ä¸­ç®—æ³•##al:SPMGA å‚è€ƒ<cite>mca</cite>,ç®—æ³•##al:SPMGA1 å‚è€ƒ<cite>zsg05</cite>,ä¸¤è€…çš„æ€æƒ³åŸºæœ¬ä¸Šæ˜¯ä¸€æ ·çš„.ä¸¤ä¸ªç®—æ³•ä¸­ä»»å–ç´ æ•°æ—¶éƒ½åŠ ä¸Šäº†é™åˆ¶$p<2k\ln k$,æ­¤å‚çœ‹<cite>mca</cite>ç”Ÿæˆç´ æ•°çš„æœ‰å…³ç« èŠ‚.ä»ç®—æ³•çš„å®ç°ç»†èŠ‚ä¸Šæ¥è¯´,ç¬¬äºŒä¸ªç®—æ³•æ¯”ç¬¬ä¸€ä¸ªç®—æ³•ç•¥ä¼˜,å…¶èƒ½å‡å°‘å¾ˆå¤šä¸å¿…è¦çš„è®¡ç®—.
 
-<algorithm label="al:SPMGA" name="Ğ¡ËØÊıÄ£¹«Òò×ÓËã·¨">
+<algorithm label="al:SPMGA" name="å°ç´ æ•°æ¨¡å…¬å› å­ç®—æ³•">
 
-ÊäÈë£º$\mathbb{Z}[x]$ÉÏ±¾Ô­¶àÏîÊ½$f$,$g$,ÇÒ$\deg f=n\ge\deg g\ge 1$,$\|f\|_{\infty}\le A$,$\|g\|_{\infty}\le A$,
+è¾“å…¥ï¼š$\mathbb{Z}[x]$ä¸Šæœ¬åŸå¤šé¡¹å¼$f$,$g$,ä¸”$\deg f=n\ge\deg g\ge 1$,$\|f\|_{\infty}\le A$,$\|g\|_{\infty}\le A$,
 
-Êä³ö£º$h=\gcd(f,g)\in\mathbb{Z}[x]  $.
+è¾“å‡ºï¼š$h=\gcd(f,g)\in\mathbb{Z}[x]  $.
 
- 1. ¸³Öµ$b=\gcd(\plc{f},\plc{g})$,$k=\lceil 2\log_2((n+1)^nbA^{2n})\rceil$,$B=(n+1)^{1/2}2^nAb$,$l=\lceil\log_2(2B+1)\rceil$,
+ 1. èµ‹å€¼$b=\gcd(\plc{f},\plc{g})$,$k=\lceil 2\log_2((n+1)^nbA^{2n})\rceil$,$B=(n+1)^{1/2}2^nAb$,$l=\lceil\log_2(2B+1)\rceil$,
 
- 2. ÈÎÈ¡º¬$2l$¸ö²»Í¬µÄËØÊıµÄ¼¯ºÏ$S$,ÇÒ$\forall p\in S,p<2k\ln k$,
+ 2. ä»»å–å«$2l$ä¸ªä¸åŒçš„ç´ æ•°çš„é›†åˆ$S$,ä¸”$\forall p\in S,p<2k\ln k$,
 
  3. $S=\{p\in S\mid p\nmid b\}$,
 
@@ -760,120 +760,120 @@ $\forall f\in\mathbb{C}[x]$,$M(f)\le\lVert f\rVert_2$.
 
  5. $e=\min\{\deg v_p\mid p\in S\}$,$S=\{p\in S\mid \deg v_p=e\}$,
 
- 6. Èô$|S|>l$ÔòÈ¥µô$S$ÖĞ$(|S|-l)$¸öÔªËØ,Ö»±£Áô$l$¸ö,·ñÔò×ªµ½µÚ2²½,
+ 6. è‹¥$|S|>l$åˆ™å»æ‰$S$ä¸­$(|S|-l)$ä¸ªå…ƒç´ ,åªä¿ç•™$l$ä¸ª,å¦åˆ™è½¬åˆ°ç¬¬2æ­¥,
 
- 7. ÓÃÖĞ¹úÊ£Óà¶¨Àí¼ÆËã$w$,$f^*$,$g^*\in\mathbb{Z}[x]$Ê¹µÃ(¶ÔÈıÕßÈ¡¶Ô³Æ±íÊ¾)
+ 7. ç”¨ä¸­å›½å‰©ä½™å®šç†è®¡ç®—$w$,$f^*$,$g^*\in\mathbb{Z}[x]$ä½¿å¾—(å¯¹ä¸‰è€…å–å¯¹ç§°è¡¨ç¤º)
 $$\|w\|_{\infty},\|f^*\|_{\infty},\|g^*\|_{\infty}\le\frac{1}{2}\prod\limits_{p\in S}p=:\frac{m}{2},$$
-ÇÒ$\forall p\in S$ÓĞ
+ä¸”$\forall p\in S$æœ‰
 $$w\equiv bv_p\pmod{p},\quad f^*w\equiv bf\pmod{m},\quad g^*w\equiv bg\pmod{m},$$
 
- 8. Èô$\|f^*\|_1\|w\|_1\le B$ÇÒ$\|g^*\|_1\|w\|_1\le B$Ôò¼ÌĞøÏÂÒ»²½£¬·ñÔò×ªµ½µÚ2²½,
+ 8. è‹¥$\|f^*\|_1\|w\|_1\le B$ä¸”$\|g^*\|_1\|w\|_1\le B$åˆ™ç»§ç»­ä¸‹ä¸€æ­¥ï¼Œå¦åˆ™è½¬åˆ°ç¬¬2æ­¥,
 
- 9. Êä³ö$\mathrm{pp}(w)$.
+ 9. è¾“å‡º$\mathrm{pp}(w)$.
 
 </algorithm>
 
 <remark>
-$l$µÄÑ¡È¡Ê¹µÃ$2^l>2B$,Òò¶ø¿É¼û$S$ÖĞ$l$¸öÔªËØÏà³ËÖ®»ı±Ø´óÓÚ$2B$, ÓÚÊÇ$m/2>B$.
+$l$çš„é€‰å–ä½¿å¾—$2^l>2B$,å› è€Œå¯è§$S$ä¸­$l$ä¸ªå…ƒç´ ç›¸ä¹˜ä¹‹ç§¯å¿…å¤§äº$2B$, äºæ˜¯$m/2>B$.
 </remark>
 
-<proof  name="Ëã·¨ÓĞĞ§ĞÔ">
-ÓÉ$\|f^*\|_1\|w\|_1\le B$¿ÉÖª$\|f^*w\|_{\infty}\le B<m/2$.ÁíÒ»·½Ãæ,ÓÉËã·¨µÚ1²½¼ÆËã$B$µÄ·½·¨¿ÉÖª$\|bf\|_{\infty}\le B<m/2$.ÓÚÊÇ
+<proof  name="ç®—æ³•æœ‰æ•ˆæ€§">
+ç”±$\|f^*\|_1\|w\|_1\le B$å¯çŸ¥$\|f^*w\|_{\infty}\le B<m/2$.å¦ä¸€æ–¹é¢,ç”±ç®—æ³•ç¬¬1æ­¥è®¡ç®—$B$çš„æ–¹æ³•å¯çŸ¥$\|bf\|_{\infty}\le B<m/2$.äºæ˜¯
 $$f^*w\equiv bf\pmod{m}\Rightarrow f^*w=bf,$$
-Í¬ÀíÎÒÃÇÒ²ÓĞ$g^*w=bg$,ÓÉ´Ë$w|\gcd(bf,bg)=b\gcd(f,g)$.Èç¹ûÈ¡¶àÏîÊ½µÄ±¾Ô­²¿·Ö,ºÜÈİÒ×µÃµ½$\mathrm{pp}(w)|\gcd(f,g)$.ÎÒÃÇÒÑ¼Ù¶¨¶ÔÓÚËùÈ¡µÄ$p$ÓĞ$v_p=h_p=h\bmod p$,ÆäÖĞ$h=\gcd(f,g)$,Ôò$\deg w=\deg v_p=\deg h$,Òò¶ø$\mathrm{pp}(w)=h$.
+åŒç†æˆ‘ä»¬ä¹Ÿæœ‰$g^*w=bg$,ç”±æ­¤$w|\gcd(bf,bg)=b\gcd(f,g)$.å¦‚æœå–å¤šé¡¹å¼çš„æœ¬åŸéƒ¨åˆ†,å¾ˆå®¹æ˜“å¾—åˆ°$\mathrm{pp}(w)|\gcd(f,g)$.æˆ‘ä»¬å·²å‡å®šå¯¹äºæ‰€å–çš„$p$æœ‰$v_p=h_p=h\bmod p$,å…¶ä¸­$h=\gcd(f,g)$,åˆ™$\deg w=\deg v_p=\deg h$,å› è€Œ$\mathrm{pp}(w)=h$.
 
-·´¹ıÀ´ÎÒÃÇ¼ÙÉè$\mathrm{pp}(w)=\gcd(f,g)$Ê±,Ò×ÖªËã·¨Ò²»áÒòÎªµÚ8²½ÖĞµÄÌõ¼şÂú×ã¶øÊä³ö.
+åè¿‡æ¥æˆ‘ä»¬å‡è®¾$\mathrm{pp}(w)=\gcd(f,g)$æ—¶,æ˜“çŸ¥ç®—æ³•ä¹Ÿä¼šå› ä¸ºç¬¬8æ­¥ä¸­çš„æ¡ä»¶æ»¡è¶³è€Œè¾“å‡º.
 </proof>
 
-<algorithm label="al:SPMGA1" name="Ğ¡ËØÊıÄ£¹«Òò×ÓËã·¨">
-ÊäÈë£º$\mathbb{Z}[x]$ÖĞ±¾Ô­¶àÏîÊ½$f$,$g$,ÇÒ$\deg f=n\ge\deg g\ge 1$,$\|f\|_{\infty}\le A$,$\|f\|_{\infty}\le A$,
+<algorithm label="al:SPMGA1" name="å°ç´ æ•°æ¨¡å…¬å› å­ç®—æ³•">
+è¾“å…¥ï¼š$\mathbb{Z}[x]$ä¸­æœ¬åŸå¤šé¡¹å¼$f$,$g$,ä¸”$\deg f=n\ge\deg g\ge 1$,$\|f\|_{\infty}\le A$,$\|f\|_{\infty}\le A$,
 
-Êä³ö£º$h=\gcd(f,g)\in\mathbb{Z}[x]  $.
+è¾“å‡ºï¼š$h=\gcd(f,g)\in\mathbb{Z}[x]  $.
 
  1. $b=\gcd(\plc{f},\plc{g})$,$B=(n+1)^{1/2}2^nAb$,$k=\lceil 2\log_2((n+1)^nbA^{2n})\rceil$,
 
- 2. ÈÎÈ¡ËØÊı$p>b$(Êµ¼ÊÉÏ$p\nmid b$¼´¿É),ÇÒ$p<2k\ln k$,
+ 2. ä»»å–ç´ æ•°$p>b$(å®é™…ä¸Š$p\nmid b$å³å¯),ä¸”$p<2k\ln k$,
 
  3. $v_p=\gcd(f_p,g_p)\in\mathbb{F}_p[x]$,
 
- 4. Èô$\deg v_p=0$ÔòÊä³ö1,
+ 4. è‹¥$\deg v_p=0$åˆ™è¾“å‡º1,
 
  5. $p_1=p$,$v_1=v_p$,
 
- 6. Èô$p_1\le 2B$£¬ÔòÖ´ĞĞÏÂÒ»²½£¬·ñÔòÌø×ªµÚ12²½,
+ 6. è‹¥$p_1\le 2B$ï¼Œåˆ™æ‰§è¡Œä¸‹ä¸€æ­¥ï¼Œå¦åˆ™è·³è½¬ç¬¬12æ­¥,
 
- 7. ÔÙÈ¡ËØÊı$p>b$(»òÕß$p\nmid b$),ÇÒ$p<2k\ln k$,$p\nmid p_1$,Áî$v_p=\gcd(f_p,g_p)\in\mathbb{F}_p[x]$,
+ 7. å†å–ç´ æ•°$p>b$(æˆ–è€…$p\nmid b$),ä¸”$p<2k\ln k$,$p\nmid p_1$,ä»¤$v_p=\gcd(f_p,g_p)\in\mathbb{F}_p[x]$,
 
- 8. Èô$\deg v_p=0$ÔòÊä³ö1,
+ 8. è‹¥$\deg v_p=0$åˆ™è¾“å‡º1,
 
- 9. Èô$\deg v_p<\deg v_1$,Ôò$p_1=p$,$v_1=v_p$,²¢ÌøÖÁµÚ6²½,
+ 9. è‹¥$\deg v_p<\deg v_1$,åˆ™$p_1=p$,$v_1=v_p$,å¹¶è·³è‡³ç¬¬6æ­¥,
 
- 10. Èô$\deg v_p=\deg v_1$ÔòÓÉÖĞ¹úÊ£Óà¶¨Àí¼ÆËã$V$Ê¹µÃ$$V\equiv v_1\pmod{p_1},\quad V\equiv v_p\pmod{p},$$²¢¸³Öµ$p_1=p_1p$,$v_1=V$,
+ 10. è‹¥$\deg v_p=\deg v_1$åˆ™ç”±ä¸­å›½å‰©ä½™å®šç†è®¡ç®—$V$ä½¿å¾—$$V\equiv v_1\pmod{p_1},\quad V\equiv v_p\pmod{p},$$å¹¶èµ‹å€¼$p_1=p_1p$,$v_1=V$,
 
- 11. ×ª»ØµÚ6²½,
+ 11. è½¬å›ç¬¬6æ­¥,
 
- 12. ¼ÆËã$w=bv_1\bmod p_1$,Èô$w\mid bf$ÇÒ$w\mid bg$Ôò¼ÌĞø£¬·ñÔò×ª»ØµÚ2²½,
+ 12. è®¡ç®—$w=bv_1\bmod p_1$,è‹¥$w\mid bf$ä¸”$w\mid bg$åˆ™ç»§ç»­ï¼Œå¦åˆ™è½¬å›ç¬¬2æ­¥,
 
- 13. Êä³ö$\mathrm{pp}(w)$.
+ 13. è¾“å‡º$\mathrm{pp}(w)$.
 
 </algorithm>
 
-Ëã·¨µÄÓĞĞ§ĞÔÍ¬Ñù¿ÉÓÉ$w\mid b\gcd(f,g)$ÇÒ$\deg w=\deg\gcd(f,g)$¿´³ö,¿É¼ûÇ°ÃæĞ¡ËØÊıÄ£·½·¨ºÍÉÏÒ»½Ú´óËØÊıÄ£·½·¨µÄÖ¤Ã÷,ÕâÀï²»ÔÙÏêÏ¸ĞğÊöÁË.
+ç®—æ³•çš„æœ‰æ•ˆæ€§åŒæ ·å¯ç”±$w\mid b\gcd(f,g)$ä¸”$\deg w=\deg\gcd(f,g)$çœ‹å‡º,å¯è§å‰é¢å°ç´ æ•°æ¨¡æ–¹æ³•å’Œä¸Šä¸€èŠ‚å¤§ç´ æ•°æ¨¡æ–¹æ³•çš„è¯æ˜,è¿™é‡Œä¸å†è¯¦ç»†å™è¿°äº†.
 
 <remark>
-¶ÔÓÚ´óËØÊıºÍĞ¡ËØÊıÄ£Ëã·¨µÄ¸´ÔÓ¶È,¿É¼û<cite>mca</cite>µÚ6ÕÂµÄÏà¹Ø·ÖÎö,ÔÚ¸ÃÎÄÏ×6.13½Ú¸ø³öÁË¾ßÌåÊµÏÖÖ®ºóËã·¨¸´ÔÓ¶ÈµÄ±È½Ï,ÆäÖĞ´óËØÊıÄ£·½·¨µÄ¸´ÔÓ¶ÈÎª$n^4$,¶øĞ¡ËØÊıÄ£·½·¨µÄ¸´ÔÓ¶ÈÎª$n^3$(<cite>mca</cite>±í6.4).
+å¯¹äºå¤§ç´ æ•°å’Œå°ç´ æ•°æ¨¡ç®—æ³•çš„å¤æ‚åº¦,å¯è§<cite>mca</cite>ç¬¬6ç« çš„ç›¸å…³åˆ†æ,åœ¨è¯¥æ–‡çŒ®6.13èŠ‚ç»™å‡ºäº†å…·ä½“å®ç°ä¹‹åç®—æ³•å¤æ‚åº¦çš„æ¯”è¾ƒ,å…¶ä¸­å¤§ç´ æ•°æ¨¡æ–¹æ³•çš„å¤æ‚åº¦ä¸º$n^4$,è€Œå°ç´ æ•°æ¨¡æ–¹æ³•çš„å¤æ‚åº¦ä¸º$n^3$(<cite>mca</cite>è¡¨6.4).
 </remark>
 
 <remark>
-¹ØÓÚ´ó¡¢Ğ¡ËØÊıÄ£·½·¨µÄÀ©Õ¹Ëã·¨(¼´Í¬Ê±¼ÆËãBezoutÏµÊı),ÕâÀï¾Í²»ÔÙ¼ÓÒÔ½éÉÜÁË,ÒòÎªÔÚºóÎÄµÄÒò×Ó·Ö½âËã·¨ÖĞÒ»°ãÖ»ĞèÒªÇó×î´ó¹«Òò×Ó¼´¿É.ÓĞĞËÈ¤µÄ¶ÁÕß¿ÉÒÔ²Î¿¼<cite>mca</cite>6.11µÈÕÂ½Ú.
+å…³äºå¤§ã€å°ç´ æ•°æ¨¡æ–¹æ³•çš„æ‰©å±•ç®—æ³•(å³åŒæ—¶è®¡ç®—Bezoutç³»æ•°),è¿™é‡Œå°±ä¸å†åŠ ä»¥ä»‹ç»äº†,å› ä¸ºåœ¨åæ–‡çš„å› å­åˆ†è§£ç®—æ³•ä¸­ä¸€èˆ¬åªéœ€è¦æ±‚æœ€å¤§å…¬å› å­å³å¯.æœ‰å…´è¶£çš„è¯»è€…å¯ä»¥å‚è€ƒ<cite>mca</cite>6.11ç­‰ç« èŠ‚.
 </remark>
 
-* ¶àÏîÊ½×éµÄ¸ÅÂÊËã·¨
+* å¤šé¡¹å¼ç»„çš„æ¦‚ç‡ç®—æ³•
 
-ÏÂÃæÒı½øÓÖÒ»¸ö¸ÅÂÊĞÔµÄÒ»Ôª¶àÏîÊ½GCDËã·¨¡£¶ÔÓÚ¶àÏîÊ½×éÀ´Ëµ£¬ÎÒÃÇµ±È»¿ÉÒÔÒ»²½Ò»²½ÇóÃ¿Á½¸ö¶àÏîÊ½µÄ×î´ó¹«Òò×ÓµÃµ½Õû¸ö¶àÏîÊ½×éµÄ×î´ó¹«Òò×Ó£¬È»¶øÏÂÃæ½éÉÜ¸ÅÂÊËã·¨ËäÈ»µÃµ½µÄÊÇ¿ÉÄÜ½â,Ğ§ÂÊÈ´¸ü¸ß¡£Ê×ÏÈ,ÎÒÃÇ¸ø³ö:
+ä¸‹é¢å¼•è¿›åˆä¸€ä¸ªæ¦‚ç‡æ€§çš„ä¸€å…ƒå¤šé¡¹å¼GCDç®—æ³•ã€‚å¯¹äºå¤šé¡¹å¼ç»„æ¥è¯´ï¼Œæˆ‘ä»¬å½“ç„¶å¯ä»¥ä¸€æ­¥ä¸€æ­¥æ±‚æ¯ä¸¤ä¸ªå¤šé¡¹å¼çš„æœ€å¤§å…¬å› å­å¾—åˆ°æ•´ä¸ªå¤šé¡¹å¼ç»„çš„æœ€å¤§å…¬å› å­ï¼Œç„¶è€Œä¸‹é¢ä»‹ç»æ¦‚ç‡ç®—æ³•è™½ç„¶å¾—åˆ°çš„æ˜¯å¯èƒ½è§£,æ•ˆç‡å´æ›´é«˜ã€‚é¦–å…ˆ,æˆ‘ä»¬ç»™å‡º:
 
 <lemma label="le:gcdpro1">
-Éè$R$ÎªUFD£¬$n\in\mathbb{N}$,$S\subset R$ÎªÓĞÏŞ¼¯ÇÒÁî$s=\#S$,$r\in R[x_1,\ldots,x_n]$´ÎÊı²»³¬¹ı$d$,ÄÇÃ´
+è®¾$R$ä¸ºUFDï¼Œ$n\in\mathbb{N}$,$S\subset R$ä¸ºæœ‰é™é›†ä¸”ä»¤$s=\#S$,$r\in R[x_1,\ldots,x_n]$æ¬¡æ•°ä¸è¶…è¿‡$d$,é‚£ä¹ˆ
 
- 1. Èô$r$·ÇÁã£¬Ôò$r$ÔÚ$S^n$ÖĞ×î¶àÓĞ$ds^{n-1}$¸öÁãµã.
+ 1. è‹¥$r$éé›¶ï¼Œåˆ™$r$åœ¨$S^n$ä¸­æœ€å¤šæœ‰$ds^{n-1}$ä¸ªé›¶ç‚¹.
 
- 2. Èô$s>d$ÇÒ$r$ÔÚ$S^n$ÉÏÈ¡ÖµÎªÁã£¬Ôò$r=0$.
+ 2. è‹¥$s>d$ä¸”$r$åœ¨$S^n$ä¸Šå–å€¼ä¸ºé›¶ï¼Œåˆ™$r=0$.
 
 </lemma>
 
 <proof>
-ÏÈÖ¤µÚÒ»Ìõ,$n=1$ÇéĞÎÏÔÈ»¡£½«$r$Ğ´³É$x_n$µÄ¶àÏîÊ½$r=\sum_{0\le i\le k}r_ix_n^i$£¬ÆäÖĞ$r_i\in R[x_1,\ldots,x_{n-1}]$ÇÒ$r_k\neq 0$,ÓÉÓÚ$\deg r_k\le d-k$£¬ÔòÓÉ¹éÄÉ¼ÙÉè£¬$r_k$ÔÚ$S^{n-1}$ÖĞÖÁ¶àÓĞ$(d-k)s^{n-2}$¸öÁãµã£¬ÓÚÊÇ$r$ºÍ$r_k$ÖÁ¶àÔÚ$S^n$ÖĞÓĞ$(d-k)s^{n-1}$¸öÁãµã¡£²¢ÇÒ$\forall a\in S^{n-1}(r_k(a)\neq 0)$£¬$r_a=\sum_{0\le i\le k}r_i(a)x_n^i\in R[x_n]$ÖÁ¶àÓĞ$k$¸öÁãµã£¬Òò´ËÁãµãÊıÄ¿ÉÏÏŞ¿É¹ÀÎª£º$$(d-k)s^{n-1}+ks^{n-1}=ds^{n-1}.$$
+å…ˆè¯ç¬¬ä¸€æ¡,$n=1$æƒ…å½¢æ˜¾ç„¶ã€‚å°†$r$å†™æˆ$x_n$çš„å¤šé¡¹å¼$r=\sum_{0\le i\le k}r_ix_n^i$ï¼Œå…¶ä¸­$r_i\in R[x_1,\ldots,x_{n-1}]$ä¸”$r_k\neq 0$,ç”±äº$\deg r_k\le d-k$ï¼Œåˆ™ç”±å½’çº³å‡è®¾ï¼Œ$r_k$åœ¨$S^{n-1}$ä¸­è‡³å¤šæœ‰$(d-k)s^{n-2}$ä¸ªé›¶ç‚¹ï¼Œäºæ˜¯$r$å’Œ$r_k$è‡³å¤šåœ¨$S^n$ä¸­æœ‰$(d-k)s^{n-1}$ä¸ªé›¶ç‚¹ã€‚å¹¶ä¸”$\forall a\in S^{n-1}(r_k(a)\neq 0)$ï¼Œ$r_a=\sum_{0\le i\le k}r_i(a)x_n^i\in R[x_n]$è‡³å¤šæœ‰$k$ä¸ªé›¶ç‚¹ï¼Œå› æ­¤é›¶ç‚¹æ•°ç›®ä¸Šé™å¯ä¼°ä¸ºï¼š$$(d-k)s^{n-1}+ks^{n-1}=ds^{n-1}.$$
 
-¶øÓÉµÚÒ»Ìõ¿ÉÒÔÖ±½ÓµÃµ½µÚ¶şÌõµÄ½áÂÛ.
+è€Œç”±ç¬¬ä¸€æ¡å¯ä»¥ç›´æ¥å¾—åˆ°ç¬¬äºŒæ¡çš„ç»“è®º.
 </proof>
 
-¸ù¾İÒıÀí##le:gcdpro1 ¿ÉÖª£¬Èô´Ó$S^n$ÖĞËæ»úÑ¡È¡$a$,ÔòÓĞ¸ÅÂÊ$\mathrm{P}\{r(a)=0\mid a\in S^n\}\le d/\#S$.¼ÙÉèÎÒÃÇÓĞÒ»¸öÓĞÏŞ¼¯$S\subset F$ºÍÒ»¸ö$S$ÉÏËæ»úÊı·¢ÉúÆ÷£¬ÔòÓĞÏÂÃæµÄ£º
+æ ¹æ®å¼•ç†##le:gcdpro1 å¯çŸ¥ï¼Œè‹¥ä»$S^n$ä¸­éšæœºé€‰å–$a$,åˆ™æœ‰æ¦‚ç‡$\mathrm{P}\{r(a)=0\mid a\in S^n\}\le d/\#S$.å‡è®¾æˆ‘ä»¬æœ‰ä¸€ä¸ªæœ‰é™é›†$S\subset F$å’Œä¸€ä¸ª$S$ä¸Šéšæœºæ•°å‘ç”Ÿå™¨ï¼Œåˆ™æœ‰ä¸‹é¢çš„ï¼š
 
-<algorithm name="¶àÏîÊ½×é×î´ó¹«Òò×ÓµÄ¸ÅÂÊËã·¨" label="al:polysgcd">
+<algorithm name="å¤šé¡¹å¼ç»„æœ€å¤§å…¬å› å­çš„æ¦‚ç‡ç®—æ³•" label="al:polysgcd">
 
-ÊäÈë£º$f_1,\ldots,f_n\in F[x]$£¬$F$ÊÇÓò,
+è¾“å…¥ï¼š$f_1,\ldots,f_n\in F[x]$ï¼Œ$F$æ˜¯åŸŸ,
 
-Êä³ö£ºÊ×Ò»¶àÏîÊ½$h$£¬ÇÒ$h=\gcd(f_1,\ldots,f_n)$¿ÉÄÜÕıÈ·.
+è¾“å‡ºï¼šé¦–ä¸€å¤šé¡¹å¼$h$ï¼Œä¸”$h=\gcd(f_1,\ldots,f_n)$å¯èƒ½æ­£ç¡®.
 
- 1. ÈÎÈ¡$a_3,\ldots,a_n\in S$,
+ 1. ä»»å–$a_3,\ldots,a_n\in S$,
 
- 2. Áî$g=f_2+\sum_{3\le i\le n}a_if_i$,
+ 2. ä»¤$g=f_2+\sum_{3\le i\le n}a_if_i$,
 
- 3. Êä³ö$\gcd(f_1,g)$.
+ 3. è¾“å‡º$\gcd(f_1,g)$.
 
 </algorithm>
 
 <remark>
-Êµ¼ùÖĞÊ¹ÓÃ¿ìËÙEuclidËã·¨À´Ìá¸ßĞ§ÂÊ¡£
+å®è·µä¸­ä½¿ç”¨å¿«é€ŸEuclidç®—æ³•æ¥æé«˜æ•ˆç‡ã€‚
 </remark>
 
 <theorem>
-Éè$h$ÎªËã·¨##al:polysgcd ÖĞµÄÊä³ö½á¹û,$h^*=\gcd(f_1,\ldots,f_n)$.Ôò$h^*\mid h$£¬ÇÒ$\mathrm{P}\{h\neq h^*\}\le d/\#S$.
+è®¾$h$ä¸ºç®—æ³•##al:polysgcd ä¸­çš„è¾“å‡ºç»“æœ,$h^*=\gcd(f_1,\ldots,f_n)$.åˆ™$h^*\mid h$ï¼Œä¸”$\mathrm{P}\{h\neq h^*\}\le d/\#S$.
 </theorem>
 
-<proof>$h^*\mid h$ÏÔÈ»¡£Í¨¹ı½«$f_i$³ıÒÔ$h^*$ÎÒÃÇ¿ÉÒÔ¼ÙÉèÕû¸öº¯Êı×é×î´ó¹«Òò×ÓÎª1£¬Éè$f_1\neq 0$£¬Áî$A_3,\ldots,A_n$Îª$F[x] $ÉÏĞÂµÄÎ´¶¨Ôª£¬Áî$R=F[A_3,\ldots,A_n]$,ÔÙÁî$K=F(A_3,\ldots,A_n)$Îª$R$µÄ·ÖÊ½Óò£¬Ãü$G=f_2+\sum_{3\le i\le n}A_if_i\in R[x]$,$r=\mathrm{res}_x(f_1,G)\in R$£¬Ôò$r$ÊÇ¹ØÓÚ$A_3,\ldots,A_n$µÄ´ÎÊı²»³¬¹ı$d$µÄ¶àÏîÊ½¡£ÁîÀíÏë$I=\idea{A_3-a_3,\ldots,A_n-a_n}$,ÓĞ$R/I\cong F$,ÓÉÒıÀí##le:resultant2 ÓĞ
+<proof>$h^*\mid h$æ˜¾ç„¶ã€‚é€šè¿‡å°†$f_i$é™¤ä»¥$h^*$æˆ‘ä»¬å¯ä»¥å‡è®¾æ•´ä¸ªå‡½æ•°ç»„æœ€å¤§å…¬å› å­ä¸º1ï¼Œè®¾$f_1\neq 0$ï¼Œä»¤$A_3,\ldots,A_n$ä¸º$F[x] $ä¸Šæ–°çš„æœªå®šå…ƒï¼Œä»¤$R=F[A_3,\ldots,A_n]$,å†ä»¤$K=F(A_3,\ldots,A_n)$ä¸º$R$çš„åˆ†å¼åŸŸï¼Œå‘½$G=f_2+\sum_{3\le i\le n}A_if_i\in R[x]$,$r=\mathrm{res}_x(f_1,G)\in R$ï¼Œåˆ™$r$æ˜¯å…³äº$A_3,\ldots,A_n$çš„æ¬¡æ•°ä¸è¶…è¿‡$d$çš„å¤šé¡¹å¼ã€‚ä»¤ç†æƒ³$I=\idea{A_3-a_3,\ldots,A_n-a_n}$,æœ‰$R/I\cong F$,ç”±å¼•ç†##le:resultant2 æœ‰
 $$\overline{r}=r(a_3,\ldots,a_n)\neq 0\Leftrightarrow\mathrm{res}_x(f_1,g)\neq 0\Leftrightarrow\gcd(f_1,g)=1,$$
-Éè$u$Îª$f_1$,$G$ÔÚ$R[x]$ÖĞµÄ¹«Òò×Ó£¬ÓÉÓÚ$u\mid f_1$£¬ÖªËüµÄÏµÊı¶¼ÊôÓÚ$f_1$ÔÚ$F$µÄ·ÖÁÑÓò$  E $£¬µ«ÊÇ$E[x]\cap K[x]=F[x]$,Òò´Ë$u\in F[x]$.ÓÚÊÇÓÉ$u\mid G$ÍÆÖª$u\mid f_i$ ($i=1,\ldots,n$)£¬ÓÖÓÉÓÚ$\gcd(f_1,\ldots,f_n)=1$,Öª$u\in F$£¬Òò´Ë$\gcd(f_1,G)$ÎªÒ»³£Êı£¬$r$ÊÇ$R$ÖĞÒ»·ÇÁãÔª.ÓÉÒıÀí##le:gcdpro1 ¿ÉµÃ¶¨ÀíÖĞ¶ÔÓÚ¸ÅÂÊµÄ¹À¼Æ¡£
+è®¾$u$ä¸º$f_1$,$G$åœ¨$R[x]$ä¸­çš„å…¬å› å­ï¼Œç”±äº$u\mid f_1$ï¼ŒçŸ¥å®ƒçš„ç³»æ•°éƒ½å±äº$f_1$åœ¨$F$çš„åˆ†è£‚åŸŸ$  E $ï¼Œä½†æ˜¯$E[x]\cap K[x]=F[x]$,å› æ­¤$u\in F[x]$.äºæ˜¯ç”±$u\mid G$æ¨çŸ¥$u\mid f_i$ ($i=1,\ldots,n$)ï¼Œåˆç”±äº$\gcd(f_1,\ldots,f_n)=1$,çŸ¥$u\in F$ï¼Œå› æ­¤$\gcd(f_1,G)$ä¸ºä¸€å¸¸æ•°ï¼Œ$r$æ˜¯$R$ä¸­ä¸€éé›¶å…ƒ.ç”±å¼•ç†##le:gcdpro1 å¯å¾—å®šç†ä¸­å¯¹äºæ¦‚ç‡çš„ä¼°è®¡ã€‚
 </proof>
 
-Êµ¼Ê¹ı³ÌÖĞ£¬¿ÉÒÔÈ¡$f_1$Îª×îĞ¡´ÎÊıµÄ¶àÏîÊ½£¬ÒÔÊ¹´íÎó¸ÅÂÊ½µµÍ£¬²¢ÇÒÔÚËã·¨½áÊøºó¼ìÑé$h$ÊÇ·ñÎªËùÇóµÄ×î´ó¹«Òò×Ó£¬Èô²»ÊÇ£¬ÔòÖØĞÂÑ¡È¡Ëæ»úÊı¼ÆËã£¬Ö±ÖÁÊä³öÕıÈ·½á¹û¡£
+å®é™…è¿‡ç¨‹ä¸­ï¼Œå¯ä»¥å–$f_1$ä¸ºæœ€å°æ¬¡æ•°çš„å¤šé¡¹å¼ï¼Œä»¥ä½¿é”™è¯¯æ¦‚ç‡é™ä½ï¼Œå¹¶ä¸”åœ¨ç®—æ³•ç»“æŸåæ£€éªŒ$h$æ˜¯å¦ä¸ºæ‰€æ±‚çš„æœ€å¤§å…¬å› å­ï¼Œè‹¥ä¸æ˜¯ï¼Œåˆ™é‡æ–°é€‰å–éšæœºæ•°è®¡ç®—ï¼Œç›´è‡³è¾“å‡ºæ­£ç¡®ç»“æœã€‚

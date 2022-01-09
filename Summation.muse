@@ -1,13 +1,13 @@
-#title ·ûºÅÇóºÍ
+#title ç¬¦å·æ±‚å’Œ
 
 <contents>
 
-ÎÒÃÇ½ÓÏÂÀ´ÒªÌÖÂÛµÄ·ûºÅÇóºÍÎÊÌâÊÇÖ¸·ûºÅ±í´ïÊ½¼¶ÊıµÄÇóºÍ,Ëü°üÀ¨<index>²¿·ÖºÍ</index>ÎÊÌâÒÔ¼°<index>ÎŞÇîºÍ</index>(¼´²¿·ÖºÍĞòÁĞµÄ¼«ÏŞ)ÎÊÌâÁ½²¿·Ö.Èç¹ûÇóºÍÉÏ½ç$n$²»³öÏÖÔÚ´ıÇóºÍµÄ¼¶ÊıÏîÖĞ,Ôò³ÆÎª<index>²»¶¨ÇóºÍ</index>,ÕâÀïÎÒÃÇÖ»ÌÖÂÛ²»¶¨ÇóºÍµÄ²¿·ÖºÍÎÊÌâ.
+æˆ‘ä»¬æ¥ä¸‹æ¥è¦è®¨è®ºçš„ç¬¦å·æ±‚å’Œé—®é¢˜æ˜¯æŒ‡ç¬¦å·è¡¨è¾¾å¼çº§æ•°çš„æ±‚å’Œ,å®ƒåŒ…æ‹¬<index>éƒ¨åˆ†å’Œ</index>é—®é¢˜ä»¥åŠ<index>æ— ç©·å’Œ</index>(å³éƒ¨åˆ†å’Œåºåˆ—çš„æé™)é—®é¢˜ä¸¤éƒ¨åˆ†.å¦‚æœæ±‚å’Œä¸Šç•Œ$n$ä¸å‡ºç°åœ¨å¾…æ±‚å’Œçš„çº§æ•°é¡¹ä¸­,åˆ™ç§°ä¸º<index>ä¸å®šæ±‚å’Œ</index>,è¿™é‡Œæˆ‘ä»¬åªè®¨è®ºä¸å®šæ±‚å’Œçš„éƒ¨åˆ†å’Œé—®é¢˜.
 
 
-* ¶àÏîÊ½¼¶ÊıÇóºÍ
+* å¤šé¡¹å¼çº§æ•°æ±‚å’Œ
 
-ÎªÁË½â¾ö<index>¶àÏîÊ½¼¶Êı</index>ÇóºÍÎÊÌâ,ÎÒÃÇÏÈÀ´¿´Ò»¿´µ¥ÏîÊ½¼¶ÊıÇóºÍ,ÒÔÏÂÊÇÎÒÃÇÊìÖªµÄ¼¸¸öÇóºÍ¹«Ê½,¹«Ê½µÄÖ¤Ã÷Çë²ÎÔÄ<cite>shuxueshouce</cite>.
+ä¸ºäº†è§£å†³<index>å¤šé¡¹å¼çº§æ•°</index>æ±‚å’Œé—®é¢˜,æˆ‘ä»¬å…ˆæ¥çœ‹ä¸€çœ‹å•é¡¹å¼çº§æ•°æ±‚å’Œ,ä»¥ä¸‹æ˜¯æˆ‘ä»¬ç†ŸçŸ¥çš„å‡ ä¸ªæ±‚å’Œå…¬å¼,å…¬å¼çš„è¯æ˜è¯·å‚é˜…<cite>shuxueshouce</cite>.
 <theorem>
  1.$\sum\limits_{0\le k<n}k=\frac{n(n-1)}{2}$
  2.$\sum\limits_{0\le k<n}k^2=\frac{n(n-1)(2n-1)}{6}$
@@ -15,13 +15,13 @@
  4.$\sum\limits_{0\le k<n}k^4=\frac{n(n-1)(2n-1)(3n^2-3n-1)}{30}$
 </theorem>
 <remark>
-ÕâĞ©¹«Ê½ÈİÒ×ÓÃ¹éÄÉ·¨Ö¤Ã÷,µ«ºÜÄÑÖ±½Ó´ÓÖĞÕÒ³öÏÔÃ÷µÄ¹æÂÉ.
+è¿™äº›å…¬å¼å®¹æ˜“ç”¨å½’çº³æ³•è¯æ˜,ä½†å¾ˆéš¾ç›´æ¥ä»ä¸­æ‰¾å‡ºæ˜¾æ˜çš„è§„å¾‹.
 </remark>
 
-ÎªÁË½øÒ»²½µØÌÖÂÛ,ÎÒÃÇÒıÈë<index>²î·ÖËã×Ó</index>ºÍ<index>²î·ÖÔ­º¯Êı</index>µÄ¶¨Òå.
-<definition name="²î·ÖËã×Ó" label="de:difference">
- 1.Æ½ÒÆËã×Ó$E$¶¨ÒåÎª$$E(f)(x)=f(x+1),$$ÁíÍâ¶¨Òå$E^n=E\circ E^{n-1}$,$E^1=E$,$E^0=e$.
- 2.¶¨Òå²î·ÖËã×Ó$\Delta=E^1-E^0$,Èç¹û$g=\Delta(f)$,ÄÇÃ´³Æ$f$Îª$g$µÄ²î·ÖÔ­º¯Êı.
+ä¸ºäº†è¿›ä¸€æ­¥åœ°è®¨è®º,æˆ‘ä»¬å¼•å…¥<index>å·®åˆ†ç®—å­</index>å’Œ<index>å·®åˆ†åŸå‡½æ•°</index>çš„å®šä¹‰.
+<definition name="å·®åˆ†ç®—å­" label="de:difference">
+ 1.å¹³ç§»ç®—å­$E$å®šä¹‰ä¸º$$E(f)(x)=f(x+1),$$å¦å¤–å®šä¹‰$E^n=E\circ E^{n-1}$,$E^1=E$,$E^0=e$.
+ 2.å®šä¹‰å·®åˆ†ç®—å­$\Delta=E^1-E^0$,å¦‚æœ$g=\Delta(f)$,é‚£ä¹ˆç§°$f$ä¸º$g$çš„å·®åˆ†åŸå‡½æ•°.
 </definition>
 <theorem>
 $$\Delta(f\cdot g)=\Delta(f)\cdot g+f\cdot\Delta(g)-\Delta(f)\cdot\Delta(g).$$
@@ -37,18 +37,18 @@ $$\Delta(f\cdot g)=\Delta(f)\cdot g+f\cdot\Delta(g)-\Delta(f)\cdot\Delta(g).$$
 </proof>
 
 <theorem>
-Èç¹û$g$ÊÇ$f$µÄ²î·ÖÔ­º¯Êı,¼´$g=\Delta(f)$,ÄÇÃ´$$\sum_{i=a}^{b-1}g(i)=f(b)-f(a).$$
+å¦‚æœ$g$æ˜¯$f$çš„å·®åˆ†åŸå‡½æ•°,å³$g=\Delta(f)$,é‚£ä¹ˆ$$\sum_{i=a}^{b-1}g(i)=f(b)-f(a).$$
 </theorem>
 <proof>
 $$\sum_{i=a}^{b-1}g(i)=\sum_{i=a}^{b-1}(f(i+1)-f(i))=f(b)-f(a).$$
 </proof>
 <remark>
-$$g=\Delta(f)\Leftrightarrow f=\Sigma(g),$$ÕâºÍÎ¢»ı·ÖµÄ»¥Äæ¶¨Àí$$g=D(f)\Leftrightarrow f=\int g$$ÊÇÀàËÆµÄ.
+$$g=\Delta(f)\Leftrightarrow f=\Sigma(g),$$è¿™å’Œå¾®ç§¯åˆ†çš„äº’é€†å®šç†$$g=D(f)\Leftrightarrow f=\int g$$æ˜¯ç±»ä¼¼çš„.
 </remark>
 
-<index name="º¯Êı½µ½×³Ë"></index>
-<definition name="º¯Êı½µ½×³Ë">
-º¯Êı$f$µÄ$m$½×½µ½×³Ë$$f^{\underline{m}}=f(x)\cdot f(x-1)\cdots f(x-m+1).$$
+<index name="å‡½æ•°é™é˜¶ä¹˜"></index>
+<definition name="å‡½æ•°é™é˜¶ä¹˜">
+å‡½æ•°$f$çš„$m$é˜¶é™é˜¶ä¹˜$$f^{\underline{m}}=f(x)\cdot f(x-1)\cdots f(x-m+1).$$
 </definition>
 <theorem>
 $$\Delta(x^{\underline{m}})=mx^{\underline{m-1}}.$$
@@ -66,7 +66,7 @@ $$\Delta(x^{\underline{m}})=mx^{\underline{m-1}}.$$
 $$\sum_{i=0}^{n-1}i^{\underline{m}}={1\over m+1}n^{\underline{m+1}}.$$
 </remark>
 
-Éè$$x^m=\sum_{i=0}^ma_{m,i}x^{\underline{i}},$$Ôò
+è®¾$$x^m=\sum_{i=0}^ma_{m,i}x^{\underline{i}},$$åˆ™
 <latex>
 \begin{align*}
 x^m&=x\cdot x^{m-1}\\
@@ -75,21 +75,21 @@ x^m&=x\cdot x^{m-1}\\
 &=x^{\underline{m}}+\sum_{i=1}^{m-1}(a_{m-1,i-1}+i\cdot a_{m-1,i})x^{\underline{i}},  
 \end{align*}
 </latex>
-ÓÚÊÇÓĞµİÍÆ¹«Ê½$$a_{m,i}=a_{m-1,i-1}+i\cdot a_{m-1,i},$$ÆäÖĞ$a_{m,0}=1$.
+äºæ˜¯æœ‰é€’æ¨å…¬å¼$$a_{m,i}=a_{m-1,i-1}+i\cdot a_{m-1,i},$$å…¶ä¸­$a_{m,0}=1$.
 
-$a_{m,i}$ÔÚ×éºÏÊıÑ§ÖĞ±»³ÆÎª<index>µÚ¶şÀàStirlingÊı</index>(²Î¼û<cite>mca</cite>),Ëü±íÊ¾½«Ò»¸ö$m$ÔªÓĞÏŞ¼¯»®·ÖÎª$i$¸ö·Ç¿Õ×Ó¼¯µÄ·½·¨Êı.
+$a_{m,i}$åœ¨ç»„åˆæ•°å­¦ä¸­è¢«ç§°ä¸º<index>ç¬¬äºŒç±»Stirlingæ•°</index>(å‚è§<cite>mca</cite>),å®ƒè¡¨ç¤ºå°†ä¸€ä¸ª$m$å…ƒæœ‰é™é›†åˆ’åˆ†ä¸º$i$ä¸ªéç©ºå­é›†çš„æ–¹æ³•æ•°.
 
 <problem>
-ÒÔ$m=1,2$ÎªÀı.
+ä»¥$m=1,2$ä¸ºä¾‹.
  1.$\sum\limits_{i=0}^{n-1}i=\sum\limits_{i=0}^{n-1}i^{\underline 1}={1\over 2}n^{\underline 2}={1\over 2}n(n-1),$
  2.$\sum\limits_{i=0}^{n-1}i^2=\sum\limits_{i=0}^{n-1}(i^{\underline 2}+i^{\underline 1})={1\over 3}n^{\underline 3}+{1\over 2}n^{\underline 2}={1\over 6}n(n+1)(2n+1).$
 </problem>
 
-<theorem name="¶àÏîÊ½¼¶Êı²¿·ÖºÍ">
-Éè$$g(x)=\sum\limits_{m=0}^dg_mx^m,$$Ôò$$\sum_{k=0}^{n-1}g(k)=\sum_{0\le i\le m\le d}g_ma_{m,i}\frac{n^{\underline{i+1}}}{i+1}.$$
+<theorem name="å¤šé¡¹å¼çº§æ•°éƒ¨åˆ†å’Œ">
+è®¾$$g(x)=\sum\limits_{m=0}^dg_mx^m,$$åˆ™$$\sum_{k=0}^{n-1}g(k)=\sum_{0\le i\le m\le d}g_ma_{m,i}\frac{n^{\underline{i+1}}}{i+1}.$$
 </theorem>
 <proof>
-¸ù¾İ×¢##re:function-falling-factorial ÓĞ
+æ ¹æ®æ³¨##re:function-falling-factorial æœ‰
 <latex>
 \begin{align*}
   \sum_{k=0}^{n-1}g(k)&=\sum_{k=0}^{n-1}(\sum_{m=0}^dg_m(\sum_{i=0}^ma_{m,i}k^{\underline i}))\\
@@ -99,14 +99,14 @@ $a_{m,i}$ÔÚ×éºÏÊıÑ§ÖĞ±»³ÆÎª<index>µÚ¶şÀàStirlingÊı</index>(²Î¼û<cite>mca</cite>)
 </latex>
 </proof>
 
-* ³¬¼¸ºÎ¼¶Êı
+* è¶…å‡ ä½•çº§æ•°
 
-ºÍ¶àÏîÊ½¼¶ÊıµÄÇéĞÎÒ»Ñù,Ê×ÏÈÑĞ¾¿³¬¼¸ºÎµ¥ÏîÊ½¼¶ÊıÇóºÍ.
-<definition name="³¬¼¸ºÎµ¥ÏîÊ½">
-µ¥ÏîÊ½¼¶ÊıÍ¨Ïî$g_n$³ÆÎª<index>³¬¼¸ºÎµ¥ÏîÊ½</index>,Èç¹ûÏàÁÚÏîÖ®±È$$r(n)=\frac{g_{n+1}}{g_n}$$ÊÇ¹ØÓÚ$n$µÄÓĞÀíº¯Êı.
+å’Œå¤šé¡¹å¼çº§æ•°çš„æƒ…å½¢ä¸€æ ·,é¦–å…ˆç ”ç©¶è¶…å‡ ä½•å•é¡¹å¼çº§æ•°æ±‚å’Œ.
+<definition name="è¶…å‡ ä½•å•é¡¹å¼">
+å•é¡¹å¼çº§æ•°é€šé¡¹$g_n$ç§°ä¸º<index>è¶…å‡ ä½•å•é¡¹å¼</index>,å¦‚æœç›¸é‚»é¡¹ä¹‹æ¯”$$r(n)=\frac{g_{n+1}}{g_n}$$æ˜¯å…³äº$n$çš„æœ‰ç†å‡½æ•°.
 </definition>
 <problem>
-¶şÏîÊ½ÏµÊı$\binom{m}{n}$ÊÇ³¬¼¸ºÎµ¥ÏîÊ½,ÒòÎª
+äºŒé¡¹å¼ç³»æ•°$\binom{m}{n}$æ˜¯è¶…å‡ ä½•å•é¡¹å¼,å› ä¸º
 <latex>
 \begin{align*}
   \frac{\binom{m}{n+1}}{\binom{m}{n}}&=\frac{\Gamma(m+1)\Gamma(n+1)\Gamma(m-n+1)}{\Gamma(n+2)\Gamma(m+n)\Gamma(m)}\\
@@ -115,32 +115,32 @@ $a_{m,i}$ÔÚ×éºÏÊıÑ§ÖĞ±»³ÆÎª<index>µÚ¶şÀàStirlingÊı</index>(²Î¼û<cite>mca</cite>)
 </latex>
 </problem>
 
-Éè$$r(n)=\frac{g_{n+1}}{g_n}=\frac{a(n)}{b(n)}\cdot \frac{c(n+1)}{c(n)},$$²¢ÇÒÂú×ã$\gcd(a(n),b(n+k))=1$,$\forall k\in \mathbb{N}$.Éè$\Delta(f)=g$,Ôò$f_n=f_0+\sum\limits_{k=0}^{n-1}g_k$,$$\frac{f_n}{g_n}=\frac{f_n}{f_{n+1}-f_n}=\frac{1}{\frac{f_{n+1}}{f_n}-1}.$$Áî$y(n)=\frac{f_n}{g_n}$,Ôò$$y(n+1)g(n+1)=f_{n+1}=(y(n)+1)g(n),$$¼´$r(n)y(n+1)=y(n)+1$.ËùÒÔ¿ÉÈ¡$y(n)=\frac{b(n-1)}{c(n)}x(n)$,ÆäÖĞ$x(n)\neq0$ÇÒÂú×ã$$a(n)x(n+1)-b(n-1)x(n)=c(n).$$
+è®¾$$r(n)=\frac{g_{n+1}}{g_n}=\frac{a(n)}{b(n)}\cdot \frac{c(n+1)}{c(n)},$$å¹¶ä¸”æ»¡è¶³$\gcd(a(n),b(n+k))=1$,$\forall k\in \mathbb{N}$.è®¾$\Delta(f)=g$,åˆ™$f_n=f_0+\sum\limits_{k=0}^{n-1}g_k$,$$\frac{f_n}{g_n}=\frac{f_n}{f_{n+1}-f_n}=\frac{1}{\frac{f_{n+1}}{f_n}-1}.$$ä»¤$y(n)=\frac{f_n}{g_n}$,åˆ™$$y(n+1)g(n+1)=f_{n+1}=(y(n)+1)g(n),$$å³$r(n)y(n+1)=y(n)+1$.æ‰€ä»¥å¯å–$y(n)=\frac{b(n-1)}{c(n)}x(n)$,å…¶ä¸­$x(n)\neq0$ä¸”æ»¡è¶³$$a(n)x(n+1)-b(n-1)x(n)=c(n).$$
 
-** ¼«´ó½×³Ë·Ö½â
+** æå¤§é˜¶ä¹˜åˆ†è§£
 
-<index>¼«´ó½×³Ë·Ö½â</index>(Greatest Factorial Factorization)ÊÇ¶àÏîÊ½µÄÒ»ÖÖÌØÊâ·Ö½â.
-<definition name="¼«´ó½×³Ë·Ö½â" label="de:gff">
-Éè$f$ÎªÊ×Ò»¶àÏîÊ½,¼Ç$f$µÄ¼«´ó½×³Ë·Ö½âÎª$$\mathrm{gff}(f)=\langle f_1,\cdots,f_m\rangle,$$ËüÂú×ã:
+<index>æå¤§é˜¶ä¹˜åˆ†è§£</index>(Greatest Factorial Factorization)æ˜¯å¤šé¡¹å¼çš„ä¸€ç§ç‰¹æ®Šåˆ†è§£.
+<definition name="æå¤§é˜¶ä¹˜åˆ†è§£" label="de:gff">
+è®¾$f$ä¸ºé¦–ä¸€å¤šé¡¹å¼,è®°$f$çš„æå¤§é˜¶ä¹˜åˆ†è§£ä¸º$$\mathrm{gff}(f)=\langle f_1,\cdots,f_m\rangle,$$å®ƒæ»¡è¶³:
  1.$f=f_1^{\underline 1}\cdots f_m^{\underline m}$.
- 2.$f_1,\cdots,f_m$ÎªÊ×Ò»¶àÏîÊ½ÇÒ$f_m\neq 1$.
+ 2.$f_1,\cdots,f_m$ä¸ºé¦–ä¸€å¤šé¡¹å¼ä¸”$f_m\neq 1$.
  3.$\gcd(f_i^{\underline i},E(f_j))=1$.
  4.$\gcd(f_i^{\underline i},E^{-j}f_j)=1$,$1\le i,j\le m$.
 </definition>
 <remark>
-ÕâÑù¶¨ÒåÊÇÎªÁË±£Ö¤$$f_j^{\underline j}=f_j\cdot E^{-1}f_j\cdots E^{-j+1}f_j$$Ã»ÓĞ¸üĞ¡µÄ½µ½×³ËÒò×Ó,ÒòÎªÈç¹û$g=\gcd(f_i^{\underline i},E^{-j}f_j)\neq 1$,Ôò$g^{\underline{j+1}}|f$.
+è¿™æ ·å®šä¹‰æ˜¯ä¸ºäº†ä¿è¯$$f_j^{\underline j}=f_j\cdot E^{-1}f_j\cdots E^{-j+1}f_j$$æ²¡æœ‰æ›´å°çš„é™é˜¶ä¹˜å› å­,å› ä¸ºå¦‚æœ$g=\gcd(f_i^{\underline i},E^{-j}f_j)\neq 1$,åˆ™$g^{\underline{j+1}}|f$.
 </remark>
 
-¹ØÓÚ¼«´ó½×³Ë·Ö½âÓĞÈçÏÂ¶¨Àí,¶¨ÀíµÄÖ¤Ã÷Çë²ÎÔÄ<cite>mca</cite>.
+å…³äºæå¤§é˜¶ä¹˜åˆ†è§£æœ‰å¦‚ä¸‹å®šç†,å®šç†çš„è¯æ˜è¯·å‚é˜…<cite>mca</cite>.
 <theorem>
- 1.Éè$f$ÎªÊ×Ò»¶àÏîÊ½ÇÒ$f\neq 0$,Ôò$f$ÖÁ¶àÓĞÒ»ÖÖ¼«´ó½×³Ë·Ö½â.
+ 1.è®¾$f$ä¸ºé¦–ä¸€å¤šé¡¹å¼ä¸”$f\neq 0$,åˆ™$f$è‡³å¤šæœ‰ä¸€ç§æå¤§é˜¶ä¹˜åˆ†è§£.
  2.$\mathrm{gff}(\gcd(f,E(f)))=\langle f_2,\cdots,f_m\rangle$.
 </theorem>
 
-** GosperËã·¨
-<index name="GosperËã·¨"></index>
+** Gosperç®—æ³•
+<index name="Gosperç®—æ³•"></index>
 <lemma>
-¸ø¶¨³¬¼¸ºÎµ¥ÏîÊ½$g$,Éè$\sigma={E(g)\over g}$,$f=\tau\cdot g$,Ôò$$\Delta(f)=g\Leftrightarrow E(\tau)\cdot \sigma-\tau=1.$$
+ç»™å®šè¶…å‡ ä½•å•é¡¹å¼$g$,è®¾$\sigma={E(g)\over g}$,$f=\tau\cdot g$,åˆ™$$\Delta(f)=g\Leftrightarrow E(\tau)\cdot \sigma-\tau=1.$$
 </lemma>
 <proof>
 <latex>
@@ -152,12 +152,12 @@ $a_{m,i}$ÔÚ×éºÏÊıÑ§ÖĞ±»³ÆÎª<index>µÚ¶şÀàStirlingÊı</index>(²Î¼û<cite>mca</cite>)
 </latex>
 </proof>
 <remark label="re:gosper1">
-ÓÉ³¬¼¸ºÎµ¥ÏîÊ½µÄĞÔÖÊ¿ÉÒÔÉè$\sigma={a\over b}$,$\tau={u\over v}$,ÆäÖĞ$(a,b)=(u,v)=1$,²¢ÇÒ$b,v$¾ùÎªÊ×Ò»¶àÏîÊ½,ÉÏÊ½»¯Îª$$a\cdot v\cdot E(u)-b\cdot u\cdot E(v)=b\cdot v\cdot E(v).$$ÕâÑùÎÒÃÇ¾Í°ÑÇó½â²î·ÖÔ­º¯ÊıµÄÎÊÌâ¹é½áÎªÇó½â¶àÏîÊ½·½³Ì.ÀíÂÛÉÏ¿ÉÒÔÖ±½ÓÍ¨¹ı´ı¶¨ÏµÊı·¨½â³öÕâ¸ö·½³Ì,µ«ÊÇ¼ÆËãÁ¿ºÜ´ó.
+ç”±è¶…å‡ ä½•å•é¡¹å¼çš„æ€§è´¨å¯ä»¥è®¾$\sigma={a\over b}$,$\tau={u\over v}$,å…¶ä¸­$(a,b)=(u,v)=1$,å¹¶ä¸”$b,v$å‡ä¸ºé¦–ä¸€å¤šé¡¹å¼,ä¸Šå¼åŒ–ä¸º$$a\cdot v\cdot E(u)-b\cdot u\cdot E(v)=b\cdot v\cdot E(v).$$è¿™æ ·æˆ‘ä»¬å°±æŠŠæ±‚è§£å·®åˆ†åŸå‡½æ•°çš„é—®é¢˜å½’ç»“ä¸ºæ±‚è§£å¤šé¡¹å¼æ–¹ç¨‹.ç†è®ºä¸Šå¯ä»¥ç›´æ¥é€šè¿‡å¾…å®šç³»æ•°æ³•è§£å‡ºè¿™ä¸ªæ–¹ç¨‹,ä½†æ˜¯è®¡ç®—é‡å¾ˆå¤§.
 </remark>
 
-GosperËã·¨ÀûÓÃ¼«´ó½×³Ë·Ö½âÀ´Çó½â×¢##re:gosper1 ÖĞµÄ¶àÏîÊ½·½³Ì.
+Gosperç®—æ³•åˆ©ç”¨æå¤§é˜¶ä¹˜åˆ†è§£æ¥æ±‚è§£æ³¨##re:gosper1 ä¸­çš„å¤šé¡¹å¼æ–¹ç¨‹.
 
-¼Ç$\gcd(E(f))=\gcd(f,E(f))$,Éè$v_0={v\over\gcd(E(v))}$,$v_1={E(v)\over\gcd(E(v))}$,Ôò$(v_0,v_1)=1$,·½³ÌÁ½±ßÍ¬³ıÒÔ$\gcd(E(v))$µÃ$$a\cdot v_0\cdot E(u)-b\cdot v_1\cdot u=b\cdot v_0\cdot v_1\cdot\gcd(E(v)),$$ÆäÖĞ$$(u,v_0)=(E(u),v_1)=(u,v)=1,$$ÓÚÊÇÓĞ$$v_0|b,v_1|a.$$Éè$\mathrm{gff}(v)=\langle h_1,\cdots,h_m\rangle$,Ôò
+è®°$\gcd(E(f))=\gcd(f,E(f))$,è®¾$v_0={v\over\gcd(E(v))}$,$v_1={E(v)\over\gcd(E(v))}$,åˆ™$(v_0,v_1)=1$,æ–¹ç¨‹ä¸¤è¾¹åŒé™¤ä»¥$\gcd(E(v))$å¾—$$a\cdot v_0\cdot E(u)-b\cdot v_1\cdot u=b\cdot v_0\cdot v_1\cdot\gcd(E(v)),$$å…¶ä¸­$$(u,v_0)=(E(u),v_1)=(u,v)=1,$$äºæ˜¯æœ‰$$v_0|b,v_1|a.$$è®¾$\mathrm{gff}(v)=\langle h_1,\cdots,h_m\rangle$,åˆ™
 <latex>
 \begin{align*}
 v_0&=\frac{h_1^{\underline 1}h_2^{\underline 2}\cdots h_m^{\underline m}}{h_2^{\underline 1}\cdots h_m^{\underline{m-1}}}\\
@@ -170,41 +170,41 @@ v_1&=\frac{E(h_1)^{\underline 1}E(h_2)^{\underline 2}\cdots E(h_m)^{\underline m
 &=E(h_1)\cdot E(h_2)\cdots E(h_m),
 \end{align*}
 </latex>
-ÔÙÓÉ$v_0|b$,$v_1|a$¿ÉµÃ$$h_i|E^{-1}(a),h_i|E^{i-1}(b).$$Èô$v\neq 1$,Ôò
+å†ç”±$v_0|b$,$v_1|a$å¯å¾—$$h_i|E^{-1}(a),h_i|E^{i-1}(b).$$è‹¥$v\neq 1$,åˆ™
 <latex>
 \begin{align*}
   1&\neq h_m|\gcd(E^{-1}(a),E^{m-1}(b))\\
 &=E^{-1}(\gcd(a(x),b(x+m))),
 \end{align*}
 </latex>
-¶øÕâµÈ¼ÛÓÚ$$\mathrm{res}_x(a(x),b(x+y))|_{y=m}=0.$$
+è€Œè¿™ç­‰ä»·äº$$\mathrm{res}_x(a(x),b(x+y))|_{y=m}=0.$$
 
-ÏÖÔÚÎÒÃÇ¿ÉÒÔĞ´³öÇó$v$µÄÄ³Ò»¸ö±¶Êı$V$µÄGosperËã·¨.
-<algorithm  name="GosperËã·¨">
+ç°åœ¨æˆ‘ä»¬å¯ä»¥å†™å‡ºæ±‚$v$çš„æŸä¸€ä¸ªå€æ•°$V$çš„Gosperç®—æ³•.
+<algorithm  name="Gosperç®—æ³•">
 
-ÊäÈë:$(a,b)$=1,ÆäÖĞ$b$ÎªÊ×Ò»¶àÏîÊ½.
+è¾“å…¥:$(a,b)$=1,å…¶ä¸­$b$ä¸ºé¦–ä¸€å¤šé¡¹å¼.
 
-Êä³ö:Ê×Ò»¶àÏîÊ½$V$,Âú×ã$v|V$,ÆäÖĞ$(u,v)=1$ÇÒ$$a\cdot v\cdot E(u)-b\cdot u\cdot E(v)=b\cdot v\cdot E(v).$$
+è¾“å‡º:é¦–ä¸€å¤šé¡¹å¼$V$,æ»¡è¶³$v|V$,å…¶ä¸­$(u,v)=1$ä¸”$$a\cdot v\cdot E(u)-b\cdot u\cdot E(v)=b\cdot v\cdot E(v).$$
 
- 1.Éè$R=\mathrm{res}_x(a(x),b(x+y))$,$d=\max\{k\in \mathbb{N}$;$k=0$»ò$R(k)=0\}$.Èô$d=1$,Êä³ö1.
- 2.Éè$a_0=a$,$b_0=b$,¶Ô$i=1,2,\cdots,d$ÒÀ´Î¼ÆËã$$H_i=\gcd(E^{-1}(a_{i-1}),E^{i-1}(b_{i-1})),$$ $$a_i=\frac{a_{i-1}}{E(H_i)},b_i=\frac{b_{i-1}}{E^{-(i-1)}(H_i)}.$$ 
- 3.Êä³ö$H_1^{\underline 1}\cdots H_d^{\underline d}$.
+ 1.è®¾$R=\mathrm{res}_x(a(x),b(x+y))$,$d=\max\{k\in \mathbb{N}$;$k=0$æˆ–$R(k)=0\}$.è‹¥$d=1$,è¾“å‡º1.
+ 2.è®¾$a_0=a$,$b_0=b$,å¯¹$i=1,2,\cdots,d$ä¾æ¬¡è®¡ç®—$$H_i=\gcd(E^{-1}(a_{i-1}),E^{i-1}(b_{i-1})),$$ $$a_i=\frac{a_{i-1}}{E(H_i)},b_i=\frac{b_{i-1}}{E^{-(i-1)}(H_i)}.$$ 
+ 3.è¾“å‡º$H_1^{\underline 1}\cdots H_d^{\underline d}$.
 </algorithm>
 <remark>
-²»ÄÑ¿´³ö$h_i|H_i$,Òò´Ë$$v=h_1^{\underline 1}\cdots h_m^{\underline m}|H_1^{\underline 1}\cdots H_m^{\underline m}\cdots H_d^{\underline d}=V.$$ÔÚËã·¨Êµ¼ÊÔËĞĞ¹ı³ÌÖĞ,Ò»µ©$a_i=1$»ò$b_i=1$,¿ÉÒÔÔ¤¼Æ$H_j=1$,ÆäÖĞ$j=i+1,\cdots,d$,´ËÊ±¿ÉÒÔÖ±½Ó½áÊø¼ÆËã.
+ä¸éš¾çœ‹å‡º$h_i|H_i$,å› æ­¤$$v=h_1^{\underline 1}\cdots h_m^{\underline m}|H_1^{\underline 1}\cdots H_m^{\underline m}\cdots H_d^{\underline d}=V.$$åœ¨ç®—æ³•å®é™…è¿è¡Œè¿‡ç¨‹ä¸­,ä¸€æ—¦$a_i=1$æˆ–$b_i=1$,å¯ä»¥é¢„è®¡$H_j=1$,å…¶ä¸­$j=i+1,\cdots,d$,æ­¤æ—¶å¯ä»¥ç›´æ¥ç»“æŸè®¡ç®—.
 </remark>
 
-ÏÖÔÚÎÒÃÇ½«·½³Ì»¯³ÉÁË$$a\cdot V\cdot E(U)-b\cdot E(V)\cdot U=b\cdot V\cdot E(V),$$ÆäÖĞ$V$ÎªÒÑÖªµÄÊ×Ò»¶àÏîÊ½.×óÓÒÍ¬³ıÒÔ$g=\gcd(a\cdot V,b\cdot E(V))$,µÃ$$r\cdot E(U)-s\cdot U=t,$$ÆäÖĞ$r=\frac{a\cdot V}{g}$,$s=\frac{b\cdot E(V)}{g}$,$t=s\cdot V$.
+ç°åœ¨æˆ‘ä»¬å°†æ–¹ç¨‹åŒ–æˆäº†$$a\cdot V\cdot E(U)-b\cdot E(V)\cdot U=b\cdot V\cdot E(V),$$å…¶ä¸­$V$ä¸ºå·²çŸ¥çš„é¦–ä¸€å¤šé¡¹å¼.å·¦å³åŒé™¤ä»¥$g=\gcd(a\cdot V,b\cdot E(V))$,å¾—$$r\cdot E(U)-s\cdot U=t,$$å…¶ä¸­$r=\frac{a\cdot V}{g}$,$s=\frac{b\cdot E(V)}{g}$,$t=s\cdot V$.
 
-Éè$$U=U_ex^e+\cdots+U_0,$$ÆäÖĞ$e$¿ÉÒÔÍ¨¹ıÈçÏÂ¶¨ÀíÈ·¶¨,¶¨ÀíµÄÖ¤Ã÷Çë²ÎÔÄ<cite>mca</cite>.
+è®¾$$U=U_ex^e+\cdots+U_0,$$å…¶ä¸­$e$å¯ä»¥é€šè¿‡å¦‚ä¸‹å®šç†ç¡®å®š,å®šç†çš„è¯æ˜è¯·å‚é˜…<cite>mca</cite>.
 <theorem>
-Éè$m=\max\{\deg(r)-1,\deg(s-r)\}$,$\delta$Îª$(s-r)$ÖĞ$x^m$µÄÏµÊı.
- 1.Èô$\deg(r)-1<\deg(s-r)$»ò$\delta\notin \mathbb{N}$,Ôò$e=\deg(t)-m$.
- 2.Èô$\deg(t)-m=\delta$,Ôò¶àÏîÊ½·½³Ì²»¿É½â.
- 3.Èô$\deg(t)-m\neq \delta$,Ôò$e=\max\{\deg(t)-m,\delta\}$,Èç¹û$e<0$,Ôò¶àÏîÊ½·½³Ì²»¿É½â.
+è®¾$m=\max\{\deg(r)-1,\deg(s-r)\}$,$\delta$ä¸º$(s-r)$ä¸­$x^m$çš„ç³»æ•°.
+ 1.è‹¥$\deg(r)-1<\deg(s-r)$æˆ–$\delta\notin \mathbb{N}$,åˆ™$e=\deg(t)-m$.
+ 2.è‹¥$\deg(t)-m=\delta$,åˆ™å¤šé¡¹å¼æ–¹ç¨‹ä¸å¯è§£.
+ 3.è‹¥$\deg(t)-m\neq \delta$,åˆ™$e=\max\{\deg(t)-m,\delta\}$,å¦‚æœ$e<0$,åˆ™å¤šé¡¹å¼æ–¹ç¨‹ä¸å¯è§£.
 </theorem>
 <remark>
-¶Ô¶àÏîÊ½·½³Ì±È½Ï¶ÔÓ¦ÏîÏµÊı½«µÃµ½Ò»¸öÉÏÈı½ÇÕóµÄÏßĞÔ·½³Ì×é,ÕâÊ±¾Í¿ÉÒÔ½â³ö$U$À´.Í¨¹ıÕâÒ»ÏµÁĞÊÖĞø,×îÖÕÇóµÃ$$u=\frac{U}{\gcd(U,V)},v=\frac{V}{\gcd(U,V)}.$$
+å¯¹å¤šé¡¹å¼æ–¹ç¨‹æ¯”è¾ƒå¯¹åº”é¡¹ç³»æ•°å°†å¾—åˆ°ä¸€ä¸ªä¸Šä¸‰è§’é˜µçš„çº¿æ€§æ–¹ç¨‹ç»„,è¿™æ—¶å°±å¯ä»¥è§£å‡º$U$æ¥.é€šè¿‡è¿™ä¸€ç³»åˆ—æ‰‹ç»­,æœ€ç»ˆæ±‚å¾—$$u=\frac{U}{\gcd(U,V)},v=\frac{V}{\gcd(U,V)}.$$
 </remark>
 
-³ıÁË¶àÏîÊ½¼¶ÊıÓë³¬¼¸ºÎ¼¶ÊıµÄÇóºÍËã·¨Ö®Íâ,»¹ÓĞĞí¶àÆäËûµÄÇóºÍËã·¨.ÀıÈçWilf-ZeilbergerËã·¨(²Î¼û<cite>aeqb</cite>),Ëü¿ÉÒÔ½â¾öÇóºÍÉÏ½ç$n$³öÏÖÔÚ´ıÇóºÍµÄ¼¶ÊıÏîÖĞµÄ³¬¼¸ºÎ¼¶ÊıÇóºÍÎÊÌâ,Çó³öºÍº¯ÊıËùÂú×ãµÄµİÍÆ·½³Ì,Òò´ËÒ²³£³£ÓÃÓÚ×éºÏºãµÈÊ½µÄ×Ô¶¯Ö¤Ã÷.ÔÙÈçÕë¶ÔÓĞÀíº¯Êı¼¶ÊıµÄÇóºÍÎÊÌâ,ÏÖÓĞµÄËã·¨°üÀ¨MoenckËã·¨,HorowitzËã·¨,PauleËã·¨(²Î¼û<cite>paule95</cite>)ºÍKarrËã·¨(²Î¼û<cite>karr81</cite>)µÈ,KarrËã·¨µÄÀ©Õ¹°æ±¾»¹¿ÉÒÔ½â¾öº¬¸ùÊ½µÄ¼¶ÊıÇóºÍÎÊÌâ(²Î¼û<cite>kauers07</cite>)ÒÔ¼°Ç¶Ì×ÇóºÍÎÊÌâ(²Î¼û<cite>schneider04</cite>),¹ØÓÚ<index>ÓĞÀíº¯ÊıÇóºÍ</index>¸üÏêÏ¸µÄ½éÉÜÇë²ÎÔÄ<cite>aeqb</cite>ºÍ<cite>pirastu96</cite>.
+é™¤äº†å¤šé¡¹å¼çº§æ•°ä¸è¶…å‡ ä½•çº§æ•°çš„æ±‚å’Œç®—æ³•ä¹‹å¤–,è¿˜æœ‰è®¸å¤šå…¶ä»–çš„æ±‚å’Œç®—æ³•.ä¾‹å¦‚Wilf-Zeilbergerç®—æ³•(å‚è§<cite>aeqb</cite>),å®ƒå¯ä»¥è§£å†³æ±‚å’Œä¸Šç•Œ$n$å‡ºç°åœ¨å¾…æ±‚å’Œçš„çº§æ•°é¡¹ä¸­çš„è¶…å‡ ä½•çº§æ•°æ±‚å’Œé—®é¢˜,æ±‚å‡ºå’Œå‡½æ•°æ‰€æ»¡è¶³çš„é€’æ¨æ–¹ç¨‹,å› æ­¤ä¹Ÿå¸¸å¸¸ç”¨äºç»„åˆæ’ç­‰å¼çš„è‡ªåŠ¨è¯æ˜.å†å¦‚é’ˆå¯¹æœ‰ç†å‡½æ•°çº§æ•°çš„æ±‚å’Œé—®é¢˜,ç°æœ‰çš„ç®—æ³•åŒ…æ‹¬Moenckç®—æ³•,Horowitzç®—æ³•,Pauleç®—æ³•(å‚è§<cite>paule95</cite>)å’ŒKarrç®—æ³•(å‚è§<cite>karr81</cite>)ç­‰,Karrç®—æ³•çš„æ‰©å±•ç‰ˆæœ¬è¿˜å¯ä»¥è§£å†³å«æ ¹å¼çš„çº§æ•°æ±‚å’Œé—®é¢˜(å‚è§<cite>kauers07</cite>)ä»¥åŠåµŒå¥—æ±‚å’Œé—®é¢˜(å‚è§<cite>schneider04</cite>),å…³äº<index>æœ‰ç†å‡½æ•°æ±‚å’Œ</index>æ›´è¯¦ç»†çš„ä»‹ç»è¯·å‚é˜…<cite>aeqb</cite>å’Œ<cite>pirastu96</cite>.
