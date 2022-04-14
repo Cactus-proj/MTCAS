@@ -1,16 +1,15 @@
 \documentclass{ctexart}
-
+\usepackage{amsmath}
 
 % \cite{lamport94}
 \newcommand\mtcasCite[1]{[#1]}
 
 \newtheorem{theorem}{Theorem}
-\theoremstyle{remark}
 \newtheorem{remark}{Remark}
-\theoremstyle{definition}
 \newtheorem{definition}{Definition}[section]
 \newtheorem{problem}{Problem}
 \newtheorem{proof}{Proof}
+\newtheorem{algorithm}{Algorithm}
 
 %% Index
 \usepackage{imakeidx}
@@ -81,7 +80,7 @@ G&=9x^5-3x^4-4x^2+7x+7,
  3.返回$x$.
 \end{algorithm}
 \begin{remark}
-当待转换的数$n$较长时,进制转换应该分段进行.以"在$B$进制下除以$B'$"的转换算法(算法##al:conversion1
+当待转换的数$n$较长时,进制转换应该分段进行.以"在$B$进制下除以$B'$"的转换算法(算法\ref{al:conversion1}
 )为例,设待转换的数为$n$,先反复地用$B'^m$除$n$从而得到$n$的$B'^m$进制表示,然后将$n$的$B'^m$进制表示的每一位再反复地用$B'$除从而转换成$m$位$B'$进制数字.这样做的好处是第二步除以$B'$的除法一般只是单精度运算,因此大大节省了运算时间,关于这一点更详细的介绍请参阅\mtcasCite{taocp2}.
 \end{remark}
 
@@ -157,7 +156,7 @@ a&\ge a_{s+1}B^2+a_sB+a_{s-1}\\
 
 \subsubsection{整数除法}
 
-注意到$$r=a-qb=a\bmod b$$在"商为一位数的除法"算法(算法##al:div1
+注意到$$r=a-qb=a\bmod b$$在"商为一位数的除法"算法(算法\ref{al:div1}
 )的最后一步也同时被算出,以此为基础可以直接写出一般的商为多位数的除法算法.
 \begin{algorithm}{整数除法}\label{al:division2}
 
@@ -176,7 +175,7 @@ a&\ge a_{s+1}B^2+a_sB+a_{s-1}\\
 
 \section{快速乘法}
 
-高精度整数是计算机代数系统的内置基本类型,其四则运算的快慢对系统的性能好坏有着决定性的影响.目前最著名的高精度整数运算库是GNU的GMP\mtcasCite{gmplib},许多著名的计算机代数系统如Axiom,Maple,Mathematica,Maxima等的底层高精度整数运算都是基于GMP实现的(参见\mtcasCite{gmpman}).加法和减法的复杂度关于整数位数是线性的,考虑到输入输出的复杂度关于整数位数也是线性的,因此从算法上来看加减法已经达到了复杂度的下界.而高精度除法总可以通过Picarte迭代归结为\index{高精度乘法}(注##re:division1
+高精度整数是计算机代数系统的内置基本类型,其四则运算的快慢对系统的性能好坏有着决定性的影响.目前最著名的高精度整数运算库是GNU的GMP\mtcasCite{gmplib},许多著名的计算机代数系统如Axiom,Maple,Mathematica,Maxima等的底层高精度整数运算都是基于GMP实现的(参见\mtcasCite{gmpman}).加法和减法的复杂度关于整数位数是线性的,考虑到输入输出的复杂度关于整数位数也是线性的,因此从算法上来看加减法已经达到了复杂度的下界.而高精度除法总可以通过Picarte迭代归结为\index{高精度乘法}(注\ref{re:division1}
 ),所以高精度四则运算的主要问题集中到了乘法上.
 
 设$n$为乘数的位数,就目前已知的情况而言,不同乘法算法的时间复杂度可以从平凡的$O(n^2)$(普通乘法),$O(n^{\log_2{3}})$(Karatsuba乘法),$O(n^{\log_3{5}})$(Toom-3乘法),$O(n\log^*{n})$(复数域上的FFT),其中$$\log^*{n}=\log{n}(\log{\log{n}})(\log{\log{\log{n}}})\cdots,$$和$O(n(\log{n})(\log{\log{n}}))$(有限域上的FFT),其中"有限域上的FFT"的时间复杂度已经相当接近线性了,\mtcasCite{taocp2}和\mtcasCite{mca}中给出了具体的复杂度分析与证明.但是这些乘法算法中复杂度较低的算法往往有较大的常数因子,因此如果乘数的位数较少,普通乘法反而是最快的,所以实用中常常将这些不同的乘法算法结合起来使用,每次做乘法时都根据相乘两数的大小动态地选择具体采用哪一种算法,而每种算法的最佳适用范围往往依赖于具体实现和硬件环境,因此一般直接通过实验来确定.
@@ -206,13 +205,13 @@ a&\ge a_{s+1}B^2+a_sB+a_{s-1}\\
 已知两个次数小于$n$的多项式的系数表示分别为$$A(x)=\sum_{k=0}^{n-1}a_kx^k,\quad B(x)=\sum_{k=0}^{n-1}b_kx^k,$$设乘积的系数表示为$C(x)=\sum\limits_{k=0}^{2n-2}c_kx^k$,那么$$c_k=\sum_{i+j=k}a_ib_j.$$
 \end{theorem}
 \begin{remark}\label{re:multiply1}
-根据定理##th:multiply1
+根据定理\ref{th:multiply1}
 来直接计算一元多项式的乘积时总共需要$n^2$次系数乘法.现在我们首先取定$2n-1$个不同点$x_k$,然后利用多项式多点求值计算出$A(x)$与$B(x)$在这组点上的点值表示,如果$C(x)=A(x)\cdot B(x)$,那么显然有$C(x_k)=A(x_k)\cdot B(x_k)$,只需要$2n-1$次系数乘法就可以计算出乘积$C(x)$的点值表示,再通过多项式插值就可以得到$C(x)$的系数表示.
 \end{remark}
-注##re:multiply1
+注\ref{re:multiply1}
 表明利用多项式的点值表示也可以做多项式乘法,而且过程显得更简洁.如果多项式的默认表示形式就是点值表示,那么连多项式多点求值和多项式插值这两个转换步骤也可以省去了,多项式乘法就和向量逐点相乘一样简单.
 
-整数与多项式之间的相似性是由整数的进制表示$$(a_n\ldots a_1a_0)_B=\sum_{k=0}^na_k\cdot B^k$$产生的,与整数的进制表示相对应的是多项式的系数表示.我们要从注##re:multiply1
+整数与多项式之间的相似性是由整数的进制表示$$(a_n\ldots a_1a_0)_B=\sum_{k=0}^na_k\cdot B^k$$产生的,与整数的进制表示相对应的是多项式的系数表示.我们要从注\ref{re:multiply1}
 中的多项式乘法算法中产生整数\index{快速乘法}算法,就必须解决多项式系数表示与点值表示之间的转换问题,因此接下来的要介绍整数快速乘法算法也就自然包含多项式多点求值,向量逐点相乘,多项式插值这三个步骤.
 
 \subsection{Karatsuba乘法}
@@ -235,12 +234,12 @@ $f(\infty)$其实就等于$f(x)$的首项系数,可以证明这样的定义与�
 在这个例子中,多项式多点求值与多项式插值都只用到系数加减法,这表明可以只用三次系数乘法完成一次多项式的乘法.
 \end{remark}
 \begin{remark}\label{re:karatsuba}
-如果$a,b$都是$2n$位$B$进制整数,那么在$B^n$进制下$a,b$都是两位数$$a=a_1B^n+a_0,\quad b=b_1B^n+b_0,$$其中$a_i,b_i(i=0,1)$都是$B^n$进制下的个位数,也就是$B$进制下不超过$n$位的数.那么根据例##pr:karatsuba 我们有$$a\cdot b=a_1 b_1B^{2n}+(a_0b_0+a_1b_1-(a_0-a_1)(b_0-b_1))B^n+a_0b_0.$$
+如果$a,b$都是$2n$位$B$进制整数,那么在$B^n$进制下$a,b$都是两位数$$a=a_1B^n+a_0,\quad b=b_1B^n+b_0,$$其中$a_i,b_i(i=0,1)$都是$B^n$进制下的个位数,也就是$B$进制下不超过$n$位的数.那么根据例\ref{pr:karatsuba}我们有$$a\cdot b=a_1 b_1B^{2n}+(a_0b_0+a_1b_1-(a_0-a_1)(b_0-b_1))B^n+a_0b_0.$$
 \end{remark}
 
 \subsubsection{Karatsuba乘法}
 
-根据注##re:karatsuba ,我们现在写出Karatsuba乘法算法的详细过程.
+根据注\ref{re:karatsuba},我们现在写出Karatsuba乘法算法的详细过程.
 \begin{algorithm}{Karatsuba乘法}\label{al:karatsuba}
 
 输入:$n_a$位整数$a$和$n_b$位整数$b$.
@@ -281,7 +280,7 @@ c_4&=C(\infty).
 \begin{remark}
 如果不计乘以较小常数的乘法和加减法,我们可以只用5次系数乘法完成二次多项式的乘法.
 \end{remark}
-根据例##pr:toom 并仿照Karatsuba乘法而得到的算法称为\index{Toom-3乘法}.记$T(n)$是递归地利用Toom-3乘法将两个$n$位$B$进制数相乘所需要的$B$进制个位数乘法次数,那么有$T(3n)\le 5T(n)$,由此推出$T(n)=O(n^{\log_3{5}})\approx O(n^{1.46})$.
+根据例\ref{pr:toom}并仿照Karatsuba乘法而得到的算法称为\index{Toom-3乘法}.记$T(n)$是递归地利用Toom-3乘法将两个$n$位$B$进制数相乘所需要的$B$进制个位数乘法次数,那么有$T(3n)\le 5T(n)$,由此推出$T(n)=O(n^{\log_3{5}})\approx O(n^{1.46})$.
 
 \subsubsection{Toom-$r$乘法}
 
@@ -313,7 +312,7 @@ c_4&=C(\infty).
 \end{equation*}
 
 \end{problem}
-与Toom-3乘法的情形类似,根据例##pr:toomr 对Karatsuba乘法做推广就可以得到\index{Toom-$r$乘法}.记$T(n)$是递归地利用Toom-r乘法将两个n位$B$进制数相乘所需要的$B$进制个位数乘法次数,那么有$T(rn)\le (2r+1)T(n)$,由此推出$T(n)=O(n^{\log_{r+1}{2r+1}})$.
+与Toom-3乘法的情形类似,根据例\ref{pr:toomr}对Karatsuba乘法做推广就可以得到\index{Toom-$r$乘法}.记$T(n)$是递归地利用Toom-r乘法将两个n位$B$进制数相乘所需要的$B$进制个位数乘法次数,那么有$T(rn)\le (2r+1)T(n)$,由此推出$T(n)=O(n^{\log_{r+1}{2r+1}})$.
 
 这样得到的一系列快速乘法算法统称为\index{Toom-Cook乘法},关于Toom-Cook乘法更详细的介绍请参阅\mtcasCite{taocp2}.Toom-Cook乘法中的Toom-2乘法与Karatsuba乘法基本相同,只是选取的3个插值点不一样.
 
@@ -361,7 +360,7 @@ c_4&=C(\infty).
 设$f(x)=\sum\limits_{k=0}^{n-1}f_kx^k$,$\omega$是环$R$的$n$次单位原根,则称$$\mathrm{DFT}_{\omega}(f)=(f(1),f(\omega),\ldots,f(\omega^{n-1}))$$为$f$的离散傅立叶变换.
 \end{definition}
 
-DFT存在逆变换,并且原根的良好性质(定理##th:primitiveroot )保证了DFT的逆变换和DFT具有相同的结构.
+DFT存在逆变换,并且原根的良好性质(定理\ref{th:primitiveroot})保证了DFT的逆变换和DFT具有相同的结构.
 <theorem>
 设$\omega$是环$R$的$n$次单位原根,用$(\mathrm{DFT}_\omega)^{-1}$表示$\mathrm{DFT}_\omega$的逆变换,那么$$(\mathrm{DFT}_\omega)^{-1}=\frac{1}{n}\mathrm{DFT}_{\omega^{-1}}.$$
 \end{theorem}
