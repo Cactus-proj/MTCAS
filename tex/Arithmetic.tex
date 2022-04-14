@@ -9,6 +9,7 @@
 \newtheorem{remark}{Remark}
 \theoremstyle{definition}
 \newtheorem{definition}{Definition}[section]
+\newtheorem{problem}{Problem}
 
 %% Index
 \usepackage{imakeidx}
@@ -227,9 +228,9 @@ a&\ge a_{s+1}B^2+a_sB+a_{s-1}\\
 \begin{remark}
 $f(\infty)$其实就等于$f(x)$的首项系数,可以证明这样的定义与多项式插值是相容的.
 \end{remark}
-<problem label="pr:karatsuba">
+\begin{problem}\label{pr:karatsuba}
 设$$A(x)=a_1x+a_0,\quad B(x)=b_1x+b_0,$$选取插值点组为$x_0=-1,x_1=0,x_2=\infty$,则$A(x),B(x)$的点值表示分别为$\{(-1,a_0-a_1),(0,a_0),(\infty,a_1)\}$,$\{(-1,b_0-b_1),(0,b_0),(\infty,b_1)\}$,如果$C(x)=A(x)\cdot B(x)$,那么$C(-1)=(a_0-a_1)\cdot(b_0-b_1)$,$C(0)=a_0\cdot b_0$,$C(\infty)=a_1\cdot b_1$,利用简单的多项式插值算法,可以计算出$C(x)$的系数表示$$(c_0,c_1,c_2)=(C(0),C(0)+C(\infty)-C(-1),C(\infty)),$$即$$C(x)=a_1b_1x^2+(a_0b_0+a_1b_1-(a_0-a_1)(b_0-b_1))x+a_0b_0.$$
-</problem>
+\end{problem}
 \begin{remark}
 在这个例子中,多项式多点求值与多项式插值都只用到系数加减法,这表明可以只用三次系数乘法完成一次多项式的乘法.
 \end{remark}
@@ -265,7 +266,7 @@ $f(\infty)$其实就等于$f(x)$的首项系数,可以证明这样的定义与�
 \subsubsection{Toom-3乘法}
 
 沿着Karatsuba的思路,考虑二次多项式的乘法.
-<problem label="pr:toom">
+\begin{problem}\label{pr:toom}
 设$$A(x)=a_2x^2+a_1x+a_0,\quad B(x)=b_2x^2+b_1x+b_0,$$选取插值点组为$$x_0=-1,x_1=0,x_2=1,x_3=2,x_4=\infty,$$如果$C(x)=A(x)\cdot B(x)$,类似地,利用简单的多项式插值算法,可以计算出$C(x) $的系数表示$(c_0,c_1,c_2,c_3,c_4)$,其中
 
 \begin{align*}
@@ -276,7 +277,7 @@ c_3&=4C(-1)+C(0)+2C(1)+8C(2)+16C(\infty),\\
 c_4&=C(\infty).
 \end{align*}
 
-</problem>
+\end{problem}
 \begin{remark}
 如果不计乘以较小常数的乘法和加减法,我们可以只用5次系数乘法完成二次多项式的乘法.
 \end{remark}
@@ -285,7 +286,7 @@ c_4&=C(\infty).
 \subsubsection{Toom-$r$乘法}
 
 更一般地,考虑$r$次多项式的乘法.
-<problem label="pr:toomr">
+\begin{problem}\label{pr:toomr}
 设$$A(x)=a_rx^r+\cdots+a_0,\quad B(x)=b_rx^r+\cdots+b_0,$$选取插值点组为$$x_0=-r,x_1=-(r-1),\ldots,x_r=0,x_{r+1}=1,\ldots,x_{2r}=r,$$设$$C(x)=A(x)\cdot B(x)=\sum_{k=0}^{2r}c_kx^k,$$则
 
 \begin{equation*}
@@ -311,7 +312,7 @@ c_4&=C(\infty).
   \end{bmatrix}.
 \end{equation*}
 
-</problem>
+\end{problem}
 与Toom-3乘法的情形类似,根据例##pr:toomr 对Karatsuba乘法做推广就可以得到\index{Toom-$r$乘法}.记$T(n)$是递归地利用Toom-r乘法将两个n位$B$进制数相乘所需要的$B$进制个位数乘法次数,那么有$T(rn)\le (2r+1)T(n)$,由此推出$T(n)=O(n^{\log_{r+1}{2r+1}})$.
 
 这样得到的一系列快速乘法算法统称为\index{Toom-Cook乘法},关于Toom-Cook乘法更详细的介绍请参阅\mtcasCite{taocp2}.Toom-Cook乘法中的Toom-2乘法与Karatsuba乘法基本相同,只是选取的3个插值点不一样.
