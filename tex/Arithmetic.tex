@@ -1,5 +1,6 @@
 \documentclass{ctexart}
 \usepackage{amsmath}
+\usepackage{amssymb}
 
 % \cite{lamport94}
 \newcommand\mtcasCite[1]{[#1]}
@@ -24,7 +25,6 @@
 \begin{document}
 \maketitle
 
-<contents>
 
 我们所熟知的科学计算一般就是指数值计算.数值计算是计算数学的一个主要部分,它研究用计算机求解各种数学问题的数值计算方法及其理论与软件实现.关于数值计算的研究在计算机被发明之前就已经有了相当的基础,它涉及到的内容包括函数的数值逼近,数值微分与数值积分,非线性方程数值解,数值线性代数,常微分方程与偏微分方程数值解等(参见\mtcasCite{shuzhifenxi}).数值计算中处理的对象并不仅仅是数值,还包括由数值构成的简单数据结构,例如一般的多项式,无穷级数,矩阵等,数值计算处理问题的一般方法是通过数学推导将问题化归到这些数学对象的运算上.
 
@@ -221,7 +221,7 @@ a&\ge a_{s+1}B^2+a_sB+a_{s-1}\\
 \subsubsection{一次多项式的乘法}
 
 为了更多地了解隐藏在算法背后的思想,在介绍Karatsuba算法之前,我们先看一看如何利用多项式的点值表示来计算一次多项式的乘法,这是一个很具有启发性意义的例子.
-<definition>
+\begin{definition}
 多项式$f(x)$在$\infty$处的值定义为$$f(\infty)=\lim_{x\rightarrow\infty}f(x)/x^{\deg{f}}.$$
 \end{definition}
 \begin{remark}
@@ -361,7 +361,7 @@ c_4&=C(\infty).
 \end{definition}
 
 DFT存在逆变换,并且原根的良好性质(定理\ref{th:primitiveroot})保证了DFT的逆变换和DFT具有相同的结构.
-<theorem>
+\begin{theorem}
 设$\omega$是环$R$的$n$次单位原根,用$(\mathrm{DFT}_\omega)^{-1}$表示$\mathrm{DFT}_\omega$的逆变换,那么$$(\mathrm{DFT}_\omega)^{-1}=\frac{1}{n}\mathrm{DFT}_{\omega^{-1}}.$$
 \end{theorem}
 \begin{proof}
@@ -431,8 +431,7 @@ f^{[1]}&=(f_1,f_3,\ldots,f_{n-1}),
 其中$0\le j<n/2$.如果从多项式的角度来看,这其实就是$f(x)=f^{[0]}(x^2)+xf^{[ 1]}(x^2)$.
 
 经过以上的分析,现在可以写出FFT的详细过程了.
-<algorithm  name="FFT">
-
+\begin{algorithm}{FFT}
 输入:$n-1$次多项式的系数表示向量$f=(f_0,f_1,\ldots,f_{n-1})$,$n$次单位原根$\omega_n$,其中$n=2^m$.
 
 输出:$\mathrm{DFT}_{\omega_n}(f)$.
