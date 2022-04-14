@@ -452,7 +452,7 @@ $a,b$的乘积$c$对应于多项式$C(B)=\sum\limits_{k=0}^{2s}c_kB^k$,其中$$c
 
 为了解决这个问题,可以借用模方法中的技术,选取三个机器精度的素数$2^{63}\le q_0,q_1,q_2<2^{64}$,分别在$F_{q_i}$中计算出模乘积$a\cdot b\bmod q_i$,然后利用中国剩余定理(参见\mtcasCite{nlzdss00})计算出$\mathbb{Z}$中的乘积$a\cdot b$.
 
-考虑到中国剩余定理的计算,利用有限域上的<index sub="有限域上的">FFT</index>进行整数乘法的计算复杂度为$$O(n(\log{n})(\log{\log{n}})).$$关于有限域上的FFT更详细的介绍请参阅\mtcasCite{mca}和\mtcasCite{Schoenhage-multiply}.
+考虑到中国剩余定理的计算,利用有限域上的\index{FFT!有限域上的}进行整数乘法的计算复杂度为$$O(n(\log{n})(\log{\log{n}})).$$关于有限域上的FFT更详细的介绍请参阅\mtcasCite{mca}和\mtcasCite{Schoenhage-multiply}.
 
 除了以上两种最常用的算法之外,还有许多类似于FFT的算法也可以用于快速计算DFT,如\index{NTT}(Number theoretic transform),\index{WFT}(Winograd Fourier Transform)和\index{PFT}(Polynomial Fourier Transform)等,关于FFT,NTT,WFT和PFT更详细的介绍请参阅Nussbaumer\mtcasCite{Nussbaumer82}或中译本\mtcasCite{fftca}.
 
