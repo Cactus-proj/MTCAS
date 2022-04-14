@@ -4,6 +4,9 @@
 % \cite{lamport94}
 \newcommand\mtcasCite[1]{[#1]}
 
+\newtheorem{theorem}{Theorem}
+
+
 %% Index
 \usepackage{imakeidx}
 \makeindex
@@ -87,10 +90,10 @@ G&=9x^5-3x^4-4x^2+7x+7,
 
 首先来看商为一位数的除法,即假定商$\left[\frac{a}{b}\right]$满足$$0\le\left[\frac{a}{b}\right]\le B-1.$$笔算除法的经验告诉我们,被除数和除数的最高几位数对试商是很重要的,我们常常凭借目测(口算)最高几位数就能基本上把商给确定下来.
 
-<theorem label="th:division1">
+\begin{theorem}\label{th:division1}
 设整数$a=(a_{s+1}a_s\ldots a_1a_0)_B,b=(b_s\ldots b_1b_0)_B$,则商$[{a\over b}]$满足不等式
 $$\left[\frac{a_{s+1}B+a_s}{b_s+1}\right]\le\left[\frac{a}{b}\right]\le\min\left\{\left[\frac{a_{s+1}B+a_s}{b_s}\right],B-1\right\}.$$
-</theorem>
+\end{theorem}
 <proof>
 首先$$\frac{a}{b}>\frac{a_{s+1}B^{s+1}+a_sB^s}{(b_s+1)B^s}=\frac{a_{s+1}B+a_s}{b_s+1},$$故$\left[\frac{a_{s+1}B+a_s}{b_s+1}\right] \le \left[\frac{a}{b}\right]$,不等式的前半部分得证.
 
@@ -108,18 +111,18 @@ $$\left[\frac{a_{s+1}B+a_s}{b_s+1}\right]\le\left[\frac{a}{b}\right]\le\min\left
 记$$q = \min\left\{\left[\frac{a_{s+1}B+a_s}{b_s}\right],B-1\right\},$$则$q$是商$\left[{a\over b}\right]$一个很好的上界,事实上下面的定理将告诉我们$q$比商的真值至多大2.
 </remark>
 
-<theorem label="th:division2">
+\begin{theorem}\label{th:division2}
 若$b$的最高位不小于$\left[\frac{B}{2}\right]$,即$b_s\ge\left[\frac{B}{2}\right]$,则$$q-2\le\left[\frac{a}{b}\right]\le q.$$
-</theorem>
+\end{theorem}
 <proof>
 用反证法.假设$\left[\frac{a}{b}\right]<q-2$,则$$\left[\frac{a}{b}\right]\le\left[\frac{a_{s+1}B+a_s}{b_s}\right]-3,\quad\left[\frac{a}{b}\right] \le B-4.$$
 因为$$\left[\frac{a}{b}\right]>\frac{a}{b}-1,\quad\frac{a_{s+1}B+a_s}{b_s}<\frac{a}{b-B^s},$$所以$\frac{a}{b}+2<\frac{a}{b-B^s}$,推出$$\frac{a}{b}>2(\frac{b}{B^s}-1)\ge 2(b_s-1).$$因此$b_s \le \frac{B}{2}-1<\left[\frac{B}{2}\right]$,与题设条件矛盾,证毕.
 </proof>
 
 上面只考虑了被除数的头两位与除数的首位,如果允许做更精细的考察,譬如说考虑被除数的头三位与除数的头两位,我们还可以得到对商更好的估计.
-<theorem label="th:division3">
+\begin{theorem}\label{th:division3}
 设$t=(a_{s+1}B+a_s)-qb_s$,若$B\cdot t\ge qb_{s-1}-a_{s-1}$,则$$q-1\le\left[\frac{a}{b}\right]\le q.$$
-</theorem>
+\end{theorem}
 <proof>
 将$t$代入不等式中得$$B\cdot((a_{s+1}B+a_s)-qb_s)\ge qb_{s-1}-a_{s-1},$$化简得到
 
@@ -195,9 +198,9 @@ a&\ge a_{s+1}B^2+a_sB+a_{s-1}\\
 一元多项式的系数表示与点值表示之间是可以相互转换的,系数表示到点值表示的转换就是一元多项式多点求值,而点值表示到系数表示的转换就是一元多项式插值.关于这两种转换的高级讨论,如一元多项式快速多点求值,一元多项式快速插值等,请参阅"多项式快速求值与插值"一章.
 
 两个一元多项式的乘积有如下的系数表示,这可以从一元多项式乘积的定义直接得到.
-<theorem label="th:multiply1">
+\begin{theorem}\label{th:multiply1}
 已知两个次数小于$n$的多项式的系数表示分别为$$A(x)=\sum_{k=0}^{n-1}a_kx^k,\quad B(x)=\sum_{k=0}^{n-1}b_kx^k,$$设乘积的系数表示为$C(x)=\sum\limits_{k=0}^{2n-2}c_kx^k$,那么$$c_k=\sum_{i+j=k}a_ib_j.$$
-</theorem>
+\end{theorem}
 <remark label="re:multiply1">
 根据定理##th:multiply1
 来直接计算一元多项式的乘积时总共需要$n^2$次系数乘法.现在我们首先取定$2n-1$个不同点$x_k$,然后利用多项式多点求值计算出$A(x)$与$B(x)$在这组点上的点值表示,如果$C(x)=A(x)\cdot B(x)$,那么显然有$C(x_k)=A(x_k)\cdot B(x_k)$,只需要$2n-1$次系数乘法就可以计算出乘积$C(x)$的点值表示,再通过多项式插值就可以得到$C(x)$的系数表示.
@@ -331,9 +334,9 @@ c_4&=C(\infty).
 按照这个定义,任意素数的整数次幂单位复根都是复数域$\mathbb{C}$的单位原根,例如$\omega=e^{{2\pi i\over 8}}\in R=\mathbb{C}$就是一个8次单位原根.除此之外,对于模整数环$\mathbb{Z}_{17}$,$\overline{3}\in R=\mathbb{Z}_{17}$是16次单位原根,与此同时,虽然$\overline{2}^{16}=\overline{1}\in R=\mathbb{Z}_{17}$,但$\overline{2}$并不是$\mathbb{Z}_{17}$的16次单位原根,因为$2^8-1\equiv 0\mod 17$.如果$q$是素数的整数次幂,那么当且仅当$n|q-1$时有限域$\mathbb{F}_q$存在$n$次单位原根.
 </remark>
 关于原根有如下定理.
-<theorem label="th:primitiveroot">
+\begin{theorem}\label{th:primitiveroot}
 如果$\omega$是环$R$的$n$次单位原根,那么$\forall 1<k<n$,$\omega^k-1$不是$R$的零因子,并且$$\sum_{j=0}^{n-1}\omega^{jk}=0.$$
-</theorem>
+\end{theorem}
 <proof>
 设$d=\gcd(k,n)$且$u\cdot k+v\cdot n=d$,由$d<n$知存在$n$的一个素因子$p$使得$d|n/p$.从而$\omega^d-1|\omega^{n/p}-1$,但$\omega^{n/p}-1$不是$R$的零因子,因此$\omega^d-1$也不是$R$的零因子.
 
@@ -357,7 +360,7 @@ c_4&=C(\infty).
 DFT存在逆变换,并且原根的良好性质(定理##th:primitiveroot )保证了DFT的逆变换和DFT具有相同的结构.
 <theorem>
 设$\omega$是环$R$的$n$次单位原根,用$(\mathrm{DFT}_\omega)^{-1}$表示$\mathrm{DFT}_\omega$的逆变换,那么$$(\mathrm{DFT}_\omega)^{-1}=\frac{1}{n}\mathrm{DFT}_{\omega^{-1}}.$$
-</theorem>
+\end{theorem}
 <proof>
 $\mathrm{DFT}_\omega$是$R^n$上的线性变换，它在自然基下的矩阵表示为$\vec{y}=V_n(\omega)\vec{a}$，即
 
