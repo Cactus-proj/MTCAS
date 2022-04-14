@@ -1,6 +1,12 @@
 \documentclass{ctexart}
 
 
+% \cite{lamport94}
+\newcommand\mtcasCite[1]{[#1]}
+
+
+
+
 \title{高精度运算}
 \author{张翔}
 \date{\today}
@@ -11,13 +17,13 @@
 
 <contents>
 
-我们所熟知的科学计算一般就是指数值计算.数值计算是计算数学的一个主要部分,它研究用计算机求解各种数学问题的数值计算方法及其理论与软件实现.关于数值计算的研究在计算机被发明之前就已经有了相当的基础,它涉及到的内容包括函数的数值逼近,数值微分与数值积分,非线性方程数值解,数值线性代数,常微分方程与偏微分方程数值解等(参见<cite>shuzhifenxi</cite>).数值计算中处理的对象并不仅仅是数值,还包括由数值构成的简单数据结构,例如一般的多项式,无穷级数,矩阵等,数值计算处理问题的一般方法是通过数学推导将问题化归到这些数学对象的运算上.
+我们所熟知的科学计算一般就是指数值计算.数值计算是计算数学的一个主要部分,它研究用计算机求解各种数学问题的数值计算方法及其理论与软件实现.关于数值计算的研究在计算机被发明之前就已经有了相当的基础,它涉及到的内容包括函数的数值逼近,数值微分与数值积分,非线性方程数值解,数值线性代数,常微分方程与偏微分方程数值解等(参见\mtcasCite{shuzhifenxi}).数值计算中处理的对象并不仅仅是数值,还包括由数值构成的简单数据结构,例如一般的多项式,无穷级数,矩阵等,数值计算处理问题的一般方法是通过数学推导将问题化归到这些数学对象的运算上.
 
 作为应用数学,数值计算的主要目标是解决来自于生产实践的工程学问题.与此同时,数学工作者做数学研究本身也是一种生产实践,数学研究过程中同样会产生许多问题,与工程学问题不同,这些问题往往只能用抽象的符号来表达,仅用数值计算的方法是不易解决的,对于这类问题解决方案的研究逐渐形成了应用数学的一个新的分支,为了与数值计算相区别,常常称之为符号计算.类似地,我们可以给符号计算下一个简单的定义:符号计算是一门研究用计算机求解各种数学问题的符号计算方法及其理论与软件实现的科学,它是数学(家)的计算数学.符号计算中处理的数据和结果都是符号,这种符号可以是字母,公式,也可以是数.与数值计算不同的是,数是作为一种符号出现在符号计算中的,这就要求关于数的运算应该是绝对精确的,我们接下来就要讨论数的<index>高精度运算</index>.
 
 * 整数
 
-在基于硬件的整数指令中,计算机能够处理的整数是有界的,在目前典型的计算机中整数的溢出界都不超过$2^{64}$,而符号计算中常常需要处理更大的整数,例如阶乘,Fibonacci数列这样简单的数论函数计算.另一个不平凡的例子是所谓的<index>中间表示膨胀</index>(intermediate expression swell)(参见<cite>wangdongming</cite>第2章),例如采用Euclid算法计算两个整系数多项式的最大公因子时,即使输入的两个多项式和输出的最大公因子都具有绝对值较小的系数,计算过程中的中间结果仍然很可能出现绝对值非常大的系数.设
+在基于硬件的整数指令中,计算机能够处理的整数是有界的,在目前典型的计算机中整数的溢出界都不超过$2^{64}$,而符号计算中常常需要处理更大的整数,例如阶乘,Fibonacci数列这样简单的数论函数计算.另一个不平凡的例子是所谓的<index>中间表示膨胀</index>(intermediate expression swell)(参见\mtcasCite{wangdongming}第2章),例如采用Euclid算法计算两个整系数多项式的最大公因子时,即使输入的两个多项式和输出的最大公因子都具有绝对值较小的系数,计算过程中的中间结果仍然很可能出现绝对值非常大的系数.设
 
 \begin{align*}
   F&=7x^7+2x^6-3x^5-3x^3+x+5,\\
@@ -61,12 +67,12 @@ G&=9x^5-3x^4-4x^2+7x+7,
 输出:$n$的$B'$进制表示.
 
  1.设$B'$进制整数$x=0$.
- 2.利用Horner法则(参见<cite>Weisstein-horner</cite>),在$B'$进制下依次计算$x=Bx+a_k$,$k$从$s$到0.
+ 2.利用Horner法则(参见\mtcasCite{Weisstein-horner}),在$B'$进制下依次计算$x=Bx+a_k$,$k$从$s$到0.
  3.返回$x$.
 </algorithm>
 <remark>
 当待转换的数$n$较长时,进制转换应该分段进行.以"在$B$进制下除以$B'$"的转换算法(算法##al:conversion1
-)为例,设待转换的数为$n$,先反复地用$B'^m$除$n$从而得到$n$的$B'^m$进制表示,然后将$n$的$B'^m$进制表示的每一位再反复地用$B'$除从而转换成$m$位$B'$进制数字.这样做的好处是第二步除以$B'$的除法一般只是单精度运算,因此大大节省了运算时间,关于这一点更详细的介绍请参阅<cite>taocp2</cite>.
+)为例,设待转换的数为$n$,先反复地用$B'^m$除$n$从而得到$n$的$B'^m$进制表示,然后将$n$的$B'^m$进制表示的每一位再反复地用$B'$除从而转换成$m$位$B'$进制数字.这样做的好处是第二步除以$B'$的除法一般只是单精度运算,因此大大节省了运算时间,关于这一点更详细的介绍请参阅\mtcasCite{taocp2}.
 </remark>
 
 ** 四则运算
@@ -156,15 +162,15 @@ a&\ge a_{s+1}B^2+a_sB+a_{s-1}\\
  2.$r_k=(B\cdot r_{k+1}+a_k)\bmod b$.
 </algorithm>
 <remark label="re:division1">
-为了利用快速乘法,还可以利用<index>Picarte迭代</index>来计算整数除法,具体来说就是先利用数值计算中浮点数的Picarte迭代求出除数倒数具有一定精度的近似值,然后利用整数乘法将被除数乘上去,当除数的位数较多时,这种方法是很有效的,关于这一点更详细的介绍请参阅<cite>Gutierrez-fastinverse</cite>.
+为了利用快速乘法,还可以利用<index>Picarte迭代</index>来计算整数除法,具体来说就是先利用数值计算中浮点数的Picarte迭代求出除数倒数具有一定精度的近似值,然后利用整数乘法将被除数乘上去,当除数的位数较多时,这种方法是很有效的,关于这一点更详细的介绍请参阅\mtcasCite{Gutierrez-fastinverse}.
 </remark>
 
 * 快速乘法
 
-高精度整数是计算机代数系统的内置基本类型,其四则运算的快慢对系统的性能好坏有着决定性的影响.目前最著名的高精度整数运算库是GNU的GMP<cite>gmplib</cite>,许多著名的计算机代数系统如Axiom,Maple,Mathematica,Maxima等的底层高精度整数运算都是基于GMP实现的(参见<cite>gmpman</cite>).加法和减法的复杂度关于整数位数是线性的,考虑到输入输出的复杂度关于整数位数也是线性的,因此从算法上来看加减法已经达到了复杂度的下界.而高精度除法总可以通过Picarte迭代归结为<index>高精度乘法</index>(注##re:division1
+高精度整数是计算机代数系统的内置基本类型,其四则运算的快慢对系统的性能好坏有着决定性的影响.目前最著名的高精度整数运算库是GNU的GMP\mtcasCite{gmplib},许多著名的计算机代数系统如Axiom,Maple,Mathematica,Maxima等的底层高精度整数运算都是基于GMP实现的(参见\mtcasCite{gmpman}).加法和减法的复杂度关于整数位数是线性的,考虑到输入输出的复杂度关于整数位数也是线性的,因此从算法上来看加减法已经达到了复杂度的下界.而高精度除法总可以通过Picarte迭代归结为<index>高精度乘法</index>(注##re:division1
 ),所以高精度四则运算的主要问题集中到了乘法上.
 
-设$n$为乘数的位数,就目前已知的情况而言,不同乘法算法的时间复杂度可以从平凡的$O(n^2)$(普通乘法),$O(n^{\log_2{3}})$(Karatsuba乘法),$O(n^{\log_3{5}})$(Toom-3乘法),$O(n\log^*{n})$(复数域上的FFT),其中$$\log^*{n}=\log{n}(\log{\log{n}})(\log{\log{\log{n}}})\cdots,$$和$O(n(\log{n})(\log{\log{n}}))$(有限域上的FFT),其中"有限域上的FFT"的时间复杂度已经相当接近线性了,<cite>taocp2</cite>和<cite>mca</cite>中给出了具体的复杂度分析与证明.但是这些乘法算法中复杂度较低的算法往往有较大的常数因子,因此如果乘数的位数较少,普通乘法反而是最快的,所以实用中常常将这些不同的乘法算法结合起来使用,每次做乘法时都根据相乘两数的大小动态地选择具体采用哪一种算法,而每种算法的最佳适用范围往往依赖于具体实现和硬件环境,因此一般直接通过实验来确定.
+设$n$为乘数的位数,就目前已知的情况而言,不同乘法算法的时间复杂度可以从平凡的$O(n^2)$(普通乘法),$O(n^{\log_2{3}})$(Karatsuba乘法),$O(n^{\log_3{5}})$(Toom-3乘法),$O(n\log^*{n})$(复数域上的FFT),其中$$\log^*{n}=\log{n}(\log{\log{n}})(\log{\log{\log{n}}})\cdots,$$和$O(n(\log{n})(\log{\log{n}}))$(有限域上的FFT),其中"有限域上的FFT"的时间复杂度已经相当接近线性了,\mtcasCite{taocp2}和\mtcasCite{mca}中给出了具体的复杂度分析与证明.但是这些乘法算法中复杂度较低的算法往往有较大的常数因子,因此如果乘数的位数较少,普通乘法反而是最快的,所以实用中常常将这些不同的乘法算法结合起来使用,每次做乘法时都根据相乘两数的大小动态地选择具体采用哪一种算法,而每种算法的最佳适用范围往往依赖于具体实现和硬件环境,因此一般直接通过实验来确定.
 
 ** 一元多项式乘法
 
@@ -202,7 +208,7 @@ a&\ge a_{s+1}B^2+a_sB+a_{s-1}\\
 
 ** Karatsuba乘法
 
-第一个不平凡的快速乘法算法是由俄罗斯数学家A. Karatsuba于1962年发现的(参见<cite>Karatsuba-multiply</cite>),它采用了一个简单但十分有效的分治策略来使乘法加速.<index>Karatsuba乘法</index>实现起来并不困难,因此在算法理论中也常常被拿来当作分治算法(参见<cite>ita</cite>)的很好例子.
+第一个不平凡的快速乘法算法是由俄罗斯数学家A. Karatsuba于1962年发现的(参见\mtcasCite{Karatsuba-multiply}),它采用了一个简单但十分有效的分治策略来使乘法加速.<index>Karatsuba乘法</index>实现起来并不困难,因此在算法理论中也常常被拿来当作分治算法(参见\mtcasCite{ita})的很好例子.
 
 *** 一次多项式的乘法
 
@@ -242,9 +248,9 @@ $f(\infty)$其实就等于$f(x)$的首项系数,可以证明这样的定义与�
 </remark>
 记$T(n)$是递归地利用Karatsuba乘法将两个$n$位$B$进制数相乘所需要的$B$进制个位数乘法次数,那么有$T(2n)\le 3T(n)$,由此推出$T(n)=O(n^{\log_2{3}})\approx O(n^{1.59})$.
 
-关于Karatsuba算法更详细的介绍请参阅<cite>wangdongming</cite>第2章,<cite>mca</cite>,<cite>taocp2</cite>和A. Karatsuba的原始论文<cite>Karatsuba-multiply</cite>.
+关于Karatsuba算法更详细的介绍请参阅\mtcasCite{wangdongming}第2章,\mtcasCite{mca},\mtcasCite{taocp2}和A. Karatsuba的原始论文\mtcasCite{Karatsuba-multiply}.
 
-值得一提的是,采用和Karatsuba乘法完全类似的想法,还可以得到一种整数除法的快速算法(参见<cite>Burnikel-fastrecursive</cite>).
+值得一提的是,采用和Karatsuba乘法完全类似的想法,还可以得到一种整数除法的快速算法(参见\mtcasCite{Burnikel-fastrecursive}).
 
 ** Toom-Cook乘法
 
@@ -300,7 +306,7 @@ c_4&=C(\infty).
 </problem>
 与Toom-3乘法的情形类似,根据例##pr:toomr 对Karatsuba乘法做推广就可以得到<index>Toom-$r$乘法</index>.记$T(n)$是递归地利用Toom-r乘法将两个n位$B$进制数相乘所需要的$B$进制个位数乘法次数,那么有$T(rn)\le (2r+1)T(n)$,由此推出$T(n)=O(n^{\log_{r+1}{2r+1}})$.
 
-这样得到的一系列快速乘法算法统称为<index>Toom-Cook乘法</index>,关于Toom-Cook乘法更详细的介绍请参阅<cite>taocp2</cite>.Toom-Cook乘法中的Toom-2乘法与Karatsuba乘法基本相同,只是选取的3个插值点不一样.
+这样得到的一系列快速乘法算法统称为<index>Toom-Cook乘法</index>,关于Toom-Cook乘法更详细的介绍请参阅\mtcasCite{taocp2}.Toom-Cook乘法中的Toom-2乘法与Karatsuba乘法基本相同,只是选取的3个插值点不一样.
 
 由于$$\lim_{r\rightarrow\infty}\log_{r+1}{2r+1}=1,$$所以使用Toom-Cook乘法进行$n$位整数乘法所需要的$B$进制个位数乘法次数的下界趋近于$O(n)$,这是一个很好的结果.但是由于多项式多点求值和多项式插值所需要的线性级操作会随着$r$的增加而迅速增加,以至于一般说来仅仅当$r=2,3$时,Toom-Cook乘法才是实用的.
 
@@ -431,7 +437,7 @@ f^{[1]}&=(f_1,f_3,\ldots,f_{n-1}),
 </algorithm>
 设$T(n)$是利用FFT进行多点求值时所需要的系数乘法的次数,那么$T(n)=O(n\log{n})$,如果环R为复数域,那么利用FFT进行整数乘法时需要考虑浮点运算的截断误差和截断位数,这种乘法算法的复杂度为$O(n\log^*{n})$,其中$\log^*{n}=(\log{n})(\log{\log{n}})\cdots$.
 
-采用FFT计算DFT比直接按照定义计算要快得多,它成功的主要原因是利用了单位原根$\omega$的特殊性质和分治策略.FFT在信号处理,多媒体数据压缩等领域被广泛使用,人们对基本算法进行了许多改进以获得更高的速度和适应于特定的硬件.关于FFT更详细的介绍请参阅<cite>ita</cite>,<cite>mca</cite>和<cite>taocp2</cite>.
+采用FFT计算DFT比直接按照定义计算要快得多,它成功的主要原因是利用了单位原根$\omega$的特殊性质和分治策略.FFT在信号处理,多媒体数据压缩等领域被广泛使用,人们对基本算法进行了许多改进以获得更高的速度和适应于特定的硬件.关于FFT更详细的介绍请参阅\mtcasCite{ita},\mtcasCite{mca}和\mtcasCite{taocp2}.
 
 *** 有限域上的FFT
 
@@ -442,10 +448,10 @@ f^{[1]}&=(f_1,f_3,\ldots,f_{n-1}),
 设$a=(a_s\ldots a_0)_B$,$b=(b_s\ldots b_0)_B$,那么$a,b$分别对应于多项式$$a(B)=\sum_{k=0}^sa_kB^k,\quad b(B)=\sum_{k=0}^sb_kB^k,$$
 $a,b$的乘积$c$对应于多项式$C(B)=\sum\limits_{k=0}^{2s}c_kB^k$,其中$$c_k=\sum_{i+j=k}a_ib_j<\sum_{i+j=k}B^2\le(s+1)\cdot B^2,\quad 0\le k\le 2s.$$在典型的计算机代数系统中,机器精度整数的溢出界$B=2^{64}$,整数位数$s$的界也取为$2^{64}$,那么根据$F_q$的限制应该有$q>(s+1)B^2\approx 2^{192}$,这样大的素数$q$以及有限域$F_q$是不容易使用的.
 
-为了解决这个问题,可以借用模方法中的技术,选取三个机器精度的素数$2^{63}\le q_0,q_1,q_2<2^{64}$,分别在$F_{q_i}$中计算出模乘积$a\cdot b\bmod q_i$,然后利用中国剩余定理(参见<cite>nlzdss00</cite>)计算出$\mathbb{Z}$中的乘积$a\cdot b$.
+为了解决这个问题,可以借用模方法中的技术,选取三个机器精度的素数$2^{63}\le q_0,q_1,q_2<2^{64}$,分别在$F_{q_i}$中计算出模乘积$a\cdot b\bmod q_i$,然后利用中国剩余定理(参见\mtcasCite{nlzdss00})计算出$\mathbb{Z}$中的乘积$a\cdot b$.
 
-考虑到中国剩余定理的计算,利用有限域上的<index sub="有限域上的">FFT</index>进行整数乘法的计算复杂度为$$O(n(\log{n})(\log{\log{n}})).$$关于有限域上的FFT更详细的介绍请参阅<cite>mca</cite>和<cite>Schoenhage-multiply</cite>.
+考虑到中国剩余定理的计算,利用有限域上的<index sub="有限域上的">FFT</index>进行整数乘法的计算复杂度为$$O(n(\log{n})(\log{\log{n}})).$$关于有限域上的FFT更详细的介绍请参阅\mtcasCite{mca}和\mtcasCite{Schoenhage-multiply}.
 
-除了以上两种最常用的算法之外,还有许多类似于FFT的算法也可以用于快速计算DFT,如<index>NTT</index>(Number theoretic transform),<index>WFT</index>(Winograd Fourier Transform)和<index>PFT</index>(Polynomial Fourier Transform)等,关于FFT,NTT,WFT和PFT更详细的介绍请参阅Nussbaumer<cite>Nussbaumer82</cite>或中译本<cite>fftca</cite>.
+除了以上两种最常用的算法之外,还有许多类似于FFT的算法也可以用于快速计算DFT,如<index>NTT</index>(Number theoretic transform),<index>WFT</index>(Winograd Fourier Transform)和<index>PFT</index>(Polynomial Fourier Transform)等,关于FFT,NTT,WFT和PFT更详细的介绍请参阅Nussbaumer\mtcasCite{Nussbaumer82}或中译本\mtcasCite{fftca}.
 
 \end{document}
