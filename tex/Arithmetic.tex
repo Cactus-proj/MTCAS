@@ -7,6 +7,8 @@
 \newtheorem{theorem}{Theorem}
 \theoremstyle{remark}
 \newtheorem{remark}{Remark}
+\theoremstyle{definition}
+\newtheorem{definition}{Definition}[section]
 
 %% Index
 \usepackage{imakeidx}
@@ -182,16 +184,16 @@ a&\ge a_{s+1}B^2+a_sB+a_{s-1}\\
 
 单从整数乘法的角度来看,笔算乘法的算法是如此直截了当,以至于很难想象出更好的算法.因此我们换一个角度,先来考虑与整数乘法具有很大相似性的一元多项式乘法,这里需要用到一元多项式的\index{系数表示}和\index{点值表示}的概念.
 
-<definition  name="一元多项式系数表示">
+\begin{definition}[一元多项式系数表示]
 一元多项式$$A(x)=\sum_{k=0}^{n-1}a_kx^k,$$的系数表示就是一个由系数组成的向量$\mathbf{a}=(a_0,a_1,\ldots,a_{n-1})$.
-</definition>
+\end{definition}
 \begin{remark}
 我们习惯的表示多项式的方式其实就是系数表示,每个多项式的系数表示向量都是唯一确定的.
 \end{remark}
 
-<definition  name="一元多项式点值表示">
+\begin{definition}[一元多项式点值表示]
 一元多项式$$A(x)=\sum_{k=0}^{n-1}a_kx^k,$$的点值表示是$A(x)$在$n$个不同点处的点值对构成的集合$$\{(x_0,y_0),(x_1,y_1),\ldots,(x_{n-1},y_{n-1})\},$$其中$y_k=A(x_k),k=0,1,\ldots,n-1$.
-</definition>
+\end{definition}
 \begin{remark}
 一个多项式可以有很多种不同的点值表示,这是因为每一组$x_k$都决定着一种点值表示.
 \end{remark}
@@ -221,7 +223,7 @@ a&\ge a_{s+1}B^2+a_sB+a_{s-1}\\
 为了更多地了解隐藏在算法背后的思想,在介绍Karatsuba算法之前,我们先看一看如何利用多项式的点值表示来计算一次多项式的乘法,这是一个很具有启发性意义的例子.
 <definition>
 多项式$f(x)$在$\infty$处的值定义为$$f(\infty)=\lim_{x\rightarrow\infty}f(x)/x^{\deg{f}}.$$
-</definition>
+\end{definition}
 \begin{remark}
 $f(\infty)$其实就等于$f(x)$的首项系数,可以证明这样的定义与多项式插值是相容的.
 \end{remark}
@@ -326,11 +328,11 @@ c_4&=C(\infty).
 
 顾名思义,FFT是快速计算\index{DFT}(Discrete Fourer Transform)的算法,我们可以将DFT简单的理解成以单位复根作为求值点时多项式系数表示到点值表示之间的转换.在正式给出DFT的定义之前,需要先引入\index{原根}和\index{循环卷积}的概念.
 
-<definition  name="原根">
+\begin{definition}[原根]
 设$n\in\mathbb{N}_+$,$R$是一个环,$\omega\in R$.
  1.若$\omega^n=1$,则称$\omega$为$R$的$n$次单位根.
  2.若$\omega$是$n$次单位根,并且对于$n$的每个素因子$p$,$\omega^{n/p}-1$不是$R$的零因子,则称$\omega$为$R$的$n$次单位原根.
-</definition>
+\end{definition}
 \begin{remark}
 按照这个定义,任意素数的整数次幂单位复根都是复数域$\mathbb{C}$的单位原根,例如$\omega=e^{{2\pi i\over 8}}\in R=\mathbb{C}$就是一个8次单位原根.除此之外,对于模整数环$\mathbb{Z}_{17}$,$\overline{3}\in R=\mathbb{Z}_{17}$是16次单位原根,与此同时,虽然$\overline{2}^{16}=\overline{1}\in R=\mathbb{Z}_{17}$,但$\overline{2}$并不是$\mathbb{Z}_{17}$的16次单位原根,因为$2^8-1\equiv 0\mod 17$.如果$q$是素数的整数次幂,那么当且仅当$n|q-1$时有限域$\mathbb{F}_q$存在$n$次单位原根.
 \end{remark}
@@ -346,17 +348,17 @@ c_4&=C(\infty).
 由$\omega^n=1$知$$0=\omega^{kn}-1=(\omega^k-1)\cdot(\sum_{j=0}^{n-1}\omega^{jk}),$$而$\omega^k-1$不是$R$的零因子,因此$$\sum_{j=0}^{n-1}\omega^{jk}=0.$$
 </proof>
 
-<definition  name="循环卷积">
+\begin{definition}[循环卷积]
 设$f(x)=\sum\limits_{k=0}^{n-1}f_kx^k,g(x)=\sum\limits_{k=0}^{n-1}g_kx^k$,则称$f(x)*g(x)=\sum\limits_{k=0}^{n-1}h_kx^k$为$f(x),g(x)$的循环卷积,其中$h_k=\sum\limits_{i+j\equiv k\bmod n}f_ig_j$.
-</definition>
+\end{definition}
 \begin{remark}
 不难发现,循环卷积的定义跟多项式乘积的定义很相似,我们可以简单地把它理解成先扩充多项式次数再做多项式乘法的过程.设$f,g$的多项式乘积$fg$是$n-1$次多项式,则$f$和$g$的次数可能小于$n-1$,如果在它们的最高次项之前添上系数为0的高次项并把它们看成$n-1$次多项式,这时候会发现$f,g$的循环卷积$f*g$恰好等于$fg$,这就是循环卷积和普通多项式乘积之间的关系.
 \end{remark}
 
 现在可以正式地给出DFT的定义了.
-<definition  name="DFT">
+\begin{definition}[DFT]
 设$f(x)=\sum\limits_{k=0}^{n-1}f_kx^k$,$\omega$是环$R$的$n$次单位原根,则称$$\mathrm{DFT}_{\omega}(f)=(f(1),f(\omega),\ldots,f(\omega^{n-1}))$$为$f$的离散傅立叶变换.
-</definition>
+\end{definition}
 
 DFT存在逆变换,并且原根的良好性质(定理##th:primitiveroot )保证了DFT的逆变换和DFT具有相同的结构.
 <theorem>
