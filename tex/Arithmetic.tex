@@ -10,6 +10,7 @@
 \theoremstyle{definition}
 \newtheorem{definition}{Definition}[section]
 \newtheorem{problem}{Problem}
+\newtheorem{proof}{Proof}
 
 %% Index
 \usepackage{imakeidx}
@@ -98,7 +99,7 @@ G&=9x^5-3x^4-4x^2+7x+7,
 设整数$a=(a_{s+1}a_s\ldots a_1a_0)_B,b=(b_s\ldots b_1b_0)_B$,则商$[{a\over b}]$满足不等式
 $$\left[\frac{a_{s+1}B+a_s}{b_s+1}\right]\le\left[\frac{a}{b}\right]\le\min\left\{\left[\frac{a_{s+1}B+a_s}{b_s}\right],B-1\right\}.$$
 \end{theorem}
-<proof>
+\begin{proof}
 首先$$\frac{a}{b}>\frac{a_{s+1}B^{s+1}+a_sB^s}{(b_s+1)B^s}=\frac{a_{s+1}B+a_s}{b_s+1},$$故$\left[\frac{a_{s+1}B+a_s}{b_s+1}\right] \le \left[\frac{a}{b}\right]$,不等式的前半部分得证.
 
 而由$$\left[\frac{a_{s+1}B+a_s}{b_s}\right] > \frac{a_{s+1}B+a_s}{b_s}-1$$可以得到
@@ -110,7 +111,7 @@ $$\left[\frac{a_{s+1}B+a_s}{b_s+1}\right]\le\left[\frac{a}{b}\right]\le\min\left
 \end{align*}
 
 故$\left[\frac{a}{b}\right]\le\left[\frac{a_{s+1}B+a_s}{b_s}\right]$,证毕.
-</proof>
+\end{proof}
 \begin{remark}
 记$$q = \min\left\{\left[\frac{a_{s+1}B+a_s}{b_s}\right],B-1\right\},$$则$q$是商$\left[{a\over b}\right]$一个很好的上界,事实上下面的定理将告诉我们$q$比商的真值至多大2.
 \end{remark}
@@ -118,16 +119,16 @@ $$\left[\frac{a_{s+1}B+a_s}{b_s+1}\right]\le\left[\frac{a}{b}\right]\le\min\left
 \begin{theorem}\label{th:division2}
 若$b$的最高位不小于$\left[\frac{B}{2}\right]$,即$b_s\ge\left[\frac{B}{2}\right]$,则$$q-2\le\left[\frac{a}{b}\right]\le q.$$
 \end{theorem}
-<proof>
+\begin{proof}
 用反证法.假设$\left[\frac{a}{b}\right]<q-2$,则$$\left[\frac{a}{b}\right]\le\left[\frac{a_{s+1}B+a_s}{b_s}\right]-3,\quad\left[\frac{a}{b}\right] \le B-4.$$
 因为$$\left[\frac{a}{b}\right]>\frac{a}{b}-1,\quad\frac{a_{s+1}B+a_s}{b_s}<\frac{a}{b-B^s},$$所以$\frac{a}{b}+2<\frac{a}{b-B^s}$,推出$$\frac{a}{b}>2(\frac{b}{B^s}-1)\ge 2(b_s-1).$$因此$b_s \le \frac{B}{2}-1<\left[\frac{B}{2}\right]$,与题设条件矛盾,证毕.
-</proof>
+\end{proof}
 
 上面只考虑了被除数的头两位与除数的首位,如果允许做更精细的考察,譬如说考虑被除数的头三位与除数的头两位,我们还可以得到对商更好的估计.
 \begin{theorem}\label{th:division3}
 设$t=(a_{s+1}B+a_s)-qb_s$,若$B\cdot t\ge qb_{s-1}-a_{s-1}$,则$$q-1\le\left[\frac{a}{b}\right]\le q.$$
 \end{theorem}
-<proof>
+\begin{proof}
 将$t$代入不等式中得$$B\cdot((a_{s+1}B+a_s)-qb_s)\ge qb_{s-1}-a_{s-1},$$化简得到
 
 \begin{align*}
@@ -137,7 +138,7 @@ a&\ge a_{s+1}B^2+a_sB+a_{s-1}\\
 \end{align*}
 
 因为$q(b-B^{s-1})>qb-B^s\ge(q-1)b$,所以${a\over b}>q-1$,证毕.
-</proof>
+\end{proof}
 \begin{remark}
 如果定理中的条件不满足,将$q$减1,这时我们总可以说$q$比商的真值至多大1.
 \end{remark}
@@ -341,13 +342,13 @@ c_4&=C(\infty).
 \begin{theorem}\label{th:primitiveroot}
 如果$\omega$是环$R$的$n$次单位原根,那么$\forall 1<k<n$,$\omega^k-1$不是$R$的零因子,并且$$\sum_{j=0}^{n-1}\omega^{jk}=0.$$
 \end{theorem}
-<proof>
+\begin{proof}
 设$d=\gcd(k,n)$且$u\cdot k+v\cdot n=d$,由$d<n$知存在$n$的一个素因子$p$使得$d|n/p$.从而$\omega^d-1|\omega^{n/p}-1$,但$\omega^{n/p}-1$不是$R$的零因子,因此$\omega^d-1$也不是$R$的零因子.
 
 与此同时,$$\omega^k-1|\omega^{u\cdot k}-1=\omega^{u\cdot k+v\cdot n}-1=\omega^d-1,$$这就证明了$\omega^k-1$不是$R$的零因子.
 
 由$\omega^n=1$知$$0=\omega^{kn}-1=(\omega^k-1)\cdot(\sum_{j=0}^{n-1}\omega^{jk}),$$而$\omega^k-1$不是$R$的零因子,因此$$\sum_{j=0}^{n-1}\omega^{jk}=0.$$
-</proof>
+\end{proof}
 
 \begin{definition}[循环卷积]
 设$f(x)=\sum\limits_{k=0}^{n-1}f_kx^k,g(x)=\sum\limits_{k=0}^{n-1}g_kx^k$,则称$f(x)*g(x)=\sum\limits_{k=0}^{n-1}h_kx^k$为$f(x),g(x)$的循环卷积,其中$h_k=\sum\limits_{i+j\equiv k\bmod n}f_ig_j$.
@@ -365,7 +366,7 @@ DFT存在逆变换,并且原根的良好性质(定理##th:primitiveroot )保证�
 <theorem>
 设$\omega$是环$R$的$n$次单位原根,用$(\mathrm{DFT}_\omega)^{-1}$表示$\mathrm{DFT}_\omega$的逆变换,那么$$(\mathrm{DFT}_\omega)^{-1}=\frac{1}{n}\mathrm{DFT}_{\omega^{-1}}.$$
 \end{theorem}
-<proof>
+\begin{proof}
 $\mathrm{DFT}_\omega$是$R^n$上的线性变换，它在自然基下的矩阵表示为$\vec{y}=V_n(\omega)\vec{a}$，即
 
 \begin{align*}
@@ -402,7 +403,7 @@ u_{ij}&=\sum_{0\le k<n}\omega^{ik}(\omega^{-1})^{kj}\\
 \end{align*}
 
 因此$V_n(\omega)\cdot V_n(\omega^{-1})=n(\delta_{ij})=nI_n$,即$(V_n(\omega))^{-1}=\frac{1}{n}V_n(\omega^{-1})$,亦即$(\mathrm{DFT}_\omega)^{-1}=\frac{1}{n}\mathrm{DFT}_{\omega^{-1}}$.
-</proof>
+\end{proof}
 \begin{remark}
 这样一来,系数表示和点值表示之间的正逆转换可以用相同的办法去处理,也就是说可以采用统一的方法来计算单位原根处的多点求值和插值,这是适当地选取插值点带来的好处之一,现在$f$和$g$的循环卷积可以表示成$$f*g={1\over n}\mathrm{DFT}_{\omega^{-1}}(\mathrm{DFT}_\omega(f)\cdot \mathrm{DFT}_\omega(g)),$$其中$\cdot$表示一维向量之间逐点相乘.
 \end{remark}
