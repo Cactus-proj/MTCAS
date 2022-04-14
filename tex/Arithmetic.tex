@@ -1,4 +1,13 @@
-#title 高精度运算
+\documentclass{ctexart}
+
+
+\title{高精度运算}
+\author{张翔}
+\date{\today}
+
+
+\begin{document}
+\maketitle
 
 <contents>
 
@@ -438,3 +447,5 @@ $a,b$的乘积$c$对应于多项式$C(B)=\sum\limits_{k=0}^{2s}c_kB^k$,其中$$c
 考虑到中国剩余定理的计算,利用有限域上的<index sub="有限域上的">FFT</index>进行整数乘法的计算复杂度为$$O(n(\log{n})(\log{\log{n}})).$$关于有限域上的FFT更详细的介绍请参阅<cite>mca</cite>和<cite>Schoenhage-multiply</cite>.
 
 除了以上两种最常用的算法之外,还有许多类似于FFT的算法也可以用于快速计算DFT,如<index>NTT</index>(Number theoretic transform),<index>WFT</index>(Winograd Fourier Transform)和<index>PFT</index>(Polynomial Fourier Transform)等,关于FFT,NTT,WFT和PFT更详细的介绍请参阅Nussbaumer<cite>Nussbaumer82</cite>或中译本<cite>fftca</cite>.
+
+\end{document}
