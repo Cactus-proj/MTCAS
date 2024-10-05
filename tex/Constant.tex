@@ -1,0 +1,744 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+%
+\documentclass[
+]{article}
+\usepackage{lmodern}
+\usepackage{amssymb,amsmath}
+\usepackage{ifxetex,ifluatex}
+\ifnum 0\ifxetex 1\fi\ifluatex 1\fi=0 % if pdftex
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math}
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{xcolor}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
+\hypersetup{
+  pdftitle={数学常数},
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
+\urlstyle{same} % disable monospaced font for URLs
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
+
+\title{数学常数}
+\author{}
+\date{}
+
+\begin{document}
+\maketitle
+
+\textless contents\textgreater{}
+
+数学常数凝集着数学研究的精华,计算任意精度的数学常数是符号计算中一项重要的内容,许多涉及到微积分,特殊函数和函数求值的运算都会涉及到数学常数.特别地,如果运算结果关于这些数学常数是非线性的,那么数学常数的精度就显得尤为重要,下面主要以圆周率为例介绍一下计算数学常数时用到的主要方法.
+
+\hypertarget{ux5706ux5468ux7387}{%
+\section{圆周率}\label{ux5706ux5468ux7387}}
+
+人们对于计算\textless index\textgreater 圆周率\textless/index\textgreater\$\textbackslash pi\$的兴趣似乎从远古时代就开始了,如果只从较为系统的研究看起,刘徽的割圆术大概是微积分被发现之前用来计算\$\textbackslash pi\$的最佳方法,祖冲之利用它求出了著名的密率\$355\textbackslash over
+113\$,一共有8位有效数字.1706年Taylor的私人教师Machin利用反正切函数的Taylor级数展开式借助纸笔演算求出了\$\textbackslash pi\$的小数点后100位数字,1949年美国使用早期的电子计算机算出\$\textbackslash pi\$的小数点后的2037位数,目前计算\$\textbackslash pi\$的小数位数的世界纪录(参见\textless cite\textgreater pi-record\textless/cite\textgreater)保持者是日本科学家Yasumasa
+Kanada(金田康正),他于2002年在一台超级并行计算机上将\$\textbackslash pi\$的小数位数推进到了惊人的12411亿位.
+
+\hypertarget{ux7ea7ux6570ux65b9ux6cd5}{%
+\subsection{级数方法}\label{ux7ea7ux6570ux65b9ux6cd5}}
+
+\hypertarget{ux6298ux534aux6c42ux548c}{%
+\subsubsection{折半求和}\label{ux6298ux534aux6c42ux548c}}
+
+折半求和(Binary
+Splitting)(参见\textless cite\textgreater bs\textless/cite\textgreater)是用来计算超几何级数(参见\textless cite\textgreater wangzhuxi\textless/cite\textgreater)在有理点处的值的一项重要方法.
+
+超几何级数是一类特殊的幂级数. \textless definition
+name="升阶乘"\textgreater{}
+\$\textbackslash alpha\$的\$n\$阶\textless index\textgreater 升阶乘\textless/index\textgreater 定义为\$\$(\textbackslash alpha)\_n=\textbackslash frac\{\textbackslash Gamma(\textbackslash alpha+n)\}\{\textbackslash Gamma(\textbackslash alpha)\}\texttt{\textbackslash{}alpha(\textbackslash{}alpha+1)\textbackslash{}cdots(\textbackslash{}alpha+n-1).\$\$
+\textless{}/definition\textgreater{}
+\textless{}definition\ \ name}"超几何级数"\textgreater{}
+称形如\$\$\_pF\_q(a\_1,\textbackslash cdots,a\_p;b\_1,\textbackslash cdots,b\_q;z)=\textbackslash sum\textbackslash limits\_\{n=0\}\^{}\{\textbackslash infty\}\textbackslash frac\{(a\_1)\_n\textbackslash cdots(a\_p)\_nz\^{}n\}\{(b\_1)\_n\textbackslash cdots(b\_q)\_nn!\}\$\$的级数为\textless index\textgreater 超几何级数\textless/index\textgreater.
+\textless/definition\textgreater{} \textless remark\textgreater{}
+许多函数都具有超几何级数的展开式,最简单的例子是\$e\^{}z=\{\_0F\_0\}(z)\$.除此之外,初等函数一般都具有\$\_2F\_1\$形式的展开式.
+\textless/remark\textgreater{}
+
+许多数学常数可以看作超几何级数在某个有理点处的值.一般来说,超几何级数都可以改写成如下形式\$\$S=\textbackslash sum\_\{n=0\}\^{}\{\textbackslash infty\}\textbackslash frac\{a(n)\}\{b(n)\}\textbackslash frac\{p(0)\textbackslash cdots
+p(n)\}\{q(0)\textbackslash cdots
+q(n)\},\$\$其中\$a(n),b(n),p(n),q(n)\$都是整系数多项式.
+\textless problem\textgreater{}
+以Chudnovsky公式为例,先将通项改写成\$\$s(n)\texttt{\textbackslash{}frac\{(-1)\^{}n(An+B)\}\{1\}\textbackslash{}cdot\ \textbackslash{}frac\{(6n)!/(3n)!\}\{(n!)\^{}3C\^{}\{3n\}\},\$\$于是
+\textless{}latex\textgreater{}
+\textbackslash{}begin\{align*\}
+a(n)\&}(-1)\^{}n(An+B),\textbackslash\textbackslash{}
+b(n)\&\texttt{1,\textbackslash{}\textbackslash{}
+p(0)\textbackslash{}cdots\ p(n)\&}\{(6n)!\textbackslash over
+(3n)!\},\textbackslash\textbackslash{} q(0)\textbackslash cdots
+q(n)\&\texttt{(n!)\^{}3C\^{}\{3n\}.
+\textbackslash{}end\{align*\}
+\textless{}/latex\textgreater{}
+相邻两项相除就可以解出\$p(n)}(6n-1)(6n-3)(6n-5)\$,\$q(n)=n\^{}3C\^{}3\$.
+\textless/problem\textgreater{}
+
+考虑部分和\$\$S=S(n\_1,n\_2)=\textbackslash sum\_\{n\_1\textbackslash le
+n\textless n\_2\}\textbackslash frac\{a(n)\}\{b(n)\}\textbackslash frac\{p(n\_1)\textbackslash cdots
+p(n)\}\{q(n\_1)\textbackslash cdots q(n)\}.\$\$记
+\textless latex\textgreater{} \textbackslash begin\{align*\}
+P\&=P(n\_1,n\_2)=p(n\_1)\textbackslash cdots
+p(n\_2-1),\textbackslash\textbackslash{}
+Q\&=Q(n\_1,n\_2)=q(n\_1)\textbackslash cdots
+q(n\_2-1),\textbackslash\textbackslash{}
+B\&=B(n\_1,n\_2)=b(n\_1)\textbackslash cdots b(n\_2-1),
+\textbackslash end\{align*\} \textless/latex\textgreater{}
+再设\$T=T(n\_1,n\_2)\texttt{BQS\$,那么\$S}\textbackslash frac\{T\}\{BQ\}\$.
+
+折半求和使用了一种类似于通分的方法构造出递推公式来计算\$P,Q,B,T\$.
+\textless theorem\textgreater{}
+设\$n\_m\$满足\$n\_1\textless n\_m\textless n\_2\$,将区间\$n\_1\textbackslash le
+x\textless n\_2\$分成两段\$n\_1\textbackslash le
+x\textless n\_m\$及\$n\_m\textbackslash le
+x\textless n\_2\$,分别用下标\$l,r\$来表示对应这两个子区间的\$P,Q,B,T\$的值,例如\$P\_l=P(n\_1,n\_m),P\_r=P(n\_m,n\_2)\$,那么存在递推公式
+\textless latex\textgreater{} \textbackslash begin\{align*\}
+P\&=P\_l\textbackslash cdot P\_r,\textbackslash\textbackslash{}
+Q\&=Q\_l\textbackslash cdot Q\_r,\textbackslash\textbackslash{}
+B\&=B\_l\textbackslash cdot B\_r,\textbackslash\textbackslash{}
+T\&=T\_l\textbackslash cdot B\_rQ\_r+T\_r\textbackslash cdot B\_lP\_l.
+\textbackslash end\{align*\} \textless/latex\textgreater{}
+\textless/theorem\textgreater{}
+
+现在可以写出\textless index\textgreater 折半求和\textless/index\textgreater 算法的详细过程了.
+\textless algorithm name="折半求和"
+label="al:binary-splitting"\textgreater{}
+
+输入:通项公式\$a(n),b(n),p(n),q(n)\$,区间\${[}n\_1,n\_2)\$.
+
+输出:部分和\$P(n\_1,n\_2),Q(n\_1,n\_2),B(n\_1,n\_2),T(n\_1,n\_2)\$.
+
+1.如果\$n\_2-n\_1\textless5\$,直接根据定义计算出\$(P,Q,B,T)\$并返回.
+2.设\$n\_m=\textbackslash left{[}\textbackslash frac\{n\_1+n\_2\}\{2\}\textbackslash right{]}\$,\$(P\_l,Q\_l,B\_l,T\_l)\$,\$(P\_r,Q\_r,B\_r,T\_r)\$分别是对应于子区间\${[}n\_1,n\_m)\$和\${[}n\_m,n\_2)\$上的\$(P,Q,B,T)\$,在两个子区间上分别应用折半求和计算出它们.
+3.计算\$P=P\_lP\_r\$,\$Q=Q\_lQ\_r\$,\$B=B\_lB\_r\$和\$T=T\_lB\_rQ\_r+T\_rB\_lP\_l\$,返回\$(P,Q,B,T)\$.
+\textless/algorithm\textgreater{} \textless remark\textgreater{}
+使用折半求和计算出\${[}n\_1,n\_2)\$上的部分和\$(P,Q,B,T)\$后,再利用\$S=\{T\textbackslash over
+BQ\}\$做一次除法就可以求出原级数的部分和\$S\$.
+\textless/remark\textgreater{}
+注意到最终结果\$S\$只依赖于\$T\$和\$BQ\$的比值,因此在折半求和计算\$(P,Q,B,T)\$的过程中,最后一步应用递推公式之前可以将\$P\_l,Q\_r\$先"约分",即将它们同时除以其最大公因子\$\textbackslash gcd(P\_l,Q\_r)\$,这样一来由递推公式求出的\$P,Q,T\$都变为原来的\$1\textbackslash over\textbackslash gcd(P\_l,Q\_r)\$倍,而比值\$T\textbackslash over
+BQ\$则保持不变.
+
+为了快速地计算出\$\textbackslash gcd(P\_l,Q\_r)\$,常用的方法是在计算过程中保留\$P,Q\$的部分素因子分解式,并在递推相乘时同步更新其部分素因子分解式.
+
+从整体上来看,折半求和并没有减少运算次数,它只是让参与乘法的两个数的数量级更接近,这样就可以充分发挥Karatsuba,Toom-Cook和FFT等大整数快速乘法算法的优势.如果大整数乘法采用古典乘法算法,那么折半求和是不起作用的,甚至可能比普通的级数求和方法更慢.除此之外,折半求和实际上是将截断的级数先乘上分母的最小公倍数后再计算,这样可以避免对中间结果进行除法等不精确计算,而只需要在最后做一次除法.可以证明,采用折半求和算法计算出部分和\$S\$的前\$N\$位有效数字大约需要\$O((\textbackslash log
+N)\^{}2M(N))\$次基本运算,其中\$M(N)\$代表两个\$N\$位整数相乘所需要的基本运算的次数(如果采用有限域上的FFT乘法,那么\$M(N)=O(N\textbackslash log
+N\textbackslash log\textbackslash log
+N)\$).折半求和利用两个独立的子区间的数据来合成整个区间的数据,因此也很适合于并行计算.
+
+\hypertarget{machinux578bux516cux5f0f}{%
+\subsubsection{Machin型公式}\label{machinux578bux516cux5f0f}}
+
+John Machin用来计算\$\textbackslash pi\$的公式是 \textless theorem
+name="Machin公式" label="th:machin"\textgreater{}
+\$\$\{\textbackslash pi\textbackslash over
+4\}\texttt{4\textbackslash{}tan\^{}\{-1\}\{1\textbackslash{}over\ 5\}-\textbackslash{}tan\^{}\{-1\}\{1\textbackslash{}over\ 239\}.\$\$
+\textless{}/theorem\textgreater{}
+\textless{}proof\textgreater{}
+考虑恒等式\$\textbackslash{}tan(\{\textbackslash{}pi\textbackslash{}over\ 4\}-x)}\textbackslash frac\{1-\textbackslash tan\{x\}\}\{1+\textbackslash tan\{x\}\}\$,两边同时取反正切得到\$\$\{\textbackslash pi\textbackslash over
+4\}=x+\textbackslash tan\^{}\{-1\}\{\textbackslash frac\{1-\textbackslash tan\{x\}\}\{1+\textbackslash tan\{x\}\}\},\$\$再令\$x=4\textbackslash tan\^{}\{-1\}\{1\textbackslash over
+5\}\$就可以证明Machin公式. \textless/proof\textgreater{}
+
+在\textless index\textgreater Machin公式\textless/index\textgreater(定理\#\#th:machin
+)中利用\$\textbackslash tan\^{}\{-1\}x\$的Taylor展开式\$\$\textbackslash tan\^{}\{-1\}x=x-\{x\^{}3\textbackslash over
+3\}+\{x\^{}5\textbackslash over
+5\}+\textbackslash cdots+(-1)\^{}n\{x\^{}\{2n+1\}\textbackslash over
+2n+1\}+O(x\^{}\{2n+3\}),\$\$可以得到 \textless theorem\textgreater{}
+\$\$\{\textbackslash pi\textbackslash over
+4\}=4\textbackslash sum\_\{k=0\}\^{}\textbackslash infty\textbackslash frac\{(-1)\^{}k\}\{(2k+1)5\^{}\{2k+1\}\}-\textbackslash sum\_\{k=0\}\^{}\textbackslash infty\textbackslash frac\{(-1)\^{}k\}\{(2k+1)239\^{}\{2k+1\}\}.\$\$
+\textless/theorem\textgreater{} \textless remark\textgreater{}
+这个公式的优点是第二项收敛得很快,而第一项的分母中含有5的方幂,便于手工在十进制下计算.
+\textless/remark\textgreater{}
+
+\textless definition name="Machin型公式" label="de:machin"\textgreater{}
+形如\$\$\{\textbackslash pi\textbackslash over
+4\}=\textbackslash sum\_\{k=0\}\^{}\{n-1\}a\_k\textbackslash tan\^{}\{-1\}\{1\textbackslash over
+b\_k\},\textbackslash quad
+a\_k,b\_k\textbackslash in\textbackslash mathbb\{N\}\_+,\$\$的公式,或者写成复数形式\$\$i=\textbackslash prod\_\{k=0\}\^{}\{n-1\}\textbackslash left(\textbackslash frac\{b\_k+i\}\{b\_k-i\}\textbackslash right)\^{}\{a\_k\},\textbackslash quad
+a\_k,b\_k\textbackslash in\textbackslash mathbb\{N\}\_+,\$\$统称为\textless index
+sub="圆周率"\textgreater Machin型公式\textless/index\textgreater 或\$n\$阶Machin型公式.
+\textless/definition\textgreater{}
+
+\textless problem\textgreater{} 以\$n=2\$为例,其他三个2阶Machin型公式是
+\textless latex\textgreater{} \textbackslash begin\{align*\}
+\{\textbackslash pi\textbackslash over
+4\}\&=\textbackslash tan\^{}\{-1\}\{1\textbackslash over
+2\}+\textbackslash tan\^{}\{-1\}\{1\textbackslash over
+3\}\textbackslash\textbackslash{}
+\&=2\textbackslash tan\^{}\{-1\}\{1\textbackslash over
+2\}-\textbackslash tan\^{}\{-1\}\{1\textbackslash over
+7\}\textbackslash\textbackslash{}
+\&=2\textbackslash tan\^{}\{-1\}\{1\textbackslash over
+3\}+\textbackslash tan\^{}\{-1\}\{1\textbackslash over
+7\}.\textbackslash\textbackslash{} \textbackslash end\{align*\}
+\textless/latex\textgreater{} \textless/problem\textgreater{}
+
+将Machin型公式(定义\#\#de:machin
+)的复数形式展开,并注意到\$a\_k,b\_k\textbackslash in\textbackslash mathbb\{N\}\_+\$,,我们就可以将寻找Machin型公式的问题转化成寻找高阶不定方程整数解的问题.据此还可以证明\$n=2\$的Machin型公式一共只有以上四种,而\$n\$从1到21所有的Machin型公式共有1500种(参见\textless cite\textgreater Weisstein-machin\textless/cite\textgreater).
+
+\textless definition name="Lehmer数" label="de:lehmer"\textgreater{}
+Machin型公式\$\$\{\textbackslash pi\textbackslash over
+4\}=\textbackslash sum\_\{k=0\}\^{}\{n-1\}a\_k\textbackslash tan\^{}\{-1\}\{1\textbackslash over
+b\_k\},\textbackslash quad
+a\_k,b\_k\textbackslash in\textbackslash mathbb\{N\}\_+\$\$的\textless index\textgreater Lehmer数\textless/index\textgreater(参见\textless cite\textgreater Lehmer-machin\textless/cite\textgreater)为\$\$\textbackslash sum\_\{k=0\}\^{}\{n-1\}\{1\textbackslash over
+\textbackslash log\_\{10\}\{b\_k\}\}\$\$
+\textless/definition\textgreater{} \textless remark\textgreater{}
+不同Machin型公式的收敛速度可以用Lehmer数来衡量,Lehmer数越小,公式的收敛速度越快.
+\textless/remark\textgreater{}
+
+\textless problem\textgreater{}
+目前已知收敛最快的Machin型公式是由黄见利(参见\textless cite\textgreater Hwang-machin\textless/cite\textgreater)发现的
+\textless latex\textgreater{} \textbackslash begin\{align*\}
+\{\textbackslash pi\textbackslash over
+4\}\&=183\textbackslash tan\^{}\{-1\}\{1\textbackslash over
+239\}+32\textbackslash tan\^{}\{-1\}\{1\textbackslash over
+1023\}-68\textbackslash tan\^{}\{-1\}\{1\textbackslash over
+5832\}\textbackslash\textbackslash{}
+\&+12\textbackslash tan\^{}\{-1\}\{1\textbackslash over
+110443\}-12\textbackslash tan\^{}\{-1\}\{1\textbackslash over
+4841182\}-100\textbackslash tan\^{}\{-1\}\{1\textbackslash over
+6826318\}, \textbackslash end\{align*\} \textless/latex\textgreater{}
+它对应的Lehmer数是1.51244. \textless/problem\textgreater{}
+
+与其他的计算方法相比,Machin型公式更适合于并行计算.目前计算\$\textbackslash pi\$的位数的世界纪录是2002年12月6日由东京大学信息基础中心超级计算研究部门的Yasumasa
+Kanada(金田康正)教授正式发表的,他利用日本日立公司（HITACHI）制作提供的超级计算机"SR8000/MPP"花了大约600个小时进行计算和验算,计算时采用了如下两个\$n=4\$的Machin型公式
+\textless latex\textgreater{} \textbackslash begin\{align*\}
+\{\textbackslash pi\textbackslash over
+4\}\&=12\textbackslash tan\^{}\{-1\}\{1\textbackslash over
+49\}+32\textbackslash tan\^{}\{-1\}\{1\textbackslash over
+57\}-5\textbackslash tan\^{}\{-1\}\{1\textbackslash over
+239\}+12\textbackslash tan\^{}\{-1\}\{1\textbackslash over
+110443\}\textbackslash\textbackslash{}
+\&=44\textbackslash tan\^{}\{-1\}\{1\textbackslash over
+57\}+7\textbackslash tan\^{}\{-1\}\{1\textbackslash over
+239\}-12\textbackslash tan\^{}\{-1\}\{1\textbackslash over
+682\}+24\textbackslash tan\^{}\{-1\}\{1\textbackslash over 12943\}.
+\textbackslash end\{align*\} \textless/latex\textgreater{}
+
+\hypertarget{ramanujanux578bux516cux5f0f}{%
+\subsubsection{Ramanujan型公式}\label{ramanujanux578bux516cux5f0f}}
+
+Ramanujan构造过一个\$1\textbackslash over\textbackslash pi\$的超几何级数展开式(参见\textless cite\textgreater Berndt-rama\textless/cite\textgreater).
+\textless theorem\textgreater{}
+\$\$\textbackslash frac\{1\}\{\textbackslash pi\}=\{\{2\textbackslash sqrt\{2\}\textbackslash over
+9801\}\textbackslash sum\_\{n=0\}\^{}\textbackslash infty\textbackslash frac\{(4n)!\}\{(n!)\^{}4\}\textbackslash cdot
+\textbackslash frac\{1103+26390n\}\{396\^{}\{4n\}\}\}.\$\$
+\textless/theorem\textgreater{} \textless remark\textgreater{}
+后来Chudnovsky兄弟(参见\textless cite\textgreater Chudnovsky-rama\textless/cite\textgreater)和Borwein兄弟(参见\textless cite\textgreater Borwein-rama\textless/cite\textgreater)又分别给出形如\$\$\textbackslash frac\{1\}\{\textbackslash pi\}=12\textbackslash sum\_\{n=0\}\^{}\{\textbackslash infty\}\textbackslash frac\{(-1)\^{}n(6n)!\}\{(3n)!(n!)\^{}3\}\textbackslash cdot\textbackslash frac\{An+B\}\{C\^{}\{3n+\textbackslash frac\{3\}\{2\}\}\}\$\$的三组公式,这三组公式的参数分别为\$A=545140134,B=13591409,C=640320\$,
+\textless latex\textgreater{} \textbackslash begin\{align*\}
+A\&=1657145277365+212175710912\textbackslash sqrt\{61\},\textbackslash\textbackslash{}
+B\&=107578229802750+13773980892672\textbackslash sqrt\{61\},\textbackslash\textbackslash{}
+C\&\texttt{5280(236674+30303\textbackslash{}sqrt\{61\})
+\textbackslash{}end\{align*\}
+\textless{}/latex\textgreater{}
+和
+\textless{}latex\textgreater{}
+\textbackslash{}begin\{align*\}
+\ A\ \&} 63365028312971999585426220 \textbackslash\textbackslash{}
+\&\textbackslash quad +
+28337702140800842046825600\textbackslash sqrt\{5\}
+\textbackslash\textbackslash{} \&\textbackslash quad +
+384\textbackslash sqrt\{5\}
+(10891728551171178200467436212395209160385656017
+\textbackslash\textbackslash{} \&\textbackslash qquad +
+4870929086578810225077338534541688721351255040\textbackslash sqrt\{5\})\^{}\{1/2\},\textbackslash\textbackslash{}
+B \&= 7849910453496627210289749000 \textbackslash\textbackslash{}
+\&\textbackslash quad +
+3510586678260932028965606400\textbackslash sqrt\{5\}
+\textbackslash\textbackslash{} \&\textbackslash quad +
+2515968\textbackslash sqrt\{3110\}(6260208323789001636993322654444020882161
+\textbackslash\textbackslash{} \&\textbackslash qquad +
+2799650273060444296577206890718825190235\textbackslash sqrt\{5\})\^{}\{1/2\},\textbackslash\textbackslash{}
+C \&= -214772995063512240 \textbackslash\textbackslash{}
+\&\textbackslash quad - 96049403338648032\textbackslash sqrt\{5\}
+\textbackslash\textbackslash{} \&\textbackslash quad -
+1296\textbackslash sqrt\{5\}(10985234579463550323713318473
+\textbackslash\textbackslash{} \&\textbackslash qquad +
+4912746253692362754607395912\textbackslash sqrt\{5\})\^{}\{1/2\}.
+\textbackslash end\{align*\} \textless/latex\textgreater{}
+\textless/remark\textgreater{} \textless remark\textgreater{}
+以上四个公式统称为\textless index\textgreater Ramanujan型公式\textless/index\textgreater,利用代数数论和二次域的知识还可以构造出更多这样的Ramanujan型公式(参见\textless cite\textgreater Weisstein-form\textless/cite\textgreater),不同Ramanujan型公式的收敛速度可以用每计算一个级数项后结果所增加的十进制有效位数来衡量,以上这四个公式每向后计算一项,结果的有效位数分别大约增加8位,14位,31位和50位(参见\textless cite\textgreater Weisstein-form\textless/cite\textgreater).
+\textless/remark\textgreater{}
+
+在个人计算机上计算\$\textbackslash pi\$时,Ramanujan型公式是最常用的级数展开式,它可以利用折半求和的方法来计算(参见算法\#\#al:binary-splitting
+).目前个人计算机上\$\textbackslash pi\$的小数位数世界纪录的保持者是由Steve
+Pagliarulo开发的QPI\textless cite\textgreater qpi\textless/cite\textgreater,它仅需数秒就能求出\$\textbackslash pi\$的前100万位,计算时采用的就是第二个Ramanujan型公式,它是由Chudnovsky兄弟发现的,因此常常也被称为\textless index\textgreater Chudnovsky公式\textless/index\textgreater.
+
+\hypertarget{bbpux516cux5f0f}{%
+\subsubsection{BBP公式}\label{bbpux516cux5f0f}}
+
+最后值得一提的是Borwein兄弟和其合作者共同发现的\textless index
+sub="圆周率"\textgreater BBP公式\textless/index\textgreater(参见\textless cite\textgreater BBP\textless/cite\textgreater).
+\textless theorem\textgreater{}
+\$\$\textbackslash pi=\textbackslash sum\_\{k=0\}\^{}\{\textbackslash infty\}
+\textbackslash frac\{1\}\{16\^{}k\}(\textbackslash frac\{4\}\{8k+1\}-\textbackslash frac\{2\}\{8k+4\}-\textbackslash frac\{1\}\{8k+5\}-\textbackslash frac\{1\}\{8k+6\}).\$\$
+\textless/theorem\textgreater{} \textless remark\textgreater{}
+注意到通项前的系数是\$1\textbackslash over
+16\^{}k\$,因此可以利用它直接求出\$\textbackslash pi\$在十六进制下某一个指定位上的数字,而不必先求出所有之前位上的数字.
+\textless/remark\textgreater{}
+
+在此基础上F.
+Bellard又提出了一个公式(参见\textless cite\textgreater Bellard-BBP\textless/cite\textgreater).
+\textless theorem\textgreater{} \textless latex\textgreater{}
+\textbackslash begin\{align*\}
+\textbackslash pi\&=\{1\textbackslash over
+2\^{}6\}\textbackslash sum\_\{n=0\}\^{}\textbackslash infty\{(-1)\^{}n\textbackslash over
+2\^{}\{10n\}\}(-\{2\^{}5\textbackslash over
+4n+1\}-\{1\textbackslash over 4n+3\}+\{2\^{}8\textbackslash over
+10n+1\}\textbackslash\textbackslash{} \&-\{2\^{}6\textbackslash over
+10n+3\}-\{2\^{}2\textbackslash over 10n+5\}-\{2\^{}2\textbackslash over
+10n+7\}+\{1\textbackslash over 10n+9\}). \textbackslash end\{align*\}
+\textless/latex\textgreater{} \textless/theorem\textgreater{}
+\textless remark\textgreater{}
+用它计算要比BBP公式快40\textbackslash\%左右,F.
+Bellard在他的论文中还指出,利用\$\$-\textbackslash ln(1-x)=\textbackslash sum\_\{n=1\}\^{}\textbackslash infty\{x\^{}n\textbackslash over
+n\}\$\$以及\$\textbackslash tan\^{}\{-1\}x\$是\$-\textbackslash ln(1-ix)\$的虚部这两个事实,还可以从Machin型公式构造出更多这样类似于BBP公式的公式.
+\textless/remark\textgreater{}
+
+\hypertarget{ux8fedux4ee3ux65b9ux6cd5}{%
+\subsection{迭代方法}\label{ux8fedux4ee3ux65b9ux6cd5}}
+
+顾名思义,迭代方法就是利用递推公式来计算\$\textbackslash pi\$,通过迭代逐步提高精度.
+
+将递推公式设法改写成\$\textbackslash pi\_\{n+1\}\texttt{f(\textbackslash{}pi\_n)\$的形式,则存在正实数\$m\$使得\$\textbar{}\textbackslash{}pi\_\{n+1\}-\textbackslash{}pi\textbar{}}\textbar f(\textbackslash pi\_n)-\textbackslash pi\textbar\textbackslash sim\textbar\textbackslash pi\_n-\textbackslash pi\textbar\^{}m\$,于是每迭代一步后的误差将变为原来误差的\$m\$次幂,如果换一个角度来看,这就是说有效位数将变为原来有效位数的\$m\$倍,因此可以用\$m\$的大小作为衡量迭代法性能的指标.
+
+\hypertarget{ux4ee3ux6570ux51e0ux4f55ux5e73ux5747ux503c}{%
+\subsubsection{代数几何平均值}\label{ux4ee3ux6570ux51e0ux4f55ux5e73ux5747ux503c}}
+
+首先来看\textless index\textgreater Brent-Salamin算法\textless/index\textgreater(参见\textless cite\textgreater Brent-agm\textless/cite\textgreater),这是一个二阶收敛的迭代算法,它用到了Gauss-Legendre的代数几何平均值(AGM)迭代(参见\textless cite\textgreater piandtheagm\textless/cite\textgreater).
+\textless definition name="代数几何平均值"\textgreater{}
+设\$a,b\textbackslash in
+\textbackslash mathbb\{R\}\^{}+\$,\$a\textgreater b\$.令\$a\_0=a\$,\$b\_0=b\$,\$a\_\{n+1\}\texttt{\textbackslash{}frac\{1\}\{2\}(a\_n+b\_n)\$,\$b\_\{n+1\}}\textbackslash sqrt\{a\_nb\_n\}\$,则\$a\$,\$b\$的\textless index
+sub="圆周率"\textgreater 代数几何平均值\textless/index\textgreater 定义为\$\$\textbackslash mathrm\{AGM\}(a,b)\texttt{\textbackslash{}lim\textbackslash{}limits\_\{n\textbackslash{}rightarrow\textbackslash{}infty\}a\_n}\textbackslash lim\textbackslash limits\_\{n\textbackslash rightarrow\textbackslash infty\}b\_n.\$\$
+\textless/definition\textgreater{} \textless remark\textgreater{}
+如果将代数平均值或几何平均值换成更高阶的平均值,例如\$\$(\{a\_n\^{}3b\_n+b\_n\^{}3a\_n\textbackslash over
+2\})\^{}\{1/4\},\$\$还可以得到更高阶的迭代算法.
+\textless/remark\textgreater{}
+
+\hypertarget{ux5b8cux5168ux692dux5706ux79efux5206}{%
+\subsubsection{完全椭圆积分}\label{ux5b8cux5168ux692dux5706ux79efux5206}}
+
+为了利用代数几何平均值来计算圆周率,还需要用到完全椭圆积分的概念.
+\textless definition name="完全椭圆积分"
+label="de:complete-elliptic-integral"\textgreater{}
+设\$R(x,y)\$是有理函数,其中\$y\^{}2=P(x)\$是\$x\$的三次或四次多项式,那么称形如\$\textbackslash int
+R(x,y)dx\$积分为椭圆积分.特别地,如下两个积分
+\textless latex\textgreater{} \textbackslash begin\{align*\}
+K(k)\&\texttt{\textbackslash{}int\_0\^{}1\textbackslash{}frac\{dx\}\{\textbackslash{}sqrt\{(1-x\^{}2)(1-k\^{}2x\^{}2)\}\}}\textbackslash int\_0\^{}\{\textbackslash pi\textbackslash over
+2\}\textbackslash frac\{d\textbackslash phi\}\{\textbackslash sqrt\{1-k\^{}2sin\^{}2\textbackslash phi\}\},\textbackslash\textbackslash{}
+E(k)\&\texttt{\textbackslash{}int\_0\^{}1\textbackslash{}sqrt\{\textbackslash{}frac\{1-k\^{}2x\^{}2\}\{1-x\^{}2\}\}\textbackslash{},dx}\textbackslash int\_0\^{}\{\textbackslash pi\textbackslash over
+2\}\textbackslash sqrt\{1-k\^{}2sin\^{}2\textbackslash phi\}\textbackslash,d\textbackslash phi,
+\textbackslash end\{align*\} \textless/latex\textgreater{}
+分别称为第一类和第二类\textless index\textgreater 完全椭圆积分\textless/index\textgreater,其中\$\textbar k\textbar\textless1\$.
+\textless/definition\textgreater{}
+
+\textless definition\textgreater{}
+\$\$I(a,b)\texttt{\{1\textbackslash{}over\ a\}K(\textbackslash{}sqrt\{1-\{b\^{}2\textbackslash{}over\ a\^{}2\}\}).\$\$
+\textless{}/definition\textgreater{}
+\textless{}theorem\textgreater{}
+\$\$I(a,b)}\{\textbackslash pi\textbackslash over
+2\textbackslash mathrm\{AGM\}(a,b)\}.\$\$
+\textless/theorem\textgreater{} \textless proof\textgreater{}
+根据第一类完全椭圆积分的定义(定义\#\#de:complete-elliptic-integral
+)我们有 \textless latex\textgreater{} \textbackslash begin\{align*\}
+I(a,b)\&\texttt{\textbackslash{}int\_0\^{}\{\textbackslash{}pi\textbackslash{}over\ 2\}\textbackslash{}frac\{d\textbackslash{}phi\}\{\textbackslash{}sqrt\{a\^{}2-(a\^{}2-b\^{}2)\textbackslash{}sin\^{}2\textbackslash{}phi\}\}\textbackslash{}\textbackslash{}
+\&}\textbackslash int\_0\^{}\{\textbackslash pi\textbackslash over
+2\}\textbackslash frac\{d\textbackslash phi\}\{\textbackslash sqrt\{a\^{}2\textbackslash cos\^{}2\textbackslash phi+b\^{}2\textbackslash sin\^{}2\textbackslash phi\}\}.
+\textbackslash end\{align*\} \textless/latex\textgreater{}
+通过变量替换\$\$u=\textbackslash frac\{1\}\{2\}(t-\textbackslash frac\{ab\}\{t\})\$\$可以得出\$I(a,b)=I(\{a+b\textbackslash over
+2\},\textbackslash sqrt\{ab\})\$.
+
+故\$I(a\_0,b\_0)=I(a\_n,b\_n)=I(a\_\{n+1\},b\_\{n+1\})\$,两边取极限得到
+\textless latex\textgreater{} \textbackslash begin\{align*\}
+I(a,b)\&\texttt{I(\textbackslash{}mathrm\{AGM\}(a,b),\textbackslash{}mathrm\{AGM\}(a,b))\textbackslash{}\textbackslash{}
+\&}\{1\textbackslash over
+\textbackslash mathrm\{AGM\}(a,b)\}K(0)=\{\textbackslash pi\textbackslash over
+2\textbackslash mathrm\{AGM\}(a,b)\}. \textbackslash end\{align*\}
+\textless/latex\textgreater{} \textless/proof\textgreater{}
+\textless remark\textgreater{}
+注意到\$I(1,\{1\textbackslash over\textbackslash sqrt\{2\}\})\texttt{K(\{1\textbackslash{}over\textbackslash{}sqrt\{2\}\})\$,因此\$\$K(\{1\textbackslash{}over\textbackslash{}sqrt\{2\}\})}\{\textbackslash pi\textbackslash over
+2\textbackslash mathrm\{AGM\}(1,\{1\textbackslash over\textbackslash sqrt\{2\}\})\}.\$\$
+\textless/remark\textgreater{}
+
+\textless definition\textgreater{}
+\$\$J(a,b)=aE\textbackslash left(\textbackslash sqrt\{1-\{b\^{}2\textbackslash over
+a\^{}2\}\}\textbackslash right).\$\$ \textless/definition\textgreater{}
+\textless theorem\textgreater{}
+\$\$E(\{1\textbackslash over\textbackslash sqrt\{2\}\})=K(\{1\textbackslash over\textbackslash sqrt\{2\}\})(1-\textbackslash sum\_\{n=0\}\^{}\textbackslash infty2\^{}\{n-1\}c\_n\^{}2).\$\$
+\textless/theorem\textgreater{} \textless proof\textgreater{}
+根据第二类完全椭圆积分的定义(定义\#\#de:complete-elliptic-integral
+)我们有\$\$J(a,b)=\textbackslash int\_0\^{}\{\textbackslash frac\{\textbackslash pi\}\{2\}\}\textbackslash sqrt\{a\^{}2\textbackslash cos\^{}2\textbackslash phi+b\^{}2\textbackslash sin\^{}2\textbackslash phi\}\textbackslash,d\textbackslash phi.\$\$令\$a=1,b=\textbackslash cos\textbackslash phi\$,于是\$K(\textbackslash sin\textbackslash phi)\texttt{\{\textbackslash{}pi\textbackslash{}over\ 2\textbackslash{}mathrm\{AGM\}(a,b)\}\$,再令\$c\_0}\textbackslash sin\textbackslash phi,c\_\{n+1\}=a\_n-a\_\{n+1\}\$,可以证明\$\$\textbackslash sum\_\{n=0\}\^{}\textbackslash infty2\^{}\{n-1\}c\_n\^{}2=1-\{E(\textbackslash sin\textbackslash phi)\textbackslash over
+K(\textbackslash sin\textbackslash phi)\}.\$\$因此\$\$E(\{1\textbackslash over\textbackslash sqrt\{2\}\})=K(\{1\textbackslash over\textbackslash sqrt\{2\}\})(1-\textbackslash sum\_\{n=0\}\^{}\textbackslash infty2\^{}\{n-1\}c\_n\^{}2).\$\$
+\textless/proof\textgreater{}
+
+\textless theorem label="th:brent-salamin"\textgreater{}
+\$\$\textbackslash pi=\textbackslash frac\{(2\textbackslash mathrm\{AGM\}(1,\{1\textbackslash over\textbackslash sqrt\{2\}\})\^{}2\}\{2-4\textbackslash sum\_\{n=0\}\^{}\textbackslash infty2\^{}\{n-1\}c\_n\^{}2\}.\$\$
+\textless/theorem\textgreater{} \textless proof\textgreater{}
+若\$\textbackslash phi+\textbackslash psi=\{\textbackslash pi\textbackslash over
+2\}\$,那么第一类与第二类完全椭圆积分之间存在\textless index\textgreater Legendre关系\textless/index\textgreater\$\$K(\textbackslash sin\textbackslash phi)E(\textbackslash sin\textbackslash psi)+E(\textbackslash sin\textbackslash phi)K(\textbackslash sin\textbackslash psi)-K(\textbackslash sin\textbackslash phi)K(\textbackslash sin\textbackslash psi)\texttt{\{\textbackslash{}pi\textbackslash{}over\ 2\}.\$\$令\$\textbackslash{}phi}\textbackslash psi=\{\textbackslash pi\textbackslash over
+4\}\$就可以得到\$\textbackslash pi=4K(\{1\textbackslash over\textbackslash sqrt\{2\}\})E(\{1\textbackslash over\textbackslash sqrt\{2\}\})-2K(\{1\textbackslash over\textbackslash sqrt\{2\}\})\^{}2\$,即\$\$\textbackslash pi=K\^{}2(2-4\textbackslash sum\_\{n=0\}\^{}\textbackslash infty2\^{}\{n-1\}c\_n\^{}2),\$\$也可以写成\$\$\textbackslash pi=\textbackslash frac\{(2\textbackslash mathrm\{AGM\}(1,\{1\textbackslash over\textbackslash sqrt\{2\}\})\^{}2\}\{2-4\textbackslash sum\_\{n=0\}\^{}\textbackslash infty2\^{}\{n-1\}c\_n\^{}2\}.\$\$
+\textless/proof\textgreater{}
+
+\hypertarget{brent-salaminux7b97ux6cd5}{%
+\subsubsection{Brent-Salamin算法}\label{brent-salaminux7b97ux6cd5}}
+
+根据定理\#\#th:brent-salamin
+,我们现在可以写出Brent-Salamin算法的详细过程了. \textless algorithm
+name="Brent-Salamin算法"\textgreater{}
+
+输入:迭代次数\$m\$.
+
+输出:迭代\$m\$次后得到的\$\textbackslash pi\$的近似值.
+
+1.令\$a\_0=1,b\_0=\{1\textbackslash over\textbackslash sqrt\{2\}\},t\_0=\{1\textbackslash over
+4\},p\_0=1\$.
+2.\$n\$从0到\$m-1\$,顺次计算\$a\_\{n+1\}\texttt{\{a\_n+b\_n\textbackslash{}over\ 2\}\$,\$b\_\{n+1\}}\textbackslash sqrt\{a\_nb\_n\}\$,\$t\_\{n+1\}=t\_n-p\_n(a\_n-a\_\{n+1\})\^{}2\$,\$p\_\{n+1\}\texttt{2p\_n\$.
+\ 3.返回\$\textbackslash{}pi\_m}\{(a\_m+b\_m)\^{}2\textbackslash over
+4t\_m\}\$. \textless/algorithm\textgreater{}
+\textless remark\textgreater{}
+使用Brent-Salamin算法计算时,前三次迭代可以得到近似值
+\textless latex\textgreater{} \textbackslash begin\{align*\}
+\&3.14,\textbackslash\textbackslash{}
+\&3.1415926,\textbackslash\textbackslash{}
+\&3.14159265358979.\textbackslash\textbackslash{}
+\textbackslash end\{align*\} \textless/latex\textgreater{}
+\textless/remark\textgreater{}
+
+\hypertarget{ux9ad8ux9636ux8fedux4ee3ux516cux5f0f}{%
+\subsubsection{高阶迭代公式}\label{ux9ad8ux9636ux8fedux4ee3ux516cux5f0f}}
+
+除了利用代数几何平均值之外,人们还发现了许多其他的高阶迭代公式,例如下面的三个著名的迭代公式就是由Borwein兄弟发现的(参见\textless cite\textgreater Borwein-iter\textless/cite\textgreater).
+\textless index
+name="Borwein公式"\textgreater\textless/index\textgreater{}
+\textless theorem name="Borwein公式"\textgreater{}
+1.令\$x\_0=\textbackslash sqrt\{2\}\$,\$y\_0=\textbackslash sqrt{[}
+4{]}\{2\}\$,\$p\_0=2+\textbackslash sqrt\{2\}\$.递推公式为
+\textless latex\textgreater{} \textbackslash begin\{align*\}
+x\_\{n+1\}\&\texttt{\{1\textbackslash{}over\ 2\}(x\_n\^{}\{1\textbackslash{}over\ 2\}+x\_n\^{}\{-\{1\textbackslash{}over\ 2\}\}),\textbackslash{}\textbackslash{}
+y\_\{n+1\}\&}\textbackslash frac\{x\_n\^{}\{1\textbackslash over
+2\}y\_n+x\_n\^{}\{-\{1\textbackslash over
+2\}\}\}\{y\_n+1\},\textbackslash\textbackslash{}
+p\_\{n+1\}\&=p\_n\{x\_\{n+1\}+1\textbackslash over y\_\{n+1\}+1\}.
+\textbackslash end\{align*\} \textless/latex\textgreater{} 那么
+\textless latex\textgreater{} \textbackslash begin\{align*\}
+\textbar p\_\{n+1\}-\textbackslash pi\textbar\&\textless\{2\^{}\{-n-1\}\textbackslash over\textbackslash pi\^{}2\}\textbar p\_n-\textbackslash pi\textbar\^{}2,\textbackslash\textbackslash{}
+\textbar p\_n-\textbackslash pi\textbar\&\textless\textbackslash frac\{\textbackslash pi\^{}22\^{}\{n+4\}e\^{}\{-2\^{}\{n+1\}\textbackslash pi\}\}\{\textbackslash mathrm\{AGM\}(1,\{1\textbackslash over\textbackslash sqrt\{2\}\})\^{}2\}\textbackslash\textbackslash{}
+\&\textless10\^{}\{-2\^{}n\}. \textbackslash end\{align*\}
+\textless/latex\textgreater{}
+2.令\$p\_0=6-4\textbackslash sqrt\{2\}\$,\$x\_0=\textbackslash sqrt\{2\}-1\$.递推公式为
+\textless latex\textgreater{} \textbackslash begin\{align*\}
+x\_\{n+1\}\&=\textbackslash frac\{1-(1-x\_n\^{}4)\^{}\{1\textbackslash over
+4\}\}\{1+(1-x\_n\^{}4)\^{}\{1\textbackslash over
+4\}\},\textbackslash\textbackslash{}
+p\_\{n+1\}\&\texttt{p\_n(1+x\_\{n+1\})\^{}4-2\^{}\{2n+3\}x\_\{n+1\}(1+x\_\{n+1\}+x\_\{n+1\}\^{}2).
+\textbackslash{}end\{align*\}
+\textless{}/latex\textgreater{}
+那么\$\textbar{}p\_n-\{1\textbackslash{}over\textbackslash{}pi\}\textbar{}\textless{}4\^{}\{n+2\}e\^{}\{-2\^{}\{2n+1\}\textbackslash{}pi\}\$.
+\ 3.令\$a\_0}\{1\textbackslash over
+3\}\$,\$r\_0=\{\textbackslash sqrt\{3\}-1\textbackslash over
+2\}\$,\$s\_0=(1-r\_0\^{}3)\^{}\{1\textbackslash over 3\}\$.递推公式为
+\textless latex\textgreater{} \textbackslash begin\{align*\} t\_\{n+1\}
+\&= 1 + 2r\_n,\textbackslash\textbackslash{} u\_\{n+1\} \&= (9r\_n (1 +
+r\_n + r\_n\^{}2))\^{}\{1\textbackslash over
+3\},\textbackslash\textbackslash{} v\_\{n+1\} \&= t\_\{n+1\}\^{}2 +
+t\_\{n+1\}u\_\{n+1\} + u\_\{n+1\}\^{}2,\textbackslash\textbackslash{}
+w\_\{n+1\} \&= \textbackslash frac\{27 (1 + s\_n +
+s\_n\^{}2)\}\{v\_\{n+1\}\},\textbackslash\textbackslash{} a\_\{n+1\} \&=
+w\_\{n+1\}a\_n +
+3\^{}\{2n-1\}(1-w\_\{n+1\}),\textbackslash\textbackslash{} s\_\{n+1\}
+\&= \textbackslash frac\{(1 - r\_n)\^{}3\}\{(t\_\{n+1\} +
+2u\_\{n+1\})v\_\{n+1\}\},\textbackslash\textbackslash{} r\_\{n+1\} \&=
+(1 - s\_\{n+1\}\^{}3)\^{}\{1\textbackslash over 3\}.
+\textbackslash end\{align*\} \textless/latex\textgreater{}
+那么\$\textbar a\_n-\{1\textbackslash over
+\textbackslash pi\}\textbar\$9阶收敛. \textless/theorem\textgreater{}
+
+\hypertarget{beelerux516cux5f0f-index-namebeelerux516cux5f0findex-ux6700ux540eux503cux5f97ux4e00ux63d0ux7684ux662fbeelerux5229ux7528ux4e0dux52a8ux70b9ux5b9aux7406ux548cux53cdux6b63ux5207ux51fdux6570ux7684taylorux5c55ux5f00ux5f0fux7ed9ux51faux7684ux4e00ux7cfbux5217ux6536ux655bux5230piux7684ux9012ux63a8ux516cux5f0fux53c2ux89c1citebeeler-itercite.-theorem-latex-beginalign-p_n1p_n-tan-p_n-p_n1p_n-tan-p_n1over-3tan3p_n-p_n1p_n-tan-p_n1over-3tan3p_n-1over-5tan5p_n-cdots-endalign-latex-ux5176ux4e2dux521dux59cbux503cp_0ux5e94ux8be5ux53d6ux4e3apiux7684ux4e00ux4e2aux666eux901aux7684ux8fd1ux4f3cux503cux4f8bux598222over-7355over-113ux7b49.-theorem}{%
+\subsubsection{Beeler公式 \textless index
+name="Beeler公式"\textgreater\textless/index\textgreater{}
+最后值得一提的是Beeler利用不动点定理和反正切函数的Taylor展开式给出的一系列收敛到\$\textbackslash pi\$的递推公式(参见\textless cite\textgreater Beeler-iter\textless/cite\textgreater).
+\textless theorem\textgreater{} \textless latex\textgreater{}
+\textbackslash begin\{align*\} p\_\{n+1\}\&=p\_n-\textbackslash tan
+p\_n,\textbackslash\textbackslash{} p\_\{n+1\}\&=p\_n-\textbackslash tan
+p\_n+\{1\textbackslash over
+3\}\textbackslash tan\^{}3p\_n,\textbackslash\textbackslash{}
+p\_\{n+1\}\&=p\_n-\textbackslash tan p\_n+\{1\textbackslash over
+3\}\textbackslash tan\^{}3p\_n-\{1\textbackslash over
+5\}\textbackslash tan\^{}5p\_n,\textbackslash\textbackslash{}
+\textbackslash cdots, \textbackslash end\{align*\}
+\textless/latex\textgreater{}
+其中初始值\$p\_0\$应该取为\$\textbackslash pi\$的一个普通的近似值,例如\$\{22\textbackslash over
+7\},\{355\textbackslash over 113\}\$等.
+\textless/theorem\textgreater{}}\label{beelerux516cux5f0f-index-namebeelerux516cux5f0findex-ux6700ux540eux503cux5f97ux4e00ux63d0ux7684ux662fbeelerux5229ux7528ux4e0dux52a8ux70b9ux5b9aux7406ux548cux53cdux6b63ux5207ux51fdux6570ux7684taylorux5c55ux5f00ux5f0fux7ed9ux51faux7684ux4e00ux7cfbux5217ux6536ux655bux5230piux7684ux9012ux63a8ux516cux5f0fux53c2ux89c1citebeeler-itercite.-theorem-latex-beginalign-p_n1p_n-tan-p_n-p_n1p_n-tan-p_n1over-3tan3p_n-p_n1p_n-tan-p_n1over-3tan3p_n-1over-5tan5p_n-cdots-endalign-latex-ux5176ux4e2dux521dux59cbux503cp_0ux5e94ux8be5ux53d6ux4e3apiux7684ux4e00ux4e2aux666eux901aux7684ux8fd1ux4f3cux503cux4f8bux598222over-7355over-113ux7b49.-theorem}}
+
+\hypertarget{ux81eaux7136ux5bf9ux6570ux5e95}{%
+\section{自然对数底}\label{ux81eaux7136ux5bf9ux6570ux5e95}}
+
+\hypertarget{ux7ea7ux6570ux65b9ux6cd5-1}{%
+\subsection{级数方法}\label{ux7ea7ux6570ux65b9ux6cd5-1}}
+
+\textless index\textgreater 自然对数底\textless/index\textgreater 常记为\$e\$.
+
+\textless definition name="自然对数底"\textgreater{}
+\$\$e=\textbackslash lim\_\{n\textbackslash rightarrow\textbackslash infty\}e\_n=\textbackslash lim\_\{n\textbackslash rightarrow\textbackslash infty\}(1+\{1\textbackslash over
+n\})\^{}n.\$\$ \textless/definition\textgreater{}
+
+根据Newton二项式公式可以得到 \textless latex\textgreater{}
+\textbackslash begin\{align*\}
+e\_n\&\texttt{(1+\{1\textbackslash{}over\ n\})\^{}n}\textbackslash sum\_\{k=0\}\^{}nC\_n\^{}k(\{1\textbackslash over
+n\})\^{}k\textbackslash\textbackslash{}
+\&=\textbackslash sum\_\{k=0\}\^{}n\textbackslash frac\{n(n-1)\textbackslash cdots(n-k+1)\}\{k!\}\textbackslash cdot\{1\textbackslash over
+n\^{}k\}\textbackslash\textbackslash{}
+\&=\textbackslash sum\_\{k=0\}\^{}n\{1\textbackslash over
+k!\}(1-\{1\textbackslash over
+n\})\textbackslash cdots(1-\{k-1\textbackslash over n\}).
+\textbackslash end\{align*\} \textless/latex\textgreater{}
+记\$\$s\_n=\textbackslash sum\_\{k=0\}\^{}n\{1\textbackslash over
+k!\},\$\$那么\$e\_n\textless s\_n\textbackslash le
+e\$,即\$\$e=\textbackslash lim\_\{n\textbackslash rightarrow\textbackslash infty\}s\_n=\textbackslash lim\_\{n\textbackslash rightarrow\textbackslash infty\}
+1+\textbackslash frac\{1\}\{1!\}+\textbackslash frac\{1\}\{2!\}+\textbackslash cdots+\textbackslash frac\{1\}\{n!\}.\$\$进一步还可以推出\$\$\textbar e-s\_n\textbar\textless\{1\textbackslash over
+nn!\}.\$\$和计算圆周率\$\textbackslash pi\$用到的很多级数的误差项不同,这个误差项很小,它关于\$n\$是指数级收敛的,因此我们可以直接利用级数\$s\_n\$来计算自然对数底\$e\$.
+
+除此之外,另一个级数\$\$e\^{}\{-1\}=\textbackslash lim\_\{n\textbackslash rightarrow\textbackslash infty\}1-\{1\textbackslash over
+1!\}+\{1\textbackslash over
+2!\}+\textbackslash cdots+(-1)\^{}n\{1\textbackslash over
+n!\}\$\$也可以求出\$e\$,它常常被用来验证第一个级数的计算结果.这两个级数都可以使用折半求和方法来计算.
+
+通过级数\$s\_n\$的计算公式还可以得到关于自然对数底\$e\$和圆周率\$\textbackslash pi\$一个有趣的递推公式.
+\textless theorem\textgreater{}
+令\$u\_0=v\_0=0\$,\$u\_1=v\_1=1\$,递推公式为
+\textless latex\textgreater{} \textbackslash begin\{align*\}
+u\_\{n+2\}\&\texttt{u\_\{n+1\}+\{1\textbackslash{}over\ n\}u\_n,\textbackslash{}\textbackslash{}
+v\_\{n+2\}\&}\{1\textbackslash over n\}v\_\{n+1\}+v\_n,
+\textbackslash end\{align*\} \textless/latex\textgreater{} 那么
+\textless latex\textgreater{} \textbackslash begin\{align*\}
+\textbackslash lim\_\{n\textbackslash rightarrow\textbackslash infty\}\{n\textbackslash over
+u\_n\}\&\texttt{e,\textbackslash{}\textbackslash{}
+\textbackslash{}lim\_\{n\textbackslash{}rightarrow\textbackslash{}infty\}\{2n\textbackslash{}over\ v\_n\^{}2\}\&}\textbackslash pi.
+\textbackslash end\{align*\} \textless/latex\textgreater{}
+\textless/theorem\textgreater{}
+
+\hypertarget{ux5bf9ux6570ux5e38ux6570}{%
+\section{对数常数}\label{ux5bf9ux6570ux5e38ux6570}}
+
+\hypertarget{ux7ea7ux6570ux65b9ux6cd5-2}{%
+\subsection{级数方法}\label{ux7ea7ux6570ux65b9ux6cd5-2}}
+
+\textless index\textgreater 对数常数\textless/index\textgreater 指的是\$\textbackslash ln
+2\$,在计算机被发明之前,科学家和工程师们只能借助于对数表和对数尺之类的工具来完成繁杂的乘除运算,注意到\$\$\textbackslash ln
+x=\textbackslash ln\{x\textbackslash over 2\^{}n\}+n\textbackslash ln
+2,\$\$可以适当的选取\$n\$使得\$0\textless\{x\textbackslash over
+2\^{}n\}\textless1\$,这样就需要计算\$\textbackslash ln
+2\$来完成大数与标准\$(0,1)\$区间之间的转换.
+
+利用\$\textbackslash ln(1+x)\$的Taylor展开式\$\$\textbackslash ln(1+x)=x-\{x\^{}2\textbackslash over
+2\}+\{x\^{}3\textbackslash over
+3\}-\textbackslash cdots,\$\$令\$x=1\$就可以得到\$\textbackslash ln
+2\$的形式化定义. \textless definition name="对数常数"\textgreater{}
+\$\$\textbackslash ln
+2=\textbackslash lim\_\{n\textbackslash rightarrow\textbackslash infty\}1-\{1\textbackslash over
+2\}+\{1\textbackslash over
+3\}+\textbackslash cdots+(-1)\^{}\{n+1\}\{1\textbackslash over n\}.\$\$
+\textless/definition\textgreater{} \textless remark\textgreater{}
+如果令\$x=-\{1\textbackslash over 2\}\$,那么有\$\$\textbackslash ln
+2=-\textbackslash ln\{1\textbackslash over
+2\}=\textbackslash sum\_\{k=1\}\^{}\textbackslash infty\{1\textbackslash over
+k2\^{}k\}.\$\$ \textless/remark\textgreater{}
+
+利用恒等式\$\$\textbackslash ln 2=-\{1\textbackslash over
+2\}\textbackslash ln(1-\{1\textbackslash over
+4\})+\textbackslash tanh\^{}\{-1\}\{1\textbackslash over
+2\},\$\$还可以得到类似于计算圆周率时提到过的\textless index
+sub="对数常数"\textgreater BBP公式\textless/index\textgreater 的两个公式.
+\textless theorem\textgreater{} \textless latex\textgreater{}
+\textbackslash begin\{align*\} \textbackslash ln
+2\&=\textbackslash sum\_\{k=0\}\^{}\textbackslash infty\{1\textbackslash over
+4\^{}k\}(\{1\textbackslash over 4k+2\}+\{1\textbackslash over
+8k+8\}),\textbackslash\textbackslash{} \textbackslash ln
+2\&=\{2\textbackslash over
+3\}+\textbackslash sum\_\{k=1\}\^{}\textbackslash infty\{1\textbackslash over
+16\^{}k\}(\{1\textbackslash over 16k+12\}+\{1\textbackslash over
+8k+4\}+\{1\textbackslash over 4k+1\}+\{1\textbackslash over 2k\}).
+\textbackslash end\{align*\} \textless/latex\textgreater{}
+\textless/theorem\textgreater{}
+
+与计算圆周率\$\textbackslash pi\$类似,计算对数常数\$\textbackslash ln
+2\$也有相应的\textless index
+sub="对数常数"\textgreater Machin型公式\textless/index\textgreater.
+
+首先来看反正切函数的Taylor展开式\$\$\textbackslash tanh\^{}\{-1\}x=\{1\textbackslash over
+2\}\textbackslash ln\{1+x\textbackslash over
+1-x\}=\textbackslash sum\_\{k=0\}\^{}\textbackslash infty\{x\^{}\{2k+1\}\textbackslash over
+2k+1\},\$\$令\$x=\{1\textbackslash over
+3\}\$就可以得到一个关于\$\textbackslash ln 2\$的Machin型公式.
+\textless theorem\textgreater{} \$\$\textbackslash ln
+2=2\textbackslash tanh\^{}\{-1\}\{1\textbackslash over
+3\}=\{2\textbackslash over
+3\}\textbackslash sum\_\{k=0\}\^{}\textbackslash infty\{1\textbackslash over
+(2k+1)9\^{}k\}.\$\$ \textless/theorem\textgreater{}
+\textless remark\textgreater{}
+如果考虑类似于\$\textbackslash tanh\^{}\{-1\}\{1\textbackslash over
+x\}=\textbackslash tanh\^{}\{-1\}\{1\textbackslash over
+2x-1\}+\textbackslash tanh\^{}\{-1\}\{1\textbackslash over
+2x+1\}\$的初等变换,还可以得到一系列\$n=2\$的Machin型公式,其中最有名的是Euler用来计算\$\textbackslash ln2\$时用到的\$\$\textbackslash ln
+2=2\textbackslash tanh\^{}\{-1\}\{1\textbackslash over
+5\}+2\textbackslash tanh\^{}\{-1\}\{1\textbackslash over 7\}.\$\$
+\textless/remark\textgreater{}
+除此之外,人们最近还发现了一些高阶的Machin型公式.
+\textless theorem\textgreater{} \textless latex\textgreater{}
+\textbackslash begin\{align*\} \textbackslash ln 2
+\&=18\textbackslash coth\^{}\{-1\}26-2\textbackslash coth\^{}\{-1\}4801+8\textbackslash coth\^{}\{-1\}8749,\textbackslash\textbackslash{}
+\textbackslash ln
+2\&=144\textbackslash coth\^{}\{-1\}251+54\textbackslash coth\^{}\{-1\}449-38\textbackslash coth\^{}\{-1\}4801+62\textbackslash coth\^{}\{-1\}8749,\textbackslash\textbackslash{}
+\textbackslash ln
+2\&=72\textbackslash coth\^{}\{-1\}127+54\textbackslash coth\^{}\{-1\}449+34\textbackslash coth\^{}\{-1\}4801-10\textbackslash coth\^{}\{-1\}8749.
+\textbackslash end\{align*\} \textless/latex\textgreater{}
+\textless/theorem\textgreater{}
+
+前面介绍超几何级数时提到过 \textless latex\textgreater{}
+\textbackslash begin\{align*\}
+\textbackslash tanh\^{}\{-1\}x\&\texttt{xF(\{1\textbackslash{}over\ 2\},1,\{3\textbackslash{}over\ 2\},x\^{}2)\textbackslash{}\textbackslash{}
+\&}\{x\textbackslash over 1-x\^{}2\}F(1,1,\{3\textbackslash over
+2\},\{x\^{}2\textbackslash over x\^{}2-1\}).
+\textbackslash end\{align*\} \textless/latex\textgreater{}
+\textless theorem\textgreater{} \$\$\textbackslash ln
+2=2\textbackslash tanh\^{}\{-1\}\{1\textbackslash over
+3\}=\{3\textbackslash over 4\}(1-\{1\textbackslash over
+4\}\textbackslash cdot\{1\textbackslash over 3\}+\{1\textbackslash over
+4\^{}2\}\textbackslash cdot\{1\textbackslash cdot 2\textbackslash over
+3\textbackslash cdot 5\}-\{1\textbackslash over
+4\^{}3\}\textbackslash cdot\{1\textbackslash cdot 2\textbackslash cdot
+3\textbackslash over 3\textbackslash cdot 5\textbackslash cdot
+7\}+\textbackslash cdots).\$\$ \textless/theorem\textgreater{}
+\textless remark\textgreater{}
+这个公式结构简单,很容易利用折半求和方法来计算它.
+\textless/remark\textgreater{}
+
+\hypertarget{ux8fedux4ee3ux65b9ux6cd5-1}{%
+\subsection{迭代方法}\label{ux8fedux4ee3ux65b9ux6cd5-1}}
+
+\textless index
+sub="对数常数"\textgreater 代数几何平均值\textless/index\textgreater 迭代同样适用于计算对数常数\$\textbackslash ln
+2\$(参见\textless cite\textgreater Brent-agm\textless/cite\textgreater).
+
+记\$\$\{1\textbackslash over
+R(a,b)\}=1-\textbackslash sum\_\{n=0\}\^{}\textbackslash infty2\^{}\{n-1\}(a\_n\^{}2-b\_n\^{}2),\$\$可以看出\$R(a,b)\$实际上就是\$\textbackslash pi\textbackslash over
+2\textbackslash mathrm\{AGM\}(a,b)\$.那么\$\$\textbar\textbackslash ln
+x-R(1,10\^{}\{-N\})+R(1,10\^{}\{-N\}x)\textbar\textbackslash le
+\{N\textbackslash over
+10\^{}\{2(N-2)\}\}.\$\$取\$R(1,10\^{}\{-N\})-R(1,2\textbackslash cdot
+10\^{}\{-N\})\$作为\$\textbackslash ln
+2\$的近似值,依然借用计算\$\textbackslash mathrm\{AGM\}(a,b)\$时的迭代结构,那么在计算\$\textbackslash mathrm\{AGM\}(a,b)\$的同时就可以计算出\$a\_n,b\_n\$,进而可以计算出\$R(a,b)\$,这样就得到了计算\$\textbackslash ln
+2\$的一个二阶收敛的迭代算法.
+
+\hypertarget{eulerux5e38ux6570}{%
+\section{Euler常数}\label{eulerux5e38ux6570}}
+
+\hypertarget{ux7ea7ux6570ux65b9ux6cd5-3}{%
+\subsection{级数方法}\label{ux7ea7ux6570ux65b9ux6cd5-3}}
+
+\textless definition name="Euler常数"\textgreater{}
+\$\$\textbackslash gamma=\textbackslash lim\_\{n\textbackslash rightarrow
+\textbackslash infty\}
+(1+\textbackslash frac\{1\}\{2\}+\textbackslash cdots+\textbackslash frac\{1\}\{n\}-\textbackslash ln
+n)\texttt{:\textbackslash{}lim\_\{n\textbackslash{}rightarrow\textbackslash{}infty\}(H\_n-\textbackslash{}ln\ n).\$\$
+\textless{}/definition\textgreater{}
+\textless{}remark\textgreater{}
+Euler常数常记为\$\textbackslash{}gamma\$.\ 如果直接按照这个定义来计算\$\textbackslash{}gamma\$将会发现它收敛得太慢了.
+\textless{}/remark\textgreater{}
+利用Euler-Maclaurin求和对调和级数\$H\_n\$做渐进展开可以得到关于\$\textbackslash{}gamma\$的一个更好的近似公式.
+\textless{}index\ name}"Bernoulli数"\textgreater\textless/index\textgreater{}
+\textless definition name="Bernoulli数"
+label="de:bernoulli"\textgreater{}
+Bernoulli数\$B\_n\$是级数展开式\$\$\textbackslash frac\{x\}\{e\^{}x-1\}=\textbackslash sum\_\{n=0\}\^{}\textbackslash infty\textbackslash frac\{B\_nx\^{}n\}\{n!\}\$\$中第\$n\$项的系数.
+\textless/definition\textgreater{} \textless theorem\textgreater{}
+\$\$\textbackslash gamma=H\_n-\textbackslash ln n-\{1\textbackslash over
+2n\}+\textbackslash sum\_\{k=1\}\^{}\textbackslash infty\{B\_\{2k\}\textbackslash over
+2k\}\textbackslash cdot\{1\textbackslash over
+n\^{}\{2k\}\},\textbackslash quad
+B\_\{2k\}\textbackslash text\{为Bernoulli数\},\$\$它的误差项是\$\$\textbackslash epsilon\_k,n=\{B\_\{2k+2\}\textbackslash over(2k+2)n\^{}\{2k+2\}\}\textbackslash approx\{2(2k+2)!\textbackslash over(2k+2)(2\textbackslash pi
+n)\^{}\{2k+2\}\}.\$\$ \textless/theorem\textgreater{}
+
+将\$\textbackslash gamma=-\textbackslash Gamma'(1)\$分部积分后可以得到
+\textless latex\textgreater{} \textbackslash begin\{align*\}
+\textbackslash gamma+\textbackslash ln
+n\&\texttt{I\_n-R\_n,\textbackslash{}\textbackslash{}
+I\_n\&}\textbackslash int\_0\^{}n\{1-e\^{}\{-t\}\textbackslash over
+t\}\textbackslash,dt,\textbackslash\textbackslash{}
+R\_n\&=\textbackslash int\_n\^{}\textbackslash infty\{e\^{}\{-t\}\textbackslash over
+t\}\textbackslash,dt. \textbackslash end\{align*\}
+\textless/latex\textgreater{}
+注意到\$R\_n=O(e\^{}\{-n\})\$,利用\$1-e\^{}\{-t\}\textbackslash over
+t\$的级数展开式可以得到\$\$I\_n=\textbackslash sum\_\{k=1\}\^{}\textbackslash infty(-1)\^{}\{k-1\}\{n\^{}k\textbackslash over
+kk!\},\$\$于是\$\$\textbackslash gamma=\textbackslash sum\_\{k=1\}\^{}\{\textbackslash alpha
+n\}(-1)\^{}\{k-1\}\{n\^{}k\textbackslash over kk!\}-\textbackslash ln
+n+O(e\^{}\{-n\}),\textbackslash quad
+\textbackslash alpha(\textbackslash ln
+\textbackslash alpha-1)=1.\$\$引入常数\$\textbackslash alpha\$是为了使\$n\^{}\{\textbackslash alpha
+n\}\textbackslash over(\textbackslash alpha
+n)!\$是\$e\^{}\{-n\}\$阶的,其近似值为\$\textbackslash alpha=3.5911\$.如果考虑\$R\_n\$的渐进展开式,还可以得到收敛更快的公式,不过公式的形式同时也会变得很复杂.
+
+使用Bessel函数做类似的工作,我们将得到\$\$\textbackslash gamma=\{A\_n\textbackslash over
+B\_n\}-\textbackslash ln n+O(e\^{}\{-4n\}),\$\$其中
+\textless latex\textgreater{} \textbackslash begin\{align*\}
+A\_n\&=\textbackslash sum\_\{k=0\}\^{}\{\textbackslash alpha
+n\}(\{n\^{}k\textbackslash over
+k!\})\^{}2H\_k,\textbackslash\textbackslash{}
+B\_n\&=\textbackslash sum\_\{k=0\}\^{}\{\textbackslash alpha
+n\}(\{n\^{}k\textbackslash over
+k!\})\^{}2,\textbackslash\textbackslash{}
+H\_k\&=1+\{1\textbackslash over 2\}+\{1\textbackslash over
+3\}+\textbackslash cdots+\{1\textbackslash over k\},
+\textbackslash end\{align*\} \textless/latex\textgreater{}
+这里\$\textbackslash alpha\$的定义与上面相同,这个级数收敛得很快,并且很容易计算.
+
+使用类似于Richard外推加速法(参见\textless cite\textgreater shuzhifenxi\textless/cite\textgreater)的方法对误差项进行渐进展开,可以得到\$\$\textbackslash gamma=\{A\_n\textbackslash over
+B\_n\}-\{C\_n\textbackslash over B\_n\^{}2\}-\textbackslash ln
+n+O(e\^{}\{-8n\}),\$\$其中\$\$C\_n=\{1\textbackslash over
+4n\}\textbackslash sum\_\{k=0\}\^{}\{2n\}\textbackslash frac\{((2k)!)\^{}3\}\{(k!)\^{}4(16n)\^{}\{2k\}\},\$\$并且\$\textbackslash alpha\$满足\$\textbackslash alpha(\textbackslash ln\textbackslash alpha-1)=3\$,其近似值为\$\textbackslash alpha=4.970625759\$,利用这个公式可以计算\$\textbackslash gamma\$到小数点后1亿位.
+
+\hypertarget{ux5176ux4ed6ux5e38ux6570}{%
+\section{其他常数}\label{ux5176ux4ed6ux5e38ux6570}}
+
+下面是一些其他数学常数的定义或常用计算公式.
+
+\begin{itemize}
+\item
+  \textless index\textgreater Catalan常数\textless/index\textgreater.
+  \textless latex\textgreater{} \textbackslash begin\{align*\}
+  C\&\texttt{1-\textbackslash{}frac\{1\}\{3\^{}2\}+\textbackslash{}frac\{1\}\{5\^{}2\}-\textbackslash{}frac\{1\}\{7\^{}2\}+\textbackslash{}frac\{1\}\{9\^{}2\}-\textbackslash{}cdots.\textbackslash{}\textbackslash{}
+  C\&}\textbackslash int\_0\^{}1\textbackslash frac\{\textbackslash tan\^{}\{-1\}x\}\{x\}\textbackslash mathrm\{d\}x.\textbackslash\textbackslash{}
+  C\&=\textbackslash frac\{3\}\{8\}\textbackslash sum\_\{k=0\}\^{}\{\textbackslash infty\}\textbackslash frac\{(k!)\^{}2\}\{(2k)!(2k+1)\^{}2\}+\textbackslash frac\{\textbackslash pi\textbackslash ln(2+\textbackslash sqrt
+  3)\}\{8\}. \textbackslash end\{align*\} \textless/latex\textgreater{}
+\item
+  \textless index\textgreater Brun常数\textless/index\textgreater.\$\$B=(\textbackslash frac\{1\}\{3\}+\textbackslash frac\{1\}\{5\})+(\textbackslash frac\{1\}\{5\}+\textbackslash frac\{1\}\{7\})+(\textbackslash frac\{1\}\{11\}+\textbackslash frac\{1\}\{13\})+\textbackslash cdots.\$\$
+\item
+  \textless index\textgreater Mertsen常数\textless/index\textgreater.\$\$\textbackslash mu=\textbackslash lim\_\{p\textbackslash rightarrow\textbackslash infty\}(\textbackslash frac\{1\}\{2\}+\textbackslash frac\{1\}\{3\}+\textbackslash frac\{1\}\{5\}+\textbackslash cdots+\textbackslash frac\{1\}\{p\}-\textbackslash ln\textbackslash ln
+  p).\$\$
+\end{itemize}
+
+\end{document}
