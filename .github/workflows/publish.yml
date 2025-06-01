@@ -3,7 +3,11 @@ name: Quarto Publish
 on:
   push:
     branches:
-    - main
+      - main
+    paths:
+      - '.github/workflows/publish.yml'
+      - 'qmd/**'
+      - 'main.bib'
   workflow_dispatch:
 
 # Allow one concurrent deployment
