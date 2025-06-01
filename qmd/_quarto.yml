@@ -15,9 +15,10 @@ bibliography: "../main.bib"
 
 format:
   html:
+    respect-user-color-scheme: true
     theme:
-      - cosmo
-      - brand
+      light: cosmo
+      dark: darkly
   # pdf:
   #   documentclass: scrreprt
   epub:
