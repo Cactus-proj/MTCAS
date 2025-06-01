@@ -1,0 +1,37 @@
+project:
+  type: book
+
+filters:
+  - ignore-softbreaks
+execute:
+  cache: true
+  freeze: auto
+  echo: true
+  warning: false
+
+book:
+  title: "计算机代数系统的数学理论"
+  author: "李超、阮威、张龙、张翔"
+  date: "2010-10-01"
+  chapters:
+    - index.qmd
+    - chapters/intro.qmd
+    - chapters/preface.qmd
+    - chapters/ch1.qmd
+    - chapters/ch2.qmd
+    - chapters/ch3.qmd
+    - chapters/ch4.qmd
+    - references.qmd
+
+bibliography: "../main.bib"
+
+format:
+  html:
+    respect-user-color-scheme: true
+    theme:
+      light: cosmo
+      dark: darkly
+  # pdf:
+  #   documentclass: scrreprt
+  epub:
+    cover-image: cover.png
