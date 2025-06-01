@@ -28,3 +28,7 @@ jobs:
         uses: quarto-dev/quarto-actions/render@v2
         with:
           path: qmd
+      - name: Deploy preview
+        uses: rossjrw/pr-preview-action@v1
+        with:
+          source-dir: qmd/_book
