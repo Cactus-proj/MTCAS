@@ -18,6 +18,9 @@ book:
     - chapters/intro.qmd
     - chapters/preface.qmd
     - chapters/ch1.qmd
+    - chapters/ch2.qmd
+    - chapters/ch3.qmd
+    - chapters/ch4.qmd
     - references.qmd
 
 bibliography: "../main.bib"

@@ -11,9 +11,9 @@ Mathematica Theory of Computer Algebra System, MTCAS
 > 源 `.muse` 文件中不包含 PDF 中的：序、前言和附录A。
 
 1. [高精度运算](chapters/ch1.qmd)
-1. [素数判定](404.qmd)
-1. [整数因子分解](404.qmd)
-1. [基础数论算法](404.qmd)
+1. [素数判定](chapters/ch2.qmd)
+1. [整数因子分解](chapters/ch3.qmd)
+1. [基础数论算法](chapters/ch4.qmd)
 1. [数学常数](404.qmd)
 1. [线性代数](404.qmd)
 1. [一元多项式求值和插值](404.qmd)
