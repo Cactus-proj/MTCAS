@@ -297,7 +297,8 @@ $$\{(x_0,y_0),(x_1,y_1),\ldots,(x_{n-1},y_{n-1})\},$$
 一个多项式可以有很多种不同的点值表示,这是因为每一组 $x_k$ 都决定着一种点值表示.
 :::
 
-一元多项式的系数表示与点值表示之间是可以相互转换的,系数表示到点值表示的转换就是一元多项式多点求值,而点值表示到系数表示的转换就是一元多项式插值.
+一元多项式的系数表示与点值表示之间是可以相互转换的,系数表示到点值表示的转换就是一元多项式多点求值,
+而点值表示到系数表示的转换就是一元多项式插值.
 关于这两种转换的高级讨论,如一元多项式快速多点求值,一元多项式快速插值等,请参阅"多项式快速求值与插值"一章.
 
 两个一元多项式的乘积有如下的系数表示,这可以从一元多项式乘积的定义直接得到.
@@ -323,16 +324,19 @@ $$c_k=\sum_{i+j=k}a_ib_j.$$
 $$(a_n\ldots a_1a_0)_B=\sum_{k=0}^na_k\cdot B^k$$
 产生的,与整数的进制表示相对应的是多项式的系数表示.
 我们要从注 @rem-multiply1 中的多项式乘法算法中产生整数 `快速乘法`\index{快速乘法}算法,
-就必须解决多项式系数表示与点值表示之间的转换问题,因此接下来的要介绍整数快速乘法算法也就自然包含多项式多点求值,向量逐点相乘,多项式插值这三个步骤.
+就必须解决多项式系数表示与点值表示之间的转换问题,因此接下来的要介绍整数快速乘法算法也就自然包含
+多项式多点求值,向量逐点相乘,多项式插值这三个步骤.
 
 ## Karatsuba乘法
 
-第一个不平凡的快速乘法算法是由俄罗斯数学家A. Karatsuba于1962年发现的[@Karatsuba-multiply]，它采用了一个简单但十分有效的分治策略来使乘法加速。
+第一个不平凡的快速乘法算法是由俄罗斯数学家A. Karatsuba于1962年发现的[@Karatsuba-multiply]，
+它采用了一个简单但十分有效的分治策略来使乘法加速。
 Karatsuba乘法实现起来并不困难，因此在算法理论中也常常被拿来当作分治算法[@ita]的很好例子。
 
 ### 一次多项式的乘法
 
-为了更多地了解隐藏在算法背后的思想，在介绍Karatsuba算法之前，我们先看一看如何利用多项式的点值表示来计算一次多项式的乘法，这是一个很具有启发性意义的例子。
+为了更多地了解隐藏在算法背后的思想，在介绍Karatsuba算法之前，
+我们先看一看如何利用多项式的点值表示来计算一次多项式的乘法，这是一个很具有启发性意义的例子。
 
 ::: {.definition}
 多项式 $f(x)$ 在 $\infty$ 处的值定义为
@@ -380,7 +384,8 @@ $$a\cdot b=a_1 b_1B^{2n}+(a_0b_0+a_1b_1-(a_0-a_1)(b_0-b_1))B^n+a_0b_0.$$
 
 输出：$a,b$的积$c=a\cdot b$。
 
-1. 令$n=\max\{n_a,n_b\}$，若$n=1$，利用普通乘法计算并返回$a\cdot b$；若$n$为奇数，令$n=\frac{n+1}{2}$，否则令$n=\frac{n}{2}$。
+1. 令$n=\max\{n_a,n_b\}$，若$n=1$，利用普通乘法计算并返回$a\cdot b$；
+    若$n$为奇数，令$n=\frac{n+1}{2}$，否则令$n=\frac{n}{2}$。
 2. 若$n_a\le n$，令$a_1=0,a_0=a$；否则令$a_1=a$的高$n_a-n$位，$a_0=a$的低$n$位。
 3. 若$n_b\le n$，令$b_1=0,b_0=b$；否则令$b_1=b$的高$n_b-n$位，$b_0=b$的低$n$位。
 4. 使用Karatsuba乘法计算$c_0=a_0b_0,c_1=a_1b_1,c_2=(a_0-a_1)(b_0-b_1)$，返回
@@ -394,7 +399,8 @@ $$a\cdot b=a_1 b_1B^{2n}+(a_0b_0+a_1b_1-(a_0-a_1)(b_0-b_1))B^n+a_0b_0.$$
 记 $T(n)$ 是递归地利用Karatsuba乘法将两个$n$位$B$进制数相乘所需要的$B$进制个位数乘法次数，
 那么有 $T(2n)\le 3T(n)$，由此推出 $T(n)=O(n^{\log_2{3}})\approx O(n^{1.59})$。
 
-关于Karatsuba算法更详细的介绍请参阅[@wangdongming]第2章，[@mca]，[@taocp2]和A. Karatsuba的原始论文[@Karatsuba-multiply]。
+关于Karatsuba算法更详细的介绍请参阅[@wangdongming]第2章，[@mca]，[@taocp2]和
+A. Karatsuba的原始论文[@Karatsuba-multiply]。
 
 值得一提的是，采用和Karatsuba乘法完全类似的想法，还可以得到一种整数除法的快速算法（参见[@Burnikel-fastrecursive]）。
 
@@ -410,7 +416,9 @@ $$a\cdot b=a_1 b_1B^{2n}+(a_0b_0+a_1b_1-(a_0-a_1)(b_0-b_1))B^n+a_0b_0.$$
 $$A(x)=a_2x^2+a_1x+a_0,\quad B(x)=b_2x^2+b_1x+b_0,$$
 选取插值点组为
 $$x_0=-1,x_1=0,x_2=1,x_3=2,x_4=\infty,$$
-如果$C(x)=A(x)\cdot B(x)$，类似地，利用简单的多项式插值算法，可以计算出$C(x)$的系数表示$(c_0,c_1,c_2,c_3,c_4)$，其中
+如果$C(x)=A(x)\cdot B(x)$，
+类似地，利用简单的多项式插值算法，可以计算出 $C(x)$ 的系数表示$(c_0,c_1,c_2,c_3,c_4)$，
+其中
 $$
 \begin{align*}
 c_0&=C(0),\\
@@ -482,15 +490,19 @@ $$\lim_{r\rightarrow\infty}\log_{r+1}{2r+1}=1,$$
 
 ## FFT乘法
 
-FFT（Fast Fourier Transform）常常被认为是20世纪数值计算和算法领域最重要的成果之一，它可以快速计算向量卷积，这一点对于信号处理等工程领域尤其重要。
+FFT（Fast Fourier Transform）常常被认为是20世纪数值计算和算法领域最重要的成果之一，
+它可以快速计算向量卷积，这一点对于信号处理等工程领域尤其重要。
 对于符号计算来讲，FFT实际上可以看成是多项式快速多点求值和快速插值算法一个高度优化的特例。
 在这里我们只需要利用多项式乘法和向量卷积之间的相似性，就可以很好地利用FFT来加速多项式乘法和整数乘法。
 
-在上一节中，Toom-Cook乘法通过充分地利用分治与递归有效地减少了多项式多点求值和多项式插值操作的消耗；下面将要讨论的FFT乘法则是通过精心地挑选求值点，把系数表示与点值表示之间的转换所需的操作压缩为次线性级别，即$O(n\log{n})$，其中的$n$是乘数的位数。
+在上一节中，Toom-Cook乘法通过充分地利用分治与递归有效地减少了多项式多点求值和多项式插值操作的消耗；
+下面将要讨论的FFT乘法则是通过精心地挑选求值点，把系数表示与点值表示之间的转换所需的操作压缩为次线性级别，
+即$O(n\log{n})$，其中的$n$是乘数的位数。
 
 ### DFT
 
-顾名思义，FFT是快速计算DFT（Discrete Fourer Transform）的算法，我们可以将DFT简单的理解成以单位复根作为求值点时多项式系数表示到点值表示之间的转换。
+顾名思义，FFT是快速计算DFT（Discrete Fourer Transform）的算法，
+我们可以将DFT简单的理解成以单位复根作为求值点时多项式系数表示到点值表示之间的转换。
 在正式给出DFT的定义之前，需要先引入原根和循环卷积的概念。
 
 ::: {.definition}
@@ -499,25 +511,31 @@ FFT（Fast Fourier Transform）常常被认为是20世纪数值计算和算法�
 设$n\in\mathbb{N}_+$，$R$是一个环，$\omega\in R$。
 
 1. 若$\omega^n=1$，则称$\omega$为$R$的$n$次单位根。
-2. 若$\omega$是$n$次单位根，并且对于$n$的每个素因子$p$，$\omega^{n/p}-1$不是$R$的零因子，则称$\omega$为$R$的$n$次单位原根。
+2. 若$\omega$是$n$次单位根，并且对于$n$的每个素因子$p$，$\omega^{n/p}-1$ 不是$R$的零因子，
+    则称$\omega$为$R$的$n$次单位原根。
 :::
 
 ::: {.remark}
-按照这个定义，任意素数的整数次幂单位复根都是复数域$\mathbb{C}$的单位原根，例如$\omega=e^{{2\pi i\over 8}}\in R=\mathbb{C}$就是一个8次单位原根。
-除此之外，对于模整数环$\mathbb{Z}_{17}$，$\overline{3}\in R=\mathbb{Z}_{17}$是16次单位原根，与此同时，虽然$\overline{2}^{16}=\overline{1}\in R=\mathbb{Z}_{17}$，但$\overline{2}$并不是$\mathbb{Z}_{17}$的16次单位原根，因为$2^8-1\equiv 0\mod 17$。
+按照这个定义，任意素数的整数次幂单位复根都是复数域 $\mathbb{C}$ 的单位原根，
+例如 $\omega=e^{{2\pi i\over 8}}\in R=\mathbb{C}$ 就是一个8次单位原根。
+除此之外，对于模整数环
+$\mathbb{Z}_{17}$，$\overline{3}\in R=\mathbb{Z}_{17}$
+是16次单位原根，与此同时，虽然
+$\overline{2}^{16}=\overline{1}\in R=\mathbb{Z}_{17}$，
+但 $\overline{2}$ 并不是 $\mathbb{Z}_{17}$ 的16次单位原根，因为 $2^8-1\equiv 0\mod 17$。
 如果$q$是素数的整数次幂，那么当且仅当$n|q-1$时有限域$\mathbb{F}_q$存在$n$次单位原根。
 :::
 
 关于原根有如下定理。
 
 ::: {#thm-primitiveroot .theorem}
-如果$\omega$是环$R$的$n$次单位原根，那么$\forall 1<k<n$，$\omega^k-1$不是$R$的零因子，并且
+如果$\omega$是环$R$的$n$次单位原根，那么 $\forall 1<k<n$，$\omega^k-1$ 不是$R$的零因子，并且
 $$\sum_{j=0}^{n-1}\omega^{jk}=0.$$
 :::
 
 ::: {.proof}
-设$d=\gcd(k,n)$且$u\cdot k+v\cdot n=d$，由$d<n$知存在$n$的一个素因子$p$使得$d|n/p$。
-从而$\omega^d-1|\omega^{n/p}-1$，但$\omega^{n/p}-1$不是$R$的零因子，因此$\omega^d-1$也不是$R$的零因子。
+设$d=\gcd(k,n)$且$u\cdot k+v\cdot n=d$，由 $d<n$ 知存在$n$的一个素因子$p$使得$d|n/p$。
+从而 $\omega^d-1|\omega^{n/p}-1$，但 $\omega^{n/p}-1$ 不是$R$的零因子，因此$\omega^d-1$也不是$R$的零因子。
 
 与此同时，
 $$\omega^k-1|\omega^{u\cdot k}-1=\omega^{u\cdot k+v\cdot n}-1=\omega^d-1,$$
@@ -531,12 +549,16 @@ $$\sum_{j=0}^{n-1}\omega^{jk}=0.$$
 
 ::: {.definition}
 ## 循环卷积
-设$f(x)=\sum\limits_{k=0}^{n-1}f_kx^k,g(x)=\sum\limits_{k=0}^{n-1}g_kx^k$，则称$f(x)*g(x)=\sum\limits_{k=0}^{n-1}h_kx^k$为$f(x),g(x)$的循环卷积，其中$h_k=\sum\limits_{i+j\equiv k\bmod n}f_ig_j$。
+设 $f(x)=\sum\limits_{k=0}^{n-1}f_kx^k,g(x)=\sum\limits_{k=0}^{n-1}g_kx^k$，
+则称 $f(x)*g(x)=\sum\limits_{k=0}^{n-1}h_kx^k$ 为 $f(x),g(x)$ 的循环卷积，
+其中 $h_k=\sum\limits_{i+j\equiv k\bmod n}f_ig_j$。
 :::
 
 ::: {.remark}
 不难发现，循环卷积的定义跟多项式乘积的定义很相似，我们可以简单地把它理解成先扩充多项式次数再做多项式乘法的过程。
-设$f,g$的多项式乘积$fg$是$n-1$次多项式，则$f$和$g$的次数可能小于$n-1$，如果在它们的最高次项之前添上系数为0的高次项并把它们看成$n-1$次多项式，这时候会发现$f,g$的循环卷积$f*g$恰好等于$fg$，这就是循环卷积和普通多项式乘积之间的关系。
+设$f,g$的多项式乘积$fg$是$n-1$次多项式，则$f$和$g$的次数可能小于$n-1$，
+如果在它们的最高次项之前添上系数为0的高次项并把它们看成$n-1$次多项式，
+这时候会发现$f,g$的循环卷积$f*g$恰好等于$fg$，这就是循环卷积和普通多项式乘积之间的关系。
 :::
 
 现在可以正式地给出DFT的定义了。
@@ -548,15 +570,16 @@ $$\mathrm{DFT}_{\omega}(f)=(f(1),f(\omega),\ldots,f(\omega^{n-1}))$$
 为$f$的离散傅立叶变换。
 :::
 
-DFT存在逆变换，并且原根的良好性质（@thm-primitiveroot）保证了DFT的逆变换和DFT具有相同的结构。
+DFT存在逆变换，并且原根的良好性质 [@thm-primitiveroot] 保证了DFT的逆变换和DFT具有相同的结构。
 
 ::: {.theorem}
-设$\omega$是环$R$的$n$次单位原根，用$(\mathrm{DFT}_\omega)^{-1}$表示$\mathrm{DFT}_\omega$的逆变换，那么
+设$\omega$是环$R$的$n$次单位原根，用 $(\mathrm{DFT}_\omega)^{-1}$ 表示 $\mathrm{DFT}_\omega$ 的逆变换，那么
 $$(\mathrm{DFT}_\omega)^{-1}=\frac{1}{n}\mathrm{DFT}_{\omega^{-1}}.$$
 :::
 
 ::: {.proof}
-$\mathrm{DFT}_\omega$是$R^n$上的线性变换，它在自然基下的矩阵表示为$\vec{y}=V_n(\omega)\vec{a}$，即
+$\mathrm{DFT}_\omega$ 是$R^n$上的线性变换，它在自然基下的矩阵表示为$\vec{y}=V_n(\omega)\vec{a}$，
+即
 $$
 \begin{align*}
 \begin{bmatrix}
@@ -583,7 +606,7 @@ a_{n-1}
 \end{bmatrix},
 \end{align*}
 $$
-其中$V_n(\omega)$为$n$阶Vandermonde方阵。
+其中 $V_n(\omega)$ 为 $n$ 阶 Vandermonde 方阵。
 $V_n(\omega)$的$(i,j)$位元素是$\omega^{ij}$，$V_n(\omega)\cdot V_n(\omega^{-1})$的$(i,j)$位元素为
 $$
 \begin{align*}
@@ -592,11 +615,15 @@ u_{ij}&=\sum_{0\le k<n}\omega^{ik}(\omega^{-1})^{kj}\\
 &=n\delta_{ij}.
 \end{align*}
 $$
-因此$V_n(\omega)\cdot V_n(\omega^{-1})=n(\delta_{ij})=nI_n$，即$(V_n(\omega))^{-1}=\frac{1}{n}V_n(\omega^{-1})$，亦即$(\mathrm{DFT}_\omega)^{-1}=\frac{1}{n}\mathrm{DFT}_{\omega^{-1}}$。
+因此 $V_n(\omega)\cdot V_n(\omega^{-1})=n(\delta_{ij})=nI_n$，
+即 $(V_n(\omega))^{-1}=\frac{1}{n}V_n(\omega^{-1})$，
+亦即 $(\mathrm{DFT}_\omega)^{-1}=\frac{1}{n}\mathrm{DFT}_{\omega^{-1}}$。
 :::
 
 ::: {.remark}
-这样一来，系数表示和点值表示之间的正逆转换可以用相同的办法去处理，也就是说可以采用统一的方法来计算单位原根处的多点求值和插值，这是适当地选取插值点带来的好处之一，现在$f$和$g$的循环卷积可以表示成
+这样一来，系数表示和点值表示之间的正逆转换可以用相同的办法去处理，
+也就是说可以采用统一的方法来计算单位原根处的多点求值和插值，
+这是适当地选取插值点带来的好处之一，现在$f$和$g$的循环卷积可以表示成
 $$f*g=\frac{1}{n}\mathrm{DFT}_{\omega^{-1}}(\mathrm{DFT}_\omega(f)\cdot \mathrm{DFT}_\omega(g)),$$
 其中$\cdot$表示一维向量之间逐点相乘。
 :::
@@ -606,13 +633,16 @@ $$f*g=\frac{1}{n}\mathrm{DFT}_{\omega^{-1}}(\mathrm{DFT}_\omega(f)\cdot \mathrm{
 如果采用普通的多项式多点求值方法，譬如说Horner法则，计算$n$阶DFT大约需要$n^2$次系数乘法。
 为了寻找更快的方法，需要对DFT的结构进行仔细分析。
 
-先来看向量$\mathrm{DFT}_\omega(f)$的第$j$个分量$f(\omega^j)=\sum\limits_{k=0}^{n-1}f_k\omega^{jk}$。
-因为$\omega$是$n$次单位原根，所以$\omega^{jk}$至多只有$n$个不同的值$\omega^0,\omega^1,\ldots,\omega^{n-1}$，特别地，如果$j$是$n$的因子，那么$\omega^j$是${n\over j}$次单位根，因此$(\omega^j)^k$至多只有${n\over j}$个不同的值。
-如果我们已经知道了哪些$\omega^{jk}$具有相同的值，就可以像合并同类项一样将对应于相同的$\omega^{jk}$的系数$f_k$先加在一起，然后再和$\omega^{jk}$相乘，这样就可以有效地减少乘法的次数，跟计算$ab+ac$时转而计算$a(b+c)$是一个道理。
+先来看向量 $\mathrm{DFT}_\omega(f)$ 的第$j$个分量 $f(\omega^j)=\sum\limits_{k=0}^{n-1}f_k\omega^{jk}$。
+因为$\omega$是$n$次单位原根，所以 $\omega^{jk}$ 至多只有$n$个不同的值 $\omega^0,\omega^1,\ldots,\omega^{n-1}$，
+特别地，如果$j$是$n$的因子，那么 $\omega^j$ 是 ${n\over j}$ 次单位根，因此 $(\omega^j)^k$ 至多只有 ${n\over j}$ 个不同的值。
+如果我们已经知道了哪些 $\omega^{jk}$ 具有相同的值，就可以像合并同类项一样将对应于相同的 $\omega^{jk}$ 的系数$f_k$先加在一起，
+然后再和$\omega^{jk}$相乘，这样就可以有效地减少乘法的次数，跟计算$ab+ac$时转而计算$a(b+c)$是一个道理。
 
 设$0\le k_1<k_2<n$，那么
 $$\omega^{jk_1}=\omega^{jk_2}\Leftrightarrow jk_1\equiv jk_2\mod n,$$
-即$n|j(k_1-k_2)$，一般地，$n$是素数的整数次幂，不妨设$n=p^m$，其中$p$为素数，设$j$的素因子分解中$p$的幂次为$m'<m$，那么应该有$p^{m-m'}|k_1-k_2$，这可以当作合并$\omega^{jk}$的系数时的依据。
+即 $n|j(k_1-k_2)$，一般地，$n$ 是素数的整数次幂，不妨设$n=p^m$，其中$p$为素数，
+设$j$的素因子分解中$p$的幂次为 $m'<m$，那么应该有$p^{m-m'}|k_1-k_2$，这可以当作合并$\omega^{jk}$的系数时的依据。
 广义的FFT可以处理$p$为任意素数的情形，我们这里接下来要讨论的的FFT则特指基$p=2$的FFT。
 
 为了高效地多点求值，FFT方法运用了分治策略。
@@ -624,7 +654,9 @@ f^{[1]}&=(f_1,f_3,\ldots,f_{n-1}),
 \end{align*}
 $$
 那么向量$\mathrm{DFT}_\omega(f)$的第$j$个分量
-$$f(\omega^j)=\sum_{k=0}^{n-1}f_k\omega^{jk}=\sum_{k=0}^{n/2-1}f_{2k}(\omega^{2j})^k+\omega^j\sum_{k=0}^{n/2-1}f_{2k+1}(\omega^{2j})^k,$$
+$$
+f(\omega^j)=\sum_{k=0}^{n-1}f_k\omega^{jk}=\sum_{k=0}^{n/2-1}f_{2k}(\omega^{2j})^k+\omega^j\sum_{k=0}^{n/2-1}f_{2k+1}(\omega^{2j})^k,
+$$
 注意到$\omega^{j+n/2}=-\omega^j,\omega^{j+n}=\omega^j$，因此可以改写成
 $$
 \begin{align*}
@@ -632,7 +664,7 @@ $$
 \mathrm{DFT}_\omega(f)[j+n/2]&=\mathrm{DFT}_{\omega^2}(f^{[0]})[j]-\omega^j\mathrm{DFT}_{\omega^2}(f^{[1]})[j],
 \end{align*}
 $$
-其中$0\le j<n/2$。
+其中 $0\le j<n/2$。
 如果从多项式的角度来看，这其实就是$f(x)=f^{[0]}(x^2)+xf^{[1]}(x^2)$。
 
 经过以上的分析，现在可以写出FFT的详细过程了。
@@ -646,11 +678,13 @@ $$
 1. 若$n$等于1，返回$f$。
 2. 令$f^{[0]}=(f_0,f_2,\ldots,f_{n-2})$，$f^{[1]}=(f_1,f_3,\ldots,f_{n-1})$，$\omega=1$。
 3. 计算$y^{[0]}=\mathrm{DFT}_{\omega_n^2}(f^{[0]})$，$y^{[1]}=\mathrm{DFT}_{\omega_n^2}(f^{[1]})$。
-4. $k$从0到$n/2-1$，顺次计算$t=\omega y_k^{[1]}$，$y_k=y_k^{[0]}+t$，$y_{k+n/2}=y_k^{[0]}-t$，$\omega=\omega\omega_n$。
+4. $k$从0到$n/2-1$，顺次计算 $t=\omega y_k^{[1]}$，$y_k=y_k^{[0]}+t$，$y_{k+n/2}=y_k^{[0]}-t$，$\omega=\omega\omega_n$。
 5. 返回$y$。
 :::
 
-设$T(n)$是利用FFT进行多点求值时所需要的系数乘法的次数，那么$T(n)=O(n\log{n})$，如果环R为复数域，那么利用FFT进行整数乘法时需要考虑浮点运算的截断误差和截断位数，这种乘法算法的复杂度为$O(n\log^*{n})$，其中$\log^*{n}=(\log{n})(\log{\log{n}})\cdots$。
+设 $T(n)$ 是利用FFT进行多点求值时所需要的系数乘法的次数，那么 $T(n)=O(n\log{n})$，
+如果环R为复数域，那么利用FFT进行整数乘法时需要考虑浮点运算的截断误差和截断位数，
+这种乘法算法的复杂度为 $O(n\log^*{n})$，其中 $\log^*{n}=(\log{n})(\log{\log{n}})\cdots$。
 
 采用FFT计算DFT比直接按照定义计算要快得多，它成功的主要原因是利用了单位原根$\omega$的特殊性质和分治策略。
 FFT在信号处理，多媒体数据压缩等领域被广泛使用，人们对基本算法进行了许多改进以获得更高的速度和适应于特定的硬件。
@@ -659,21 +693,32 @@ FFT在信号处理，多媒体数据压缩等领域被广泛使用，人们对�
 ### 有限域上的FFT
 
 如果$R=\mathbb{C}$，即使$m$很大，也很容易求出$n=2^m$次单位原根。
-但是对于有限域，前面已经提到过，如果$q$是素数的整数次幂，那么当且仅当$n|q-1$时有限域$\mathbb{F}_q$才存在$n$次单位原根，当$m$很大时，并非总能轻易地找到这样的素数$q$。
+但是对于有限域，前面已经提到过，如果$q$是素数的整数次幂，
+那么当且仅当 $n|q-1$ 时有限域$\mathbb{F}_q$才存在$n$次单位原根，
+当$m$很大时，并非总能轻易地找到这样的素数$q$。
 
-尽管如此，相比于复数域而言，使用有限域上的原根做FFT不会涉及到浮点操作，因此也不用考虑中间精度的问题，正因为这样，在利用FFT计算整系数多项式的乘积或者计算高精度整数乘法时，我们还是希望使用有限域。
-注意到有限域$F_q=\mathbb{Z}/q\mathbb{Z}$上的算术都是以$q$为模的，因此利用$F_q$上的FFT求出的点值向量的各项系数都不应该超过$q$，否则最后无法将结果还原到$\mathbb{Z}$中。
+尽管如此，相比于复数域而言，使用有限域上的原根做FFT不会涉及到浮点操作，
+因此也不用考虑中间精度的问题，正因为这样，在利用FFT计算整系数多项式的乘积或者计算高精度整数乘法时，我们还是希望使用有限域。
+注意到有限域 $F_q=\mathbb{Z}/q\mathbb{Z}$ 上的算术都是以$q$为模的，
+因此利用$F_q$上的FFT求出的点值向量的各项系数都不应该超过$q$，否则最后无法将结果还原到$\mathbb{Z}$中。
 
 设$a=(a_s\ldots a_0)_B$，$b=(b_s\ldots b_0)_B$，那么$a,b$分别对应于多项式
 $$a(B)=\sum_{k=0}^sa_kB^k,\quad b(B)=\sum_{k=0}^sb_kB^k,$$
-$a,b$的乘积$c$对应于多项式$C(B)=\sum\limits_{k=0}^{2s}c_kB^k$，其中
+$a,b$的乘积$c$对应于多项式$C(B)=\sum\limits_{k=0}^{2s}c_kB^k$，
+其中
 $$c_k=\sum_{i+j=k}a_ib_j<\sum_{i+j=k}B^2\le(s+1)\cdot B^2,\quad 0\le k\le 2s.$$
-在典型的计算机代数系统中，机器精度整数的溢出界$B=2^{64}$，整数位数$s$的界也取为$2^{64}$，那么根据$F_q$的限制应该有$q>(s+1)B^2\approx 2^{192}$，这样大的素数$q$以及有限域$F_q$是不容易使用的。
+在典型的计算机代数系统中，机器精度整数的溢出界$B=2^{64}$，整数位数$s$的界也取为$2^{64}$，
+那么根据$F_q$的限制应该有$q>(s+1)B^2\approx 2^{192}$，这样大的素数$q$以及有限域$F_q$是不容易使用的。
 
-为了解决这个问题，可以借用模方法中的技术，选取三个机器精度的素数$2^{63}\le q_0,q_1,q_2<2^{64}$，分别在$F_{q_i}$中计算出模乘积$a\cdot b\bmod q_i$，然后利用中国剩余定理（参见[@nlzdss00]）计算出$\mathbb{Z}$中的乘积$a\cdot b$。
+为了解决这个问题，可以借用模方法中的技术，选取三个机器精度的素数 $2^{63}\le q_0,q_1,q_2<2^{64}$，
+分别在 $F_{q_i}$ 中计算出模乘积$a\cdot b\bmod q_i$，
+然后利用中国剩余定理（参见[@nlzdss00]）计算出 $\mathbb{Z}$ 中的乘积 $a\cdot b$。
 
 考虑到中国剩余定理的计算，利用有限域上的FFT进行整数乘法的计算复杂度为
 $$O(n(\log{n})(\log{\log{n}})).$$
 关于有限域上的FFT更详细的介绍请参阅[@mca]和[@Schoenhage-multiply]。
 
-除了以上两种最常用的算法之外，还有许多类似于FFT的算法也可以用于快速计算DFT，如NTT（Number theoretic transform），WFT（Winograd Fourier Transform）和PFT（Polynomial Fourier Transform）等，关于FFT，NTT，WFT和PFT更详细的介绍请参阅Nussbaumer[@Nussbaumer82]或中译本[@fftca]。
+除了以上两种最常用的算法之外，还有许多类似于FFT的算法也可以用于快速计算DFT，
+如NTT（Number theoretic transform），WFT（Winograd Fourier Transform）和
+PFT（Polynomial Fourier Transform）等，
+关于FFT，NTT，WFT和PFT更详细的介绍请参阅Nussbaumer[@Nussbaumer82]或中译本[@fftca]。
