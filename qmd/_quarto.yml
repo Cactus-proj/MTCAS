@@ -2,13 +2,14 @@ project:
   type: book
 
 book:
-  title: "qmd"
-  author: "Norah Jones"
-  date: "2025/6/1"
+  title: "计算机代数系统的数学理论"
+  author: "李超、阮威、张龙、张翔"
+  date: "2010-10-01"
   chapters:
     - index.qmd
     - chapters/intro.qmd
-    - chapters/summary.qmd
+    - chapters/preface.qmd
+    - chapters/ch1.qmd
     - references.qmd
 
 bibliography: "../main.bib"
