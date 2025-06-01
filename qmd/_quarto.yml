@@ -11,7 +11,7 @@ book:
     - chapters/summary.qmd
     - references.qmd
 
-bibliography: references.bib
+bibliography: "../main.bib"
 
 format:
   html:
