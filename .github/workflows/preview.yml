@@ -12,6 +12,9 @@ jobs:
   build-deploy:
     runs-on: ubuntu-latest
     permissions:
+      # Sets permissions of the GITHUB_TOKEN to allow post comment with Preview URL
+      issues: write
+      pull-requests: write
       contents: write
     steps:
       - uses: actions/checkout@v4
