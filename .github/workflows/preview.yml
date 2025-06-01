@@ -12,19 +12,26 @@ jobs:
   build-deploy:
     runs-on: ubuntu-latest
     permissions:
+      # Sets permissions of the GITHUB_TOKEN to allow post comment with Preview URL
+      issues: write
+      pull-requests: write
       contents: write
     steps:
       - uses: actions/checkout@v4
       - name: Set up Quarto
         uses: quarto-dev/quarto-actions/setup@v2
       - run: quarto --version
-      - name: Install Python and Dependencies
-        uses: actions/setup-python@v5
-        with:
-          python-version: '3.11'
-          cache: 'pip'
-      - run: pip install quarto-cli
+      # - name: Install Python and Dependencies
+      #   uses: actions/setup-python@v5
+      #   with:
+      #     python-version: '3.11'
+      #     cache: 'pip'
+      # - run: pip install quarto-cli
       - name: Render Quarto Project
         uses: quarto-dev/quarto-actions/render@v2
         with:
           path: qmd
+      - name: Deploy preview
+        uses: rossjrw/pr-preview-action@v1
+        with:
+          source-dir: qmd/_book

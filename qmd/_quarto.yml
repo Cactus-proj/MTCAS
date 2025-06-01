@@ -33,5 +33,5 @@ format:
       dark: darkly
   # pdf:
   #   documentclass: scrreprt
-  epub:
-    cover-image: cover.png
+  # epub:
+  #   cover-image: cover.png
