@@ -1,6 +1,14 @@
 project:
   type: book
 
+filters:
+  - ignore-softbreaks
+execute:
+  cache: true
+  freeze: auto
+  echo: true
+  warning: false
+
 book:
   title: "计算机代数系统的数学理论"
   author: "李超、阮威、张龙、张翔"

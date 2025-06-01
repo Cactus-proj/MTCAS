@@ -6,3 +6,5 @@
 
 # python
 env/
+
+/.luarc.json
