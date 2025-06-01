@@ -1,5 +1,19 @@
+# IDE
+.luarc.json
+
 # tex
 *.pdf
 *.synctex.gz
 *.out
 *.log
+
+# quarto/python
+qmd/.quarto/
+env/
+*.html
+*.tex
+
+# Website / NodeJS
+node_modules/
+docs/.vitepress/dist
+docs/.vitepress/cache
