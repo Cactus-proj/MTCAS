@@ -1,0 +1,30 @@
+name: PR Preview
+
+on:
+  pull_request:
+
+# Allow one concurrent deployment
+concurrency:
+  group: 'preview-${{ github.ref }}'
+  cancel-in-progress: true
+
+jobs:
+  build-deploy:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+      - name: Set up Quarto
+        uses: quarto-dev/quarto-actions/setup@v2
+      - run: quarto --version
+      - name: Install Python and Dependencies
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+          cache: 'pip'
+      - run: pip install -r qmd/requirements.txt
+      - name: Render Quarto Project
+        uses: quarto-dev/quarto-actions/render@v2
+        with:
+          path: qmd
