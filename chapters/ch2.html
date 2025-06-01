@@ -6,10 +6,8 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="author" content="李超、阮威、张龙、张翔">
-<meta name="dcterms.date" content="2010-10-01">
 
-<title>计算机代数系统的数学理论</title>
+<title>2&nbsp; 素数判定 – 计算机代数系统的数学理论</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -25,28 +23,29 @@ ul.task-list li input[type="checkbox"] {
 </style>
 
 
-<script src="site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="site_libs/quarto-nav/headroom.min.js"></script>
-<script src="site_libs/clipboard/clipboard.min.js"></script>
-<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="site_libs/quarto-search/fuse.min.js"></script>
-<script src="site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="./">
-<link href="./chapters/intro.html" rel="next">
-<script src="site_libs/quarto-html/quarto.js" type="module"></script>
-<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
-<script src="site_libs/quarto-html/popper.min.js"></script>
-<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="site_libs/quarto-html/anchor.min.js"></script>
-<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-e1a5c8363afafaef2c763b6775fbf3ca.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark-8ef56b68f8fa1e9d2ba328e99e439f80.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-e1a5c8363afafaef2c763b6775fbf3ca.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
-<script src="site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-f8cb7fe94b71c4ea6759b609738bfe9c.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="site_libs/bootstrap/bootstrap-dark-68d834354916604f5f41eae73f500b81.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
-<link href="site_libs/bootstrap/bootstrap-f8cb7fe94b71c4ea6759b609738bfe9c.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<link href="../chapters/ch3.html" rel="next">
+<link href="../chapters/ch1.html" rel="prev">
+<script src="../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-e1a5c8363afafaef2c763b6775fbf3ca.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark-8ef56b68f8fa1e9d2ba328e99e439f80.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-e1a5c8363afafaef2c763b6775fbf3ca.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap-f8cb7fe94b71c4ea6759b609738bfe9c.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-dark-68d834354916604f5f41eae73f500b81.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="../site_libs/bootstrap/bootstrap-f8cb7fe94b71c4ea6759b609738bfe9c.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -258,7 +257,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./index.html">目录</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../chapters/ch2.html"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">素数判定</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -273,7 +272,7 @@ ul.task-list li input[type="checkbox"] {
   <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
     <div class="pt-lg-2 mt-2 text-left sidebar-header">
     <div class="sidebar-title mb-0 py-0">
-      <a href="./">计算机代数系统的数学理论</a> 
+      <a href="../">计算机代数系统的数学理论</a> 
         <div class="sidebar-tools-main">
   <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
 </div>
@@ -288,49 +287,49 @@ ul.task-list li input[type="checkbox"] {
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./index.html" class="sidebar-item-text sidebar-link active">
+  <a href="../index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">目录</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./chapters/intro.html" class="sidebar-item-text sidebar-link">
+  <a href="../chapters/intro.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">序</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./chapters/preface.html" class="sidebar-item-text sidebar-link">
+  <a href="../chapters/preface.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">前言</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./chapters/ch1.html" class="sidebar-item-text sidebar-link">
+  <a href="../chapters/ch1.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">高精度运算</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./chapters/ch2.html" class="sidebar-item-text sidebar-link">
+  <a href="../chapters/ch2.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">素数判定</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./chapters/ch3.html" class="sidebar-item-text sidebar-link">
+  <a href="../chapters/ch3.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">整数因子分解</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./chapters/ch4.html" class="sidebar-item-text sidebar-link">
+  <a href="../chapters/ch4.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">基础数论算法</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./references.html" class="sidebar-item-text sidebar-link">
+  <a href="../references.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">参考文献</span></a>
   </div>
 </li>
@@ -339,19 +338,8 @@ ul.task-list li input[type="checkbox"] {
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">Table of contents</h2>
-   
-  <ul>
-  <li><a href="#目录" id="toc-目录" class="nav-link active" data-scroll-target="#目录">目录</a>
-  <ul class="collapse">
-  <li><a href="#pdf-章节" id="toc-pdf-章节" class="nav-link" data-scroll-target="#pdf-章节">PDF 章节</a></li>
-  <li><a href="#pdf-未收录的章节" id="toc-pdf-未收录的章节" class="nav-link" data-scroll-target="#pdf-未收录的章节">PDF 未收录的章节</a></li>
-  <li><a href="#版权" id="toc-版权" class="nav-link" data-scroll-target="#版权">版权</a></li>
-  </ul></li>
-  </ul>
-</nav>
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
+        
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
@@ -359,26 +347,14 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">计算机代数系统的数学理论</h1>
+<h1 class="title"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">素数判定</span></h1>
 </div>
 
 
 
 <div class="quarto-title-meta">
 
-    <div>
-    <div class="quarto-title-meta-heading">Author</div>
-    <div class="quarto-title-meta-contents">
-             <p>李超、阮威、张龙、张翔 </p>
-          </div>
-  </div>
     
-    <div>
-    <div class="quarto-title-meta-heading">Published</div>
-    <div class="quarto-title-meta-contents">
-      <p class="date">October 1, 2010</p>
-    </div>
-  </div>
   
     
   </div>
@@ -388,64 +364,8 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<section id="目录" class="level1 unnumbered">
-<h1 class="unnumbered">目录</h1>
-<p>计算机代数系统的数学理论</p>
-<p>Mathematica Theory of Computer Algebra System, MTCAS</p>
-<section id="pdf-章节" class="level3">
-<h3 class="anchored" data-anchor-id="pdf-章节">PDF 章节</h3>
-<blockquote class="blockquote">
-<p>按照 PDF 中目录排序。<br>
-源 <code>.muse</code> 文件中不包含 PDF 中的：序、前言和附录A。</p>
-</blockquote>
-<ol type="1">
-<li><a href="./chapters/ch1.html">高精度运算</a></li>
-<li><a href="./chapters/ch2.html">素数判定</a></li>
-<li><a href="./chapters/ch3.html">整数因子分解</a></li>
-<li><a href="./chapters/ch4.html">基础数论算法</a></li>
-<li><a href="./404.html">数学常数</a></li>
-<li><a href="./404.html">线性代数</a></li>
-<li><a href="./404.html">一元多项式求值和插值</a></li>
-<li><a href="./404.html">一元多项式的最大公因子</a></li>
-<li><a href="./404.html">有限域上多项式因子分解</a></li>
-<li><a href="./404.html">整系数多项式因子分解</a></li>
-<li><a href="./404.html">多元多项式</a></li>
-<li><a href="./404.html">一元多项式求根算法</a></li>
-<li><a href="./404.html">代数方程组求解</a></li>
-<li><a href="./404.html">符号极限</a></li>
-<li><a href="./404.html">符号求和</a></li>
-<li><a href="./404.html">符号积分</a></li>
-<li><a href="./404.html">微分方程符号解</a></li>
-<li><a href="./references.html">参考文献</a></li>
-</ol>
-</section>
-<section id="pdf-未收录的章节" class="level2">
-<h2 class="anchored" data-anchor-id="pdf-未收录的章节">PDF 未收录的章节</h2>
-<ul>
-<li><a href="./404.html">数值线性代数基础</a></li>
-<li><a href="./404.html">非对称特征值问题</a></li>
-<li><a href="./404.html">初等函数</a></li>
-<li><a href="./404.html">线性方程组与Gauss消元法</a></li>
-<li><a href="./404.html">迭代法</a></li>
-<li><a href="./404.html">矩阵函数</a></li>
-<li><a href="./404.html">矩阵乘法</a></li>
-<li><a href="./404.html">正交化与最小二乘法</a></li>
-<li><a href="./404.html">特殊线性方程组</a></li>
-<li><a href="./404.html">对称特征值问题</a></li>
-</ul>
-</section>
-<section id="版权" class="level2">
-<h2 class="anchored" data-anchor-id="版权">版权</h2>
-<p>本书已由清华大学出版社出版： <a href="http://www.tup.tsinghua.edu.cn/booksCenter/book_03490801.html#">《计算机代数系统的数学原理》</a></p>
-<ul>
-<li>作者：李超、阮威、张龙、张翔</li>
-<li>ISBN：9787302230106</li>
-<li>出版日期：2010.10.01</li>
-</ul>
 
 
-</section>
-</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -862,10 +782,13 @@ ul.task-list li input[type="checkbox"] {
   </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
+      <a href="../chapters/ch1.html" class="pagination-link" aria-label="高精度运算">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">高精度运算</span></span>
+      </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./chapters/intro.html" class="pagination-link" aria-label="序">
-        <span class="nav-page-text">序</span> <i class="bi bi-arrow-right-short"></i>
+      <a href="../chapters/ch3.html" class="pagination-link" aria-label="整数因子分解">
+        <span class="nav-page-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">整数因子分解</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
