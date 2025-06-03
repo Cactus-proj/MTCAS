@@ -144,11 +144,10 @@ $$
 a^{(N-1)/q_j}\not\equiv1 \pmod{N},\qquad \forall j=1,2,\ldots,n,
 $$
 且
-$$
 \begin{equation}
 a^{N-1}\equiv1 \pmod{N} .
 \end{equation}
-$$ {#eq-fermat}
+{#eq-fermat}
 则$N$为素数。
 :::
 

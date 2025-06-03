@@ -212,11 +212,10 @@ $$x^2\equiv y^2 \pmod{N},\quad\text{且}~x\not\equiv y\pmod{N}.$$
 则$(N,x\pm y)$就是$N$的一个非平凡因子。
 
 当然，寻找这样的$x, y$不能只靠运气，CFRAC方法要构造一组同余式
-$$
 \begin{equation}
   x_k^2\equiv (-1)^{e_{0k}}p_1^{e_{1k}} \cdots p_m^{e_{mk}}\pmod{N},
 \end{equation}
-$$ {#eq-congruences}
+{#eq-congruences}
 
 其中$p_i$都是因子基$FB$中较小的素数。
 如果找到足够多这样的同余式(例如个数$n>m+1$)，那么利用二元域$\mathbb{F}_2$上的Gauss消元法，
@@ -226,11 +225,10 @@ $$\sum_{k=1}^n\varepsilon_k(e_{0k},e_{1k},\ldots,e_{mk})\equiv(0,0,\ldots,0)\pmo
 我们记
 $$(v_0,\ldots,v_m)=\frac{1}{2}\sum_{k=1}^n\varepsilon_k(e_{0k},e_{1k},\ldots,e_{mk}),$$
 此时若令
-$$
 \begin{equation}
 x=\prod_{k=1}^nx_k^{\varepsilon_k},\quad y=(-1)^{v_0}\prod_{i=1}^m{p_i^{v_i}},
 \end{equation}
-$$ {#eq-xandy}
+{#eq-xandy}
 
 便有我们所需要的
 $$x^2\equiv y^2 \pmod{N}.$$
