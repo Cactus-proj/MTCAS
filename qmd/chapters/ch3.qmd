@@ -318,17 +318,14 @@ TODO: `![椭圆曲线](images/ecm.png)`
 
 设 $P=(x_1,y_1)$，$Q=(x_2,y_2)$，$P+Q=(x_3,y_3)$，
 则
-$$
 \begin{equation}
   \begin{cases}
   x_3=\lambda^2-x_1-x_2,\\
   y_3=\lambda(x_1-x_3)-y_1.
   \end{cases}
 \end{equation}
-$$ {#eq-ecmarith}
+{#eq-ecmarith}
 其中
-$$
-
 \begin{equation*}
   \lambda=
   \begin{cases}
@@ -336,7 +333,6 @@ $$
     \displaystyle\frac{3x_1^2+a}{2y_1}&\text{若}P= Q.\\
   \end{cases}
 \end{equation*}
-$$
 :::
 
 可以知道以上加法定义确实使 $E$ 成为了一个加法交换群（尽管结合性的验证需要一些繁琐的计算）。
@@ -462,7 +458,6 @@ ECM 算法的效率很大程度取决于群运算的快慢，最关键的是模 
 接下来是筛法的过程：对于 $FB$ 中满足搜索极限 $B>p^e$ 的素数 $p$ 及幂次 $e$，
 首先求解方程 $z^2\equiv N\pmod{p^e}$，其解数（如果有解的话）
 
-$$
 \begin{equation*}
   n(p,e)=
   \begin{cases}
@@ -471,7 +466,6 @@ $$
     2 & p\ge3.
   \end{cases}
 \end{equation*}
-$$
 
 并且解都可以快速地求得。对方程的任一个解 $z$，令 $a_0=z-\lfloor\sqrt{N}\rfloor$，则有 $p^k\mid Q(a_0)$。
 给定一个搜索区间 $I$（通常很长），则对任意与 $a_0$ 差 $p^e$ 的整数倍的 $a\in I$，$Q(a)$ 都有因子 $p^e$。

@@ -114,12 +114,10 @@ $$
 ::: {#rem-strong  .remark}
 强伪素数的定义可以这样看出：若$N$为素数，
 则
-$$
 \begin{align*}
   a^{N-1}-1&=(a^d-1)(a^d+1)(a^{2d}+1)(a^{4d}+1)\cdots(a^{2^{s-1}d}+1)\\
      &\equiv 0\pmod{N}.
 \end{align*}
-$$
 :::
 
 对于Euler伪素数和强伪素数均不会出现类似Fermat伪素数的情况，
@@ -282,7 +280,6 @@ $$
 ## 二次域中的Fermat小定理
 设$a\in O$，$p$为奇素数，$p\nmid D$，
 则有
-$$
 \begin{equation*}
   a^p\equiv
   \begin{cases}
@@ -291,19 +288,16 @@ $$
   \end{cases}
   \pmod{p}.
 \end{equation*}
-$$
 :::
 
 ::: {.proof}
 设$2a=r+s\sqrt{D}$，$r,s\in\mathbb{Z}$，
 则由$\mathbb{Z}$上的Fermat小定理，二项展开及Euler二次剩余定理得
-$$
 \begin{align*}
   2a^p&\equiv(2a)^p\equiv(r+s\sqrt{D})^p\equiv r^p+(s\sqrt{D})^p \\
   &\equiv r+sD^{\frac{p-1}{2}}\sqrt{D} \\
   &\equiv r+s\legendre{D}{p}\sqrt{D}\pmod{p}.
 \end{align*}
-$$
 从而得到所要结论。
 :::
 
@@ -412,17 +406,17 @@ $$
 ::: {.remark}
 Lucas 检测的一个优势在于 Lucas 序列可以通过递推快速地计算。
 设
-$$
-\begin{equation*}A_k=
+\begin{equation*}
+A_k=
 \begin{bmatrix}
   U_{k+1}&V_{k+1}\\
   U_k & V_k
 \end{bmatrix},
 \end{equation*}
-$$
+
 则有
-$$
-\begin{equation*}A_k=
+\begin{equation*}
+A_k=
   \begin{bmatrix}
     P & -Q\\
     1 & 0\\
@@ -431,7 +425,7 @@ $$
     P & -Q\\
     1 & 0\\
   \end{bmatrix}^kA_0.
-\end{equation*}$$
+\end{equation*}
 可以使用快速求幂的方法在 $O(\log k)$ 步中完成序列的计算。
 :::
 
@@ -702,15 +696,12 @@ $$k_1,k_2\in M\Rightarrow k_1\pm k_2\in M.$$
 得到 $q_j^{\beta_j}\mid d\Rightarrow N+1\mid d\Rightarrow d=N+1$。
 
 然而另一方面，若 $n=1$，$N=p_1^{\alpha_1}$ 且 $\alpha_1\ge2$ 则
-$$
 \begin{align*}
   d&=2N\cdot\frac{1}{2}\left(1+\frac{1}{p_j}\right)\\
     &=N\left(1+\frac{1}{p_j}\right)\\
       &\ne N+1;
 \end{align*}
-$$
 若 $n\ge2$，由
-$$
 \begin{align*}
   d&=2\cdot \mathrm{LCM}\left\{\frac{1}{2}\left(p_i-\legendre{D}{p_i}\right)p_i^{\alpha_i-1}\Bigm| i=1,\ldots,n\right\}\\
   &\le2\prod\limits_{i=1}^n\frac{1}{2}\left(1-\frac{1}{p_i}\legendre{D}{p_i}\right)p_i^{\alpha_i}\\
@@ -719,7 +710,6 @@ $$
   &=\frac{1}{2}N\left(1+\frac{1}{3}\right)\left(1+\frac{1}{5}\right)\\
   &<N+1.
 \end{align*}
-$$
 从而必有 $n=1$，$\alpha_1=1$，即 $N$ 为素数。
 :::
 

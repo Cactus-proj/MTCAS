@@ -30,16 +30,13 @@ index: true
 例如采用 Euclid 算法计算两个整系数多项式的最大公因子时,即使输入的两个多项式和输出的最大公因子都具有绝对值较小的系数,
 计算过程中的中间结果仍然很可能出现绝对值非常大的系数.设
 
-$$
 \begin{align*}
-  F&=7x^7+2x^6-3x^5-3x^3+x+5,\\
+F&=7x^7+2x^6-3x^5-3x^3+x+5,\\
 G&=9x^5-3x^4-4x^2+7x+7,
 \end{align*}
-$$
 
 在计算过程中将有理数化为整数,我们将得到如下的多项式序列
 
-$$
 \begin{align*}
 &1890x^4-4572x^3-6930x^2-846x+4527,\\
 &294168996x^3+257191200x^2-20614662x-142937946,\\
@@ -50,7 +47,6 @@ $$
 &1092074685733031219201041602791259862659169966184593803518\\
 &602418777140682884334769647063543607737698426880000000000,
 \end{align*}
-$$
 
 最后的那个整数达到了118位.
 除此之外,高精度浮点数的表示和运算也是直接依赖于 `高精度整数`\index{高精度整数}的.
@@ -137,13 +133,11 @@ $$\frac{a}{b}>\frac{a_{s+1}B^{s+1}+a_sB^s}{(b_s+1)B^s}=\frac{a_{s+1}B+a_s}{b_s+1
 而由
 $$\left[\frac{a_{s+1}B+a_s}{b_s}\right] > \frac{a_{s+1}B+a_s}{b_s}-1$$
 可以得到
-$$
 \begin{align*}
   \left[\frac{a_{s+1}B+a_s}{b_s}\right]+1&\ge\frac{a_{s+1}B+a_s+1}{b_s}\\
 &=\frac{a_{s+1}B^{s+1}+(a_s+1)B^s}{b_sB^s}\\
 &>\frac{a}{b},
 \end{align*}
-$$
 
 故 $\left[\frac{a}{b}\right]\le\left[\frac{a_{s+1}B+a_s}{b_s}\right]$,
 证毕.
@@ -188,13 +182,11 @@ $$q-1\le\left[\frac{a}{b}\right]\le q.$$
 将 $t$ 代入不等式中得
 $$B\cdot((a_{s+1}B+a_s)-qb_s)\ge qb_{s-1}-a_{s-1},$$
 化简得到
-$$
 \begin{align*}
 a&\ge a_{s+1}B^2+a_sB+a_{s-1}\\
 &\ge q(b_sB+b_{s-1})\\
 &>q(b-B^{s-1}).
 \end{align*}
-$$
 因为 $q(b-B^{s-1})>qb-B^s\ge(q-1)b$, 所以 ${a\over b}>q-1$,
 证毕.
 :::
@@ -419,7 +411,6 @@ $$x_0=-1,x_1=0,x_2=1,x_3=2,x_4=\infty,$$
 如果$C(x)=A(x)\cdot B(x)$，
 类似地，利用简单的多项式插值算法，可以计算出 $C(x)$ 的系数表示$(c_0,c_1,c_2,c_3,c_4)$，
 其中
-$$
 \begin{align*}
 c_0&=C(0),\\
 c_1&=C(-1)+C(0)+C(1)+C(2)+C(\infty),\\
@@ -427,7 +418,6 @@ c_2&=C(-1)+C(0)-C(1)-C(2)+C(\infty),\\
 c_3&=4C(-1)+C(0)+2C(1)+8C(2)+16C(\infty),\\
 c_4&=C(\infty).
 \end{align*}
-$$
 :::
 
 ::: {.remark}
@@ -450,7 +440,7 @@ $$x_0=-r,x_1=-(r-1),\ldots,x_r=0,x_{r+1}=1,\ldots,x_{2r}=r,$$
 设
 $$C(x)=A(x)\cdot B(x)=\sum_{k=0}^{2r}c_kx^k,$$
 则
-$$
+
 \begin{equation*}
   \begin{bmatrix}
     c_0\\
@@ -473,7 +463,7 @@ $$
     A(x_{2r})\cdot B(x_{2r})
   \end{bmatrix}.
 \end{equation*}
-$$
+
 :::
 
 与Toom-3乘法的情形类似，根据 @def-pr:toomr 对Karatsuba乘法做推广就可以得到 Toom-$r$ 乘法。
@@ -580,7 +570,6 @@ $$(\mathrm{DFT}_\omega)^{-1}=\frac{1}{n}\mathrm{DFT}_{\omega^{-1}}.$$
 ::: {.proof}
 $\mathrm{DFT}_\omega$ 是$R^n$上的线性变换，它在自然基下的矩阵表示为$\vec{y}=V_n(\omega)\vec{a}$，
 即
-$$
 \begin{align*}
 \begin{bmatrix}
 y_0\\
@@ -605,16 +594,13 @@ a_2\\
 a_{n-1}
 \end{bmatrix},
 \end{align*}
-$$
 其中 $V_n(\omega)$ 为 $n$ 阶 Vandermonde 方阵。
 $V_n(\omega)$的$(i,j)$位元素是$\omega^{ij}$，$V_n(\omega)\cdot V_n(\omega^{-1})$的$(i,j)$位元素为
-$$
 \begin{align*}
 u_{ij}&=\sum_{0\le k<n}\omega^{ik}(\omega^{-1})^{kj}\\
 &=\sum_{0\le k<n}(\omega^{i-j})^k\\
 &=n\delta_{ij}.
 \end{align*}
-$$
 因此 $V_n(\omega)\cdot V_n(\omega^{-1})=n(\delta_{ij})=nI_n$，
 即 $(V_n(\omega))^{-1}=\frac{1}{n}V_n(\omega^{-1})$，
 亦即 $(\mathrm{DFT}_\omega)^{-1}=\frac{1}{n}\mathrm{DFT}_{\omega^{-1}}$。
@@ -647,23 +633,19 @@ $$\omega^{jk_1}=\omega^{jk_2}\Leftrightarrow jk_1\equiv jk_2\mod n,$$
 
 为了高效地多点求值，FFT方法运用了分治策略。
 设$n=2^m$次多项式$f$的系数表示向量为$f=(f_0,f_1,\ldots,f_{n-1})$，将它依下标的奇偶性分成两组得到
-$$
 \begin{align*}
 f^{[0]}&=(f_0,f_2,\ldots,f_{n-2}),\\
 f^{[1]}&=(f_1,f_3,\ldots,f_{n-1}),
 \end{align*}
-$$
 那么向量$\mathrm{DFT}_\omega(f)$的第$j$个分量
 $$
 f(\omega^j)=\sum_{k=0}^{n-1}f_k\omega^{jk}=\sum_{k=0}^{n/2-1}f_{2k}(\omega^{2j})^k+\omega^j\sum_{k=0}^{n/2-1}f_{2k+1}(\omega^{2j})^k,
 $$
 注意到$\omega^{j+n/2}=-\omega^j,\omega^{j+n}=\omega^j$，因此可以改写成
-$$
 \begin{align*}
 \mathrm{DFT}_\omega(f)[j]&=\mathrm{DFT}_{\omega^2}(f^{[0]})[j]+\omega^j\mathrm{DFT}_{\omega^2}(f^{[1]})[j],\\
 \mathrm{DFT}_\omega(f)[j+n/2]&=\mathrm{DFT}_{\omega^2}(f^{[0]})[j]-\omega^j\mathrm{DFT}_{\omega^2}(f^{[1]})[j],
 \end{align*}
-$$
 其中 $0\le j<n/2$。
 如果从多项式的角度来看，这其实就是$f(x)=f^{[0]}(x^2)+xf^{[1]}(x^2)$。
 
