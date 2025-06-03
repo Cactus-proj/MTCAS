@@ -101,6 +101,7 @@ window.MathJax = {
       jacobi: ['\\left(\\frac{#1}{#2}\\right)', 2],
       dmod: ["\\mathop{\\mathrm{dmod}_{#1}}", 1],
       bitmod: "\\mathop{\\mathrm{bmod}}",
+      ul: ["\\underset{#2}{\\underline{#1}}", 2],
     }
   }
 };
@@ -502,12 +503,7 @@ window.Quarto = {
 {\scriptsize\ul{1011}{11}000\ul{111}{7}00\ul{1}{1}000000\ul{111}{7}0\ul{1001}{9}0\ul{1001}{9}\ul{1101}{13}0\ul{1}{1}000000\ul{1011}{11}\ul{11}{3}00000\ul{1111}{15}\ul{1001}{9}\ul{1001}{9}0\ul{101}{5}0\ul{111}{7}}
 \]</span></p>
 <p>二进方法的乘法次数较平凡算法有本质的减少，一个很自然的问题是：计算 <span class="math inline">\(n\)</span> 次幂所需要的最少乘法次数是多少？这等价于求 <span class="math inline">\(n\)</span> 的 <code>加法链</code> 的最短长度 <span class="math inline">\(l(n)\)</span>（参见 <span class="citation" data-cites="taocp2">(<a href="../references.html#ref-taocp2" role="doc-biblioref">Knuth 1997</a>)</span>）。构造最短长度的加法链是较为困难的问题，在实践中只能构造”近似”最短的加法链。一个构造方法是通过”<code>幂树</code>“，其构造方法是：首先在第一层置1，当置完 <span class="math inline">\(k\)</span> 层后，从左到右依次取第 <span class="math inline">\(k\)</span> 层每个节点 <span class="math inline">\(n\)</span>，在其下附加节点 <span class="math inline">\(n+1,n+a_1,\ldots,n+a_{k-1}=2n\)</span>，其中 <span class="math inline">\(1,a_1,a_2,\ldots,a_{k-1}\)</span> 是树根到 <span class="math inline">\(n\)</span> 的到 <span class="math inline">\(n\)</span> 的通路上的点，但已出现的节点不予添加。下图显示了前4层幂树。</p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="images/powertree.png" class="img-fluid figure-img"></p>
-<figcaption>前4层幂树</figcaption>
-</figure>
-</div>
+<p><code>![前4层幂树](images/powertree.png)</code></p>
 <p>有了幂树之后，当我们要计算某个 <span class="math inline">\(n\)</span> 次幂时，只需要在该树上找到 <span class="math inline">\(n\)</span>，依次计算从根节点到 <span class="math inline">\(n\)</span> 的路径上的幂次即可。</p>
 <p>幂树构造简单，但对较大的 <span class="math inline">\(n\)</span> 树的规模会很大（实际得到了 <span class="math inline">\(n\)</span> 以下所有数的近似加法链）。有许多启发性的算法来构造直接 <span class="math inline">\(n\)</span> 的近似最短加法链（参见 <span class="citation" data-cites="gor98">(<a href="../references.html#ref-gor98" role="doc-biblioref">Gordon 1998</a>)</span>,<span class="citation" data-cites="bos90">(<a href="../references.html#ref-bos90" role="doc-biblioref">Bos and Coster 1990</a>)</span>）。</p>
 <p>另外窗口方法和加法链也可以结合起来使用。由于当窗口长度增加时，需要预先计算的 <span class="math inline">\(g\)</span> 的幂数量增多，可以构造加法序列（含所需幂次的加法链）来减少预先的计算量。使用长度较大的窗口的确能够减少乘法的次数，例如对前面的例子，可以将93次乘法进一步减少到89次。下式显示了长度为8的窗口方法过程。</p>
@@ -979,12 +975,7 @@ d-p_{i+1}^2=q_iq_{i+1}.
     \end{aligned}\right.
 \end{equation*}\]</span></p>
 <p>由此可画出 <span class="math inline">\(\phi(x,a)\)</span> 的二叉树（仅画出前三层），</p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="images/btree.png" class="img-fluid figure-img"></p>
-<figcaption>计算 <span class="math inline">\(\phi(x,a)\)</span> 的二叉树</figcaption>
-</figure>
-</div>
+<p><code>![计算 $\phi(x,a)$ 的二叉树](images/btree.png)</code></p>
 <p>递归到二叉树的叶结点最终得到<span id="eq-phixa"><span class="math display">\[
 \phi(x,a)=\sum_{n\le x\atop P^+(n)\le y}\mu(n)\left\lfloor\frac{x}{n}\right\rfloor,  
 \tag{4.3}\]</span></span></p>
