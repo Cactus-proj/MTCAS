@@ -1,5 +1,9 @@
 /.quarto/
 _book/
+site_libs/
 
 # PDF
 *.tex
+*.aux
+*.toc
+*.bcf

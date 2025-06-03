@@ -2,38 +2,100 @@
 
 将 `.muse` 文件翻译为 `.qmd` 文件
 
-## 翻译规则
+## markdown 输出格式化规则
 
-- 大标题翻 `#title` 译为一级标题 `#`
-  - `"#title\s+(.+)$" => "# $1"`
+- 英文单词与中文之间用单个空格隔开
+- 行内公式 `$x+y$` 与中文之间用单个空格隔开
+- 行间公式单独占一行，即 `$$` 始终位于行的开头而不是中间
+
+
+## 大标题 `#title`
+
+大标题翻 `#title` 译为一级标题 `#`
+
+- `"^#title\s+(.+)$" => "# $1"`
 
 ```md
 #title 高精度运算
 # 高精度运算
 ```
 
-- 删除 `<contents>` 标签
+## `<contents>`
 
-- 成对的 `<cite>` 标签转化为 qmd 引用
+删除 `<contents>` 标签
+
+- `"<contents>" => ""`
+
+## 注释 `;`
+
+忽略注释标记 `;`
+
+- `"^; " => ""`
+
+## `<cite>` 标签
+
+成对的 `<cite>` 标签转化为 qmd 引用
+
+- `"<cite>" => "[@"`
+- `"</cite>" => "]"`
 
 ```md
 <cite>shuzhifenxi</cite>
 [@shuzhifenxi]
+<cite>fkq03</cite>,<cite>nlzdss00</cite>
+[@fkq03],[@nlzdss00]
+<cite>riesel</cite>，<cite>cohen</cite>和<cite>pei02</cite>
+[@riesel]，[@cohen] 和 [@pei02]
 ```
 
-- `<index>` 改用代码标记+ tex 索引
+## `<index>` 标签
 
-```md
-<index>高精度运算</index>
-`高精度运算`\index{高精度运算}
-```
+`<index>` 改用代码标记并加上 index 索引。
 
-- 多级标题增加一级，映射到 md 标题
-  - `"^\*\s+(.+)$" => "## $1"`
-  - `"^\*\*\s+(.+)$" => "### $1"`
-  - `"^\*\*\*\s+(.+)$" => "#### $1"`
-  - `"^\*\*\*\*\s+(.+)$" => "##### $1"`
-  - 以此类推
+示例：
+
+1. 仅标签，无属性。
+    使用内容作为索引。
+    ```"<index>(.+)</index>" => "`$1`\index{$1}"```
+
+    ```md
+    <index>高精度运算</index>
+    `高精度运算`\index{高精度运算}
+    ```
+
+2. 如果闭合标签没有内容，则仅加上 index 索引，不显示文本。
+3. 有 `name` 属性。保留标签内容作为文本，`name` 属性的值作为索引名。
+    ```"<index name="(.+)">(.+)</index>" => "`$2`\index{$1}"```
+
+    ```md
+    <index name="Fermat检测">Fermat合性检测</index>
+    `Fermat合性检测`\index{Fermat检测}
+    <index name="Lehmer $N-1$型检测"></index>
+    \index{Lehmer $N-1$型检测}
+    ```
+
+4. 有 `name` 属性和 `sub` 属性。
+    保留标签内容作为文本，`name` 属性和 `sub` 的值作为索引名，即添加两个不同的 index。
+    ```"<index name="(.+)" sub="(.+)">(.+)</index>" => "`$3`\index{$1!$2}"```
+  
+    ```md
+    <index name="伪素数" sub="Camichael数">Camichael数</index>
+    `Camichael数`\index{伪素数!Camichael数}
+    <index name="Fermat小定理" sub="Lehmer的逆定理!放宽版本"></index>
+    \index{Fermat小定理!Lehmer的逆定理!放宽版本}
+    <index name="Fermat小定理" sub="二次域中的"></index>
+    \index{Fermat小定理!二次域中的}
+    ```
+
+## 多级标题 `*`
+
+多级标题增加一级，映射到 md 标题
+
+- `"^\*\s+(.+)$" => "## $1"`
+- `"^\*\*\s+(.+)$" => "### $1"`
+- `"^\*\*\*\s+(.+)$" => "#### $1"`
+- `"^\*\*\*\*\s+(.+)$" => "##### $1"`
+- 以此类推
 
 ```md
 * 整数
@@ -44,7 +106,13 @@
 #### 商为一位数的除法
 ```
 
-- `<latex>` 标签改为 md 公式
+## `<latex>` 标签
+
+`<latex>` 标签改为 md 公式
+
+- `"<latex>" => "$$"`
+- `"</latex>" => "$$"`
+- 公式中的编号 `@@eq:aaa` 改为在公式结尾处加上编号 `$$ {#eq-aaa}`
 
 ```md
 <latex>
@@ -81,7 +149,7 @@ Muse 引用 `##` 改为 qmd 链接
 @rem-division1
 
 ##eq:norm
-@eq:norm
+@eq-norm
 ##factor1
 @factor1
 ```
@@ -127,22 +195,30 @@ Muse 引用 `##` 改为 qmd 链接
 - `<theorem>` 对应使用 `.theorem` 环境。
   对应的 `label` 标签的前缀统一为 `thm-`，去掉原来的 `th:` 前缀；
   对应的 `name` 标签改为 md 标题，如果没有则留空。
+- 闭合标签 `</theorem>` 替换为环境结束符 `:::`
 
-输入 muse：
+示例：
 
-```muse
-<theorem label="th:multiply1">
-已知两个次数小于$n$的多项式的系数表示分别为$$A(x)=\sum_{k=0}^{n-1}a_kx^k,\quad B(x)=\sum_{k=0}^{n-1}b_kx^k,$$设乘积的系数表示为$C(x)=\sum\limits_{k=0}^{2n-2}c_kx^k$,那么$$c_k=\sum_{i+j=k}a_ib_j.$$
-</theorem>
-```
+1. 仅标签，无属性。
+    - `"<theorem>" => "::: {.theorem}"`
+    - `"</theorem>" => ":::"`
 
-输出 qmd：
+2. 有 `name` 属性。
+    `name` 字段作为标题
 
-```md
-::: {#thm-multiply1  .theorem}
-已知两个次数小于$n$的多项式的系数表示分别为$$A(x)=\sum_{k=0}^{n-1}a_kx^k,\quad B(x)=\sum_{k=0}^{n-1}b_kx^k,$$设乘积的系数表示为$C(x)=\sum\limits_{k=0}^{2n-2}c_kx^k$,那么$$c_k=\sum_{i+j=k}a_ib_j.$$
-:::
-```
+    ```md
+    <theorem  name="Davenport">
+    ::: {.theorem}
+    ## Davenport
+    ```
+
+3. 有 `label` 属性
+    这里统一了 `label` 的前缀，改为 `thm-multiply1`
+
+    ```md
+    <theorem label="th:multiply1">
+    ::: {#thm-multiply1  .theorem}
+    ```
 
 ### definition
 
@@ -158,11 +234,8 @@ Muse 引用 `##` 改为 qmd 链接
 
 2. 有 `name` 属性
 
-    ```muse
-    <definition name="原根">
-    ```
-
     ```md
+    <definition name="原根">
     ::: {.definition}
     ## 原根
     ```
@@ -170,11 +243,8 @@ Muse 引用 `##` 改为 qmd 链接
 3. 有 `label` 属性
     这里把 `label` 改为 `def-conditioning`
 
-    ```muse
-    <definition label="conditioning" name="矩阵的条件数">
-    ```
-
     ```md
+    <definition label="conditioning" name="矩阵的条件数">
     ::: {#def-conditioning  .definition}
     ## 矩阵的条件数
     ```
@@ -182,11 +252,8 @@ Muse 引用 `##` 改为 qmd 链接
 4. 有 `label` 属性，`label` 带有前缀
     这里把 `label` 去掉前缀，改为 `def-machin`
 
-    ```muse
-    <definition name="Machin型公式" label="de:machin">
-    ```
-
     ```md
+    <definition name="Machin型公式" label="de:machin">
     ::: {#def-machin  .definition}
     ## Machin 型公式
     ```
@@ -200,22 +267,10 @@ Muse 引用 `##` 改为 qmd 链接
     - 如果 `label` 以 `pr:` 开头，`name` 字段的内容加上 `问题：` 后作为 md 标题
     - 如果 `label` 以 `ex:`,`example:` 开头，`name` 字段的内容加上 `示例：` 后作为 md 标题
 
-输入 muse：
-
-```muse
-<problem label="pr:karatsuba">
-设$$A(x)=a_1x+a_0,\quad B(x)=b_1x+b_0,$$选取插值点组为$x_0=-1,x_1=0,x_2=\infty$,则$A(x),B(x)$的点值表示分别为$\{(-1,a_0-a_1),(0,a_0),(\infty,a_1)\}$,$\{(-1,b_0-b_1),(0,b_0),(\infty,b_1)\}$,如果$C(x)=A(x)\cdot B(x)$,那么$C(-1)=(a_0-a_1)\cdot(b_0-b_1)$,$C(0)=a_0\cdot b_0$,$C(\infty)=a_1\cdot b_1$,利用简单的多项式插值算法,可以计算出$C(x)$的系数表示$$(c_0,c_1,c_2)=(C(0),C(0)+C(\infty)-C(-1),C(\infty)),$$即$$C(x)=a_1b_1x^2+(a_0b_0+a_1b_1-(a_0-a_1)(b_0-b_1))x+a_0b_0.$$
-</problem>
-```
-
-输出 qmd：
-
 ```md
+<problem label="pr:karatsuba">
 ::: {#def-pr:karatsuba  .definition}
 ## 问题
-
-设$$A(x)=a_1x+a_0,\quad B(x)=b_1x+b_0,$$选取插值点组为$x_0=-1,x_1=0,x_2=\infty$,则$A(x),B(x)$的点值表示分别为$\{(-1,a_0-a_1),(0,a_0),(\infty,a_1)\}$,$\{(-1,b_0-b_1),(0,b_0),(\infty,b_1)\}$,如果$C(x)=A(x)\cdot B(x)$,那么$C(-1)=(a_0-a_1)\cdot(b_0-b_1)$,$C(0)=a_0\cdot b_0$,$C(\infty)=a_1\cdot b_1$,利用简单的多项式插值算法,可以计算出$C(x)$的系数表示$$(c_0,c_1,c_2)=(C(0),C(0)+C(\infty)-C(-1),C(\infty)),$$即$$C(x)=a_1b_1x^2+(a_0b_0+a_1b_1-(a_0-a_1)(b_0-b_1))x+a_0b_0.$$
-:::
 ```
 
 ### algorithm
@@ -226,15 +281,8 @@ Muse 引用 `##` 改为 qmd 链接
   - 如果没有 `name` 属性，则使用 `算法` 作为标题。
 - 闭合标签 `</algorithm>` 替换为环境结束符 `:::`
 
-输入 muse：
-
-```muse
-<algorithm  name="在$B$进制下除以$B'$" label="al:conversion1">
-```
-
-输出 qmd：
-
 ```md
+<algorithm  name="在$B$进制下除以$B'$" label="al:conversion1">
 ::: {#def-al:conversion1  .definition}
 ## 算法：在 $B$ 进制下除以 $B'$
 ```

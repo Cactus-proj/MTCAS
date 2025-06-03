@@ -13,6 +13,7 @@ book:
   title: "计算机代数系统的数学理论"
   author: "李超、阮威、张龙、张翔"
   date: "2010-10-01"
+  date-format: "YYYY年M月D日"
   chapters:
     - index.qmd
     - chapters/intro.qmd
@@ -23,6 +24,7 @@ book:
     - chapters/ch4.qmd
     - references.qmd
 
+# https://quarto.org/docs/authoring/citations.html#sec-citations-style
 bibliography: "../main.bib"
 
 format:
@@ -31,7 +33,28 @@ format:
     theme:
       light: cosmo
       dark: darkly
+    include-in-header:
+      text: |
+        <script>
+        window.MathJax = {
+          tex: {
+            macros: {
+              legendre: ['\\left(\\frac{#1}{#2}\\right)', 2],
+              jacobi: ['\\left(\\frac{#1}{#2}\\right)', 2],
+              dmod: ["\\mathop{\\mathrm{dmod}_{#1}}", 1],
+              bitmod: "\\mathop{\\mathrm{bmod}}",
+              ul: ["\\underset{#2}{\\underline{#1}}", 2],
+            }
+          }
+        };
+        </script>
   # pdf:
-  #   documentclass: scrreprt
+  #   include-in-header:
+  #     - _styles/book-style.tex
+  #   pdf-engine: xelatex
+  #   indent: true
+  #   papersize: a4
+  #   twoside: true
+  #   geometry: [margin=2.5cm]
   # epub:
   #   cover-image: cover.png
