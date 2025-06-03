@@ -148,10 +148,9 @@ $$
 且
 $$
 \begin{equation}
-\tag{@eq:fermat}
 a^{N-1}\equiv1 \pmod{N} .
 \end{equation}
-$$
+$$ {#eq-fermat}
 则$N$为素数。
 :::
 
@@ -161,7 +160,7 @@ $$
 :::
 
 ::: {.remark}
-这里不要$(a,N)=1$的条件，是因为其已经被包括在式 @eq:fermat 之中了。
+这里不要$(a,N)=1$的条件，是因为其已经被包括在式 @eq-fermat 之中了。
 :::
 
 寻找$M_N$的生成元(甚至只寻找模$N$的一个二次剩余)都是非常困难的事情，目前还没有有效的确定性的方法。
@@ -632,7 +631,8 @@ $$r+s\rho\equiv0\pmod{n}\Leftrightarrow r\equiv s \equiv0 \pmod{n}.$$
 $$a^p\equiv\begin{cases}
   a&\text{若}\displaystyle\legendre{D}{p}=1\\\noalign{\smallskip}
   \bar{a}&\text{若}\displaystyle\legendre{D}{p}=-1
-\end{cases}\pmod{p}$$ {#eq-kd-fermat}
+\end{cases}\pmod{p}
+$$ {#eq-kd-fermat}
 :::
 
 ::: {.proof}
