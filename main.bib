@@ -121,23 +121,20 @@
   OPTannote = 	 {}
 }
 
-@Article{apr,
-  ISSN = {0003-486X},
-  author = {Adleman, Leonard M. and Pomerance, Carl and Rumely, Robert S.},
-  copyright = {Copyright 1983 Annals of Mathematics},
-  journal = {The Annals of Mathematics},
-  jstor_articletype = {Full Length Article},
-  jstor_date = {198301},
-  jstor_formatteddate = {Jan., 1983},
-  month = {jan},
-  number = {1},
-  pages = {173--206},
-  publisher = {Annals of Mathematics},
-  series = {2},
-  title = {On Distinguishing Prime Numbers from Composite Numbers},
-  url = {http://links.jstor.org/sici?sici=0003-486X%28198301%292%3A117%3A1%3C173%3AODPNFC%3E2.0.CO%3B2-I},
-  volume = {117},
-  year = {1983},
+@InProceedings{apr,
+  author    = {Adleman, Leonard M.},
+  booktitle = {21st Annual Symposium on Foundations of Computer Science (sfcs 1980)},
+  title     = {On distinguishing prime numbers from composite numbers},
+  year      = {1980},
+  month     = oct,
+  pages     = {387--406},
+  publisher = {IEEE},
+  abstract  = {A new algorithm for testing primality is presented. The algorithm is distinguishable from the lovely algorithms of Solvay and Strassen [36], Miller [27] and Rabin [32] in that its assertions of primality are certain (i.e., provable from Peano's axioms) rather than dependent on unproven hypothesis (Miller) or probability (Solovay-Strassen, Rabin). An argument is presented which suggests that the algorithm runs within time 
+$$
+C_1ln(n)^{C_2ln(ln(ln(n)))}
+$$
+where n is the input, and $C_1$, $C_2$ constants independent of n. Unfortunately no rigorous proof of this running time is yet available.},
+  doi       = {10.1109/sfcs.1980.28},
 }
 
 @Article{aks04,
