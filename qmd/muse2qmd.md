@@ -49,6 +49,7 @@
 示例：
 
 1. 仅标签，无属性。
+    使用内容作为索引。
     ```"<index>(.+)</index>" => "`$1`\index{$1}"```
 
     ```md
@@ -56,21 +57,28 @@
     `高精度运算`\index{高精度运算}
     ```
 
-2. 有 `name` 属性。保留标签内容作为文本，`name` 属性的值作为索引名。
+2. 如果闭合标签没有内容，则仅加上 index 索引，不显示文本。
+3. 有 `name` 属性。保留标签内容作为文本，`name` 属性的值作为索引名。
     ```"<index name="(.+)">(.+)</index>" => "`$2`\index{$1}"```
 
     ```md
-    <index name="伪素数">Fermat伪素数</index>
-    `Fermat伪素数`\index{伪素数}
+    <index name="Fermat检测">Fermat合性检测</index>
+    `Fermat合性检测`\index{Fermat检测}
+    <index name="Lehmer $N-1$型检测"></index>
+    \index{Lehmer $N-1$型检测}
     ```
 
-3. 有 `name` 属性和 `sub` 属性。
+4. 有 `name` 属性和 `sub` 属性。
     保留标签内容作为文本，`name` 属性和 `sub` 的值作为索引名，即添加两个不同的 index。
-    ```"<index name="(.+)" sub="(.+)">(.+)</index>" => "`$3`\index{$1}\index{$2}"```
+    ```"<index name="(.+)" sub="(.+)">(.+)</index>" => "`$3`\index{$1!$2}"```
   
     ```md
     <index name="伪素数" sub="Camichael数">Camichael数</index>
-    `Camichael数`\index{伪素数}\index{Camichael数}
+    `Camichael数`\index{伪素数!Camichael数}
+    <index name="Fermat小定理" sub="Lehmer的逆定理!放宽版本"></index>
+    \index{Fermat小定理!Lehmer的逆定理!放宽版本}
+    <index name="Fermat小定理" sub="二次域中的"></index>
+    \index{Fermat小定理!二次域中的}
     ```
 
 ## 多级标题 `*`
