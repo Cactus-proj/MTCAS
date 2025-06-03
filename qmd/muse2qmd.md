@@ -112,6 +112,7 @@
 
 - `"<latex>" => "$$"`
 - `"</latex>" => "$$"`
+- 公式中的编号 `@@eq:aaa` 改为在公式结尾处加上编号 `$$ {#eq-aaa}`
 
 ```md
 <latex>
@@ -148,7 +149,7 @@ Muse 引用 `##` 改为 qmd 链接
 @rem-division1
 
 ##eq:norm
-@eq:norm
+@eq-norm
 ##factor1
 @factor1
 ```
