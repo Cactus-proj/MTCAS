@@ -134,12 +134,12 @@ $25\times10^9$以下只有13个同时为对基2,3,5的强伪素数。
 `Lehmer $N-1$型检测`\index{Lehmer $N-1$型检测}有时候$N$的素性很难判定，而$N\pm1$的分解却很容易得到。
 这一节的方法便是依赖于$N-1$的素因子分解。
 
-`Lehmer的逆定理`\index{Fermat 小定理}\index{Lehmer 的逆定理}
+`Lehmer 的逆定理`\index{Fermat 小定理}\index{Lehmer 的逆定理}
 
 ::: {#thm-FermatConverse .theorem}
 ## Fermat小定理逆定理, Lehmer
-设有素因子分解$N-1=q_1^{\beta_1}\cdots q_n^{\beta_n}$。
-如果对$a$有
+设有素因子分解 $N-1=q_1^{\beta_1}\cdots q_n^{\beta_n}$。
+如果对 $a$ 有
 $$
 a^{(N-1)/q_j}\not\equiv1 \pmod{N},\qquad \forall j=1,2,\ldots,n,
 $$
@@ -305,8 +305,8 @@ $$
 
 ::: {#def-de:LucasSeq .definition}
 ## Lucas序列
-设$P ,Q\in\mathbb{Z}$，特征方程$\lambda^2-P\lambda+Q=0$的两根为$a$，$b$。
-则$P $，$Q$对应的Lucas序列定义为
+设 $P,Q\in\mathbb{Z}$，特征方程 $\lambda^2-P\lambda+Q=0$ 的两根为 $a$，$b$。
+则 $P$，$Q$ 对应的 Lucas 序列定义为
 $$
 U_n=\frac{a^n-b^n}{a-b},\qquad V_n=a^n+b^n.
 $$
@@ -374,10 +374,10 @@ $$
 
 我们已经得到了 Lucas 伪素数合性检测，和 $N-1$ 型检测类似，我们还能够进行素性的确证。
 在这里，替代 $N-1$ 的分解的是 $N+1$ 的分解，我们可以看到下面的定理与定理 @thm-FermatConverse 是多么的"形似"。
-`Lucas $N+1$ 型检测`\index{Lucas $N+1$ 型检测}
 
 ::: {#thm-lucas .theorem}
-## Lucas检测
+## Lucas 检测
+\index{Lucas $N+1$ 型检测}
 设有素因子分解 $N+1=\prod\limits_{j=1}^nq_j^{\beta_j}$，
 若有 Lucas 序列 $\{U_n\}$，使 $(2QD,N)=1$，
 满足 $$(U_{(N+1)/q_j},N)=1,\qquad \forall j=1,2,\ldots,n$$ 
