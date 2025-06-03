@@ -31,7 +31,23 @@ format:
     theme:
       light: cosmo
       dark: darkly
+    include-in-header:
+      text: |
+        <script>
+        window.MathJax = {
+          tex: {
+            macros: {
+              legendre: ['\\left(\\frac{#1}{#2}\\right)', 2],
+              jacobi: ['\\left(\\frac{#1}{#2}\\right)', 2]
+            }
+          }
+        };
+        </script>
   # pdf:
   #   documentclass: scrreprt
+  #   include-in-header:
+  #     - text: |
+  #         \newcommand{\legendre}[2]{\left(\frac{#1}{#2}\right)}
+  #         \newcommand{\jacobi}[2]{\left(\frac{#1}{#2}\right)}
   # epub:
   #   cover-image: cover.png
