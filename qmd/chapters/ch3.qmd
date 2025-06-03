@@ -57,12 +57,10 @@ $$p_0=\prod_{2\le p\le97\atop p\text{为素数}}p=230556796394551842475310214733
 1. 设素因子搜索的上限为 $B$，生成$B$以下的形如 $p_i^{\alpha_i}$ 数对应的素数因子之表 $\{p_i\}$，
     其中 $p_i$ 的幂次用 $p_i$ 代表，即：2,3,2,5,7,2,3,11,13,2...
 2. 随机选择正整数 $a$，顺次计算
-    $$
     \begin{align*}
     b_1&=a\\
     b_{i+1}&\equiv b_i^{p_i}\pmod{N}\quad i=1,2,\ldots
     \end{align*}
-    $$
 3. 定期检查（例如每当$n$为20的倍数时）$(b_n-1,N)$，若 $(b_n-1,N)>1$，则得到一个 $N$ 的因子；
     否则继续第2步中的递推计算。
 :::
@@ -410,28 +408,24 @@ ECM 算法的效率很大程度取决于群运算的快慢，最关键的是模 
 设 $a_1, \ldots, a_k$ 为不能被 $N$ 整除的整数，本算法求出其逆 $b_1, \ldots, b_k$ 或给出 $N$ 的一个非平凡因子。
 
 1. 递推计算
-   $$
    \begin{align*}
      c_1&\equiv a_1\pmod{N},\\
      c_2&\equiv a_1a_2\pmod{N},\\
      \vdots\\
      c_k&\equiv a_1\cdots a_k\pmod{N}.
      \end{align*}
-   $$
 
 2. 施行一次扩展 Euclid 算法求出 $(u,v,d)$ 满足 $d=(c_k,N)$，$uc_k+vN=d$。
    - 若 $d=1$，则 $a_i$ 均有逆，到第三步；
    - 若 $d>1$，依次计算 $(d, a_1), (d, a_2), \ldots$ 直到 $(d, a_i)>1$，输出 $(d, a_i)$ 为 $N$ 的一个非平凡因子。
 
 3. 递推计算逆 $b_i$ 并输出：
-   $$
    \begin{align*}
      b_k&\equiv uc_{k-1}\pmod{N},\\
      b_{k-1}&\equiv (ua_k)c_{k-2}\pmod{N},\\
      \vdots\\
      b_1&\equiv (ua_k\cdots a_2)\pmod{N}.
    \end{align*}
-   $$
 :::
 
 
