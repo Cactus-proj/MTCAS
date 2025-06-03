@@ -110,6 +110,7 @@ $$
 
 
 下面的命题表明，在 Montgomery 表示下，$\widetilde{mn}$ 即表示 $m$ 与 $n$ 的乘积。
+
 ::: {#def-pr:tilde .definition}
 ## 命题
 设 $m, n\in\mathbb{Z}$，则
@@ -261,6 +262,7 @@ $$
 :::
 
 Knuth [@taocp2] 通过一系列分析给出了 Euclid 算法终止前除法步数的精确估计。
+
 ::: {#thm-al:euclid .theorem}
 ## Euclid 算法的步数
 设 $a$，$b$ 随机分布于 $[1, N]$，则
@@ -397,7 +399,7 @@ Lehmer加速算法本身就就具有了"扩展"的特性，但Binary GCD的"扩�
 
 首先我们引进某种程度上相当于 $\bmod$ 的运算 `dmod`\index{dmod}（digit mod）和 `bmod`\index{bmod}（bit mod）。
 
-::: {#def-dmod 和 bmod  .definition}
+::: {#def-4-2  .definition}
 ## dmod 和 bmod
 
 设 $\beta$ 为一个进制的基，正整数 $a$,$b$，
@@ -696,7 +698,7 @@ $(-1)^{\frac{a-1}{2}}$，$(-1)^{\frac{a^2-1}{8}}$ 和 $(-1)^{\frac{(a-1)(b-1)}{4
 
 `中国剩余定理`\index{中国剩余定理}是为数不多以"中国"命名的重要定理——关于交换幺环结构的经典结果。为了完整性，我们以常用的 $\mathbb{Z}$ 上的语言叙述如下。
 
-::: {#def-th:crt .definition}
+::: {#thm-crt  .theorem}
 ## 算法：中国剩余定理
 设整数 $m_i$（$i=1, \ldots, n$）两两互素，则对任意的 $x_i$（$i=1, \ldots, n$），存在唯一的整数 $x$（在模 $M=\prod\limits_{i=1}^nm_i$ 的意义下），满足 $x\equiv x_i\pmod{m_i}$（$i=1, \ldots, n$）。
 :::
@@ -709,7 +711,7 @@ $(-1)^{\frac{a-1}{2}}$，$(-1)^{\frac{a^2-1}{8}}$ 和 $(-1)^{\frac{(a-1)(b-1)}{4
 
 ::: {#def-算法:中国剩余定理-改进  .definition}
 ## 算法
-记号如定理 @def-th:crt。
+记号如定理 @thm-crt 。
 
 1. 设 $p_i=m_1\cdots m_{i-1}\bmod m_i$（$i=2,\cdots,n$)，用扩展 Euclid 算法计算 $u_i$，$v_i$ 使得 $u_ip_i+v_im_i=1$。
 2. 顺次计算
@@ -758,27 +760,25 @@ $$\frac{\sqrt{d}+p_i}{q_i}=a_i+\frac{q_{i+1}}{\sqrt{d}+p_{i+1}}.$$
 
 比较有理部分和无理部分可知
 
-\begin{equation}
-  \left\{
-    \begin{aligned}
-      d+p_ip_{i+1}&=a_iq_iq_{i+1}+q_iq_{i+1}, \\
-      p_i+p_{i+1}&=a_iq_i.
-    \end{aligned}\right. 
-\end{equation}
-{#eq-frac}
+$$
+\left\{
+  \begin{aligned}
+    d+p_ip_{i+1}&=a_iq_iq_{i+1}+q_iq_{i+1}, \\
+    p_i+p_{i+1}&=a_iq_i.
+  \end{aligned}\right. 
+$$ {#eq-frac}
 
-将式@eq-frac 的第二式乘以$p_{i+1}$减去第一式得到
+将式 @eq-frac 的第二式乘以$p_{i+1}$减去第一式得到
 
-\begin{equation}
-  d-p_{i+1}^2=q_iq_{i+1}.
-\end{equation}
-{#eq-frac2}
+$$
+d-p_{i+1}^2=q_iq_{i+1}.
+$$ {#eq-frac2}
 
 
-在式@eq-frac2 中以$i $代$i+1$并作差得到
+在式 @eq-frac2 中以$i $代$i+1$并作差得到
 $$p_i^2-p_{i+1}^2=q_i(q_{i+1}-q_{i-1}).$$
 
-再由@eq-frac 中第二式可知
+再由 @eq-frac 中第二式可知
 $$a_i(p_i-p_{i+1})=q_{i+1}-q_{i-1}.$$
 
 最终得到
@@ -884,10 +884,9 @@ $$\phi(x,a-1)=\phi(x,a)+\phi(\frac{x}{p_a},a-1),$$
 ![计算 $\phi(x,a)$ 的二叉树](images/btree.png)
 
 递归到二叉树的叶结点最终得到
-\begin{equation}
-  \phi(x,a)=\sum_{n\le x\atop P^+(n)\le y}\mu(n)\left\lfloor\frac{x}{n}\right\rfloor,  
-\end{equation}
-{#eq-phixa}
+$$
+\phi(x,a)=\sum_{n\le x\atop P^+(n)\le y}\mu(n)\left\lfloor\frac{x}{n}\right\rfloor,  
+$$ {#eq-phixa}
 
 其中$\mu(n)$为M\"obius函数，$P^+(n)$表示$n$的最大素因子。
 
@@ -899,10 +898,9 @@ $$\phi(x,a-1)=\phi(x,a)+\phi(\frac{x}{p_a},a-1),$$
 由如上的剪枝规则可得 $\phi(x,a)=S_0+S$，其中
 $$S_0=\sum_{n\le y}\mu(n)\left\lfloor\frac{x}{n}\right\rfloor,$$
 
-\begin{equation}
+$$
 S=\sum_{n/P^-(n)\le y<n}\mu(n)\phi\left(\frac{x}{n},\pi(P^-(n))-1\right),  
-\end{equation}
-{#eq-sums}
+$$ {#eq-sums}
 
 $P^-(n)$ 表示$n$的最小素因子。
 
