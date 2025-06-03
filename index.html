@@ -7,7 +7,6 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="李超、阮威、张龙、张翔">
-<meta name="dcterms.date" content="2010-10-01">
 
 <title>计算机代数系统的数学理论</title>
 <style>
@@ -74,6 +73,19 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script>
+<script>
+window.MathJax = {
+  tex: {
+    macros: {
+      legendre: ['\\left(\\frac{#1}{#2}\\right)', 2],
+      jacobi: ['\\left(\\frac{#1}{#2}\\right)', 2],
+      dmod: ["\\mathop{\\mathrm{dmod}_{#1}}", 1],
+      bitmod: "\\mathop{\\mathrm{bmod}}",
+      ul: ["\\underset{#2}{\\underline{#1}}", 2],
+    }
+  }
+};
+</script>
 
 
 </head>
@@ -376,7 +388,7 @@ ul.task-list li input[type="checkbox"] {
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">October 1, 2010</p>
+      <p class="date">2010年10月1日</p>
     </div>
   </div>
   
