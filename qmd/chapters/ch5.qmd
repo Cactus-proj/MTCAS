@@ -6,6 +6,7 @@
 
 人们对于计算 `圆周率`\index{圆周率} $\pi$ 的兴趣似乎从远古时代就开始了, 如果只从较为系统的研究看起, 刘徽的割圆术大概是微积分被发现之前用来计算 $\pi$ 的最佳方法, 祖冲之利用它求出了著名的密率 $355/113$, 一共有 8 位有效数字. 1706 年 Taylor 的私人教师 Machin 利用反正切函数的 Taylor 级数展开式借助纸笔演算求出了 $\pi$ 的小数点后 100 位数字, 1949 年美国使用早期的电子计算机算出 $\pi$ 的小数点后的 2037 位数, 目前计算 $\pi$ 的小数位数的世界纪录 (参见 [@pi-record]) 保持者是日本科学家 Yasumasa Kanada (金田康正), 他于 2002 年在一台超级并行计算机上将 $\pi$ 的小数位数推进到了惊人的 12411 亿位.
 
+
 ### 级数方法
 
 #### 折半求和
@@ -14,7 +15,7 @@
 
 超几何级数是一类特殊的幂级数.
 
-::: {.definition}
+::: {#def-5-1 .definition}
 ## 升阶乘
 
 $\alpha$ 的 $n$ 阶 `升阶乘`\index{升阶乘} 定义为
@@ -23,7 +24,7 @@ $$
 $$
 :::
 
-::: {.definition}
+::: {#def-5-2 .definition}
 ## 超几何级数
 
 称形如
@@ -43,8 +44,8 @@ S=\sum_{n=0}^{\infty}\frac{a(n)}{b(n)}\frac{p(0)\cdots p(n)}{q(0)\cdots q(n)},
 $$
 其中 $a(n),b(n),p(n),q(n)$ 都是整系数多项式.
 
-::: {.definition}
-## 问题
+::: {#def-ex:5-1 .definition}
+## 例5.1
 
 以 Chudnovsky 公式为例, 先将通项改写成
 $$
@@ -163,8 +164,8 @@ $$
 统称为 `Machin 型公式`\index{圆周率!Machin 型公式} 或 $n$ 阶 Machin 型公式.
 :::
 
-::: {.definition}
-## 问题
+::: {#def-ex:5-2 .definition}
+## 例5.2
 
 以 $n=2$ 为例, 其他三个 2 阶 Machin 型公式是
 $$
@@ -195,8 +196,8 @@ $$
 不同 Machin 型公式的收敛速度可以用 Lehmer 数来衡量, Lehmer 数越小, 公式的收敛速度越快.
 :::
 
-::: {.definition}
-## 问题
+::: {#def-ex:5-3 .definition}
+## 例5.3
 
 目前已知收敛最快的 Machin 型公式是由黄见利 (参见 [@Hwang-machin]) 发现的
 $$
@@ -297,6 +298,7 @@ $$
 以及 $\tan^{-1}x$ 是 $-\ln(1-ix)$ 的虚部这两个事实, 还可以从 Machin 型公式构造出更多这样类似于 BBP 公式的公式.
 :::
 
+
 ### 迭代方法
 
 顾名思义, 迭代方法就是利用递推公式来计算 $\pi$, 通过迭代逐步提高精度.
@@ -307,7 +309,7 @@ $$
 
 首先来看 `Brent-Salamin 算法`\index{Brent-Salamin 算法} (参见 [@Brent-agm]), 这是一个二阶收敛的迭代算法, 它用到了 Gauss-Legendre 的 `代数几何平均值` (AGM) 迭代 (参见 [@piandtheagm]).
 
-::: {.definition}
+::: {#def-5-5  .definition}
 ## 代数几何平均值
 
 设 $a,b\in \mathbb{R}^+$, $a>b$. 令 $a_0=a$, $b_0=b$, $a_{n+1}=\frac{1}{2}(a_n+b_n)$, $b_{n+1}=\sqrt{a_n b_n}$, 则 $a,b$ 的 `代数几何平均值`\index{圆周率!代数几何平均值} 定义为
@@ -427,8 +429,8 @@ $$
 
 根据定理 @thm-brent-salamin, 我们现在可以写出 Brent-Salamin 算法的详细过程了.
 
-::: {.definition}
-## 算法：Brent-Salamin 算法
+::: {#def-algo:5-2 .definition}
+## 算法5.2：Brent-Salamin 算法
 
 输入: 迭代次数 $m$.
 
@@ -456,7 +458,7 @@ $$
 
 `Borwein 公式`\index{Borwein 公式}
 
-::: {.theorem}
+::: {#thm-borwein .theorem}
 ## Borwein 公式
 1. 令 $x_0=\sqrt{2}$, $y_0=\sqrt[4]{2}$, $p_0=2+\sqrt{2}$. 递推公式为
 $$
@@ -515,13 +517,15 @@ $$
 其中初始值 $p_0$ 应该取为 $\pi$ 的一个普通的近似值, 例如 $\frac{22}{7}, \frac{355}{113}$ 等.
 :::
 
+
+
 ## 自然对数底
 
 ### 级数方法
 
 `自然对数底`\index{自然对数底} 常记为 $e$.
 
-::: {.definition}
+::: {#def-5-9 .definition}
 ## 自然对数底
 $$
 e=\lim_{n\rightarrow\infty} e_n=\lim_{n\rightarrow\infty}\left(1+\frac{1}{n}\right)^n.
@@ -575,6 +579,8 @@ $$
 $$
 :::
 
+
+
 ## 对数常数
 
 ### 级数方法
@@ -591,7 +597,7 @@ $$
 $$
 令 $x=1$ 就可以得到 $\ln 2$ 的形式化定义.
 
-::: {.definition}
+::: {#def-5-10  .definition}
 ## 对数常数
 $$
 \ln 2=\lim_{n\rightarrow\infty}\left(1-\frac{1}{2}+\frac{1}{3}+\cdots+(-1)^{n+1}\frac{1}{n}\right).
@@ -685,11 +691,13 @@ $$
 $$
 取 $R(1,10^{-N})-R(1,2\cdot 10^{-N})$ 作为 $\ln 2$ 的近似值, 依然借用计算 $\mathrm{AGM}(a,b)$ 时的迭代结构, 那么在计算 $\mathrm{AGM}(a,b)$ 的同时就可以计算出 $a_n,b_n$, 进而可以计算出 $R(a,b)$, 这样就得到了计算 $\ln 2$ 的一个二阶收敛的迭代算法.
 
+
+
 ## Euler 常数
 
 ### 级数方法
 
-::: {.definition}
+::: {#def-5-11  .definition}
 ## Euler 常数
 $$
 \gamma=\lim_{n\rightarrow \infty} \left(1+\frac{1}{2}+\cdots+\frac{1}{n}-\ln n\right)=:\lim_{n\rightarrow\infty}(H_n-\ln n).
@@ -765,6 +773,8 @@ $$
 C_n=\frac{1}{4n}\sum_{k=0}^{2n}\frac{((2k)!)^3}{(k!)^4(16n)^{2k}},
 $$
 并且 $\alpha$ 满足 $\alpha(\ln\alpha-1)=3$, 其近似值为 $\alpha=4.970625759$, 利用这个公式可以计算 $\gamma$ 到小数点后 1 亿位.
+
+
 
 ## 其他常数
 
