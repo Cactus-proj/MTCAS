@@ -1,0 +1,790 @@
+# 数学常数
+
+数学常数凝集着数学研究的精华, 计算任意精度的数学常数是符号计算中一项重要的内容, 许多涉及到微积分, 特殊函数和函数求值的运算都会涉及到数学常数. 特别地, 如果运算结果关于这些数学常数是非线性的, 那么数学常数的精度就显得尤为重要, 下面主要以 `圆周率`\index{圆周率} 为例介绍一下计算数学常数时用到的主要方法.
+
+## 圆周率
+
+人们对于计算 `圆周率`\index{圆周率} $\pi$ 的兴趣似乎从远古时代就开始了, 如果只从较为系统的研究看起, 刘徽的割圆术大概是微积分被发现之前用来计算 $\pi$ 的最佳方法, 祖冲之利用它求出了著名的密率 $355/113$, 一共有 8 位有效数字. 1706 年 Taylor 的私人教师 Machin 利用反正切函数的 Taylor 级数展开式借助纸笔演算求出了 $\pi$ 的小数点后 100 位数字, 1949 年美国使用早期的电子计算机算出 $\pi$ 的小数点后的 2037 位数, 目前计算 $\pi$ 的小数位数的世界纪录 (参见 [@pi-record]) 保持者是日本科学家 Yasumasa Kanada (金田康正), 他于 2002 年在一台超级并行计算机上将 $\pi$ 的小数位数推进到了惊人的 12411 亿位.
+
+### 级数方法
+
+#### 折半求和
+
+`折半求和`\index{折半求和} (Binary Splitting) (参见 [@bs]) 是用来计算超几何级数 (参见 [@wangzhuxi]) 在有理点处的值的一项重要方法.
+
+超几何级数是一类特殊的幂级数.
+
+::: {.definition}
+## 升阶乘
+
+$\alpha$ 的 $n$ 阶 `升阶乘`\index{升阶乘} 定义为
+$$
+(\alpha)_n=\frac{\Gamma(\alpha+n)}{\Gamma(\alpha)}=\alpha(\alpha+1)\cdots(\alpha+n-1).
+$$
+:::
+
+::: {.definition}
+## 超几何级数
+
+称形如
+$$
+{}_pF_q(a_1,\cdots,a_p; b_1,\cdots,b_q; z)=\sum\limits_{n=0}^{\infty}\frac{(a_1)_n\cdots(a_p)_n z^n}{(b_1)_n\cdots(b_q)_n n!}
+$$
+的级数为 `超几何级数`\index{超几何级数}.
+:::
+
+::: {.remark}
+许多函数都具有超几何级数的展开式, 最简单的例子是 $e^z={}_0F_0(z)$. 除此之外, 初等函数一般都具有 ${}_2F_1$ 形式的展开式.
+:::
+
+许多数学常数可以看作超几何级数在某个有理点处的值. 一般来说, 超几何级数都可以改写成如下形式
+$$
+S=\sum_{n=0}^{\infty}\frac{a(n)}{b(n)}\frac{p(0)\cdots p(n)}{q(0)\cdots q(n)},
+$$
+其中 $a(n),b(n),p(n),q(n)$ 都是整系数多项式.
+
+::: {.definition}
+## 问题
+
+以 Chudnovsky 公式为例, 先将通项改写成
+$$
+s(n)=\frac{(-1)^n(An+B)}{1}\cdot \frac{(6n)!/(3n)!}{(n!)^3 C^{3n}},
+$$
+于是
+$$
+\begin{align*}
+  a(n)&=(-1)^n(An+B),\\
+  b(n)&=1,\\
+  p(0)\cdots p(n)&=\frac{(6n)!}{(3n)!},\\
+  q(0)\cdots q(n)&=(n!)^3 C^{3n}.
+\end{align*}
+$$
+相邻两项相除就可以解出 $p(n)=(6n-1)(6n-3)(6n-5)$, $q(n)=n^3 C^3$.
+:::
+
+考虑部分和
+$$
+S=S(n_1,n_2)=\sum_{n_1\le n<n_2}\frac{a(n)}{b(n)}\frac{p(n_1)\cdots p(n)}{q(n_1)\cdots q(n)}.
+$$
+记
+$$
+\begin{align*}
+P&=P(n_1,n_2)=p(n_1)\cdots p(n_2-1),\\
+Q&=Q(n_1,n_2)=q(n_1)\cdots q(n_2-1),\\
+B&=B(n_1,n_2)=b(n_1)\cdots b(n_2-1),
+\end{align*}
+$$
+再设 $T=T(n_1,n_2)=BQS$, 那么 $S=\frac{T}{BQ}$.
+
+`折半求和` 使用了一种类似于通分的方法构造出递推公式来计算 $P,Q,B,T$.
+
+::: {.theorem}
+设 $n_m$ 满足 $n_1<n_m<n_2$, 将区间 $n_1\le x<n_2$ 分成两段 $n_1\le x<n_m$ 及 $n_m\le x<n_2$, 分别用下标 $l,r$ 来表示对应这两个子区间的 $P,Q,B,T$ 的值, 例如 $P_l=P(n_1,n_m),P_r=P(n_m,n_2)$, 那么存在递推公式
+$$
+\begin{align*}
+P&=P_l\cdot P_r,\\
+Q&=Q_l\cdot Q_r,\\
+B&=B_l\cdot B_r,\\
+T&=T_l\cdot B_rQ_r+T_r\cdot B_lP_l.
+\end{align*}
+$$
+:::
+
+现在可以写出 `折半求和`\index{折半求和} 算法的详细过程了.
+
+::: {#def-al:binary-splitting  .definition}
+## 算法：折半求和
+
+输入: 通项公式 $a(n),b(n),p(n),q(n)$, 区间 $[n_1,n_2)$.
+
+输出: 部分和 $P(n_1,n_2),Q(n_1,n_2),B(n_1,n_2),T(n_1,n_2)$.
+
+1. 如果 $n_2-n_1<5$, 直接根据定义计算出 $(P,Q,B,T)$ 并返回.
+2. 设 $n_m=\left[\frac{n_1+n_2}{2}\right]$, $(P_l,Q_l,B_l,T_l)$, $(P_r,Q_r,B_r,T_r)$ 分别是对应于子区间 $[n_1,n_m)$ 和 $[n_m,n_2)$ 上的 $(P,Q,B,T)$, 在两个子区间上分别应用折半求和计算出它们.
+3. 计算 $P=P_lP_r$, $Q=Q_lQ_r$, $B=B_lB_r$ 和 $T=T_lB_rQ_r+T_rB_lP_l$, 返回 $(P,Q,B,T)$.
+:::
+
+::: {.remark}
+使用折半求和计算出 $[n_1,n_2)$ 上的部分和 $(P,Q,B,T)$ 后, 再利用 $S=\frac{T}{BQ}$ 做一次除法就可以求出原级数的部分和 $S$.
+:::
+
+注意到最终结果 $S$ 只依赖于 $T$ 和 $BQ$ 的比值, 因此在折半求和计算 $(P,Q,B,T)$ 的过程中, 最后一步应用递推公式之前可以将 $P_l,Q_r$ 先 "约分", 即将它们同时除以其最大公因子 $\gcd(P_l,Q_r)$, 这样一来由递推公式求出的 $P,Q,T$ 都变为原来的 $\frac{1}{\gcd(P_l,Q_r)}$ 倍, 而比值 $\frac{T}{BQ}$ 则保持不变.
+
+为了快速地计算出 $\gcd(P_l,Q_r)$, 常用的方法是在计算过程中保留 $P,Q$ 的部分素因子分解式, 并在递推相乘时同步更新其部分素因子分解式.
+
+从整体上来看, 折半求和并没有减少运算次数, 它只是让参与乘法的两个数的数量级更接近, 这样就可以充分发挥 Karatsuba, Toom-Cook 和 FFT 等大整数快速乘法算法的优势. 如果大整数乘法采用古典乘法算法, 那么折半求和是不起作用的, 甚至可能比普通的级数求和方法更慢. 除此之外, 折半求和实际上是将截断的级数先乘上分母的最小公倍数后再计算, 这样可以避免对中间结果进行除法等不精确计算, 而只需要在最后做一次除法. 可以证明, 采用折半求和算法计算出部分和 $S$ 的前 $N$ 位有效数字大约需要 $O((\log N)^2 M(N))$ 次基本运算, 其中 $M(N)$ 代表两个 $N$ 位整数相乘所需要的基本运算的次数 (如果采用有限域上的 FFT 乘法, 那么 $M(N)=O(N\log N\log\log N)$). 折半求和利用两个独立的子区间的数据来合成整个区间的数据, 因此也很适合于并行计算.
+
+#### Machin 型公式
+
+John Machin 用来计算 $\pi$ 的公式是
+
+::: {#thm-machin  .theorem}
+## Machin 公式
+$$
+\frac{\pi}{4}=4\tan^{-1}\frac{1}{5}-\tan^{-1}\frac{1}{239}.
+$$
+:::
+
+::: {.proof}
+考虑恒等式 $\tan(\frac{\pi}{4}-x)=\frac{1-\tan x}{1+\tan x}$, 两边同时取反正切得到
+$$
+\frac{\pi}{4}=x+\tan^{-1}\frac{1-\tan x}{1+\tan x},
+$$
+再令 $x=4\tan^{-1}\frac{1}{5}$ 就可以证明 Machin 公式.
+:::
+
+在 `Machin 公式` (见 @thm-machin) 中利用 $\tan^{-1}x$ 的 Taylor 展开式
+$$
+\tan^{-1}x=x-\frac{x^3}{3}+\frac{x^5}{5}+\cdots+(-1)^n\frac{x^{2n+1}}{2n+1}+O(x^{2n+3}),
+$$
+可以得到
+
+::: {.theorem}
+$$
+\frac{\pi}{4}=4\sum_{k=0}^\infty\frac{(-1)^k}{(2k+1)5^{2k+1}}-\sum_{k=0}^\infty\frac{(-1)^k}{(2k+1)239^{2k+1}}.
+$$
+:::
+
+::: {.remark}
+这个公式的优点是第二项收敛得很快, 而第一项的分母中含有 5 的方幂, 便于手工在十进制下计算.
+:::
+
+::: {#def-machin  .definition}
+## Machin 型公式
+
+形如
+$$
+\frac{\pi}{4}=\sum_{k=0}^{n-1}a_k\tan^{-1}\frac{1}{b_k},\quad a_k,b_k\in\mathbb{N}_+,
+$$
+的公式, 或者写成复数形式
+$$
+i=\prod_{k=0}^{n-1}\left(\frac{b_k+i}{b_k-i}\right)^{a_k},\quad a_k,b_k\in\mathbb{N}_+,
+$$
+统称为 `Machin 型公式`\index{圆周率!Machin 型公式} 或 $n$ 阶 Machin 型公式.
+:::
+
+::: {.definition}
+## 问题
+
+以 $n=2$ 为例, 其他三个 2 阶 Machin 型公式是
+$$
+\begin{align*}
+\frac{\pi}{4}&=\tan^{-1}\frac{1}{2}+\tan^{-1}\frac{1}{3}\\
+&=2\tan^{-1}\frac{1}{2}-\tan^{-1}\frac{1}{7}\\
+&=2\tan^{-1}\frac{1}{3}+\tan^{-1}\frac{1}{7}.\\
+\end{align*}
+$$
+:::
+
+将 Machin 型公式 (见 @def-machin) 的复数形式展开, 并注意到 $a_k,b_k\in\mathbb{N}_+$, 我们就可以将寻找 Machin 型公式的问题转化成寻找高阶不定方程整数解的问题. 据此还可以证明 $n=2$ 的 Machin 型公式一共只有以上四种, 而 $n$ 从 1 到 21 所有的 Machin 型公式共有 1500 种 (参见 [@Weisstein-machin]).
+
+::: {#def-lehmer  .definition}
+## Lehmer 数
+
+Machin 型公式
+$$
+\frac{\pi}{4}=\sum_{k=0}^{n-1}a_k\tan^{-1}\frac{1}{b_k},\quad a_k,b_k\in\mathbb{N}_+
+$$
+的 `Lehmer 数`\index{Lehmer 数} (参见 [@Lehmer-machin]) 为
+$$
+\sum_{k=0}^{n-1}\frac{1}{\log_{10}{b_k}}.
+$$
+:::
+
+::: {.remark}
+不同 Machin 型公式的收敛速度可以用 Lehmer 数来衡量, Lehmer 数越小, 公式的收敛速度越快.
+:::
+
+::: {.definition}
+## 问题
+
+目前已知收敛最快的 Machin 型公式是由黄见利 (参见 [@Hwang-machin]) 发现的
+$$
+\begin{align*}
+\frac{\pi}{4}&=183\tan^{-1}\frac{1}{239}+32\tan^{-1}\frac{1}{1023}-68\tan^{-1}\frac{1}{5832}\\
+&+12\tan^{-1}\frac{1}{110443}-12\tan^{-1}\frac{1}{4841182}-100\tan^{-1}\frac{1}{6826318},
+\end{align*}
+$$
+它对应的 Lehmer 数是 1.51244.
+:::
+
+与其他的计算方法相比, Machin 型公式更适合于并行计算. 目前计算 $\pi$ 的位数的世界纪录是 2002 年 12 月 6 日由东京大学信息基础中心超级计算研究部门的 Yasumasa Kanada (金田康正) 教授正式发表的, 他利用日本日立公司 (HITACHI) 制作提供的超级计算机 “SR8000/MPP” 花了大约 600 个小时进行计算和验算, 计算时采用了如下两个 $n=4$ 的 Machin 型公式
+$$
+\begin{align*}
+\frac{\pi}{4}&=12\tan^{-1}\frac{1}{49}+32\tan^{-1}\frac{1}{57}-5\tan^{-1}\frac{1}{239}+12\tan^{-1}\frac{1}{110443}\\
+&=44\tan^{-1}\frac{1}{57}+7\tan^{-1}\frac{1}{239}-12\tan^{-1}\frac{1}{682}+24\tan^{-1}\frac{1}{12943}.
+\end{align*}
+$$
+
+#### Ramanujan 型公式
+
+Ramanujan 构造过一个 $\frac{1}{\pi}$ 的超几何级数展开式 (参见 [@Berndt-rama]).
+
+::: {.theorem}
+$$
+\frac{1}{\pi}=\frac{2\sqrt{2}}{9801}\sum_{n=0}^\infty\frac{(4n)!}{(n!)^4}\cdot \frac{1103+26390n}{396^{4n}}.
+$$
+:::
+
+::: {.remark}
+后来 Chudnovsky 兄弟 (参见 [@Chudnovsky-rama]) 和 Borwein 兄弟 (参见 [@Borwein-rama]) 又分别给出形如
+$$
+\frac{1}{\pi}=12\sum_{n=0}^{\infty}\frac{(-1)^n(6n)!}{(3n)!(n!)^3}\cdot\frac{An+B}{C^{3n+\frac{3}{2}}}
+$$
+的三组公式, 这三组公式的参数分别为 $A=545140134,B=13591409,C=640320$,
+$$
+\begin{align*}
+A&=1657145277365+212175710912\sqrt{61},\\
+B&=107578229802750+13773980892672\sqrt{61},\\
+C&=5280(236674+30303\sqrt{61})
+\end{align*}
+$$
+和
+$$
+\begin{align*}
+ A &= 63365028312971999585426220 \\
+    &\quad + 28337702140800842046825600\sqrt{5} \\
+    &\quad + 384\sqrt{5} (10891728551171178200467436212395209160385656017 \\
+    &\qquad + 4870929086578810225077338534541688721351255040\sqrt{5})^{1/2},\\
+  B &= 7849910453496627210289749000 \\
+    &\quad + 3510586678260932028965606400\sqrt{5} \\
+    &\quad + 2515968\sqrt{3110}(6260208323789001636993322654444020882161 \\
+    &\qquad + 2799650273060444296577206890718825190235\sqrt{5})^{1/2},\\
+  C &= -214772995063512240 \\
+    &\quad - 96049403338648032\sqrt{5} \\
+    &\quad - 1296\sqrt{5}(10985234579463550323713318473 \\
+    &\qquad + 4912746253692362754607395912\sqrt{5})^{1/2}.
+\end{align*}
+$$
+:::
+
+::: {.remark}
+以上四个公式统称为 `Ramanujan 型公式`\index{Ramanujan 型公式}, 利用代数数论和二次域的知识还可以构造出更多这样的 Ramanujan 型公式 (参见 [@Weisstein-form]), 不同 Ramanujan 型公式的收敛速度可以用每计算一个级数项后结果所增加的十进制有效位数来衡量, 以上这四个公式每向后计算一项, 结果的有效位数分别大约增加 8 位, 14 位, 31 位和 50 位 (参见 [@Weisstein-form]).
+:::
+
+在个人计算机上计算 $\pi$ 时, Ramanujan 型公式是最常用的级数展开式, 它可以利用折半求和的方法来计算 (参见 @def-al:binary-splitting). 目前个人计算机上 $\pi$ 的小数位数世界纪录的保持者是由 Steve Pagliarulo 开发的 QPI [@qpi], 它仅需数秒就能求出 $\pi$ 的前 100 万位, 计算时采用的就是第二个 Ramanujan 型公式, 它是由 Chudnovsky 兄弟发现的, 因此常常也被称为 `Chudnovsky 公式`\index{Chudnovsky 公式}.
+
+#### BBP 公式
+
+最后值得一提的是 Borwein 兄弟和其合作者共同发现的 `BBP 公式`\index{圆周率!BBP 公式} (参见 [@BBP]).
+
+::: {.theorem}
+$$
+\pi=\sum_{k=0}^{\infty} \frac{1}{16^k}\left(\frac{4}{8k+1}-\frac{2}{8k+4}-\frac{1}{8k+5}-\frac{1}{8k+6}\right).
+$$
+:::
+
+::: {.remark}
+注意到通项前的系数是 $\frac{1}{16^k}$, 因此可以利用它直接求出 $\pi$ 在十六进制下某一个指定位上的数字, 而不必先求出所有之前位上的数字.
+:::
+
+在此基础上 F. Bellard 又提出了一个公式 (参见 [@Bellard-BBP]).
+
+::: {.theorem}
+$$
+\begin{aligned}
+\pi&=\frac{1}{2^6}\sum_{n=0}^\infty\frac{(-1)^n}{2^{10n}}\Bigl(-\frac{2^5}{4n+1}-\frac{1}{4n+3}+\frac{2^8}{10n+1}\\
+&\qquad-\frac{2^6}{10n+3}-\frac{2^2}{10n+5}-\frac{2^2}{10n+7}+\frac{1}{10n+9}\Bigr).
+\end{aligned}
+$$
+:::
+
+::: {.remark}
+用它计算要比 BBP 公式快 40% 左右, F. Bellard 在他的论文中还指出, 利用
+$$
+-\ln(1-x)=\sum_{n=1}^\infty\frac{x^n}{n}
+$$
+以及 $\tan^{-1}x$ 是 $-\ln(1-ix)$ 的虚部这两个事实, 还可以从 Machin 型公式构造出更多这样类似于 BBP 公式的公式.
+:::
+
+### 迭代方法
+
+顾名思义, 迭代方法就是利用递推公式来计算 $\pi$, 通过迭代逐步提高精度.
+
+将递推公式设法改写成 $\pi_{n+1}=f(\pi_n)$ 的形式, 则存在正实数 $m$ 使得 $|\pi_{n+1}-\pi|=|f(\pi_n)-\pi|\sim|\pi_n-\pi|^m$, 于是每迭代一步后的误差将变为原来误差的 $m$ 次幂, 如果换一个角度来看, 这就是说有效位数将变为原来有效位数的 $m$ 倍, 因此可以用 $m$ 的大小作为衡量迭代法性能的指标.
+
+#### 代数几何平均值
+
+首先来看 `Brent-Salamin 算法`\index{Brent-Salamin 算法} (参见 [@Brent-agm]), 这是一个二阶收敛的迭代算法, 它用到了 Gauss-Legendre 的 `代数几何平均值` (AGM) 迭代 (参见 [@piandtheagm]).
+
+::: {.definition}
+## 代数几何平均值
+
+设 $a,b\in \mathbb{R}^+$, $a>b$. 令 $a_0=a$, $b_0=b$, $a_{n+1}=\frac{1}{2}(a_n+b_n)$, $b_{n+1}=\sqrt{a_n b_n}$, 则 $a,b$ 的 `代数几何平均值`\index{圆周率!代数几何平均值} 定义为
+$$
+\mathrm{AGM}(a,b)=\lim\limits_{n\rightarrow\infty}a_n=\lim\limits_{n\rightarrow\infty}b_n.
+$$
+:::
+
+::: {.remark}
+如果将代数平均值或几何平均值换成更高阶的平均值, 例如 $\left(\frac{a_n^3 b_n+b_n^3 a_n}{2}\right)^{1/4}$, 还可以得到更高阶的迭代算法.
+:::
+
+#### 完全椭圆积分
+
+为了利用代数几何平均值来计算圆周率, 还需要用到完全椭圆积分的概念.
+
+::: {#def-complete-elliptic-integral  .definition}
+## 完全椭圆积分
+
+设 $R(x,y)$ 是有理函数, 其中 $y^2=P(x)$ 是 $x$ 的三次或四次多项式, 那么称形如 $\int R(x,y)\,dx$ 积分为椭圆积分. 特别地, 如下两个积分
+$$
+\begin{align*}
+K(k)&=\int_0^1\frac{dx}{\sqrt{(1-x^2)(1-k^2 x^2)}}=\int_0^{\pi/2}\frac{d\phi}{\sqrt{1-k^2\sin^2\phi}},\\
+E(k)&=\int_0^1\sqrt{\frac{1-k^2 x^2}{1-x^2}}\,dx=\int_0^{\pi/2}\sqrt{1-k^2\sin^2\phi}\,d\phi,
+\end{align*}
+$$
+分别称为第一类和第二类 `完全椭圆积分`\index{完全椭圆积分}, 其中 $|k|<1$.
+:::
+
+::: {.definition}
+$$
+I(a,b)=\frac{1}{a}K\left(\sqrt{1-\frac{b^2}{a^2}}\right).
+$$
+:::
+
+::: {.theorem}
+$$
+I(a,b)=\frac{\pi}{2\,\mathrm{AGM}(a,b)}.
+$$
+:::
+
+::: {.proof}
+根据第一类完全椭圆积分的定义 (见 @def-complete-elliptic-integral) 我们有
+$$
+\begin{align*}
+I(a,b)&=\int_0^{\pi/2}\frac{d\phi}{\sqrt{a^2-(a^2-b^2)\sin^2\phi}}\\
+&=\int_0^{\pi/2}\frac{d\phi}{\sqrt{a^2\cos^2\phi+b^2\sin^2\phi}}.
+\end{align*}
+$$
+通过变量替换 $u=\frac{1}{2}\left(t-\frac{ab}{t}\right)$ 可以得出 $I(a,b)=I\left(\frac{a+b}{2},\sqrt{ab}\right)$.
+
+故 $I(a_0,b_0)=I(a_n,b_n)=I(a_{n+1},b_{n+1})$, 两边取极限得到
+$$
+\begin{align*}
+I(a,b)&=I(\mathrm{AGM}(a,b),\mathrm{AGM}(a,b))\\
+&=\frac{1}{\mathrm{AGM}(a,b)}K(0)=\frac{\pi}{2\,\mathrm{AGM}(a,b)}.
+\end{align*}
+$$
+:::
+
+::: {.remark}
+注意到 $I\left(1,\frac{1}{\sqrt{2}}\right)=K\left(\frac{1}{\sqrt{2}}\right)$, 因此
+$$
+K\left(\frac{1}{\sqrt{2}}\right)=\frac{\pi}{2\,\mathrm{AGM}\left(1,\frac{1}{\sqrt{2}}\right)}.
+$$
+:::
+
+::: {.definition}
+$$
+J(a,b)=a\,E\left(\sqrt{1-\frac{b^2}{a^2}}\right).
+$$
+:::
+
+::: {.theorem}
+$$
+E\left(\frac{1}{\sqrt{2}}\right)=K\left(\frac{1}{\sqrt{2}}\right)\left(1-\sum_{n=0}^\infty 2^{n-1} c_n^2\right).
+$$
+:::
+
+::: {.proof}
+根据第二类完全椭圆积分的定义 (见 @def-complete-elliptic-integral) 我们有
+$$
+J(a,b)=\int_0^{\frac{\pi}{2}}\sqrt{a^2\cos^2\phi+b^2\sin^2\phi}\,d\phi.
+$$
+令 $a=1,b=\cos\phi$, 于是 $K(\sin\phi)=\frac{\pi}{2\,\mathrm{AGM}(a,b)}$, 再令 $c_0=\sin\phi, c_{n+1}=a_n-a_{n+1}$, 可以证明
+$$
+\sum_{n=0}^\infty 2^{n-1} c_n^2=1-\frac{E(\sin\phi)}{K(\sin\phi)}.
+$$
+因此
+$$
+E\left(\frac{1}{\sqrt{2}}\right)=K\left(\frac{1}{\sqrt{2}}\right)\left(1-\sum_{n=0}^\infty 2^{n-1} c_n^2\right).
+$$
+:::
+
+::: {#thm-brent-salamin  .theorem}
+$$
+\pi=\frac{\left(2\,\mathrm{AGM}\left(1,\frac{1}{\sqrt{2}}\right)\right)^2}{2-4\sum_{n=0}^\infty 2^{n-1} c_n^2}.
+$$
+:::
+
+::: {.proof}
+若 $\phi+\psi=\frac{\pi}{2}$, 那么第一类与第二类完全椭圆积分之间存在 `Legendre 关系`\index{Legendre 关系}
+$$
+K(\sin\phi)E(\sin\psi)+E(\sin\phi)K(\sin\psi)-K(\sin\phi)K(\sin\psi)=\frac{\pi}{2}.
+$$
+令 $\phi=\psi=\frac{\pi}{4}$ 就可以得到 $\pi=4K\left(\frac{1}{\sqrt{2}}\right)E\left(\frac{1}{\sqrt{2}}\right)-2K\left(\frac{1}{\sqrt{2}}\right)^2$, 即
+$$
+\pi=K^2\left(2-4\sum_{n=0}^\infty 2^{n-1} c_n^2\right),
+$$
+也可以写成
+$$
+\pi=\frac{\left(2\,\mathrm{AGM}\left(1,\frac{1}{\sqrt{2}}\right)\right)^2}{2-4\sum_{n=0}^\infty 2^{n-1} c_n^2}.
+$$
+:::
+
+#### Brent-Salamin 算法
+
+根据定理 @thm-brent-salamin, 我们现在可以写出 Brent-Salamin 算法的详细过程了.
+
+::: {.definition}
+## 算法：Brent-Salamin 算法
+
+输入: 迭代次数 $m$.
+
+输出: 迭代 $m$ 次后得到的 $\pi$ 的近似值.
+
+1. 令 $a_0=1, b_0=\frac{1}{\sqrt{2}}, t_0=\frac{1}{4}, p_0=1$.
+2. $n$ 从 0 到 $m-1$, 顺次计算 $a_{n+1}=\frac{a_n+b_n}{2}$, $b_{n+1}=\sqrt{a_n b_n}$, $t_{n+1}=t_n-p_n(a_n-a_{n+1})^2$, $p_{n+1}=2p_n$.
+3. 返回 $\pi_m=\frac{(a_m+b_m)^2}{4t_m}$.
+:::
+
+::: {.remark}
+使用 Brent-Salamin 算法计算时, 前三次迭代可以得到近似值
+$$
+\begin{align*}
+&3.14,\\
+&3.1415926,\\
+&3.14159265358979.\\
+\end{align*}
+$$
+:::
+
+#### 高阶迭代公式
+
+除了利用代数几何平均值之外, 人们还发现了许多其他的高阶迭代公式, 例如下面的三个著名的迭代公式就是由 Borwein 兄弟发现的 (参见 [@Borwein-iter]).
+
+`Borwein 公式`\index{Borwein 公式}
+
+::: {.theorem}
+## Borwein 公式
+1. 令 $x_0=\sqrt{2}$, $y_0=\sqrt[4]{2}$, $p_0=2+\sqrt{2}$. 递推公式为
+$$
+\begin{align*}
+x_{n+1}&=\frac{1}{2}(x_n^{1/2}+x_n^{-1/2}),\\
+y_{n+1}&=\frac{x_n^{1/2}y_n+x_n^{-1/2}}{y_n+1},\\
+p_{n+1}&=p_n\frac{x_{n+1}+1}{y_{n+1}+1}.
+\end{align*}
+$$
+那么
+$$
+\begin{align*}
+|p_{n+1}-\pi|&<\frac{2^{-n-1}}{\pi^2}|p_n-\pi|^2,\\
+|p_n-\pi|&<\frac{\pi^2 2^{n+4} e^{-2^{n+1}\pi}}{\mathrm{AGM}\left(1,\frac{1}{\sqrt{2}}\right)^2}\\
+&<10^{-2^n}.
+\end{align*}
+$$
+2. 令 $p_0=6-4\sqrt{2}$, $x_0=\sqrt{2}-1$. 递推公式为
+$$
+\begin{align*}
+x_{n+1}&=\frac{1-(1-x_n^4)^{1/4}}{1+(1-x_n^4)^{1/4}},\\
+p_{n+1}&=p_n(1+x_{n+1})^4-2^{2n+3}x_{n+1}(1+x_{n+1}+x_{n+1}^2).
+\end{align*}
+$$
+那么 $|p_n-\frac{1}{\pi}|<4^{n+2} e^{-2^{2n+1}\pi}$.
+3. 令 $a_0=\frac{1}{3}$, $r_0=\frac{\sqrt{3}-1}{2}$, $s_0=(1-r_0^3)^{1/3}$. 递推公式为
+$$
+\begin{align*}
+t_{n+1} &= 1 + 2r_n,\\
+u_{n+1} &= (9r_n (1 + r_n + r_n^2))^{1/3},\\
+v_{n+1} &= t_{n+1}^2 + t_{n+1}u_{n+1} + u_{n+1}^2,\\
+w_{n+1} &= \frac{27 (1 + s_n + s_n^2)}{v_{n+1}},\\
+a_{n+1} &= w_{n+1}a_n + 3^{2n-1}(1-w_{n+1}),\\
+s_{n+1} &= \frac{(1 - r_n)^3}{(t_{n+1} + 2u_{n+1})v_{n+1}},\\
+r_{n+1} &= (1 - s_{n+1}^3)^{1/3}.
+\end{align*}
+$$
+那么 $|a_n-\frac{1}{\pi}|$ 9 阶收敛.
+:::
+
+#### Beeler 公式
+
+`Beeler 公式`\index{Beeler 公式}
+
+最后值得一提的是 Beeler 利用不动点定理和反正切函数的 Taylor 展开式给出的一系列收敛到 $\pi$ 的递推公式 (参见 [@Beeler-iter]).
+
+::: {.theorem}
+$$
+\begin{align*}
+p_{n+1}&=p_n-\tan p_n,\\
+p_{n+1}&=p_n-\tan p_n+\frac{1}{3}\tan^3 p_n,\\
+p_{n+1}&=p_n-\tan p_n+\frac{1}{3}\tan^3 p_n-\frac{1}{5}\tan^5 p_n,\\
+\cdots,
+\end{align*}
+$$
+其中初始值 $p_0$ 应该取为 $\pi$ 的一个普通的近似值, 例如 $\frac{22}{7}, \frac{355}{113}$ 等.
+:::
+
+## 自然对数底
+
+### 级数方法
+
+`自然对数底`\index{自然对数底} 常记为 $e$.
+
+::: {.definition}
+## 自然对数底
+$$
+e=\lim_{n\rightarrow\infty} e_n=\lim_{n\rightarrow\infty}\left(1+\frac{1}{n}\right)^n.
+$$
+:::
+
+根据 Newton 二项式公式可以得到
+$$
+\begin{align*}
+e_n&=\left(1+\frac{1}{n}\right)^n=\sum_{k=0}^n C_n^k\left(\frac{1}{n}\right)^k\\
+&=\sum_{k=0}^n\frac{n(n-1)\cdots(n-k+1)}{k!}\cdot\frac{1}{n^k}\\
+&=\sum_{k=0}^n\frac{1}{k!}\left(1-\frac{1}{n}\right)\cdots\left(1-\frac{k-1}{n}\right).
+\end{align*}
+$$
+记
+$$
+s_n=\sum_{k=0}^n\frac{1}{k!},
+$$
+那么 $e_n<s_n\le e$, 即
+$$
+e=\lim_{n\rightarrow\infty}s_n=\lim_{n\rightarrow\infty} 1+\frac{1}{1!}+\frac{1}{2!}+\cdots+\frac{1}{n!}.
+$$
+进一步还可以推出
+$$
+|e-s_n|<\frac{1}{n n!}.
+$$
+和计算圆周率 $\pi$ 用到的很多级数的误差项不同, 这个误差项很小, 它关于 $n$ 是指数级收敛的, 因此我们可以直接利用级数 $s_n$ 来计算自然对数底 $e$.
+
+除此之外, 另一个级数
+$$
+e^{-1}=\lim_{n\rightarrow\infty}1-\frac{1}{1!}+\frac{1}{2!}+\cdots+(-1)^n\frac{1}{n!}
+$$
+也可以求出 $e$, 它常常被用来验证第一个级数的计算结果. 这两个级数都可以使用折半求和方法来计算.
+
+通过级数 $s_n$ 的计算公式还可以得到关于自然对数底 $e$ 和圆周率 $\pi$ 一个有趣的递推公式.
+
+::: {.theorem}
+令 $u_0=v_0=0$, $u_1=v_1=1$, 递推公式为
+$$
+\begin{align*}
+u_{n+2}&=u_{n+1}+\frac{1}{n}u_n,\\
+v_{n+2}&=\frac{1}{n}v_{n+1}+v_n,
+\end{align*}
+$$
+那么
+$$
+\begin{align*}
+\lim_{n\rightarrow\infty}\frac{n}{u_n}&=e,\\
+\lim_{n\rightarrow\infty}\frac{2n}{v_n^2}&=\pi.
+\end{align*}
+$$
+:::
+
+## 对数常数
+
+### 级数方法
+
+`对数常数`\index{对数常数} 指的是 $\ln 2$, 在计算机被发明之前, 科学家和工程师们只能借助于对数表和对数尺之类的工具来完成繁杂的乘除运算, 注意到
+$$
+\ln x=\ln\frac{x}{2^n}+n\ln 2,
+$$
+可以适当的选取 $n$ 使得 $0<\frac{x}{2^n}<1$, 这样就需要计算 $\ln 2$ 来完成大数与标准 $(0,1)$ 区间之间的转换.
+
+利用 $\ln(1+x)$ 的 Taylor 展开式
+$$
+\ln(1+x)=x-\frac{x^2}{2}+\frac{x^3}{3}-\cdots,
+$$
+令 $x=1$ 就可以得到 $\ln 2$ 的形式化定义.
+
+::: {.definition}
+## 对数常数
+$$
+\ln 2=\lim_{n\rightarrow\infty}\left(1-\frac{1}{2}+\frac{1}{3}+\cdots+(-1)^{n+1}\frac{1}{n}\right).
+$$
+:::
+
+::: {.remark}
+如果令 $x=-\frac{1}{2}$, 那么有
+$$
+\ln 2=-\ln\frac{1}{2}=\sum_{k=1}^\infty\frac{1}{k2^k}.
+$$
+:::
+
+利用恒等式
+$$
+\ln 2=-\frac{1}{2}\ln\left(1-\frac{1}{4}\right)+\tanh^{-1}\frac{1}{2},
+$$
+还可以得到类似于计算圆周率时提到过的 `BBP 公式`\index{对数常数!BBP 公式} 的两个公式.
+
+::: {.theorem}
+$$
+\begin{align*}
+\ln 2&=\sum_{k=0}^\infty\frac{1}{4^k}\left(\frac{1}{4k+2}+\frac{1}{8k+8}\right),\\
+\ln 2&=\frac{2}{3}+\sum_{k=1}^\infty\frac{1}{16^k}\left(\frac{1}{16k+12}+\frac{1}{8k+4}+\frac{1}{4k+1}+\frac{1}{2k}\right).
+\end{align*}
+$$
+:::
+
+与计算圆周率 $\pi$ 类似, 计算对数常数 $\ln 2$ 也有相应的 `Machin 型公式`\index{对数常数!Machin 型公式}.
+
+首先来看反正切函数的 Taylor 展开式
+$$
+\tanh^{-1}x=\frac{1}{2}\ln\frac{1+x}{1-x}=\sum_{k=0}^\infty\frac{x^{2k+1}}{2k+1},
+$$
+令 $x=\frac{1}{3}$ 就可以得到一个关于 $\ln 2$ 的 Machin 型公式.
+
+::: {.theorem}
+$$
+\ln 2=2\tanh^{-1}\frac{1}{3}=\frac{2}{3}\sum_{k=0}^\infty\frac{1}{(2k+1)9^k}.
+$$
+:::
+
+::: {.remark}
+如果考虑类似于 $\tanh^{-1}\frac{1}{x}=\tanh^{-1}\frac{1}{2x-1}+\tanh^{-1}\frac{1}{2x+1}$ 的初等变换, 还可以得到一系列 $n=2$ 的 Machin 型公式, 其中最有名的是 Euler 用来计算 $\ln 2$ 时用到的
+$$
+\ln 2=2\tanh^{-1}\frac{1}{5}+2\tanh^{-1}\frac{1}{7}.
+$$
+:::
+
+除此之外, 人们最近还发现了一些高阶的 Machin 型公式.
+
+::: {.theorem}
+$$
+\begin{align*}
+\ln 2 &=18\coth^{-1}26-2\coth^{-1}4801+8\coth^{-1}8749,\\
+\ln 2&=144\coth^{-1}251+54\coth^{-1}449-38\coth^{-1}4801+62\coth^{-1}8749,\\
+\ln 2&=72\coth^{-1}127+54\coth^{-1}449+34\coth^{-1}4801-10\coth^{-1}8749.
+\end{align*}
+$$
+:::
+
+前面介绍超几何级数时提到过
+$$
+\begin{align*}
+\tanh^{-1}x&=xF\left(\frac{1}{2},1,\frac{3}{2},x^2\right)\\
+&=\frac{x}{1-x^2}F\left(1,1,\frac{3}{2},\frac{x^2}{x^2-1}\right).
+\end{align*}
+$$
+
+::: {.theorem}
+$$
+\ln 2=2\tanh^{-1}\frac{1}{3}=\frac{3}{4}\left(1-\frac{1}{4}\cdot\frac{1}{3}+\frac{1}{4^2}\cdot\frac{1\cdot 2}{3\cdot 5}-\frac{1}{4^3}\cdot\frac{1\cdot 2\cdot 3}{3\cdot 5\cdot 7}+\cdots\right).
+$$
+:::
+
+::: {.remark}
+这个公式结构简单, 很容易利用折半求和方法来计算它.
+:::
+
+### 迭代方法
+
+`代数几何平均值`\index{对数常数!代数几何平均值} 迭代同样适用于计算对数常数 $\ln 2$ (参见 [@Brent-agm]).
+
+记
+$$
+\frac{1}{R(a,b)}=1-\sum_{n=0}^\infty 2^{n-1}(a_n^2-b_n^2),
+$$
+可以看出 $R(a,b)$ 实际上就是 $\frac{\pi}{2\,\mathrm{AGM}(a,b)}$. 那么
+$$
+|\ln x-R(1,10^{-N})+R(1,10^{-N}x)|\le \frac{N}{10^{2(N-2)}}.
+$$
+取 $R(1,10^{-N})-R(1,2\cdot 10^{-N})$ 作为 $\ln 2$ 的近似值, 依然借用计算 $\mathrm{AGM}(a,b)$ 时的迭代结构, 那么在计算 $\mathrm{AGM}(a,b)$ 的同时就可以计算出 $a_n,b_n$, 进而可以计算出 $R(a,b)$, 这样就得到了计算 $\ln 2$ 的一个二阶收敛的迭代算法.
+
+## Euler 常数
+
+### 级数方法
+
+::: {.definition}
+## Euler 常数
+$$
+\gamma=\lim_{n\rightarrow \infty} \left(1+\frac{1}{2}+\cdots+\frac{1}{n}-\ln n\right)=:\lim_{n\rightarrow\infty}(H_n-\ln n).
+$$
+:::
+
+::: {.remark}
+Euler 常数常记为 $\gamma$. 如果直接按照这个定义来计算 $\gamma$ 将会发现它收敛得太慢了.
+:::
+
+利用 Euler-Maclaurin 求和对调和级数 $H_n$ 做渐进展开可以得到关于 $\gamma$ 的一个更好的近似公式.
+
+`Bernoulli 数`\index{Bernoulli 数}
+
+::: {#def-bernoulli  .definition}
+## Bernoulli 数
+
+Bernoulli 数 $B_n$ 是级数展开式
+$$
+\frac{x}{e^x-1}=\sum_{n=0}^\infty\frac{B_n x^n}{n!}
+$$
+中第 $n$ 项的系数.
+:::
+
+::: {.theorem}
+$$
+\gamma=H_n-\ln n-\frac{1}{2n}+\sum_{k=1}^\infty\frac{B_{2k}}{2k}\cdot\frac{1}{n^{2k}},\quad B_{2k} \text{ 为 Bernoulli 数},
+$$
+它的误差项是
+$$
+\epsilon_{k,n}=\frac{B_{2k+2}}{(2k+2)n^{2k+2}}\approx\frac{2(2k+2)!}{(2k+2)(2\pi n)^{2k+2}}.
+$$
+:::
+
+将 $\gamma=-\Gamma'(1)$ 分部积分后可以得到
+$$
+\begin{align*}
+\gamma+\ln n&=I_n-R_n,\\
+I_n&=\int_0^n\frac{1-e^{-t}}{t}\,dt,\\
+R_n&=\int_n^\infty\frac{e^{-t}}{t}\,dt.
+\end{align*}
+$$
+注意到 $R_n=O(e^{-n})$, 利用 $\frac{1-e^{-t}}{t}$ 的级数展开式可以得到
+$$
+I_n=\sum_{k=1}^{\infty}(-1)^{k-1}\frac{n^k}{k k!},
+$$
+于是
+$$
+\gamma=\sum_{k=1}^{\alpha n}(-1)^{k-1}\frac{n^k}{k k!}-\ln n+O(e^{-n}),\quad \alpha(\ln \alpha-1)=1.
+$$
+引入常数 $\alpha$ 是为了使 $\frac{n^{\alpha n}}{(\alpha n)!}$ 是 $e^{-n}$ 阶的, 其近似值为 $\alpha=3.5911$. 如果考虑 $R_n$ 的渐进展开式, 还可以得到收敛更快的公式, 不过公式的形式同时也会变得很复杂.
+
+使用 Bessel 函数做类似的工作, 我们将得到
+$$
+\gamma=\frac{A_n}{B_n}-\ln n+O(e^{-4n}),
+$$
+其中
+$$
+\begin{align*}
+A_n&=\sum_{k=0}^{\alpha n}\left(\frac{n^k}{k!}\right)^2 H_k,\\
+B_n&=\sum_{k=0}^{\alpha n}\left(\frac{n^k}{k!}\right)^2,\\
+H_k&=1+\frac{1}{2}+\frac{1}{3}+\cdots+\frac{1}{k},
+\end{align*}
+$$
+这里 $\alpha$ 的定义与上面相同, 这个级数收敛得很快, 并且很容易计算.
+
+使用类似于 Richard 外推加速法 (参见 [@shuzhifenxi]) 的方法对误差项进行渐进展开, 可以得到
+$$
+\gamma=\frac{A_n}{B_n}-\frac{C_n}{B_n^2}-\ln n+O(e^{-8n}),
+$$
+其中
+$$
+C_n=\frac{1}{4n}\sum_{k=0}^{2n}\frac{((2k)!)^3}{(k!)^4(16n)^{2k}},
+$$
+并且 $\alpha$ 满足 $\alpha(\ln\alpha-1)=3$, 其近似值为 $\alpha=4.970625759$, 利用这个公式可以计算 $\gamma$ 到小数点后 1 亿位.
+
+## 其他常数
+
+下面是一些其他数学常数的定义或常用计算公式.
+
+- `Catalan 常数`\index{Catalan 常数}.
+$$
+\begin{align*}
+C&=1-\frac{1}{3^2}+\frac{1}{5^2}-\frac{1}{7^2}+\frac{1}{9^2}-\cdots.\\
+C&=\int_0^1\frac{\tan^{-1}x}{x}\,dx.\\
+C&=\frac{3}{8}\sum_{k=0}^{\infty}\frac{(k!)^2}{(2k)!(2k+1)^2}+\frac{\pi\ln(2+\sqrt 3)}{8}.
+\end{align*}
+$$
+
+- `Brun 常数`\index{Brun 常数}.
+$$
+B=\left(\frac{1}{3}+\frac{1}{5}\right)+\left(\frac{1}{5}+\frac{1}{7}\right)+\left(\frac{1}{11}+\frac{1}{13}\right)+\cdots.
+$$
+
+- `Mertsen 常数`\index{Mertsen 常数}.
+$$
+\mu=\lim_{p\rightarrow\infty}\left(\frac{1}{2}+\frac{1}{3}+\frac{1}{5}+\cdots+\frac{1}{p}-\ln\ln p\right).
+$$
