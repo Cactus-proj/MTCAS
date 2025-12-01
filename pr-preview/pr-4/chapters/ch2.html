@@ -1,0 +1,1462 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.8.26">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>2&nbsp; 素数判定 – 计算机代数系统的数学理论</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+  margin-bottom: 0em;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
+
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<link href="../chapters/ch3.html" rel="next">
+<link href="../chapters/ch1.html" rel="prev">
+<script src="../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-587c61ba64f3a5504c4d52d930310e48.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark-b758ccaa5987ceb1b75504551e579abf.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-587c61ba64f3a5504c4d52d930310e48.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap-0dd2bd5de344125cf763a379ddc3eb04.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-dark-7e34ecb6a0e7991f0346b0751d4a7c3f.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="../site_libs/bootstrap/bootstrap-0dd2bd5de344125cf763a379ddc3eb04.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+<script>
+window.MathJax = {
+  tex: {
+    macros: {
+      legendre: ['\\left(\\frac{#1}{#2}\\right)', 2],
+      jacobi: ['\\left(\\frac{#1}{#2}\\right)', 2],
+      dmod: ["\\mathop{\\mathrm{dmod}_{#1}}", 1],
+      bitmod: "\\mathop{\\mathrm{bmod}}",
+      ul: ["\\underset{#2}{\\underline{#1}}", 2],
+    }
+  }
+};
+</script>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+</head>
+
+<body class="nav-sidebar floating quarto-light"><script id="quarto-html-before-body" type="application/javascript">
+    const toggleBodyColorMode = (bsSheetEl) => {
+      const mode = bsSheetEl.getAttribute("data-mode");
+      const bodyEl = window.document.querySelector("body");
+      if (mode === "dark") {
+        bodyEl.classList.add("quarto-dark");
+        bodyEl.classList.remove("quarto-light");
+      } else {
+        bodyEl.classList.add("quarto-light");
+        bodyEl.classList.remove("quarto-dark");
+      }
+    }
+    const toggleBodyColorPrimary = () => {
+      const bsSheetEl = window.document.querySelector("link#quarto-bootstrap:not([rel=disabled-stylesheet])");
+      if (bsSheetEl) {
+        toggleBodyColorMode(bsSheetEl);
+      }
+    }
+    const setColorSchemeToggle = (alternate) => {
+      const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+      for (let i=0; i < toggles.length; i++) {
+        const toggle = toggles[i];
+        if (toggle) {
+          if (alternate) {
+            toggle.classList.add("alternate");
+          } else {
+            toggle.classList.remove("alternate");
+          }
+        }
+      }
+    };
+    const toggleColorMode = (alternate) => {
+      // Switch the stylesheets
+      const primaryStylesheets = window.document.querySelectorAll('link.quarto-color-scheme:not(.quarto-color-alternate)');
+      const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+      manageTransitions('#quarto-margin-sidebar .nav-link', false);
+      if (alternate) {
+        // note: dark is layered on light, we don't disable primary!
+        enableStylesheet(alternateStylesheets);
+        for (const sheetNode of alternateStylesheets) {
+          if (sheetNode.id === "quarto-bootstrap") {
+            toggleBodyColorMode(sheetNode);
+          }
+        }
+      } else {
+        disableStylesheet(alternateStylesheets);
+        enableStylesheet(primaryStylesheets)
+        toggleBodyColorPrimary();
+      }
+      manageTransitions('#quarto-margin-sidebar .nav-link', true);
+      // Switch the toggles
+      setColorSchemeToggle(alternate)
+      // Hack to workaround the fact that safari doesn't
+      // properly recolor the scrollbar when toggling (#1455)
+      if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+        manageTransitions("body", false);
+        window.scrollTo(0, 1);
+        setTimeout(() => {
+          window.scrollTo(0, 0);
+          manageTransitions("body", true);
+        }, 40);
+      }
+    }
+    const disableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        stylesheet.rel = 'disabled-stylesheet';
+      }
+    }
+    const enableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        if(stylesheet.rel !== 'stylesheet') { // for Chrome, which will still FOUC without this check
+          stylesheet.rel = 'stylesheet';
+        }
+      }
+    }
+    const manageTransitions = (selector, allowTransitions) => {
+      const els = window.document.querySelectorAll(selector);
+      for (let i=0; i < els.length; i++) {
+        const el = els[i];
+        if (allowTransitions) {
+          el.classList.remove('notransition');
+        } else {
+          el.classList.add('notransition');
+        }
+      }
+    }
+    const isFileUrl = () => {
+      return window.location.protocol === 'file:';
+    }
+    const hasAlternateSentinel = () => {
+      let styleSentinel = getColorSchemeSentinel();
+      if (styleSentinel !== null) {
+        return styleSentinel === "alternate";
+      } else {
+        return false;
+      }
+    }
+    const setStyleSentinel = (alternate) => {
+      const value = alternate ? "alternate" : "default";
+      if (!isFileUrl()) {
+        window.localStorage.setItem("quarto-color-scheme", value);
+      } else {
+        localAlternateSentinel = value;
+      }
+    }
+    const getColorSchemeSentinel = () => {
+      if (!isFileUrl()) {
+        const storageValue = window.localStorage.getItem("quarto-color-scheme");
+        return storageValue != null ? storageValue : localAlternateSentinel;
+      } else {
+        return localAlternateSentinel;
+      }
+    }
+    const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
+      const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
+      const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
+      let newTheme = '';
+      if(authorPrefersDark) {
+        newTheme = isAlternate ? baseTheme : alternateTheme;
+      } else {
+        newTheme = isAlternate ? alternateTheme : baseTheme;
+      }
+      const changeGiscusTheme = () => {
+        // From: https://github.com/giscus/giscus/issues/336
+        const sendMessage = (message) => {
+          const iframe = document.querySelector('iframe.giscus-frame');
+          if (!iframe) return;
+          iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+        }
+        sendMessage({
+          setConfig: {
+            theme: newTheme
+          }
+        });
+      }
+      const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
+      if (isGiscussLoaded) {
+        changeGiscusTheme();
+      }
+    };
+    const authorPrefersDark = false;
+    const queryPrefersDark = window.matchMedia('(prefers-color-scheme: dark)');
+    const darkModeDefault = queryPrefersDark.matches;
+      document.querySelector('link#quarto-text-highlighting-styles.quarto-color-scheme-extra').rel = 'disabled-stylesheet';
+      document.querySelector('link#quarto-bootstrap.quarto-color-scheme-extra').rel = 'disabled-stylesheet';
+    let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
+    // Dark / light mode switch
+    window.quartoToggleColorScheme = () => {
+      // Read the current dark / light value
+      let toAlternate = !hasAlternateSentinel();
+      toggleColorMode(toAlternate);
+      setStyleSentinel(toAlternate);
+      toggleGiscusIfUsed(toAlternate, darkModeDefault);
+      window.dispatchEvent(new Event('resize'));
+    };
+    queryPrefersDark.addEventListener("change", e => {
+      if(window.localStorage.getItem("quarto-color-scheme") !== null)
+        return;
+      const alternate = e.matches
+      toggleColorMode(alternate);
+      localAlternateSentinel = e.matches ? 'alternate' : 'default'; // this is used alongside local storage!
+      toggleGiscusIfUsed(alternate, darkModeDefault);
+    });
+    // Switch to dark mode if need be
+    if (hasAlternateSentinel()) {
+      toggleColorMode(true);
+    } else {
+      toggleColorMode(false);
+    }
+  </script>
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../chapters/ch2.html"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">素数判定</span></a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="../">计算机代数系统的数学理论</a> 
+        <div class="sidebar-tools-main">
+  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
+</div>
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">目录</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/intro.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">序</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/preface.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">前言</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/ch1.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">高精度运算</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/ch2.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">素数判定</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/ch3.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">整数因子分解</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/ch4.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">基础数论算法</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/ch5.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">数学常数</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../references.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">参考文献</span></a>
+  </div>
+</li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#fermat检测" id="toc-fermat检测" class="nav-link active" data-scroll-target="#fermat检测"><span class="header-section-number">2.1</span> Fermat检测</a></li>
+  <li><a href="#euler-检测" id="toc-euler-检测" class="nav-link" data-scroll-target="#euler-检测"><span class="header-section-number">2.2</span> Euler 检测</a></li>
+  <li><a href="#lehmer-n-1-型检测" id="toc-lehmer-n-1-型检测" class="nav-link" data-scroll-target="#lehmer-n-1-型检测"><span class="header-section-number">2.3</span> Lehmer <span class="math inline">\(N-1\)</span> 型检测</a></li>
+  <li><a href="#lucas-伪素数检测与-n1-型检测" id="toc-lucas-伪素数检测与-n1-型检测" class="nav-link" data-scroll-target="#lucas-伪素数检测与-n1-型检测"><span class="header-section-number">2.4</span> Lucas 伪素数检测与 <span class="math inline">\(N+1\)</span> 型检测</a></li>
+  <li><a href="#概率性的检测方法" id="toc-概率性的检测方法" class="nav-link" data-scroll-target="#概率性的检测方法"><span class="header-section-number">2.5</span> 概率性的检测方法</a>
+  <ul class="collapse">
+  <li><a href="#solovay-strassen检测" id="toc-solovay-strassen检测" class="nav-link" data-scroll-target="#solovay-strassen检测"><span class="header-section-number">2.5.1</span> Solovay-Strassen检测</a></li>
+  <li><a href="#rabin-miller检测" id="toc-rabin-miller检测" class="nav-link" data-scroll-target="#rabin-miller检测"><span class="header-section-number">2.5.2</span> Rabin-Miller检测</a></li>
+  <li><a href="#baillie-psw检测" id="toc-baillie-psw检测" class="nav-link" data-scroll-target="#baillie-psw检测"><span class="header-section-number">2.5.3</span> Baillie-PSW检测</a></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">素数判定</span></h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<p><code>素数判定</code>(Primality Test)是一个数论中十分基本,却又趣味盎然的问题.判定一个整数是否是素数,最为朴素的想法是直接利用素数的定义,用小的素数去一一试除,如果能整除的话,那就能确定无疑为合数了.根据Mertens定理（参见<span class="citation" data-cites="yao07">(<a href="../references.html#ref-yao07" role="doc-biblioref">M. Mendès France, Tenenbaum, and 姚家燕译 2007</a>)</span>），可以估算出大约有76%的奇数有小于100的素因子,可见这种最平凡的方法有时十分有效.在本章中，我们将用<span class="math inline">\(N\)</span>来表示待判定的目标数.</p>
+<p>相比整数的因子分解，素数判定一直以来被认为是较为容易的问题。2002年三位印度计算机科学家Agrawal，Kayal，Saxena<span class="citation" data-cites="aks04">(<a href="../references.html#ref-aks04" role="doc-biblioref">Agrawal, Kayal, and Saxena 2004</a>)</span>找到了素数判定的多项式算法（被称为<code>AKS算法</code>），其时间复杂度为<span class="math inline">\(O(\ln^{12} N)\)</span>。AKS算法在理论上有重要的意义，不过实践中还要更多地考虑效率问题。实践中的素数检测方法大致分为两类，一类是确定性的，例如Lehmer <span class="math inline">\(N-1\)</span>检测，Lucas <span class="math inline">\(N+1\)</span>检测，<code>椭圆曲线素性证明</code>(<code>ECPP</code>)等等，当输出结果为”素数”时，能够保证被检测数一定为素数；另一类是概率性的，如Rabin-Miller检测，Baillie-PSW检测等等，当输出结果为”素数”时，仅以一定的高概率保证被检测数的素性。不过概率性检测一般要比确定性检测快得多。</p>
+<p><code>APRCL方法</code>将Fermat类型的想法运用到分圆域中,最先由Adleman,Pomerance,Rumely<span class="citation" data-cites="apr">(<a href="../references.html#ref-apr" role="doc-biblioref">Adleman 1980</a>)</span>提出,后经Cohen,Lenstra<span class="citation" data-cites="cl">(<a href="../references.html#ref-cl" role="doc-biblioref">H. Cohen and Lenstra 1984</a>)</span>的改进，时间复杂度为”近似”多项式的<span class="math inline">\(O((\ln N)^{c\ln\ln\ln N})\)</span>，其中<span class="math inline">\(c\)</span>为一个常数。椭圆曲线素数证明最早由Goldwasser,Kilian<span class="citation" data-cites="gk86">(<a href="../references.html#ref-gk86" role="doc-biblioref">Goldwasser and Kilian 1986</a>)</span>提出，后经Atikin，Morain<span class="citation" data-cites="atk93">(<a href="../references.html#ref-atk93" role="doc-biblioref">Atkin and Morain 1993</a>)</span>改进和实现，平均时间复杂度达到了<span class="math inline">\(O(\ln^6 N)\)</span>。这两种方法已经成为目前实践上最快的确定性检测方法，并在密码学等领域有重要的应用。鉴于我们的目的，不能用太多篇幅来介绍这两种方法，详细可参阅文献<span class="citation" data-cites="cohen">(<a href="../references.html#ref-cohen" role="doc-biblioref">Henri Cohen 1993</a>)</span>.</p>
+<p>有些素数判定方法严格来说应当是<code>合性检测</code>(Compositeness Test),这类方法总可以有效地把素数判定出来,而有可能把一个合数判定为素数.也就是说,此类方法判定一个数为合数总是准确无误的,而”漏网的”,即无法判定的合数往往称为<code>伪素数</code>(Pseudoprimes).</p>
+<p>阅读本章需要读者初等数论和抽象代数的基础知识（例如<span class="citation" data-cites="fkq03">(<a href="../references.html#ref-fkq03" role="doc-biblioref">冯克勤 2003</a>)</span>,<span class="citation" data-cites="nlzdss00">(<a href="../references.html#ref-nlzdss00" role="doc-biblioref">聂灵沼 and 丁石孙 2000</a>)</span>）。本章的主要参考书是<span class="citation" data-cites="riesel">(<a href="../references.html#ref-riesel" role="doc-biblioref">Riesel 1985</a>)</span>，<span class="citation" data-cites="cohen">(<a href="../references.html#ref-cohen" role="doc-biblioref">Henri Cohen 1993</a>)</span>和<span class="citation" data-cites="pei02">(<a href="../references.html#ref-pei02" role="doc-biblioref">裴定一 and 祝跃飞 2002</a>)</span>.读者也可以参考写的十分通俗易懂的<span class="citation" data-cites="yan08">(<a href="../references.html#ref-yan08" role="doc-biblioref">颜松远 2008</a>)</span>及其他算法/计算数论方面的相关文献。</p>
+<section id="fermat检测" class="level2" data-number="2.1">
+<h2 data-number="2.1" class="anchored" data-anchor-id="fermat检测"><span class="header-section-number">2.1</span> Fermat检测</h2>
+<p>几乎所有素数检测的想法之基石均为著名的<code>Fermat小定理</code>，即若<span class="math inline">\(p\)</span>为素数，<span class="math inline">\((a,p)=1\)</span>，则</p>
+<p><span class="math display">\[
+a^{p-1}\equiv1\pmod{p}.
+\]</span></p>
+<p>由此我们得到最简单的检测算法——<code>Fermat合性检测</code>。</p>
+<div id="def-al:fermat" class="definition theorem">
+<p><span class="theorem-title"><strong>Definition 2.1 (算法：Fermat 小定理作为合性检测)</strong></span> 任取整数<span class="math inline">\(a\)</span>，如果<span class="math inline">\((a,N)=1\)</span>且<span class="math inline">\(a^{N-1}\not\equiv1\pmod{N}\)</span>，则输出<span class="math inline">\(N\)</span>为合数，否则输出<span class="math inline">\(N\)</span>可能为素数。</p>
+</div>
+<div id="def-pseudo:fermat" class="definition theorem">
+<p><span class="theorem-title"><strong>Definition 2.2 (Fermat 伪素数)</strong></span> 满足 <span class="math inline">\(a^{N-1}\equiv1\pmod{N}\)</span> 的合数 <span class="math inline">\(N\)</span> 称为一个(对于基<span class="math inline">\(a\)</span>)的 <code>Fermat伪素数</code>。</p>
+</div>
+<p>在<span class="math inline">\(25\times10^9\)</span>以下，有21853个对于基<span class="math inline">\(a=2\)</span>的Fermat伪素数（参考<span class="citation" data-cites="psw">(<a href="../references.html#ref-psw" role="doc-biblioref">Pomerance, Selfridge, and Wagstaff 1980</a>)</span>），如果对其再进行基为<span class="math inline">\(a=3\)</span>的检测的话，伪素数将还剩下4709个，对于<span class="math inline">\(a=2,3,5\)</span>有2552个，<span class="math inline">\(a=2,3,5,7\)</span>有1770个。</p>
+<p>运用Fermat检测的关键是如何快速计算<span class="math inline">\(a^{d} \mod N\)</span>。求幂运算采取二进算法 <a href="ch4.html#def-al:r2l" class="quarto-xref">Definition&nbsp;<span>4.1</span></a> ，<a href="ch4.html#def-al:l2r" class="quarto-xref">Definition&nbsp;<span>4.2</span></a> ，可以使Fermat检测的算法复杂度降到平均<span class="math inline">\(1.5\log N\cdot M(N)\)</span>（其中<span class="math inline">\(M(N)\)</span>表示乘法运算的复杂度），已经为多项式阶的算法了。使用Montgomery约化算法@def-al:monredc 可以更进一步地提高速度。</p>
+<p><code>Camichael数</code>是看起来比Fermat伪素数条件更”苛刻”的一类数。</p>
+<div id="def-CamichaelNumber" class="definition theorem">
+<p><span class="theorem-title"><strong>Definition 2.3 (Camichael 数)</strong></span> 如果合数<span class="math inline">\(N\)</span>，对任意满足<span class="math inline">\((a,N)=1\)</span>的整数<span class="math inline">\(a\)</span>都有<span class="math inline">\(a^{N-1}\equiv1\pmod{N}\)</span>，则称<span class="math inline">\(N\)</span>为Camichael数。</p>
+</div>
+<p>也就是说，Camichael数都将会是Fermat检测的”漏网之鱼”。最小的Camichael数的例子是<span class="math inline">\(561=3\cdot 11\cdot 17\)</span>。在<span class="math inline">\(25\times10^9\)</span>以下一共有2163个Camichael数，它比对基<span class="math inline">\(a=2,3,5,7\)</span>的Fermat伪素数还要来得多的原因是，如果恰巧<span class="math inline">\(N\)</span>有2,3,5,7的因子，<span class="math inline">\(N\)</span>便可以是Camichael数而非Fermat伪素数。</p>
+</section>
+<section id="euler-检测" class="level2" data-number="2.2">
+<h2 data-number="2.2" class="anchored" data-anchor-id="euler-检测"><span class="header-section-number">2.2</span> Euler 检测</h2>
+<p><code>Euler检测</code>基于Euler的二次剩余定理，即若<span class="math inline">\(p\)</span>为奇素数，<span class="math inline">\((a,p)=1\)</span>，则<span class="math display">\[
+a^{(p-1)/2}\equiv\legendre{a}{p}\pmod{p}.
+\]</span></p>
+<p>其中<span class="math inline">\(\legendre{a}{p}\)</span>是<code>Legendre符号</code>。</p>
+<div id="def-al:EulerTest" class="definition theorem">
+<p><span class="theorem-title"><strong>Definition 2.4 (算法：Euler判则作为合性检测)</strong></span> 设<span class="math inline">\(N\)</span>为奇数，任取整数<span class="math inline">\(a\)</span>，满足<span class="math inline">\((a,N)=1\)</span>：</p>
+<ol type="1">
+<li>如果 <span class="math inline">\(a^{(N-1)/2}\not\equiv\pm1\pmod{N}\)</span>，则输出<span class="math inline">\(N\)</span>为合数。</li>
+<li>如果 <span class="math inline">\(a^{(N-1)/2}\equiv\pm1\pmod{N}\)</span> 且 <span class="math inline">\(a^{(N-1)/2}\not\equiv\legendre{a}{N}\pmod{N}\)</span>，则输出<span class="math inline">\(N\)</span>为合数。</li>
+<li>如果 <span class="math inline">\(a^{(N-1)/2}\equiv\legendre{a}{N}\pmod{N}\)</span>，则输出<span class="math inline">\(N\)</span>可能为素数。</li>
+</ol>
+</div>
+<div id="def-pseudo:euler" class="definition theorem">
+<p><span class="theorem-title"><strong>Definition 2.5 (Euler伪素数)</strong></span> 如果合数<span class="math inline">\(N\)</span>，<span class="math inline">\((a,N)=1\)</span>，满足<span class="math inline">\(a^{(N-1)/2}\equiv\legendre{a}{N}\pmod{N}\)</span>，则称<span class="math inline">\(N\)</span>为(对于基<span class="math inline">\(a\)</span>的)<code>Euler伪素数</code>。</p>
+</div>
+<div id="def-pseudo:strong" class="definition theorem">
+<p><span class="theorem-title"><strong>Definition 2.6 (强伪素数)</strong></span> 设<span class="math inline">\(N\)</span>奇合数，<span class="math inline">\(N-1=d\cdot 2^s\)</span>，<span class="math inline">\(d\)</span>为奇数。<span class="math inline">\(N\)</span>被称为(对于基<span class="math inline">\(a\)</span>的)<code>强伪素数</code>，如果<span class="math display">\[
+a^d\equiv 1 \pmod{N}
+\]</span>或者对于某一个<span class="math inline">\(r(0\le r\le s-1)\)</span>有<span class="math display">\[
+a^{d\cdot 2^r}\equiv -1 \pmod{N}.
+\]</span></p>
+</div>
+<div id="rem-strong" class="proof remark">
+<p><span class="proof-title"><em>Remark 2.1</em>. </span>强伪素数的定义可以这样看出：若<span class="math inline">\(N\)</span>为素数，则<span class="math display">\[\begin{align*}
+  a^{N-1}-1&amp;=(a^d-1)(a^d+1)(a^{2d}+1)(a^{4d}+1)\cdots(a^{2^{s-1}d}+1)\\
+     &amp;\equiv 0\pmod{N}.
+\end{align*}\]</span></p>
+</div>
+<p>对于Euler伪素数和强伪素数均不会出现类似Fermat伪素数的情况，也就是说，只要测试的基<span class="math inline">\(a\)</span>足够多，最终总可以将合数和素数分辩开来。<span class="math inline">\(25\times10^9\)</span>以下只有13个同时为对基2,3,5的强伪素数。</p>
+<div class="proof remark">
+<p><span class="proof-title"><em>Remark</em>. </span><span class="citation" data-cites="psw">(<a href="../references.html#ref-psw" role="doc-biblioref">Pomerance, Selfridge, and Wagstaff 1980</a>)</span>证明了，Euler伪素数必定是强伪素数。</p>
+</div>
+</section>
+<section id="lehmer-n-1-型检测" class="level2" data-number="2.3">
+<h2 data-number="2.3" class="anchored" data-anchor-id="lehmer-n-1-型检测"><span class="header-section-number">2.3</span> Lehmer <span class="math inline">\(N-1\)</span> 型检测</h2>
+<p><code>Lehmer $N-1$型检测</code>有时候<span class="math inline">\(N\)</span>的素性很难判定，而<span class="math inline">\(N\pm1\)</span>的分解却很容易得到。这一节的方法便是依赖于<span class="math inline">\(N-1\)</span>的素因子分解。</p>
+<p><code>Lehmer 的逆定理</code></p>
+<div id="thm-FermatConverse" class="theorem">
+<p><span class="theorem-title"><strong>Theorem 2.1 (Fermat小定理逆定理, Lehmer)</strong></span> 设有素因子分解 <span class="math inline">\(N-1=q_1^{\beta_1}\cdots q_n^{\beta_n}\)</span>。如果对 <span class="math inline">\(a\)</span> 有<span class="math display">\[
+a^{(N-1)/q_j}\not\equiv1 \pmod{N},\qquad \forall j=1,2,\ldots,n,
+\]</span>且<span id="eq-fermat"><span class="math display">\[
+a^{N-1}\equiv1 \pmod{N} .
+\tag{2.1}\]</span></span></p>
+<p>则<span class="math inline">\(N\)</span>为素数。</p>
+</div>
+<div class="proof">
+<p><span class="proof-title"><em>Proof</em>. </span>从简化剩余系的乘法群 <span class="math inline">\(M_N=(\mathbb{Z}/N\mathbb{Z})^*\)</span> 角度来看，条件保证了<span class="math inline">\(a\)</span>为<span class="math inline">\(M_N\)</span>的一个<span class="math inline">\(N-1\)</span>阶元素，而 <span class="math inline">\(|M_N|=\varphi(N)\)</span> (<span class="math inline">\(\varphi\)</span> 为Euler函数)，从而有<span class="math inline">\(\varphi(N)\ge N-1\)</span>，这就保证了<span class="math inline">\(N\)</span>为素数。</p>
+</div>
+<div class="proof remark">
+<p><span class="proof-title"><em>Remark</em>. </span>这里不要<span class="math inline">\((a,N)=1\)</span>的条件，是因为其已经被包括在式 <a href="#eq-fermat" class="quarto-xref">Equation&nbsp;<span>2.1</span></a> 之中了。</p>
+</div>
+<p>寻找<span class="math inline">\(M_N\)</span>的生成元(甚至只寻找模<span class="math inline">\(N\)</span>的一个二次剩余)都是非常困难的事情，目前还没有有效的确定性的方法。一个现实的问题是如果<span class="math inline">\(N\)</span>为伪素数，如何才能快速的找到Lehmer <span class="math inline">\(N-1\)</span>检测中符合条件的<span class="math inline">\(a\)</span>，即<span class="math inline">\(M_N\)</span>的一个生成元呢？有一些步骤可以采用：</p>
+<ol type="1">
+<li>排除所有<span class="math inline">\(\legendre{a}{N}=1\)</span>的<span class="math inline">\(a\)</span>，这就排除了一半可能的<span class="math inline">\(a\)</span>！</li>
+<li>从较小的<span class="math inline">\(q_j\)</span>开始检测，因为<span class="math inline">\(q_j\)</span>越小，失败的可能性越大。</li>
+</ol>
+<p><code>Selfridge的多基推广</code></p>
+<div id="thm-multibase-n-1" class="theorem">
+<p><span class="theorem-title"><strong>Theorem 2.2 (Selfridge的多基推广)</strong></span> 如果<span class="math inline">\(\forall q_j\)</span>，<span class="math inline">\(\exists a_j\)</span>使得<span class="math display">\[
+a_j^{(N-1)/{q_j}}\not\equiv1 \pmod{N}
+\]</span>且<span class="math display">\[
+a_j^{N-1}\equiv1 \pmod{N} .
+\]</span>则<span class="math inline">\(N\)</span>为素数。</p>
+</div>
+<div class="proof">
+<p><span class="proof-title"><em>Proof</em>. </span>设<span class="math inline">\(a_j\)</span>模<span class="math inline">\(N\)</span>的阶为<span class="math inline">\(r_j\)</span>，则以上两式表明 <span class="math inline">\(r_j\nmid\frac{N-1}{q_j}\)</span> 且 <span class="math inline">\(r_j\mid N-1\)</span>，从而<span class="math inline">\(q_j^{\beta_j}\mid r_j\Rightarrow N-1\mid \varphi(N) \Rightarrow \varphi(N)=N-1\)</span>。</p>
+</div>
+<div class="proof remark">
+<p><span class="proof-title"><em>Remark</em>. </span>这个方法对<span class="math inline">\(M_N\)</span>的生成元很大的时候非常有用，因为我们不必找出一个”共同”的<span class="math inline">\(a\)</span>来。</p>
+</div>
+<p><code>Pepin定理</code></p>
+<div id="thm-pepin" class="theorem">
+<p><span class="theorem-title"><strong>Theorem 2.3 (Pepin定理)</strong></span> 设<span class="math inline">\(F_n=2^{2^{n}}+1\)</span>为Fermat素数(<span class="math inline">\(n\ge1\)</span>)。则<span class="math inline">\(F_n\)</span>为素数当且仅当<span class="math display">\[
+3^{2^{2^{n-1}}}\equiv-1 \pmod{F_n}
+\]</span></p>
+</div>
+<div class="proof">
+<p><span class="proof-title"><em>Proof</em>. </span>用定理 <a href="#thm-FermatConverse" class="quarto-xref">Theorem&nbsp;<span>2.1</span></a> 即可，只需注意到3必为<span class="math inline">\(12n\pm 5\)</span>型素数的二次非剩余。</p>
+</div>
+<div class="proof remark">
+<p><span class="proof-title"><em>Remark</em>. </span>使用这个方法，在1963年<span class="citation" data-cites="sel64">(<a href="../references.html#ref-sel64" role="doc-biblioref">Selfridge and Hurwitz 1964</a>)</span>证明了<span class="math inline">\(F_{14}\)</span>(有4933个十进制位)是合数，尽管但现在为止还不知道其任何一个因子。</p>
+</div>
+<p>下面的定理让我们可以拥有不必完全分解<span class="math inline">\(N-1\)</span>的便利。</p>
+<p><code>放宽版本</code></p>
+<div id="thm-RelaxedFermatConverse" class="theorem">
+<p><span class="theorem-title"><strong>Theorem 2.4 (Lehmer定理的放宽版本)</strong></span> 设<span class="math inline">\(N-1=RF\)</span>，<span class="math inline">\((R,F)=1\)</span>且<span class="math inline">\(R&lt;F\)</span>，有素因子分解<span class="math inline">\(F=\prod\limits_{j=1}^n q_j^{\beta_j}\)</span>。若有<span class="math inline">\(a\)</span>使得<span class="math display">\[
+a^{(N-1)/q_j}\not\equiv1 \pmod{N},\qquad \forall j=1,2,\ldots,n
+\]</span>且<span class="math display">\[
+a^{N-1}\equiv1 \pmod{N},
+\]</span>则<span class="math inline">\(N\)</span>为素数。</p>
+</div>
+<div class="proof">
+<p><span class="proof-title"><em>Proof</em>. </span>设<span class="math inline">\(p\)</span>为素数，<span class="math inline">\(p\mid N\)</span>，设<span class="math inline">\(a\)</span>模<span class="math inline">\(p\)</span>的阶是<span class="math inline">\(d\)</span>，则由条件有<span class="math inline">\(d\mid N-1\)</span>，但 <span class="math inline">\(d\nmid \frac{N-1}{q_j}\)</span>。从而<span class="math inline">\(\forall j\)</span>，<span class="math inline">\(d\mid \prod\limits_{i=1}^n q_i\)</span>，但<span class="math inline">\(d\nmid R\cdot q_j^{\beta_j-1}\prod\limits_{i\ne j}q_i^{\beta_i}\)</span>。故有<span class="math display">\[
+q_j^{\beta_j}\mid d\Rightarrow F\mid d\Rightarrow F\mid p-1 \Rightarrow F\le \sqrt{N}.
+\]</span>矛盾！</p>
+</div>
+<p><code>Proth定理</code></p>
+<div id="thm-proth" class="theorem">
+<p><span class="theorem-title"><strong>Theorem 2.5 (Proth定理)</strong></span> 设<span class="math inline">\(N=h\cdot2^n+1\)</span>，其中<span class="math inline">\(h\)</span>为奇数，<span class="math inline">\(2^n&gt;h\)</span>。如果存在<span class="math inline">\(a\)</span>使得<span class="math display">\[
+a^{(N-1)/2}\equiv-1 \pmod{N} .
+\]</span>则<span class="math inline">\(N\)</span>为素数。</p>
+</div>
+<div class="proof">
+<p><span class="proof-title"><em>Proof</em>. </span>在定理@thm-RelaxedFermatConverse 中令<span class="math inline">\(F=2^n\)</span>即得。</p>
+</div>
+</section>
+<section id="lucas-伪素数检测与-n1-型检测" class="level2" data-number="2.4">
+<h2 data-number="2.4" class="anchored" data-anchor-id="lucas-伪素数检测与-n1-型检测"><span class="header-section-number">2.4</span> Lucas 伪素数检测与 <span class="math inline">\(N+1\)</span> 型检测</h2>
+<p>如果<span class="math inline">\(N-1\)</span>也是很难分解的，这里的方法就将分解的困难转移到<span class="math inline">\(N+1\)</span>上去。想法是与<span class="math inline">\(N-1\)</span>型检测是类似的，不过要将Fermat小定理从 <span class="math inline">\(\mathbb{Z}\)</span> 上推广到二次域的代数整数环上去，替代那里的<span class="math inline">\(a^{N-1}-1\)</span>的则是所谓Lucas序列<span class="math inline">\(U_{N+1}\)</span>。</p>
+<p>设<span class="math inline">\(D\)</span>为无平方整数，记<span class="math inline">\(O\)</span>为二次域<span class="math inline">\(\mathbb{Q}(\sqrt{D})\)</span>的代数整数环，我们熟知(参见<span class="citation" data-cites="nlzdss00">(<a href="../references.html#ref-nlzdss00" role="doc-biblioref">聂灵沼 and 丁石孙 2000</a>)</span>，P139)当<span class="math inline">\(D\equiv2,3\pmod{4}\)</span>时，<span class="math display">\[
+O=\{m+n\sqrt{D}\mid m,n\in\mathbb{Z}\},
+\]</span></p>
+<p>而当<span class="math inline">\(D\equiv1\pmod{4}\)</span>时，<span class="math display">\[
+O=\Big\{\frac{m+n\sqrt{D}}{2}\,\Big\vert\, m,n\in\mathbb{Z},m\equiv n\pmod{2}\Big\}.
+\]</span></p>
+<p>在<span class="math inline">\(O\)</span>中可以很容易地讨论同余的概念，称<span class="math inline">\(a\equiv b\pmod{M}\)</span>，若<span class="math inline">\(a-b\)</span>属于<span class="math inline">\(M\)</span>在<span class="math inline">\(O\)</span>中生成的理想。记<span class="math inline">\(\bar a\)</span>为<span class="math inline">\(a\)</span>在<span class="math inline">\(O\)</span>中的共轭，即<span class="math inline">\(\overline{r+s\sqrt{D}}=r-s\sqrt{D}\)</span>，则在<span class="math inline">\(O\)</span>中我们有如下Fermat小定理的类比。</p>
+<p><code>二次域中的</code></p>
+<div id="thm-quafermat" class="theorem">
+<p><span class="theorem-title"><strong>Theorem 2.6 (二次域中的Fermat小定理)</strong></span> 设<span class="math inline">\(a\in O\)</span>，<span class="math inline">\(p\)</span>为奇素数，<span class="math inline">\(p\nmid D\)</span>，则有<span class="math display">\[\begin{equation*}
+  a^p\equiv
+  \begin{cases}
+    a&amp;\text{若}\displaystyle\legendre{D}{p}=1\\\noalign{\smallskip}
+    \bar{a}&amp;\text{若}\displaystyle\legendre{D}{p}=-1
+  \end{cases}
+  \pmod{p}.
+\end{equation*}\]</span></p>
+</div>
+<div class="proof">
+<p><span class="proof-title"><em>Proof</em>. </span>设<span class="math inline">\(2a=r+s\sqrt{D}\)</span>，<span class="math inline">\(r,s\in\mathbb{Z}\)</span>，则由<span class="math inline">\(\mathbb{Z}\)</span>上的Fermat小定理，二项展开及Euler二次剩余定理得<span class="math display">\[\begin{align*}
+  2a^p&amp;\equiv(2a)^p\equiv(r+s\sqrt{D})^p\equiv r^p+(s\sqrt{D})^p \\
+  &amp;\equiv r+sD^{\frac{p-1}{2}}\sqrt{D} \\
+  &amp;\equiv r+s\legendre{D}{p}\sqrt{D}\pmod{p}.
+\end{align*}\]</span>从而得到所要结论。</p>
+</div>
+<p>定理 <a href="#thm-quafermat" class="quarto-xref">Theorem&nbsp;<span>2.6</span></a> 中的乘幂不容易计算，为了有效地利用定理 <a href="#thm-quafermat" class="quarto-xref">Theorem&nbsp;<span>2.6</span></a> 的结论，我们引入<code>Lucas序列</code>的概念，Lucas序列实际上是一类简单的二阶递推序列。</p>
+<div id="def-de:LucasSeq" class="definition theorem">
+<p><span class="theorem-title"><strong>Definition 2.7 (Lucas序列)</strong></span> 设 <span class="math inline">\(P,Q\in\mathbb{Z}\)</span>，特征方程 <span class="math inline">\(\lambda^2-P\lambda+Q=0\)</span> 的两根为 <span class="math inline">\(a\)</span>，<span class="math inline">\(b\)</span>。则 <span class="math inline">\(P\)</span>，<span class="math inline">\(Q\)</span> 对应的 Lucas 序列定义为<span class="math display">\[
+U_n=\frac{a^n-b^n}{a-b},\qquad V_n=a^n+b^n.
+\]</span></p>
+</div>
+<div class="proof remark">
+<p><span class="proof-title"><em>Remark</em>. </span>由特征方程对应的递推关系，知道<span class="math inline">\(\{U_n\},\{V_n\}\)</span>均为<span class="math inline">\(\mathbb{Z}\)</span>中的序列。</p>
+</div>
+<div id="lem-lucas" class="lemma theorem">
+<p><span class="theorem-title"><strong>Lemma 2.1</strong></span> 记号同定义 <a href="#def-de:LucasSeq" class="quarto-xref">Definition&nbsp;<span>2.7</span></a> ，设整数<span class="math inline">\(M\)</span>满足<span class="math inline">\((QD,M)=1\)</span>，则<span class="math inline">\(a,b,a-b\)</span>均模<span class="math inline">\(M\)</span>可逆。并且<span class="math inline">\(U_k\equiv0\pmod{M}\)</span>当且仅当<span class="math inline">\((ab^{-1})^k\equiv1\pmod{M}\)</span>。</p>
+</div>
+<div class="proof">
+<p><span class="proof-title"><em>Proof</em>. </span>由 <span class="math inline">\((Q,M)=1\)</span> 知 <span class="math inline">\(Q\)</span> 模 <span class="math inline">\(M\)</span> 可逆，而 <span class="math inline">\(ab=Q\)</span>，知 <span class="math inline">\(ab\cdot Q^{-1}\equiv1\pmod{M}\)</span>，从而 <span class="math inline">\(a,b\)</span> 均模 <span class="math inline">\(M\)</span> 可逆。又 <span class="math inline">\(a-b=\sqrt{D}\)</span>，而 <span class="math inline">\(D^{\varphi(M)}\equiv1\pmod{M}\)</span>，可知 <span class="math inline">\((a-b)^{2\varphi(N)}\equiv1\pmod{M}\)</span>，从而 <span class="math inline">\(a-b\)</span> 也模 <span class="math inline">\(M\)</span> 可逆。</p>
+<p>由于 <span class="math inline">\(a-b\)</span> 模 <span class="math inline">\(M\)</span> 可逆，<span class="math inline">\(U_k\equiv(a-b)^{-1}(a^k-b^k)\pmod{M}\)</span>，从而 <span class="math display">\[U_k\equiv0\pmod{M}\Longleftrightarrow a^k\equiv b^k\pmod{M}\Longleftrightarrow (ab^{-1})^k\equiv1\pmod{M}.\]</span>引理得证。</p>
+</div>
+<div id="thm-lucasfermat" class="theorem">
+<p><span class="theorem-title"><strong>Theorem 2.7</strong></span> 设 <span class="math inline">\(p\)</span> 为素数，满足 <span class="math inline">\((2QD,p)=1\)</span>，记 <span class="math inline">\(\varepsilon=\legendre{D}{p}\)</span>，则有 <span class="math inline">\(U_{p-\varepsilon}\equiv0\pmod{p}\)</span>。</p>
+</div>
+<div class="proof">
+<p><span class="proof-title"><em>Proof</em>. </span>若 <span class="math inline">\(\legendre{D}{p}=1\)</span>，则由定理 <a href="#thm-quafermat" class="quarto-xref">Theorem&nbsp;<span>2.6</span></a> 可知 <span class="math inline">\(a^{p-1}\equiv b^{p-1}\equiv1\pmod{p}\)</span>，从而 <span class="math inline">\((ab^{-1})^{p-1}\equiv1\pmod{p}\)</span>，由引理 <a href="#lem-lucas" class="quarto-xref">Lemma&nbsp;<span>2.1</span></a> 知 <span class="math inline">\(U_{p-1}\equiv0\pmod{p}\)</span>。</p>
+<p>若 <span class="math inline">\(\legendre{D}{p}=-1\)</span>，则由定理 <a href="#thm-quafermat" class="quarto-xref">Theorem&nbsp;<span>2.6</span></a> 可知 <span class="math inline">\(a^{p+1}\equiv a\bar a\equiv ab\pmod{p}\)</span>，同理 <span class="math inline">\(b^{p+1}\equiv ba\pmod{p}\)</span>，从而 <span class="math inline">\((ab^{-1})^{p+1}\equiv1\pmod{p}\)</span>，由引理 <a href="#lem-lucas" class="quarto-xref">Lemma&nbsp;<span>2.1</span></a> 知 <span class="math inline">\(U_{p+1}\equiv0\pmod{p}\)</span>，这就完成了证明。</p>
+</div>
+<p>由上面的定理我们自然地得到 <code>Lucas伪素数</code> 的概念。</p>
+<div id="def-Lucas伪素数" class="definition theorem">
+<p><span class="theorem-title"><strong>Definition 2.8 (Lucas 伪素数)</strong></span> 设 <span class="math inline">\(N\)</span> 为奇合数，若存在 Lucas 序列 <span class="math inline">\(\{U_n\}\)</span>使得 <span class="math inline">\(\varepsilon=\legendre{D}{N}\ne0\)</span>且 <span class="math inline">\(U_{N-\varepsilon}\equiv0\pmod{N}\)</span>，则称 <span class="math inline">\(N\)</span> 为 Lucas 伪素数。</p>
+</div>
+<p>正如我们在 Fermat 检测和 Euler 检测中看到的，一个伪素数概念对应着一个合性检测算法，由此我们立即可以得到 <code>Lucas伪素数检测</code> 算法。</p>
+<div id="def-al:lpsp" class="definition theorem">
+<p><span class="theorem-title"><strong>Definition 2.9 (算法：Lucas伪素数检测)</strong></span> 选取 Lucas 序列参数 <span class="math inline">\(P,Q\)</span>，使得 <span class="math inline">\(\varepsilon=\legendre{D}{N}\ne0\)</span>。若 <span class="math inline">\(U_{N-\varepsilon}\not\equiv0\pmod{N}\)</span> 则输出 <span class="math inline">\(N\)</span> 为合数，否则输出 <span class="math inline">\(N\)</span> 可能为素数。</p>
+</div>
+<div class="proof remark">
+<p><span class="proof-title"><em>Remark</em>. </span>由于来源的不同，我们可以期望一个数同时为 Lucas 伪素数和 Fermat 伪素数（或强伪素数）的可能情形不大，这样的观察也被用于 Baillie-PSW 检测算法 <a href="#def-al:psw" class="quarto-xref">Definition&nbsp;<span>2.12</span></a> 中。</p>
+</div>
+<p>我们已经得到了 Lucas 伪素数合性检测，和 <span class="math inline">\(N-1\)</span> 型检测类似，我们还能够进行素性的确证。在这里，替代 <span class="math inline">\(N-1\)</span> 的分解的是 <span class="math inline">\(N+1\)</span> 的分解，我们可以看到下面的定理与定理 <a href="#thm-FermatConverse" class="quarto-xref">Theorem&nbsp;<span>2.1</span></a> 是多么的”形似”。</p>
+<div id="thm-lucas" class="theorem">
+<p><span class="theorem-title"><strong>Theorem 2.8 (Lucas 检测)</strong></span> 设有素因子分解 <span class="math inline">\(N+1=\prod\limits_{j=1}^nq_j^{\beta_j}\)</span>，若有 Lucas 序列 <span class="math inline">\(\{U_n\}\)</span>，使 <span class="math inline">\((2QD,N)=1\)</span>，满足 <span class="math display">\[(U_{(N+1)/q_j},N)=1,\qquad \forall j=1,2,\ldots,n\]</span>且 <span class="math display">\[U_{N+1}\equiv0\pmod{N},\]</span> 则 <span class="math inline">\(N\)</span> 为素数。</p>
+</div>
+<div class="proof">
+<p><span class="proof-title"><em>Proof</em>. </span>设 <span class="math inline">\(p\)</span> 为 <span class="math inline">\(N\)</span> 的一个素因子，设 <span class="math inline">\(k\)</span> 为最小的正整数使得 <span class="math inline">\((ab^{-1})^k\equiv1\pmod{p}\)</span>。由条件知 <span class="math inline">\(U_{N+1}\equiv0\pmod{p}\)</span>，<span class="math inline">\(U_{(N+1)/q_j}\not\equiv0\pmod{p}\)</span>，从而根据引理 <a href="#lem-lucas" class="quarto-xref">Lemma&nbsp;<span>2.1</span></a> 知 <span class="math inline">\(k\mid N+1\)</span>，<span class="math inline">\(k\nmid (N+1)/q_j,\ \forall j\)</span>，从而 <span class="math inline">\(k=N+1\)</span>。但根据 <span class="math inline">\(k\)</span> 的最小性，由定理 <a href="#thm-lucasfermat" class="quarto-xref">Theorem&nbsp;<span>2.7</span></a> 必有 <span class="math inline">\(k\mid q+1\)</span> 或 <span class="math inline">\(k\mid q-1\)</span>。从而 <span class="math inline">\(q=N\)</span>，<span class="math inline">\(N\)</span> 为素数。</p>
+</div>
+<p>与 <span class="math inline">\(N-1\)</span> 型检测完全类似还可以得到以下结果。</p>
+<div id="thm-RelaxedLucas" class="theorem">
+<p><span class="theorem-title"><strong>Theorem 2.9 (Lucas检测的放宽版本)</strong></span> 设 <span class="math inline">\(N+1=RF\)</span>，<span class="math inline">\((R,F)=1\)</span> 且 <span class="math inline">\(R&lt;F\)</span>，有素因子分解 <span class="math inline">\(F=\prod\limits_{j=1}^n q_j^{\beta_j}\)</span>。若有 <span class="math inline">\(\{U_k\}\)</span> 为 Lucas 序列，<span class="math inline">\((2QD,N)=1\)</span>，满足 <span class="math display">\[(U_{(N+1)/q_j},N)=1,\qquad \forall j=1,\ldots,n\]</span>且 <span class="math display">\[U_{N+1}\equiv0\pmod{N}.\]</span> 则 <span class="math inline">\(N\)</span> 为素数。</p>
+</div>
+<div class="proof remark">
+<p><span class="proof-title"><em>Remark</em>. </span>Lucas 检测的一个优势在于 Lucas 序列可以通过递推快速地计算。设<span class="math display">\[\begin{equation*}
+A_k=
+\begin{bmatrix}
+  U_{k+1}&amp;V_{k+1}\\
+  U_k &amp; V_k
+\end{bmatrix},
+\end{equation*}\]</span></p>
+<p>则有<span class="math display">\[\begin{equation*}
+A_k=
+  \begin{bmatrix}
+    P &amp; -Q\\
+    1 &amp; 0\\
+  \end{bmatrix}A_{k-1}=\cdots=
+  \begin{bmatrix}
+    P &amp; -Q\\
+    1 &amp; 0\\
+  \end{bmatrix}^kA_0.
+\end{equation*}\]</span>可以使用快速求幂的方法在 <span class="math inline">\(O(\log k)\)</span> 步中完成序列的计算。</p>
+</div>
+<div class="proof remark">
+<p><span class="proof-title"><em>Remark</em>. </span>上述基于 <span class="math inline">\(N+1\)</span> 分解的算法对 <code>Mersenne素数</code> <span class="math inline">\(2^n-1\)</span> 尤其简单，因此也被著名的 <a href="http://www.mersenne.org/">GIMPS</a> (Great Internet Mersenne Prime Search) 所采用。目前为止已知的最大的 Mersenne 素数是 GIMPS 计划在 2008 年 8 月 23 日找到的第 45 个 Mersenne 素数，共有 12978189 个十进制位。有趣的是，2009 年 4 月 12 日找到的第 47 个 Mersenne 素数要比第 45 个来的小。</p>
+</div>
+<p><code>Lucas-Lehmer检测</code></p>
+<div id="thm-LucasMersenne" class="theorem">
+<p><span class="theorem-title"><strong>Theorem 2.10 (对 Mersenne 素数的 Lucas-Lehmer 检测)</strong></span> 设 <span class="math inline">\(n\)</span> 为奇数，<span class="math inline">\(v_0=4\)</span>，<span class="math inline">\(v_k=v_{k-1}^2-2\)</span>。则 <span class="math inline">\(M_n=2^n-1\)</span> 为素数当且仅当 <span class="math display">\[v_{n-2}\equiv0\pmod{M_n}.\]</span></p>
+</div>
+<div class="proof">
+<p><span class="proof-title"><em>Proof</em>. </span>证明主要部分来源于定理 <a href="#thm-lucas" class="quarto-xref">Theorem&nbsp;<span>2.8</span></a> ，然而仍有一些技术上的区别，这里就不赘述了。完整的可见 Lehmer 在 1930 的证明 <span class="citation" data-cites="lehmer1930">(<a href="../references.html#ref-lehmer1930" role="doc-biblioref">Lehmer 1930</a>)</span>。另外 J.W.Bruce 在 1993 年给出了一个短至 2 页的 “trival” 版证明 <span class="citation" data-cites="bruce">(<a href="../references.html#ref-bruce" role="doc-biblioref">Bruce 1993</a>)</span>。</p>
+</div>
+</section>
+<section id="概率性的检测方法" class="level2" data-number="2.5">
+<h2 data-number="2.5" class="anchored" data-anchor-id="概率性的检测方法"><span class="header-section-number">2.5</span> 概率性的检测方法</h2>
+<p>更加富有趣味的是素性的 <code>概率性检测方法</code>。Knuth <span class="citation" data-cites="taocp2">(<a href="../references.html#ref-taocp2" role="doc-biblioref">Knuth 1997</a>)</span> 这样评价概率性的算法：“与其说算法重复地猜测错，倒不如说由于硬件的失灵或宇宙射线的原因，我们的计算机在它的计算中丢了一位。” 概率性的算法使我们对传统的可靠性产生疑问：我们是否真的需要”素性”的严格确证？概率性算法最早由 Solovay，Strassen <span class="citation" data-cites="solovay">(<a href="../references.html#ref-solovay" role="doc-biblioref">Solovay and Strassen 1977</a>)</span> 于 1974 年提出，Rabin-Miller 的改进方法为 Mathematica 软件所采用。Baillie-PSW 检测则综合了各种概率性检测方法，目前为止仍没有找到失败的反例，并且已经验证检测对于 <span class="math inline">\(10^{15}\)</span> 以下的整数均是正确的。</p>
+<section id="solovay-strassen检测" class="level3" data-number="2.5.1">
+<h3 data-number="2.5.1" class="anchored" data-anchor-id="solovay-strassen检测"><span class="header-section-number">2.5.1</span> Solovay-Strassen检测</h3>
+<p><code>Solovay-Strassen检测</code></p>
+<div id="def-al:solovay" class="definition theorem">
+<p><span class="theorem-title"><strong>Definition 2.10 (算法：Solovay-Strassen检测)</strong></span> &nbsp;</p>
+<ol type="1">
+<li>随机生成满足 <span class="math inline">\(1\le a\le N\)</span> 的整数 <span class="math inline">\(a\)</span>；</li>
+<li>若 <span class="math inline">\((a,N)=1\)</span> 且 <span class="math inline">\(\jacobi{a}{N}\equiv a^{(N-1)/2}\pmod{N}\)</span>， 则输出 <span class="math inline">\(N\)</span> 为素数，否则输出 <span class="math inline">\(N\)</span> 可能为合数。</li>
+</ol>
+</div>
+<div id="thm-solovay" class="theorem">
+<p><span class="theorem-title"><strong>Theorem 2.11</strong></span> 算法 <a href="#def-al:solovay" class="quarto-xref">Definition&nbsp;<span>2.10</span></a> 重复执行 <span class="math inline">\(k\)</span> 次，给出错误的概率为 0（当 <span class="math inline">\(N\)</span> 为素数时）或 <span class="math inline">\(2^{-k}\)</span>（当 <span class="math inline">\(N\)</span> 为合数时）</p>
+</div>
+<div class="proof">
+<p><span class="proof-title"><em>Proof</em>. </span>只需证明当 <span class="math inline">\(N\)</span> 为合数，<span class="math inline">\((a,N)=1\)</span> 时，<span class="math inline">\(\jacobi{a}{N}\equiv a^{(N-1)/2}\pmod{N}\)</span> 的概率不超过 <span class="math inline">\(\frac{1}{2}\)</span> 即可。设<span class="math display">\[G=\left\{a+N\mathbb{Z}\bigm|a\in\mathbb{Z},(a,N)=1,a^{(N-1)/2}\equiv\jacobi{a}{N}\pmod{N}\right\}.\]</span>则 <span class="math inline">\(G&lt;M_N\)</span>，因此只需证明 <span class="math inline">\(G\ne M_N\)</span> 即可。</p>
+<p>如果 <span class="math inline">\(N\)</span> 能分解为两个互素的非平凡因子 <span class="math inline">\(r\)</span>，<span class="math inline">\(s\)</span>，我们证明必有 <span class="math inline">\(\forall a\)</span> 满足 <span class="math inline">\((a,N)=1\)</span> 都有 <span class="math inline">\(a^{(N-1)/2}\equiv1\equiv\jacobi{a}{N}\pmod{N}\)</span>（由 Jacobi 符号的性质便知这是不可能的）。若不然，由中国剩余定理找到 <span class="math inline">\(b\)</span> 满足 <span class="math inline">\(b\equiv1\pmod{r}\)</span> 且 <span class="math inline">\(b\equiv a\pmod{s}\)</span>。则有 <span class="math inline">\(b^{(N-1)/2}\equiv 1\pmod{r}\)</span> 且 <span class="math inline">\(b^{(N-1)/2}\equiv -1\pmod{s}\)</span>，而这与 <span class="math inline">\(b^{(N-1)/2}\equiv\pm1\pmod{N}\)</span> 是矛盾的！</p>
+<p>如果 <span class="math inline">\(N=p^e\)</span> 为素数幂，则 <span class="math inline">\(\forall a\)</span> 满足 <span class="math inline">\((a,N)=1\)</span> 都有 <span class="math inline">\(a^{p^e-1}\equiv1\pmod{p^e}\)</span>，再由 Euler 定理知道 <span class="math inline">\(p^{e-1}(p-1)\mid p^e-1\)</span>。而这也是不可能的。</p>
+</div>
+</section>
+<section id="rabin-miller检测" class="level3" data-number="2.5.2">
+<h3 data-number="2.5.2" class="anchored" data-anchor-id="rabin-miller检测"><span class="header-section-number">2.5.2</span> Rabin-Miller检测</h3>
+<p>Solovay-Strassen 检测利用了 Euler 伪素数”并不多”的性质，使用随机给出的基 <span class="math inline">\(a\)</span> 多次重复进而给出高成功率的素性检测结果。同样的想法也可以施用于强伪素数与 Lucas 伪素数，前者便是著名的 Rabin-Miller 检测，后者则被运用到 Baillie-PSW 检测中。</p>
+<p><code>Rabin-Miller检测</code> 可以看成我们在注 <a href="#rem-strong" class="quarto-xref">Remark&nbsp;<span>2.1</span></a> 中的想法的一个具体化。</p>
+<div id="def-al:rabin" class="definition theorem">
+<p><span class="theorem-title"><strong>Definition 2.11 (算法：Rabin-Miller 强伪素数检测)</strong></span> 设 <span class="math inline">\(N-1=d\cdot 2^s\)</span>，1. 随机生成满足 <span class="math inline">\(1\le a\le N\)</span> 的整数 <span class="math inline">\(a\)</span>；2. 顺次计算 <span class="math display">\[a^d,a^{2d},a^{4d},\ldots,a^{2^s\cdot d}.\]</span> 若计算到第 <span class="math inline">\(k\)</span> 步时有1. <span class="math inline">\(k=1\)</span> 且 <span class="math inline">\(a^d\equiv1\pmod{N}\)</span>，输出 <span class="math inline">\(N\)</span> 可能为素数；2. <span class="math inline">\(k&gt;1\)</span> 且 <span class="math inline">\(a^{2^{k-1}\cdot d}\equiv-1\pmod{N}\)</span>，输出 <span class="math inline">\(N\)</span> 可能为素数；3. <span class="math inline">\(k&gt;s\)</span>，输出 <span class="math inline">\(N\)</span> 为合数。</p>
+</div>
+<div class="proof remark">
+<p><span class="proof-title"><em>Remark</em>. </span>Rabin <span class="citation" data-cites="rabin">(<a href="../references.html#ref-rabin" role="doc-biblioref">Rabin 1980</a>)</span> 证明了算法 <a href="#def-al:rabin" class="quarto-xref">Definition&nbsp;<span>2.11</span></a> 重复 <span class="math inline">\(k\)</span> 遍，给出正确判断的概率大于 <span class="math inline">\(1-4^{-k}\)</span>。</p>
+</div>
+<div class="proof remark">
+<p><span class="proof-title"><em>Remark</em>. </span>使用单个基 <span class="math inline">\(a\)</span> 的 Rabin-Miller 检测可能会遗漏许多基 <span class="math inline">\(a\)</span> 下的强伪素数，因此实践中的确需要使用多基的 Rabin-Miller 测试。例如使用前 7 个素数组成的多基 Rabin-Miller 测试，可以保证算法在 <span class="math inline">\(341550071728321\approx3.4\times10^{14}\)</span> 以下均是有效的，而且这个数在用前 8 个素数为基的 Rabin-Miller 测试下没有改进。</p>
+</div>
+</section>
+<section id="baillie-psw检测" class="level3" data-number="2.5.3">
+<h3 data-number="2.5.3" class="anchored" data-anchor-id="baillie-psw检测"><span class="header-section-number">2.5.3</span> Baillie-PSW检测</h3>
+<p>只是使用多基的 Rabin-Miller 测试可能得不到好的效率。Baillie <span class="citation" data-cites="bai80">(<a href="../references.html#ref-bai80" role="doc-biblioref">Baillie and Wagstaff 1980</a>)</span> 将基为 2 的 Rabin-Miller 检测与 Lucas 伪素数检测结合起来，得到更为有效的素数检测方法。Pomerance, Selfridge, Wagstaff 在 <span class="citation" data-cites="psw">(<a href="../references.html#ref-psw" role="doc-biblioref">Pomerance, Selfridge, and Wagstaff 1980</a>)</span> 中对小于 <span class="math inline">\(25\times10^9\)</span> 的数验证了算法的正确性。尽管 Pomerance <span class="citation" data-cites="pom84">(<a href="../references.html#ref-pom84" role="doc-biblioref">Pomerance 1984</a>)</span> 指出对于充分大的 <span class="math inline">\(N\)</span>，必定有 Baillie-PSW 检测的反例，并且以 30 美元悬赏找出一个算法失败的反例（后来增加到 620 美元），不过反例至今没有找到，并且有经验估计认为第一个反例如果被找到的话，至少得有 10000 个十进位长度（参见 <span class="citation" data-cites="mar04">(<a href="../references.html#ref-mar04" role="doc-biblioref">Martin 2004</a>)</span>）。</p>
+<p>下面我们正式给出 <code>Baillie-PSW检测</code>。</p>
+<div id="def-al:psw" class="definition theorem">
+<p><span class="theorem-title"><strong>Definition 2.12 (算法：Baillie-PSW检测)</strong></span> &nbsp;</p>
+<ol type="1">
+<li>使用小素数试除 <span class="math inline">\(N\)</span>，若能整除，输出 <span class="math inline">\(N\)</span> 为合数。</li>
+<li>使用基为 2 的 Rabin-Miller 强伪素数检测 <a href="#def-al:rabin" class="quarto-xref">Definition&nbsp;<span>2.11</span></a>，若 <span class="math inline">\(N\)</span> 非强伪素数，输出 <span class="math inline">\(N\)</span> 为合数。</li>
+<li>选择以下两种方法之一确定 Lucas 序列的参数 <span class="math inline">\(P\)</span>，<span class="math inline">\(Q\)</span>：
+<ul>
+<li>(Selfridge 建议) 取 <span class="math inline">\(D\)</span> 为 <span class="math inline">\(5,-7,9,-11,13,\ldots\)</span> 中使得 <span class="math inline">\(\legendre{D}{N}=-1\)</span> 的第一个数，选择 <span class="math inline">\(P=1\)</span>，<span class="math inline">\(Q=\frac{1-D}{4}\)</span>；</li>
+<li>(Baillie 建议) 取 <span class="math inline">\(D\)</span> 为 <span class="math inline">\(5,9,13,17,21,\ldots\)</span> 中使得 <span class="math inline">\(\legendre{D}{N}=-1\)</span> 的第一个数，选择 <span class="math inline">\(P\)</span> 为 <span class="math inline">\(&gt;\sqrt{D}\)</span> 的最小奇数，<span class="math inline">\(Q=\frac{P^2-D}{4}\)</span>。</li>
+</ul></li>
+<li>使用 <span class="math inline">\(P\)</span>，<span class="math inline">\(Q\)</span> 为参数的 Lucas 伪素数检测算法 <a href="#def-al:lpsp" class="quarto-xref">Definition&nbsp;<span>2.9</span></a>，若 <span class="math inline">\(N\)</span> 非 Lucas 伪素数，输出 <span class="math inline">\(N\)</span> 为合数，否则输出 <span class="math inline">\(N\)</span> 可能为合数。 用算法 <a href="ch4.html#def-al:sqrtest" class="quarto-xref">Definition&nbsp;<span>4.7</span></a> 检测 <span class="math inline">\(N\)</span> 是否为完全平方数。</li>
+</ol>
+</div>
+<div class="proof remark">
+<p><span class="proof-title"><em>Remark</em>. </span>由于 <span class="math inline">\(D=P^2-4Q^2\)</span>，只需尝试模 4 余 1 的数。Selfridge 建议方法中不使用 <span class="math inline">\(-3\)</span> 是因为当 <span class="math inline">\(D=-3\)</span> 时有 <span class="math inline">\(P=Q=1\)</span>，将会产生以 <span class="math inline">\(\{1,1,0,-1,-1,0\}\)</span> 为循环节的周期 Lucas 序列，这将使得每个奇合数变成关于 <span class="math inline">\(P,Q\)</span> 的 Lucas 伪素数，并非我们所想要的。</p>
+</div>
+<div class="proof remark">
+<p><span class="proof-title"><em>Remark</em>. </span>若第三步中尝试过程中计算出前若干个 <span class="math inline">\(\legendre{D}{N}\)</span> 均为 1，则 <span class="math inline">\(N\)</span> 很可能为完全平方数，此时可用算法 <a href="ch4.html#def-al:sqrtest" class="quarto-xref">Definition&nbsp;<span>4.7</span></a> 对 <span class="math inline">\(N\)</span> 进行平方检测以防止额外的计算，若 <span class="math inline">\(N\)</span> 不是平方数则继续寻找 <span class="math inline">\(D\)</span> 的过程。另外尝试过程中若计算得 <span class="math inline">\(\legendre{D}{N}=0\)</span>，则意味着 <span class="math inline">\(N\)</span> 必为合数，可直接终止计算。</p>
+</div>
+<div class="proof remark">
+<p><span class="proof-title"><em>Remark</em>. </span><span class="citation" data-cites="bai80">(<a href="../references.html#ref-bai80" role="doc-biblioref">Baillie and Wagstaff 1980</a>)</span> 证明了，在第三步中，两种方法取到合适的 <span class="math inline">\(D\)</span> 的平均尝试次数小于 <span class="math inline">\(2\)</span>。</p>
+</div>
+<!-- 
+## 未发表的章节
+
+::: {.callout-warning}
+    以下章节在 MUSE 中为注释文本
+:::
+
+::: {#def-quadratic-integer}
+### 二次域中的整数
+设 $z\in \mathbb{Q}(\sqrt{D})$，$p,q\in\mathbb{Z}$，若 $z$ 满足方程 $z^2+pz+q=0$，则称 $z$ 为 $\mathbb{Q}(\sqrt{D})$ 中的整数。
+通常意义下的整数（$\in \mathbb{Z}$）则称为有理整数，下同。
+:::
+
+通过直接的计算可以得到：
+
+::: {#prp-kd-integer}
+### 命题
+$\mathbb{Q}(\sqrt{D})$ 中的整数均有以下形式
+$$x=\begin{cases}
+  r+s\sqrt{D} & \text{若}D\equiv2,3 \pmod{4},\\ \noalign{\smallskip}
+  r+s{\displaystyle\frac{-1+\sqrt{D}}{2}}& \text{若}D\equiv1\pmod{4}.
+\end{cases}$$
+其中 $r$，$s$ 为有理整数，简记为 $r+s\rho$。
+:::
+
+::: {.remark}
+对于 $D$ 为负数的情形，$\mathbb{Q}(\sqrt{D})$ 中的整数对应于复平面上的某类格点。
+:::
+
+::: {#def-kd-conjugate}
+### 定义
+$\bar{x}=r-s\sqrt{D}$ 称为 $x=r+s\sqrt{D}$ 共轭。
+有理整数 $x\bar{x}$ 称为 $x$ 的模，记为 $N(x)$。
+:::
+
+::: {#def-quadratic-unit}
+### 定义
+若 $N(x)=\pm1$，则称 $x$ 为 $\mathbb{Q}(\sqrt{D})$ 中的单位。
+:::
+
+::: {#def-associated}
+### 定义
+两个整数称为相伴的（associated），如果其商为单位。
+:::
+
+::: {#def-quadratic-divisibility}
+### 二次域中的整除性
+设 $\alpha$，$\beta$，$\gamma$ 为整数，如果有 $\alpha=\beta\gamma$，则称 $\beta\mid\alpha$，$\gamma\mid\alpha$
+（此时必有 $N(\beta)\mid N(\alpha)$，$N(\gamma)\mid N(\alpha)$）。
+:::
+
+类似可以引入 $\mathbb{Q}(\sqrt{D})$ 中的关于有理整数的同余关系、最大公因子等等。
+设 $n$ 为有理整数，则有
+$$r+s\rho\equiv0\pmod{n}\Leftrightarrow r\equiv s \equiv0 \pmod{n}.$$
+
+下面我们给出十分重要的 Fermat 小定理与 Euler 定理在二次域中的类似形式。
+
+::: {#thm-kd-fermat}
+### 二次域中的 Fermat 小定理
+设 $a\in \mathbb{Q}(\sqrt{D})$ 为整数，$p$ 为奇有理素数，则有
+$$a^p\equiv\begin{cases}
+  a&\text{若}\displaystyle\legendre{D}{p}=1\\\noalign{\smallskip}
+  \bar{a}&\text{若}\displaystyle\legendre{D}{p}=-1
+\end{cases}\pmod{p}
+$$ {#eq-kd-fermat}
+:::
+
+::: {.proof}
+用 $a$ 的表示进行二项展开，利用 Fermat 小定理以及二次剩余的 Euler 准则。
+:::
+
+::: {.remark}
+由上述定理立即得到，当 $\legendre{D}{p}=-1$ 时，有 $a^{p+1}\equiv N(a)\pmod{p}$。
+:::
+
+::: {#thm-kd-euler}
+### 二次域中的 Euler 定理
+设 $(a,p)=1$，若 $\legendre{D}{p}=1$，则
+$$a^{p^{n-1}(p-1)}\equiv1\pmod{p^n}.$$
+若 $\legendre{D}{p}=-1$，则
+$$a^{p^{n-1}(p+1)}\equiv(N(a))^{p^{n-1}}\pmod{p}.$$
+:::
+
+::: {.proof}
+利用式 @eq-kd-fermat 及二项式展开。
+:::
+
+::: {#def-lucas-seq}
+### Lucas 序列
+设 $P$，$Q$ 为有理整数，特征方程 $\lambda^2-P\lambda+Q=0$ 的两根为 $a$，$b(= \bar{a})$。
+对应的 Lucas 序列为
+$$U_n=\frac{a^n-b^n}{a-b},\qquad V_n=a^n+b^n.$$
+:::
+
+::: {.remark}
+由特征方程对应的递推关系，知道 $\{U_n\}$，$\{V_n\}$ 均为有理整数序列。
+:::
+
+::: {#lem-lucas-mod}
+### 引理
+设 $D$ 为 $P^2 - 4Q$ 的非平方部分，$(2QD,p)=1$，$p$ 为有理素数，则
+$$U_{p^{n-1}\left(p-\legendre{D}{p}\right)}\equiv0\pmod{p}$$
+:::
+
+::: {.proof}
+对 $a$ 和 $\bar{a}$ 分别应用定理 @thm-kd-euler ，
+再由 $U_{p^{n-1}\left(p-\legendre{D}{p}\right)}$ 的定义即知。
+:::
+
+我们给出形式上与 Lehmer 检测十分相近的
+
+::: {#thm-lucas}
+### Lucas 检测
+设有素因子分解 $N+1=\prod\limits_{j=1}^nq_j^{\beta_j}$，
+若有 Lucas 序列 $\{U_n\}$，使 $(2QD,N)=1$，且满足
+$$(U_{(N+1)/q_j},N)=1,\qquad \forall j=1,2,\ldots,n$$
+且
+$$U_{N+1}\equiv0\pmod{N}.$$
+则 $N$ 为素数。
+:::
+
+::: {.proof}
+设 $N=\prod\limits_{i=1}^np_i^{\alpha_i}$，
+记 $S_i=p_i^{\alpha_i-1}\left(p_i-\legendre{D}{p_i}\right)$。
+由上述引理得到
+$$U_{S_i}\equiv0\pmod{p_i^{\alpha_i}}.$$
+设 $M=\left\{k\mid U_k\equiv0\pmod{p_i^{\alpha_i}}\right\}$。
+则根据 Lucas 序列的定义知 $M$ 有以下性质：
+$$k_1,k_2\in M\Rightarrow k_1\pm k_2\in M.$$
+令 $d=\mathrm{LCM}\{S_1,\ldots,S_n\}$，即 $S_1,\ldots,S_n$ 的最小公倍数。
+由 $M$ 的上述性质，完全类似于定理 @thm-fermat-converse 的论证，可知 $d\mid N+1$ 但 $d\nmid\frac{N+1}{q_j}$，
+得到 $q_j^{\beta_j}\mid d\Rightarrow N+1\mid d\Rightarrow d=N+1$。
+
+然而另一方面，若 $n=1$，$N=p_1^{\alpha_1}$ 且 $\alpha_1\ge2$ 则
+\begin{align*}
+  d&=2N\cdot\frac{1}{2}\left(1+\frac{1}{p_j}\right)\\
+    &=N\left(1+\frac{1}{p_j}\right)\\
+      &\ne N+1;
+\end{align*}
+若 $n\ge2$，由
+\begin{align*}
+  d&=2\cdot \mathrm{LCM}\left\{\frac{1}{2}\left(p_i-\legendre{D}{p_i}\right)p_i^{\alpha_i-1}\Bigm| i=1,\ldots,n\right\}\\
+  &\le2\prod\limits_{i=1}^n\frac{1}{2}\left(1-\frac{1}{p_i}\legendre{D}{p_i}\right)p_i^{\alpha_i}\\
+  &\le2N\prod\limits_{i=1}^n\frac{1}{2}\left(1+\frac{1}{p_i}\right)\\
+  &\le2N\frac{1}{2}\left(1+\frac{1}{3}\right)\cdot\frac{1}{2}\left(1+\frac{1}{5}\right)\\
+  &=\frac{1}{2}N\left(1+\frac{1}{3}\right)\left(1+\frac{1}{5}\right)\\
+  &<N+1.
+\end{align*}
+从而必有 $n=1$，$\alpha_1=1$，即 $N$ 为素数。
+:::
+
+Lucas 检测的一个优势在于，Lucas 序列可以通过递推快速地计算。
+设
+$$A_k=\begin{bmatrix}
+  U_{k+1}&V_{k+1}\\
+  U_k & V_k
+\end{bmatrix},
+$$
+则有
+$$A_k=\begin{bmatrix}
+  P & -Q\\
+  1 & 0\\
+\end{bmatrix}A_{k-1}=\cdots=\begin{bmatrix}
+  P & -Q\\
+  1 & 0\\
+\end{bmatrix}^kA_0.
+$$
+可以使用快速求幂的方法在 $\log k$ 步中完成序列的计算。
+
+::: {.remark}
+上述基于 $N+1$ 分解的算法对 Mersenne 素数 $2^n-1$ 尤其简单，
+因此也被著名的 [GIMPS](http://www.mersenne.org/)（Great Internet Mersenne Prime Search）所采用。
+目前为止已知的最大的 Mersenne 素数是 GIMPS 计划在 2008 年 8 月 23 日找到的第 45 个 Mersenne 素数，共有 12978189 个十进制位。
+有趣的是，2008 年 9 月 6 日找到的第 46 个 Mersenne 素数要比第 45 个来的小。
+:::
+
+::: {#thm-lucas-mersenne}
+### 对 Mersenne 素数的 Lucas-Lehmer 检测
+设 $n$ 为奇数，$v_0=4$，$v_k=v_{k-1}^2-2$。
+则 $M_n=2^n-1$ 为素数当且仅当
+$$v_{n-2}\equiv0\pmod{M_n}.$$
+:::
+
+::: {.proof}
+证明思想可以完全跟随定理 @thm-lucas ，然而仍有一些技术上的区别，这里就不赘述了。
+完整的可见 Lehmer 在 1930 的证明 @lehmer1930 。
+另外 J.W.Bruce 在 1993 年给出了一个短至 2 页"trival"版证明 @bruce 。
+:::
+
+与 $N-1$ 型检测完全类似的得到以下结果。
+
+::: {#thm-relaxed-lucas}
+### Lucas 检测的放宽版本
+设 $N+1=RF$，$(R,F)=1$ 且 $R<F$，有素因子分解 $F=\prod\limits_{j=1}^n q_j^{\beta_j}$。
+若有 $\{U_k\}$ 为 Lucas 序列，$(2QD,N)=1$，满足
+$$(U_{(N+1)/q_j},N)=1,\qquad \forall j=1,\ldots,n$$
+且
+$$U_{N+1}\equiv0\pmod{N}.$$
+则 $N$ 为素数。
+:::
+
+::: {#def-pseudo-lucas}
+### Lucas 伪素数
+如果 $N$ 为奇合数，$\{U_k\}$ 为一个 Lucas 序列，$N\nmid Q$，满足 $\legendre{D}{N}=-1$ 且 $U_{N+1}\equiv0\pmod{N}$，
+则称 $N$ 为（关于 $P$，$Q$）的 Lucas 伪素数。
+:::
+-->
+
+
+<div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list" style="display: none">
+<div id="ref-apr" class="csl-entry" role="listitem">
+Adleman, Leonard M. 1980. <span>“On Distinguishing Prime Numbers from Composite Numbers.”</span> In <em>21st Annual Symposium on Foundations of Computer Science (Sfcs 1980)</em>, 387–406. IEEE. <a href="https://doi.org/10.1109/sfcs.1980.28">https://doi.org/10.1109/sfcs.1980.28</a>.
+</div>
+<div id="ref-aks04" class="csl-entry" role="listitem">
+Agrawal, Manindra, Neeraj Kayal, and Nitin Saxena. 2004. <span>“PRIMES Is in p.”</span> <em>Annals of Mathematics</em> 160 (2): 781–93.
+</div>
+<div id="ref-atk93" class="csl-entry" role="listitem">
+Atkin, A. O. L., and F. Morain. 1993. <span>“Elliptic Curves and Primality Proving.”</span> <em>Mathematics of Computation</em> 61: 29–68.
+</div>
+<div id="ref-bai80" class="csl-entry" role="listitem">
+Baillie, Robert, and Samuel S. Wagstaff Jr. 1980. <span>“Lucas Pseudoprimes.”</span> <em>Mathematics of Computation</em> 35 (152): 1391–1417.
+</div>
+<div id="ref-bruce" class="csl-entry" role="listitem">
+Bruce, J. W. 1993. <span>“A Really Trivial Proof of the Lucas-Lehmer Test.”</span> <em>The American Mathematical Monthly</em> 100 (4): 370–71. <a href="https://doi.org/10.1080/00029890.1993.11990414">https://doi.org/10.1080/00029890.1993.11990414</a>.
+</div>
+<div id="ref-cohen" class="csl-entry" role="listitem">
+Cohen, Henri. 1993. <em>A Course in Computational Algebraic Number Theory</em>. GTM 138. Springer Verlag.
+</div>
+<div id="ref-cl" class="csl-entry" role="listitem">
+Cohen, H., and H. W. Lenstra. 1984. <span>“Primality Testing and Jacobi Sums.”</span> <em>Mathematics of Computation</em> 42 (165): 297–330. <a href="https://doi.org/10.1090/s0025-5718-1984-0726006-x">https://doi.org/10.1090/s0025-5718-1984-0726006-x</a>.
+</div>
+<div id="ref-gk86" class="csl-entry" role="listitem">
+Goldwasser, S., and J. Kilian. 1986. <span>“Almost All Primes Can Be Quickly Certified.”</span> In <em>Proceedings of the Eighteenth Annual ACM Symposium on Theory of Computing</em>, 316–29.
+</div>
+<div id="ref-taocp2" class="csl-entry" role="listitem">
+Knuth, Donald E. 1997. <em>The Art of Computer Programming, Volume 2: Seminumerical Algorithms</em>. 3rd ed. Boston, MA, USA: Addison-Wesley Longman Publishing Co., Inc.
+</div>
+<div id="ref-lehmer1930" class="csl-entry" role="listitem">
+Lehmer, D. H. 1930. <span>“An Extended Theory of Lucas’ Functions.”</span> <em>The Annals of Mathematics</em> 31 (3): 419. <a href="https://doi.org/10.2307/1968235">https://doi.org/10.2307/1968235</a>.
+</div>
+<div id="ref-yao07" class="csl-entry" role="listitem">
+M. Mendès France, G. Tenenbaum, and 姚家燕译. 2007. <em>素数论</em>. 研究生数学丛书. 北京: 清华大学出版社.
+</div>
+<div id="ref-mar04" class="csl-entry" role="listitem">
+Martin, M. 2004. <span>“Re: Baillie-PSW - Which Variant Is Correct?”</span>
+</div>
+<div id="ref-pom84" class="csl-entry" role="listitem">
+Pomerance, Carl. 1984. <span>“Are There Counterexamples to the Baillie-PSW Primality Test?”</span>
+</div>
+<div id="ref-psw" class="csl-entry" role="listitem">
+Pomerance, Carl, J. L. Selfridge, and Samuel S. Wagstaff. 1980. <span>“The Pseudoprimes to <span class="math inline">\(25 \cdot 10^9\)</span>.”</span> <em>Mathematics of Computation</em> 35 (151): 1003–26. <a href="https://doi.org/10.1090/s0025-5718-1980-0572872-7">https://doi.org/10.1090/s0025-5718-1980-0572872-7</a>.
+</div>
+<div id="ref-rabin" class="csl-entry" role="listitem">
+Rabin, Michael O. 1980. <span>“Probabilistic Algorithm for Testing Primality.”</span> <em>Journal of Number Theory</em> 12 (1): 128–38. <a href="https://doi.org/10.1016/0022-314x(80)90084-0">https://doi.org/10.1016/0022-314x(80)90084-0</a>.
+</div>
+<div id="ref-riesel" class="csl-entry" role="listitem">
+Riesel, Hans. 1985. <em>Prime Numbers and Computer Methods for Factorization</em>. PM 57. Boston; Basel; Stuttgart: Birkhäuser.
+</div>
+<div id="ref-sel64" class="csl-entry" role="listitem">
+Selfridge, J. L., and A. Hurwitz. 1964. <span>“Fermat Numbers and Mersenne Numbers.”</span> <em>Mathematics of Computation</em> 18: 146–48.
+</div>
+<div id="ref-solovay" class="csl-entry" role="listitem">
+Solovay, R., and V. Strassen. 1977. <span>“A Fast Monte-Carlo Test for Primality.”</span> <em>SIAM Journal on Computing</em> 6 (1): 84–85. <a href="https://doi.org/10.1137/0206006">https://doi.org/10.1137/0206006</a>.
+</div>
+<div id="ref-fkq03" class="csl-entry" role="listitem">
+冯克勤. 2003. <em>初等数论及应用</em>. 走进数学新课程丛书. 北京: 北京师范大学出版社.
+</div>
+<div id="ref-nlzdss00" class="csl-entry" role="listitem">
+聂灵沼, and 丁石孙. 2000. <em>代数学引论（第2版）</em>. 2nd ed. 面向21世纪课程教材（数学类）. 北京: 高等教育出版社.
+</div>
+<div id="ref-pei02" class="csl-entry" role="listitem">
+裴定一, and 祝跃飞. 2002. <em>算法数论</em>. 中国科学院研究生教学丛书. 北京: 科学出版社.
+</div>
+<div id="ref-yan08" class="csl-entry" role="listitem">
+颜松远. 2008. <em>计算数论</em>. 2nd ed. 北京: 清华大学出版社.
+</div>
+</div>
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    // Ensure there is a toggle, if there isn't float one in the top right
+    if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+      const a = window.document.createElement('a');
+      a.classList.add('top-right');
+      a.classList.add('quarto-color-scheme-toggle');
+      a.href = "";
+      a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+      const i = window.document.createElement("i");
+      i.classList.add('bi');
+      a.appendChild(i);
+      window.document.body.appendChild(a);
+    }
+    setColorSchemeToggle(hasAlternateSentinel())
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="../chapters/ch1.html" class="pagination-link" aria-label="高精度运算">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">高精度运算</span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="../chapters/ch3.html" class="pagination-link" aria-label="整数因子分解">
+        <span class="nav-page-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">整数因子分解</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+
+
+
+
+</body></html>

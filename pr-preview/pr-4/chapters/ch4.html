@@ -1,0 +1,1584 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.8.26">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>4&nbsp; 基础数论算法 – 计算机代数系统的数学理论</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+  margin-bottom: 0em;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
+
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<link href="../chapters/ch5.html" rel="next">
+<link href="../chapters/ch3.html" rel="prev">
+<script src="../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-587c61ba64f3a5504c4d52d930310e48.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark-b758ccaa5987ceb1b75504551e579abf.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-587c61ba64f3a5504c4d52d930310e48.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap-0dd2bd5de344125cf763a379ddc3eb04.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-dark-7e34ecb6a0e7991f0346b0751d4a7c3f.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="../site_libs/bootstrap/bootstrap-0dd2bd5de344125cf763a379ddc3eb04.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+<script>
+window.MathJax = {
+  tex: {
+    macros: {
+      legendre: ['\\left(\\frac{#1}{#2}\\right)', 2],
+      jacobi: ['\\left(\\frac{#1}{#2}\\right)', 2],
+      dmod: ["\\mathop{\\mathrm{dmod}_{#1}}", 1],
+      bitmod: "\\mathop{\\mathrm{bmod}}",
+      ul: ["\\underset{#2}{\\underline{#1}}", 2],
+    }
+  }
+};
+</script>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+</head>
+
+<body class="nav-sidebar floating quarto-light"><script id="quarto-html-before-body" type="application/javascript">
+    const toggleBodyColorMode = (bsSheetEl) => {
+      const mode = bsSheetEl.getAttribute("data-mode");
+      const bodyEl = window.document.querySelector("body");
+      if (mode === "dark") {
+        bodyEl.classList.add("quarto-dark");
+        bodyEl.classList.remove("quarto-light");
+      } else {
+        bodyEl.classList.add("quarto-light");
+        bodyEl.classList.remove("quarto-dark");
+      }
+    }
+    const toggleBodyColorPrimary = () => {
+      const bsSheetEl = window.document.querySelector("link#quarto-bootstrap:not([rel=disabled-stylesheet])");
+      if (bsSheetEl) {
+        toggleBodyColorMode(bsSheetEl);
+      }
+    }
+    const setColorSchemeToggle = (alternate) => {
+      const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+      for (let i=0; i < toggles.length; i++) {
+        const toggle = toggles[i];
+        if (toggle) {
+          if (alternate) {
+            toggle.classList.add("alternate");
+          } else {
+            toggle.classList.remove("alternate");
+          }
+        }
+      }
+    };
+    const toggleColorMode = (alternate) => {
+      // Switch the stylesheets
+      const primaryStylesheets = window.document.querySelectorAll('link.quarto-color-scheme:not(.quarto-color-alternate)');
+      const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+      manageTransitions('#quarto-margin-sidebar .nav-link', false);
+      if (alternate) {
+        // note: dark is layered on light, we don't disable primary!
+        enableStylesheet(alternateStylesheets);
+        for (const sheetNode of alternateStylesheets) {
+          if (sheetNode.id === "quarto-bootstrap") {
+            toggleBodyColorMode(sheetNode);
+          }
+        }
+      } else {
+        disableStylesheet(alternateStylesheets);
+        enableStylesheet(primaryStylesheets)
+        toggleBodyColorPrimary();
+      }
+      manageTransitions('#quarto-margin-sidebar .nav-link', true);
+      // Switch the toggles
+      setColorSchemeToggle(alternate)
+      // Hack to workaround the fact that safari doesn't
+      // properly recolor the scrollbar when toggling (#1455)
+      if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+        manageTransitions("body", false);
+        window.scrollTo(0, 1);
+        setTimeout(() => {
+          window.scrollTo(0, 0);
+          manageTransitions("body", true);
+        }, 40);
+      }
+    }
+    const disableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        stylesheet.rel = 'disabled-stylesheet';
+      }
+    }
+    const enableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        if(stylesheet.rel !== 'stylesheet') { // for Chrome, which will still FOUC without this check
+          stylesheet.rel = 'stylesheet';
+        }
+      }
+    }
+    const manageTransitions = (selector, allowTransitions) => {
+      const els = window.document.querySelectorAll(selector);
+      for (let i=0; i < els.length; i++) {
+        const el = els[i];
+        if (allowTransitions) {
+          el.classList.remove('notransition');
+        } else {
+          el.classList.add('notransition');
+        }
+      }
+    }
+    const isFileUrl = () => {
+      return window.location.protocol === 'file:';
+    }
+    const hasAlternateSentinel = () => {
+      let styleSentinel = getColorSchemeSentinel();
+      if (styleSentinel !== null) {
+        return styleSentinel === "alternate";
+      } else {
+        return false;
+      }
+    }
+    const setStyleSentinel = (alternate) => {
+      const value = alternate ? "alternate" : "default";
+      if (!isFileUrl()) {
+        window.localStorage.setItem("quarto-color-scheme", value);
+      } else {
+        localAlternateSentinel = value;
+      }
+    }
+    const getColorSchemeSentinel = () => {
+      if (!isFileUrl()) {
+        const storageValue = window.localStorage.getItem("quarto-color-scheme");
+        return storageValue != null ? storageValue : localAlternateSentinel;
+      } else {
+        return localAlternateSentinel;
+      }
+    }
+    const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
+      const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
+      const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
+      let newTheme = '';
+      if(authorPrefersDark) {
+        newTheme = isAlternate ? baseTheme : alternateTheme;
+      } else {
+        newTheme = isAlternate ? alternateTheme : baseTheme;
+      }
+      const changeGiscusTheme = () => {
+        // From: https://github.com/giscus/giscus/issues/336
+        const sendMessage = (message) => {
+          const iframe = document.querySelector('iframe.giscus-frame');
+          if (!iframe) return;
+          iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+        }
+        sendMessage({
+          setConfig: {
+            theme: newTheme
+          }
+        });
+      }
+      const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
+      if (isGiscussLoaded) {
+        changeGiscusTheme();
+      }
+    };
+    const authorPrefersDark = false;
+    const queryPrefersDark = window.matchMedia('(prefers-color-scheme: dark)');
+    const darkModeDefault = queryPrefersDark.matches;
+      document.querySelector('link#quarto-text-highlighting-styles.quarto-color-scheme-extra').rel = 'disabled-stylesheet';
+      document.querySelector('link#quarto-bootstrap.quarto-color-scheme-extra').rel = 'disabled-stylesheet';
+    let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
+    // Dark / light mode switch
+    window.quartoToggleColorScheme = () => {
+      // Read the current dark / light value
+      let toAlternate = !hasAlternateSentinel();
+      toggleColorMode(toAlternate);
+      setStyleSentinel(toAlternate);
+      toggleGiscusIfUsed(toAlternate, darkModeDefault);
+      window.dispatchEvent(new Event('resize'));
+    };
+    queryPrefersDark.addEventListener("change", e => {
+      if(window.localStorage.getItem("quarto-color-scheme") !== null)
+        return;
+      const alternate = e.matches
+      toggleColorMode(alternate);
+      localAlternateSentinel = e.matches ? 'alternate' : 'default'; // this is used alongside local storage!
+      toggleGiscusIfUsed(alternate, darkModeDefault);
+    });
+    // Switch to dark mode if need be
+    if (hasAlternateSentinel()) {
+      toggleColorMode(true);
+    } else {
+      toggleColorMode(false);
+    }
+  </script>
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../chapters/ch4.html"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">基础数论算法</span></a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="../">计算机代数系统的数学理论</a> 
+        <div class="sidebar-tools-main">
+  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
+</div>
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">目录</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/intro.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">序</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/preface.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">前言</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/ch1.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">高精度运算</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/ch2.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">素数判定</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/ch3.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">整数因子分解</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/ch4.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">基础数论算法</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/ch5.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">数学常数</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../references.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">参考文献</span></a>
+  </div>
+</li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#快速求幂" id="toc-快速求幂" class="nav-link active" data-scroll-target="#快速求幂"><span class="header-section-number">4.1</span> 快速求幂</a>
+  <ul class="collapse">
+  <li><a href="#二进方法" id="toc-二进方法" class="nav-link" data-scroll-target="#二进方法"><span class="header-section-number">4.1.1</span> 二进方法</a></li>
+  <li><a href="#m-进方法窗口方法及加法链" id="toc-m-进方法窗口方法及加法链" class="nav-link" data-scroll-target="#m-进方法窗口方法及加法链"><span class="header-section-number">4.1.2</span> <span class="math inline">\(m\)</span> 进方法，窗口方法及加法链</a></li>
+  <li><a href="#montgomery-约化" id="toc-montgomery-约化" class="nav-link" data-scroll-target="#montgomery-约化"><span class="header-section-number">4.1.3</span> Montgomery 约化</a></li>
+  </ul></li>
+  <li><a href="#幂次检测" id="toc-幂次检测" class="nav-link" data-scroll-target="#幂次检测"><span class="header-section-number">4.2</span> 幂次检测</a>
+  <ul class="collapse">
+  <li><a href="#整数开方" id="toc-整数开方" class="nav-link" data-scroll-target="#整数开方"><span class="header-section-number">4.2.1</span> 整数开方</a></li>
+  <li><a href="#平方检测" id="toc-平方检测" class="nav-link" data-scroll-target="#平方检测"><span class="header-section-number">4.2.2</span> 平方检测</a></li>
+  <li><a href="#素数幂检测" id="toc-素数幂检测" class="nav-link" data-scroll-target="#素数幂检测"><span class="header-section-number">4.2.3</span> 素数幂检测</a></li>
+  </ul></li>
+  <li><a href="#最大公因子" id="toc-最大公因子" class="nav-link" data-scroll-target="#最大公因子"><span class="header-section-number">4.3</span> 最大公因子</a>
+  <ul class="collapse">
+  <li><a href="#euclid-算法" id="toc-euclid-算法" class="nav-link" data-scroll-target="#euclid-算法"><span class="header-section-number">4.3.1</span> Euclid 算法</a></li>
+  <li><a href="#lehmer-加速算法" id="toc-lehmer-加速算法" class="nav-link" data-scroll-target="#lehmer-加速算法"><span class="header-section-number">4.3.2</span> Lehmer 加速算法</a></li>
+  <li><a href="#二进方法-binary-gcd" id="toc-二进方法-binary-gcd" class="nav-link" data-scroll-target="#二进方法-binary-gcd"><span class="header-section-number">4.3.3</span> 二进方法 (Binary GCD)</a></li>
+  <li><a href="#扩展-euclid-算法" id="toc-扩展-euclid-算法" class="nav-link" data-scroll-target="#扩展-euclid-算法"><span class="header-section-number">4.3.4</span> 扩展 Euclid 算法</a></li>
+  <li><a href="#dmod-和-bmod" id="toc-dmod-和-bmod" class="nav-link" data-scroll-target="#dmod-和-bmod"><span class="header-section-number">4.3.5</span> dmod 和 bmod</a></li>
+  <li><a href="#jebelean-weber-sorenson-加速算法" id="toc-jebelean-weber-sorenson-加速算法" class="nav-link" data-scroll-target="#jebelean-weber-sorenson-加速算法"><span class="header-section-number">4.3.6</span> Jebelean-Weber-Sorenson 加速算法</a></li>
+  </ul></li>
+  <li><a href="#legendre-jacobi-kronecker-符号" id="toc-legendre-jacobi-kronecker-符号" class="nav-link" data-scroll-target="#legendre-jacobi-kronecker-符号"><span class="header-section-number">4.4</span> Legendre-Jacobi-Kronecker 符号</a></li>
+  <li><a href="#中国剩余定理" id="toc-中国剩余定理" class="nav-link" data-scroll-target="#中国剩余定理"><span class="header-section-number">4.5</span> 中国剩余定理</a></li>
+  <li><a href="#连分数展式" id="toc-连分数展式" class="nav-link" data-scroll-target="#连分数展式"><span class="header-section-number">4.6</span> 连分数展式</a></li>
+  <li><a href="#素数计数函数-pix" id="toc-素数计数函数-pix" class="nav-link" data-scroll-target="#素数计数函数-pix"><span class="header-section-number">4.7</span> 素数计数函数 <span class="math inline">\(\pi(x)\)</span></a>
+  <ul class="collapse">
+  <li><a href="#部分筛函数" id="toc-部分筛函数" class="nav-link" data-scroll-target="#部分筛函数"><span class="header-section-number">4.7.1</span> 部分筛函数</a></li>
+  <li><a href="#计算p_2xa" id="toc-计算p_2xa" class="nav-link" data-scroll-target="#计算p_2xa"><span class="header-section-number">4.7.2</span> 计算<span class="math inline">\(P_2(x,a)\)</span></a></li>
+  <li><a href="#计算phixa" id="toc-计算phixa" class="nav-link" data-scroll-target="#计算phixa"><span class="header-section-number">4.7.3</span> 计算<span class="math inline">\(\phi(x,a)\)</span></a></li>
+  <li><a href="#计算s" id="toc-计算s" class="nav-link" data-scroll-target="#计算s"><span class="header-section-number">4.7.4</span> 计算<span class="math inline">\(S\)</span></a></li>
+  <li><a href="#计算s_1" id="toc-计算s_1" class="nav-link" data-scroll-target="#计算s_1"><span class="header-section-number">4.7.5</span> 计算<span class="math inline">\(S_1\)</span></a></li>
+  <li><a href="#计算s_3" id="toc-计算s_3" class="nav-link" data-scroll-target="#计算s_3"><span class="header-section-number">4.7.6</span> 计算<span class="math inline">\(S_3\)</span></a></li>
+  <li><a href="#计算s_2" id="toc-计算s_2" class="nav-link" data-scroll-target="#计算s_2"><span class="header-section-number">4.7.7</span> 计算<span class="math inline">\(S_2\)</span></a></li>
+  <li><a href="#计算v" id="toc-计算v" class="nav-link" data-scroll-target="#计算v"><span class="header-section-number">4.7.8</span> 计算<span class="math inline">\(V\)</span></a></li>
+  <li><a href="#计算-v_2" id="toc-计算-v_2" class="nav-link" data-scroll-target="#计算-v_2"><span class="header-section-number">4.7.9</span> 计算 <span class="math inline">\(V_2\)</span></a></li>
+  </ul></li>
+  <li><a href="#第-n-个素数-p_n" id="toc-第-n-个素数-p_n" class="nav-link" data-scroll-target="#第-n-个素数-p_n"><span class="header-section-number">4.8</span> 第 <span class="math inline">\(n\)</span> 个素数 <span class="math inline">\(p_n\)</span></a></li>
+  <li><a href="#mobius-函数-mun-和-euler-函数-varphin" id="toc-mobius-函数-mun-和-euler-函数-varphin" class="nav-link" data-scroll-target="#mobius-函数-mun-和-euler-函数-varphin"><span class="header-section-number">4.9</span> M"obius 函数 <span class="math inline">\(\mu(n)\)</span> 和 Euler 函数 <span class="math inline">\(\varphi(n)\)</span></a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">基础数论算法</span></h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<p>本章将讨论素数判定、因子分解以外的许多基础数论算法，包括快速求幂、幂次检测、整数的最大公因子（GCD）、Legendre-Jacobi-Kronecker符号、中国剩余定理、连分数展式及一些常用的数论函数的计算。这些问题和算法不仅有其本身的趣味，而且在计算机代数系统中也起着非常基础性的作用，为许多其他更复杂的问题和算法所依赖。</p>
+<p>阅读本章要求读者有基本的初等数论知识（例如 <span class="citation" data-cites="fkq03">(<a href="../references.html#ref-fkq03" role="doc-biblioref">冯克勤 2003</a>)</span>），本章的主要参考书为 <span class="citation" data-cites="cohen">(<a href="../references.html#ref-cohen" role="doc-biblioref">Cohen 1993</a>)</span> 和 <span class="citation" data-cites="taocp2">(<a href="../references.html#ref-taocp2" role="doc-biblioref">Knuth 1997</a>)</span>。</p>
+<section id="快速求幂" class="level2" data-number="4.1">
+<h2 data-number="4.1" class="anchored" data-anchor-id="快速求幂"><span class="header-section-number">4.1</span> 快速求幂</h2>
+<p></p>
+<section id="二进方法" class="level3" data-number="4.1.1">
+<h3 data-number="4.1.1" class="anchored" data-anchor-id="二进方法"><span class="header-section-number">4.1.1</span> 二进方法</h3>
+<p>设 <span class="math inline">\(G\)</span> 为一乘法群，<span class="math inline">\(n\in \mathbb{Z}\)</span>（<span class="math inline">\(G\)</span> 可只为乘法半群，此时限定 <span class="math inline">\(n\in \mathbb{N}\)</span>），计算 <span class="math inline">\(g\in G\)</span> 的幂次 <span class="math inline">\(g^n\)</span> 是在计算机代数系统中到处出现的运算（尤其是 <span class="math inline">\(G=\mathbb{Z}/N\mathbb{Z}\)</span> 的情形），因此快速进行求幂起着非常基本的作用。最平凡的方法需要 <span class="math inline">\(n-1\)</span> 个乘法，不过我们有办法大幅地改进乘法的次数。</p>
+<p>一个启发性的想法是二分策略。例如我们要求 <span class="math inline">\(g^{11}\)</span>，而11的二进制表示为 <span class="math inline">\(11=2^3+2+1\)</span>，可以依次求出 <span class="math inline">\(g^1, g^2, g^4, g^8\)</span>，再计算 <span class="math inline">\(g^3=g^1\cdot g^2\)</span> 及 <span class="math inline">\(g^{11}=g^3\cdot g^8\)</span>，总共只用了5次乘法便得到了结果。这种方法被称为自右向左的二进方法（Right-left Binary）。另外还有一种自左向右的二进方法（Left-right Binary）：对于上面的例子依次求出 <span class="math inline">\(g^1\)</span>，<span class="math inline">\(g^2\)</span>，<span class="math inline">\(g^4=(g^2)^2\)</span>，<span class="math inline">\(g^5=g^4\cdot g^1\)</span>，<span class="math inline">\(g^{10}=(g^5)^2\)</span>，<span class="math inline">\(g^{11}=g^{10}\cdot g^1\)</span>，同样用5次乘法得到结果。</p>
+<div id="def-al:r2l" class="definition theorem">
+<p><span class="theorem-title"><strong>Definition 4.1 (算法：自右向左的二进方法)</strong></span> 设二进表示 <span class="math inline">\(n=\sum\limits_{k=0}^m\varepsilon_k2^k\)</span>（假定 <span class="math inline">\(n&gt;0\)</span>，否则考虑 <span class="math inline">\((g^{-1})^{|n|}\)</span>），<span class="math inline">\(a=1\)</span>，重复以下步骤，第 <span class="math inline">\(k\)</span> 步（<span class="math inline">\(k=0, 1, \ldots, m\)</span>)执行：1. 计算 <span class="math inline">\(g^{2^k}=(g^{2^{k-1}})^2\)</span>。2. 若 <span class="math inline">\(\varepsilon_k=1\)</span>，则令 <span class="math inline">\(a\leftarrow a\cdot g^{2^k}\)</span>。3. 若 <span class="math inline">\(k=m\)</span>，输出 <span class="math inline">\(g^n=a\)</span>，算法终止。</p>
+</div>
+<div class="proof remark">
+<p><span class="proof-title"><em>Remark</em>. </span>实践中 <span class="math inline">\(n\)</span> 的二进表达式不需要预先存储，其计算（通过位操作）可以与 <span class="math inline">\(g^{2^k}\)</span> 的计算同步进行。</p>
+</div>
+<div class="proof remark">
+<p><span class="proof-title"><em>Remark</em>. </span>不难验证 <span class="math inline">\(G\)</span> 中进行求 <span class="math inline">\(n\)</span> 次幂的乘法次数为 <span class="math inline">\(m-1+\sum\limits_{k=0}^m\varepsilon_k=O(\log n)\)</span>，这要远小于平凡算法的 <span class="math inline">\(n-1\)</span>。</p>
+</div>
+<div id="def-al:l2r" class="definition theorem">
+<p><span class="theorem-title"><strong>Definition 4.2 (算法：自左向右的二进方法)</strong></span> 设二进表示 <span class="math inline">\(n=\sum\limits_{k=0}^m\varepsilon_k2^k\)</span>（假定 <span class="math inline">\(n&gt;0\)</span>，否则考虑 <span class="math inline">\((g^{-1})^{|n|}\)</span>），<span class="math inline">\(a=g\)</span>，重复以下步骤，第 <span class="math inline">\(k\)</span> 步（<span class="math inline">\(k=m-1, m-2,\ldots, 0\)</span>)执行：1. 若 <span class="math inline">\(\varepsilon_k=0\)</span>，则 <span class="math inline">\(a\leftarrow a^2\)</span>。2. 若 <span class="math inline">\(\varepsilon_k=1\)</span>，则 <span class="math inline">\(a\leftarrow a^2\)</span>，<span class="math inline">\(a\leftarrow a\cdot g\)</span>。3. 若 <span class="math inline">\(k=0\)</span>，输出 <span class="math inline">\(g^n=a\)</span>，算法中止。</p>
+</div>
+<div class="proof remark">
+<p><span class="proof-title"><em>Remark</em>. </span>算法 <a href="#def-al:r2l" class="quarto-xref">Definition&nbsp;<span>4.1</span></a> 与算法 <a href="#def-al:l2r" class="quarto-xref">Definition&nbsp;<span>4.2</span></a> 求 <span class="math inline">\(n\)</span> 次幂所用的乘法次数相同，但在算法 <a href="#def-al:l2r" class="quarto-xref">Definition&nbsp;<span>4.2</span></a> 第二步累乘时乘上的因子 <span class="math inline">\(g\)</span> 要比算法 <a href="#def-al:r2l" class="quarto-xref">Definition&nbsp;<span>4.1</span></a> 乘上的因子 <span class="math inline">\(g^{2^k}\)</span> 小一些。</p>
+</div>
+</section>
+<section id="m-进方法窗口方法及加法链" class="level3" data-number="4.1.2">
+<h3 data-number="4.1.2" class="anchored" data-anchor-id="m-进方法窗口方法及加法链"><span class="header-section-number">4.1.2</span> <span class="math inline">\(m\)</span> 进方法，窗口方法及加法链</h3>
+<p></p>
+<p>二进方法的一个很自然的推广就是 <span class="math inline">\(m\)</span> 进方法，利用 <span class="math inline">\(n\)</span> 的 <span class="math inline">\(m\)</span> 进表示，类似二进方法的平方而不断地进行 <span class="math inline">\(m\)</span> 次幂。<span class="math inline">\(m=2^k\)</span> 的情形尤其简单，因此在实践中也很常用。不同于二进方法，<span class="math inline">\(m\)</span> 进方法还需要额外储存 <span class="math inline">\(g^2,g^3,\ldots,g^{m-1}\)</span> 的值。</p>
+<p> <span class="math inline">\(2^k\)</span> 进方法的进一步改进是所谓窗口方法(Window Method)，取一个固定长度 <span class="math inline">\(k+1\)</span> 的”窗口”，用窗口自左向右扫描 <span class="math inline">\(n\)</span> 的二进表达，计算窗口内的乘幂（往往预先计算好 <span class="math inline">\(g^3,\ldots,g^{2^k-1}\)</span>），然后通过乘幂将窗口向右平移（遇零即为平方），将下一个窗口内的数乘以已经得到的幂，再重复平移过程。例如考虑 <span class="math inline">\(n=26235947428953663183191\)</span>。用8进方法需要102次乘法，而通过长度4的窗口方法可以减少到93次（参见 <span class="citation" data-cites="gor98">(<a href="../references.html#ref-gor98" role="doc-biblioref">Gordon 1998</a>)</span>），包括预先的 <span class="math inline">\(2^4-1\)</span> 次计算、71次平方和14次中间过程中的乘法。下式表示了此窗口方法的过程。其中除去最左边的一条，剩下的14条下划线各代表一次中间过程的乘法：</p>
+<p><span class="math display">\[
+{\scriptsize\ul{1011}{11}000\ul{111}{7}00\ul{1}{1}000000\ul{111}{7}0\ul{1001}{9}0\ul{1001}{9}\ul{1101}{13}0\ul{1}{1}000000\ul{1011}{11}\ul{11}{3}00000\ul{1111}{15}\ul{1001}{9}\ul{1001}{9}0\ul{101}{5}0\ul{111}{7}}
+\]</span></p>
+<p>二进方法的乘法次数较平凡算法有本质的减少，一个很自然的问题是：计算 <span class="math inline">\(n\)</span> 次幂所需要的最少乘法次数是多少？这等价于求 <span class="math inline">\(n\)</span> 的 <code>加法链</code> 的最短长度 <span class="math inline">\(l(n)\)</span>（参见 <span class="citation" data-cites="taocp2">(<a href="../references.html#ref-taocp2" role="doc-biblioref">Knuth 1997</a>)</span>）。构造最短长度的加法链是较为困难的问题，在实践中只能构造”近似”最短的加法链。一个构造方法是通过”<code>幂树</code>“，其构造方法是：首先在第一层置1，当置完 <span class="math inline">\(k\)</span> 层后，从左到右依次取第 <span class="math inline">\(k\)</span> 层每个节点 <span class="math inline">\(n\)</span>，在其下附加节点 <span class="math inline">\(n+1,n+a_1,\ldots,n+a_{k-1}=2n\)</span>，其中 <span class="math inline">\(1,a_1,a_2,\ldots,a_{k-1}\)</span> 是树根到 <span class="math inline">\(n\)</span> 的到 <span class="math inline">\(n\)</span> 的通路上的点，但已出现的节点不予添加。下图显示了前4层幂树。</p>
+<p><code>![前4层幂树](images/powertree.png)</code></p>
+<p>有了幂树之后，当我们要计算某个 <span class="math inline">\(n\)</span> 次幂时，只需要在该树上找到 <span class="math inline">\(n\)</span>，依次计算从根节点到 <span class="math inline">\(n\)</span> 的路径上的幂次即可。</p>
+<p>幂树构造简单，但对较大的 <span class="math inline">\(n\)</span> 树的规模会很大（实际得到了 <span class="math inline">\(n\)</span> 以下所有数的近似加法链）。有许多启发性的算法来构造直接 <span class="math inline">\(n\)</span> 的近似最短加法链（参见 <span class="citation" data-cites="gor98">(<a href="../references.html#ref-gor98" role="doc-biblioref">Gordon 1998</a>)</span>,<span class="citation" data-cites="bos90">(<a href="../references.html#ref-bos90" role="doc-biblioref">Bos and Coster 1990</a>)</span>）。</p>
+<p>另外窗口方法和加法链也可以结合起来使用。由于当窗口长度增加时，需要预先计算的 <span class="math inline">\(g\)</span> 的幂数量增多，可以构造加法序列（含所需幂次的加法链）来减少预先的计算量。使用长度较大的窗口的确能够减少乘法的次数，例如对前面的例子，可以将93次乘法进一步减少到89次。下式显示了长度为8的窗口方法过程。</p>
+<p><span class="math display">\[
+{\scriptsize\ul{1011000111001}{5689}000000\ul{1110100101}{933}00\ul{1110101}{117}000000\ul{101111}{47}00000\ul{111110011}{499}00\ul{101010111}{343}}
+\]</span></p>
+<div class="proof remark">
+<p><span class="proof-title"><em>Remark</em>. </span>前面所述的乘幂算法对一般的乘法半群均适用（例如矩阵乘法，多项式乘法）。考虑乘幂运算对象的特性，还有更多可能改进的空间。例如 <span class="math inline">\(G\)</span> 为椭圆曲线的特殊情形（在这里是加法群），由于元素的逆较为容易求得，可以考虑形如 <span class="math inline">\(n=\sum\limits_{i\ge0}\varepsilon_i2^i\,(\varepsilon_i\in\{0,\pm1\})\)</span> 的冗余二进制表示，来减少乘法次数。对于 <span class="math inline">\(G=\mathbb{Z}/N\mathbb{Z}\)</span> 的特殊情形则有下面将要介绍的著名的 Montgomery 约化过程。</p>
+</div>
+</section>
+<section id="montgomery-约化" class="level3" data-number="4.1.3">
+<h3 data-number="4.1.3" class="anchored" data-anchor-id="montgomery-约化"><span class="header-section-number">4.1.3</span> Montgomery 约化</h3>
+<p></p>
+<p>乘幂运算最常见的是出现在 <span class="math inline">\(G=\mathbb{Z}/N\mathbb{Z}\)</span> 中。Montgomery <span class="citation" data-cites="mon85">(<a href="../references.html#ref-mon85" role="doc-biblioref">Montgomery 1985</a>)</span> 提出一个避免试除的计算模乘法的方法，对于 <span class="math inline">\(N\)</span> 固定，需要大量乘法的模幂运算尤其有效。主要想法是将模 <span class="math inline">\(N\)</span> 的运算转化为模机器字长（例如 <span class="math inline">\(2^{32}\)</span>）的运算，而后者是硬件快速实现的。</p>
+<div id="def-4-1" class="definition theorem">
+<p><span class="theorem-title"><strong>Definition 4.3</strong></span> 记 <span class="math inline">\(\overline{x}=x\bmod{N}\in\{0, 1, \ldots, N-1\}\)</span>，即 <span class="math inline">\(x\)</span> 模 <span class="math inline">\(N\)</span> 的余数。设 <span class="math inline">\(R\)</span> 为一个进制的基（通常取为机器字长或其幂次），满足 <span class="math inline">\((R, N)=1\)</span>，<span class="math inline">\(R&gt;N\)</span>。则 <span class="math inline">\(\exists\, 0\leq u&lt;N\)</span>，<span class="math inline">\(0\leq v&lt;R\)</span> 成立 Bezout 等式 <span class="math inline">\(u\cdot R-v\cdot N=1\)</span>，我们定义 <span class="math inline">\(\widetilde{x}:=\overline{xu}\)</span>，称为 <span class="math inline">\(x\)</span> 的 <code>Montgomery表示</code>。</p>
+</div>
+<div class="proof remark">
+<p><span class="proof-title"><em>Remark</em>. </span>由定义可知 <span class="math inline">\(\overline{uR}=1\)</span> 以及 <span class="math inline">\(\overline{x}=\widetilde{xR}\)</span>。并且当 <span class="math inline">\(x\)</span> 跑遍模 <span class="math inline">\(N\)</span> 的一个完全剩余系时，<span class="math inline">\(\widetilde{x}\)</span> 也跑遍模 <span class="math inline">\(N\)</span> 的完全剩余系，因此 <span class="math inline">\(\widetilde{x}\)</span> 这种表示不会损失信息。</p>
+</div>
+<p>下面的快速计算 <span class="math inline">\(\widetilde{x}\)</span> 的算法是 Montgomery 模幂乘法的核心。</p>
+<div id="def-al:monredc" class="definition theorem">
+<p><span class="theorem-title"><strong>Definition 4.4 (算法：Montgomery 约化)</strong></span> 设 <span class="math inline">\(0\le x&lt;RN\)</span>，以下步骤计算 <span class="math inline">\(\widetilde{x}\)</span>。1. 计算 <span class="math inline">\(m=(x \bmod R)\cdot v \bmod R\)</span>，<span class="math inline">\(0\le m&lt;R\)</span>。2. 计算 <span class="math inline">\(t=(x+mN)/R\)</span>。3. 若 <span class="math inline">\(t\ge N\)</span> 输出 <span class="math inline">\(t-N\)</span>，否则输出 <span class="math inline">\(t\)</span>，算法终止。</p>
+</div>
+<div class="proof remark">
+<p><span class="proof-title"><em>Remark</em>. </span>当 <span class="math inline">\(R\)</span> 取为机器字长时，第一、二步中的模运算和除法运算都可直接通过位操作快速进行。</p>
+</div>
+<div class="proof">
+<p><span class="proof-title"><em>Proof</em> (算法的有效性). </span>首先由 <span class="math inline">\(x+mN\equiv x+ xv N\equiv x(1+vN)\equiv x uR\equiv0\pmod{R}\)</span> 知 <span class="math inline">\(t\)</span> 为整数。再由 <span class="math inline">\(t=(x+mN)/R\)</span>，知 <span class="math inline">\(uRt=(xu+umN)\)</span>，从而 <span class="math inline">\(\overline{uRt}=\overline{xu}\)</span>，即有 <span class="math inline">\(\overline{t}=\widetilde{x}\)</span>。最后由 <span class="math inline">\(0\le x&lt;RN\)</span>，<span class="math inline">\(0\le m&lt;R\)</span>，知 <span class="math inline">\(0\le t&lt; 2N\)</span>，可得算法的有效性。</p>
+</div>
+<p>下面的命题表明，在 Montgomery 表示下，<span class="math inline">\(\widetilde{mn}\)</span> 即表示 <span class="math inline">\(m\)</span> 与 <span class="math inline">\(n\)</span> 的乘积。</p>
+<div id="def-pr:tilde" class="definition theorem">
+<p><span class="theorem-title"><strong>Definition 4.5 (命题)</strong></span> 设 <span class="math inline">\(m, n\in\mathbb{Z}\)</span>，则<span class="math display">\[\overline{\widetilde{m}\cdot\widetilde{n}}=\widetilde{\widetilde{m\cdot n}}.\]</span></p>
+</div>
+<div class="proof">
+<p><span class="proof-title"><em>Proof</em>. </span>由定义，<span class="math inline">\(\overline{\widetilde{m}\cdot\widetilde{n}}=\overline{mu}\cdot\overline{nu}=\overline{mnu^2}=\widetilde{mnu}=\widetilde{\widetilde{m\cdot n}}\)</span>。</p>
+</div>
+<p>为求 <span class="math inline">\(\overline{x\cdot y}\)</span>，首先将 <span class="math inline">\(\overline{x}, \overline{y}\)</span> 逆变换为 Montgomery 表示 <span class="math inline">\(\widetilde{xR}, \widetilde{yR}\)</span>，再利用命题 <a href="#def-pr:tilde" class="quarto-xref">Definition&nbsp;<span>4.5</span></a> 和算法 <a href="#def-al:monredc" class="quarto-xref">Definition&nbsp;<span>4.4</span></a> 即可。</p>
+<div class="proof remark">
+<p><span class="proof-title"><em>Remark</em>. </span>应用算法 <a href="#def-al:monredc" class="quarto-xref">Definition&nbsp;<span>4.4</span></a> 时要注意保证输入满足在 0 和 <span class="math inline">\(RN\)</span> 之间，而 <span class="math inline">\(xR\cdot yR\)</span> 并不满足此条件。可对两乘数先做一个模 <span class="math inline">\(N\)</span> 处理，这可利用 <span class="math inline">\(\overline{xR}=\widetilde{x\overline{R^2}}\)</span> 来完成，而 <span class="math inline">\(\overline{R^2}\)</span> 作为一个固定的常数可预先计算好，反复使用。在求幂的过程中，由于 <span class="math inline">\(R, N\)</span> 固定，只需要在第一步逆变换为 Montgomery 表示，中间结果全部用 Montgomery 表示来运算（运用算法 <a href="#def-al:r2l" class="quarto-xref">Definition&nbsp;<span>4.1</span></a> 或 <a href="#def-al:l2r" class="quarto-xref">Definition&nbsp;<span>4.2</span></a> ），并对最终结果变换回正常表示即可，由此加快了求幂的运算速度。</p>
+</div>
+<div class="proof remark">
+<p><span class="proof-title"><em>Remark</em>. </span>当 <span class="math inline">\((R,N)\ne1\)</span>，通常即 <span class="math inline">\(N\)</span> 为偶数的情形，模幂运算可通过将 <span class="math inline">\(N\)</span> 分解为 <span class="math inline">\(2^d\cdot N_0\)</span>（<span class="math inline">\(N_0\)</span> 为奇数），先对用算法 <a href="#def-al:monredc" class="quarto-xref">Definition&nbsp;<span>4.4</span></a> 对 <span class="math inline">\(N_0\)</span> 模幂，再对 <span class="math inline">\(2^d\)</span> 模幂（位操作本身就很快），最后用中国剩余定理 <a href="#thm-crt" class="quarto-xref">Theorem&nbsp;<span>4.7</span></a> 重构出结果来。</p>
+</div>
+<div class="proof remark">
+<p><span class="proof-title"><em>Remark</em>. </span><span class="citation" data-cites="hong96">(<a href="../references.html#ref-hong96" role="doc-biblioref">Hong, Oh, and Yoon 1996</a>)</span> 提出了比 Montgomery 方法更快的模幂算法，执行效率约能提升 30% 到 50%。</p>
+</div>
+</section>
+</section>
+<section id="幂次检测" class="level2" data-number="4.2">
+<h2 data-number="4.2" class="anchored" data-anchor-id="幂次检测"><span class="header-section-number">4.2</span> 幂次检测</h2>
+<p>在许多算法中（例如 SQUFOF 算法 <a href="ch3.html#def-al:SQUFOF" class="quarto-xref">Definition&nbsp;<span>3.4</span></a> ），需要判断一个整数是否是完全平方数（更一般地判断是否为素数幂），如果是的话，还要求出其平方根。对于很大的整数，这些算法都要更有针对性，更高效一些才能满足需要。</p>
+<section id="整数开方" class="level3" data-number="4.2.1">
+<h3 data-number="4.2.1" class="anchored" data-anchor-id="整数开方"><span class="header-section-number">4.2.1</span> 整数开方</h3>
+<p>对于 <code>整数开方</code>，直接动用浮点数运算显然是低效而且不精确的，但我们可以将经典的Newton迭代法做一个改进使之变得更经济。</p>
+<div id="def-al:intsqrt" class="definition theorem">
+<p><span class="theorem-title"><strong>Definition 4.6 (算法：整数开方)</strong></span> 输入整数 <span class="math inline">\(n\)</span>，以下算法计算 <span class="math inline">\(\lfloor\sqrt{n}\rfloor\)</span>。1. 令 <span class="math inline">\(x_0=n\)</span>。2. 顺次计算 <span class="math inline">\(x_{k+1}=\left\lfloor\dfrac{x_k+\lfloor{n/x_k\rfloor}}{2}\right\rfloor\)</span>。3. 若 <span class="math inline">\(x_{k+1}\ge x_k\)</span>，输出 <span class="math inline">\(x_k\)</span>，算法终止，否则跳到第二步。</p>
+</div>
+<div class="proof remark">
+<p><span class="proof-title"><em>Remark</em>. </span>算法中所有运算均为整数运算，没有动用浮点数运算。</p>
+</div>
+<div class="proof">
+<p><span class="proof-title"><em>Proof</em> (算法的有效性). </span>由<span class="math display">\[
+\left\lfloor\dfrac{x_{k-1}+\lfloor{n/x_{k-1}\rfloor}}{2}\right\rfloor&gt;\dfrac{x_{k-1}+n/x_{k-1}-1}{2}-\dfrac{1}{2}\ge\sqrt{n}-1,
+\]</span>可知对于任意 <span class="math inline">\(k\)</span>，均有 <span class="math inline">\(x_k\ge\lfloor\sqrt{n}\rfloor\)</span>。若 <span class="math inline">\(x_{k+1}\ge x_k\)</span> 且 <span class="math inline">\(x_k\ne\lfloor\sqrt{n}\rfloor\)</span>，则必有 <span class="math inline">\(x_k\ge\lfloor\sqrt{n}\rfloor+1\)</span>。于是<span class="math display">\[
+x_{k+1}-x_k=\left\lfloor\dfrac{\lfloor n/x_k\rfloor-x_k}{2}\right\rfloor&lt;\left\lfloor\dfrac{n-x_k^2}{2x_k}\right\rfloor&lt;0,
+\]</span>矛盾！从而必有 <span class="math inline">\(x_k=\lfloor\sqrt{n}\rfloor\)</span>。</p>
+</div>
+</section>
+<section id="平方检测" class="level3" data-number="4.2.2">
+<h3 data-number="4.2.2" class="anchored" data-anchor-id="平方检测"><span class="header-section-number">4.2.2</span> 平方检测</h3>
+<p>我们要判断给定的整数 <span class="math inline">\(n\)</span> 是否是一个完全平方数，直接用算法 <a href="#def-al:intsqrt" class="quarto-xref">Definition&nbsp;<span>4.6</span></a> 计算 <span class="math inline">\(\lfloor\sqrt{n}\rfloor^2\)</span> 是一个办法，不过我们在这样做之前可以首先排除许多非平方数的情形。以下方法运用一个简单的事实：如果 <span class="math inline">\(n\)</span> 是一个平方数，那么对任意整数 <span class="math inline">\(k\)</span>，<span class="math inline">\(n\)</span> 在 <span class="math inline">\(\mathbb{Z}/k\mathbb{Z}\)</span> 中都是一个平方数。</p>
+<div id="def-al:sqrtest" class="definition theorem">
+<p><span class="theorem-title"><strong>Definition 4.7 (算法：平方检测)</strong></span> </p>
+<p>输入整数 <span class="math inline">\(n\)</span>，判断其是否为平方数，若是，求之。</p>
+<ol type="1">
+<li><p>枚举生成数组 <span class="math inline">\(q_{64}\)</span>，满足<span class="math display">\[\begin{equation*}
+  q_{64}[k]=
+  \begin{cases}
+   1&amp;\text{若}k\text{为}\mathbb{Z}/64\mathbb{Z}\text{中的平方数}, \\
+   0&amp;\text{若}k\text{为}\mathbb{Z}/64\mathbb{Z}\text{中的非平方数}.
+  \end{cases}
+  \end{equation*}\]</span>类似生成另外三个数组 <span class="math inline">\(q_{63}, q_{65}, q_{11}\)</span>。</p></li>
+<li><p>若 <span class="math inline">\(q_{64}[n\bmod{64}]=0\)</span>，输出非平方数，算法终止；否则计算 <span class="math inline">\(r=n\bmod{45045(=63\times65\times11})\)</span>。</p></li>
+<li><p>若 <span class="math inline">\(q_{63}[r\bmod{63}]=0\)</span> 或 <span class="math inline">\(q_{65}[r\bmod{65}]=0\)</span> 或 <span class="math inline">\(q_{11}[r\bmod{11}]=0\)</span>，输出非平方数，算法终止。</p></li>
+<li><p>用算法 <a href="#def-al:intsqrt" class="quarto-xref">Definition&nbsp;<span>4.6</span></a> 计算 <span class="math inline">\(\lfloor\sqrt{n}\rfloor^2\)</span>，若不等于 <span class="math inline">\(n\)</span> 输出非平方数，否则输出平方根，算法终止。</p></li>
+</ol>
+</div>
+<div class="proof remark">
+<p><span class="proof-title"><em>Remark</em>. </span>若 <span class="math inline">\(n\)</span> 非平方数，则算法进行到最后一步的可能性非常小，因为模64，63，65，11的平方数个数分别为12，16，21，6，从而这种情况发生的概率大约仅为为<span class="math display">\[
+\dfrac{12}{64}\cdot\dfrac{16}{63}\cdot\dfrac{21}{65}\cdot\dfrac{6}{11}=\dfrac{6}{715}.
+\]</span>我们从上式也可以看出选取四个数64，63，65，11的缘由。</p>
+</div>
+<div class="proof remark">
+<p><span class="proof-title"><em>Remark</em>. </span>在实际算法中，我们往往是通过实验来获取更佳的常数选择方案。</p>
+</div>
+</section>
+<section id="素数幂检测" class="level3" data-number="4.2.3">
+<h3 data-number="4.2.3" class="anchored" data-anchor-id="素数幂检测"><span class="header-section-number">4.2.3</span> 素数幂检测</h3>
+<p>我们有时会需要检测一个整数 <span class="math inline">\(n\)</span> 是否为素数幂 <span class="math inline">\(p^k\)</span>，例如素数幂检测可以作为一般整数因子分解算法的子算法。若 <span class="math inline">\(n=p^k\)</span>，则由 Fermat 小定理，对于任意整数 <span class="math inline">\(a\)</span> 都有 <span class="math inline">\(p\mid a^p-a\)</span>，从而 <span class="math inline">\(p\mid (a^n-a, n)\)</span>。</p>
+<div id="def-问题:素数幂检测" class="definition theorem">
+<p><span class="theorem-title"><strong>Definition 4.8 (例)</strong></span> 取 <span class="math inline">\(n=p^k\)</span>，我们计算 <span class="math inline">\((a^n-a,n)\)</span>：1. <span class="math inline">\(n=3^3\)</span>，取 <span class="math inline">\(a=2\)</span>，则 <span class="math inline">\((a^n-a, n)=(2^{27}-2, 27)=(134217726, 27)=3\)</span>。2. <span class="math inline">\(n=5^2\)</span>，取 <span class="math inline">\(a=3\)</span>，则 <span class="math inline">\((a^n-a, n)=(3^{25}-3, 25)=(847288609440, 25)=5\)</span>。3. <span class="math inline">\(n=2^6\)</span>，取 <span class="math inline">\(a=2\)</span>，则 <span class="math inline">\((a^n-a, n)=(2^{64}-2, 64)=(18446744073709551614, 64)=2\)</span>。</p>
+</div>
+<p>但实际上通过试算几个例子可以发现大部分情况下都有 <span class="math inline">\((a^n-a, n)=p\)</span>。这就启发我们得到如下的算法。</p>
+<div id="def-算法:素数幂检测" class="definition theorem">
+<p><span class="theorem-title"><strong>Definition 4.9 (算法：素数幂检测)</strong></span> 输入整数 <span class="math inline">\(n\)</span>，判断其是否为素数幂，若是，输出素数 <span class="math inline">\(p\)</span>。1. 取 <span class="math inline">\(a=2\)</span>。2. 用算法 <a href="#def-al:monredc" class="quarto-xref">Definition&nbsp;<span>4.4</span></a> 计算 <span class="math inline">\(b=a^n\bmod{n}\)</span> 并计算 <span class="math inline">\(p=(b-a, n)\)</span>。3. 若 <span class="math inline">\(p=1\)</span>，输出非素数幂，算法终止；否则用对 <span class="math inline">\(p\)</span> 进行合性检测（例如 Rabin-Miller 检测，算法 <a href="ch2.html#def-al:rabin" class="quarto-xref">Definition&nbsp;<span>2.11</span></a> ），若 <span class="math inline">\(p\)</span> 为合数，则令 <span class="math inline">\(a\leftarrow a+1\)</span>，跳到第二步。4. 对 <span class="math inline">\(p\)</span> 进行素性检测（例如 Lehmer <span class="math inline">\(N-1\)</span> 检测，定理 <a href="ch2.html#thm-FermatConverse" class="quarto-xref">Theorem&nbsp;<span>2.1</span></a> ），若 <span class="math inline">\(p\)</span> 不一定为素数，则令 <span class="math inline">\(a\leftarrow a+1\)</span>，跳到第二步。5. <span class="math inline">\(p\)</span> 为素数，依次计算 <span class="math inline">\(p, p^2,\ldots, p^{2^k}\)</span> 直到 <span class="math inline">\(p^{2^k}&gt;n\)</span>。- 若 <span class="math inline">\(p^{2^{k-1}}\nmid n\)</span>，输出非素数幂，算法终止；- 否则令 <span class="math inline">\(n\leftarrow\dfrac{n}{p^{2^{k-1}}}\)</span>，重复第五步，直到 <span class="math inline">\(n=1\)</span>。6. 输出素数 <span class="math inline">\(p\)</span>，算法终止。</p>
+</div>
+<div class="proof remark">
+<p><span class="proof-title"><em>Remark</em>. </span>若 <span class="math inline">\(p\)</span> 为素数，第四步的跳转实际上很少发生。</p>
+</div>
+</section>
+</section>
+<section id="最大公因子" class="level2" data-number="4.3">
+<h2 data-number="4.3" class="anchored" data-anchor-id="最大公因子"><span class="header-section-number">4.3</span> 最大公因子</h2>
+<p>相对于因子分解，求两个整数 <span class="math inline">\(a\)</span>，<span class="math inline">\(b\)</span> 的 <code>最大公因子</code> <span class="math inline">\(\gcd(a, b)\)</span>（Greatest Common Divisor，GCD）要快上许多，甚至往往超出我们的想象。用普通的个人电脑在 2 秒以内计算两个十万位的整数的最大公因子也不是一件难事。</p>
+<p>据 <span class="citation" data-cites="jeb03">(<a href="../references.html#ref-jeb03" role="doc-biblioref">Jebelean 1993</a>)</span> 的数据，一个典型的代数运算（例如求多元多项式组的 Gr"obner 基）通常要花上一半以上时间用来计算某两个大整数的最大公因子，或许正因为最大公因子在计算机代数系统中的重要性，对它的研究才能如此深入。</p>
+<p>为了避免混淆，在本节中始终用 <span class="math inline">\(\gcd(a, b)\)</span> 代表最大公因子，而出现在算法的描述中的 <span class="math inline">\((a, b)\)</span> 则仅仅代表二元有序数对。</p>
+<section id="euclid-算法" class="level3" data-number="4.3.1">
+<h3 data-number="4.3.1" class="anchored" data-anchor-id="euclid-算法"><span class="header-section-number">4.3.1</span> Euclid 算法</h3>
+<p>最平凡的求整数 <span class="math inline">\(a\)</span>，<span class="math inline">\(b\)</span> 的 GCD 的办法是直接将两数分解，但这实在是太慢了，只在 <span class="math inline">\(a\)</span>，<span class="math inline">\(b\)</span> 都小于 100 或者已知其中之一为素数的时候才可能有些用处。早在古希腊时代人们就已经知道如何进行更高效的计算了，经典的 <code>Euclid算法</code> 虽最古老却也是最本质最有效的方法之一。</p>
+<div id="def-Euclid" class="definition theorem">
+<p><span class="theorem-title"><strong>Definition 4.10 (算法：Euclid)</strong></span> 输入正整数 <span class="math inline">\(a\)</span>，<span class="math inline">\(b\)</span>，计算 <span class="math inline">\(\gcd(a, b)\)</span>。1. 若 <span class="math inline">\(b=0\)</span>，则输出 <span class="math inline">\(a\)</span>，算法终止。2. 令 <span class="math inline">\((a, b)\leftarrow (b, a\bmod{b})\)</span>，跳到第一步。</p>
+</div>
+<p>Knuth <span class="citation" data-cites="taocp2">(<a href="../references.html#ref-taocp2" role="doc-biblioref">Knuth 1997</a>)</span> 通过一系列分析给出了 Euclid 算法终止前除法步数的精确估计。</p>
+<div id="thm-al:euclid" class="theorem">
+<p><span class="theorem-title"><strong>Theorem 4.1 (Euclid 算法的步数)</strong></span> 设 <span class="math inline">\(a\)</span>，<span class="math inline">\(b\)</span> 随机分布于 <span class="math inline">\([1, N]\)</span>，则1. Euclid 算法的平均步数为 <span class="math inline">\(\dfrac{12\ln2}{\pi^2}\ln N+O(1)\approx0.843\ln N+O(1)\)</span>。2. Euclid 算法在最坏情况下的步数至多为 <span class="math inline">\(\lfloor\log_\phi(3-\phi)N\rfloor\approx2.078\ln N+0.6723\)</span>，其中 <span class="math inline">\(\phi=\frac{1+\sqrt{5}}{2}\)</span>。</p>
+</div>
+</section>
+<section id="lehmer-加速算法" class="level3" data-number="4.3.2">
+<h3 data-number="4.3.2" class="anchored" data-anchor-id="lehmer-加速算法"><span class="header-section-number">4.3.2</span> Lehmer 加速算法</h3>
+<p>由定理 <a href="#thm-al:euclid" class="quarto-xref">Theorem&nbsp;<span>4.1</span></a> 可见 GCD 可以在多项式时间内求出，但 Euclid 算法中每一步的大整数试除还是相当耗费时间，Lehmer 针对这一点给出了加速的方法，其基本想法是试除的商 <span class="math inline">\(\left\lfloor\dfrac{a}{b}\right\rfloor\)</span> 很大程度上只与 <span class="math inline">\(a\)</span>，<span class="math inline">\(b\)</span> 的前若干位有关，从而可以用单精度的运算代替高精度的大整数试除。</p>
+<div id="def-问题:Lehmer-加速算法" class="definition theorem">
+<p><span class="theorem-title"><strong>Definition 4.11 (例)</strong></span> 我们想要计算 <span class="math inline">\(\gcd(a, b)=\gcd(27182818, 10000000)\)</span>，假设计算机的字长为 4 个十进制数字，令 <span class="math inline">\(\hat{a}=2718\)</span>，<span class="math inline">\(\hat{b}=1000\)</span>，对 <span class="math inline">\(\hat{a}+1\)</span>，<span class="math inline">\(\hat{b}\)</span> 进行 Euclid 算法的试商结果很可能与 <span class="math inline">\(a\)</span>，<span class="math inline">\(b\)</span> 进行的结果是一致的，如下表。</p>
+<p><span class="math inline">\(a\)</span> || <span class="math inline">\(b\)</span> || <span class="math inline">\(q\)</span> || <span class="math inline">\(\hat{a}+1\)</span> || <span class="math inline">\(\hat{b}\)</span> || <span class="math inline">\(\hat{q}\)</span> 27182818 | 10000000 | 2 | 2719 | 1000 | 2 10000000 | 7182818 | 1 | 1000 | 719 | 1 7182818 | 2817182 | 2 | 719 | 281 | 2 2817182 | 1548454 | 1 | 281 | 157 | 1 1548454 | 1268728 | 1 | 157 | 124 | 1 1268728 | 279726 | 1 | 124 | 33 | 3</p>
+<p>我们看到直到第 6 步试除，<span class="math inline">\(q\)</span> 与 <span class="math inline">\(\hat{q}\)</span> 才不相等，因此可以利用 <span class="math inline">\(a\)</span> 与 <span class="math inline">\(b\)</span> 的前若干位来快速求得试除的商。一个存在问题是如何判断试商的正确性？解决方法是可以同时求另一组 <span class="math inline">\(\gcd(\hat{a}, \hat{b}+1)=\gcd(2718, 1001)\)</span> 的试商。</p>
+<p><span class="math inline">\(\hat{a}+1\)</span> || <span class="math inline">\(\hat{b}\)</span> || <span class="math inline">\(\hat{q}\)</span> || <span class="math inline">\(\hat{a}\)</span> || <span class="math inline">\(\hat{b}+1\)</span> || <span class="math inline">\(\hat{q}\)</span> 2719 | 1000 | 2 | 2178 | 1001 | 2 1000 | 719 | 1 | 1001 | 716 | 1 719 | 281 | 2 | 716 | 285 | 2 281 | 157 | 1 | 285 | 146 | 1 157 | 124 | 1 | 146 | 139 | 1 124 | 33 | 3 | 139 | 7 | 19</p>
+<p>显然若两组求得的商相同，即可判定试商是准确无误的。上表也验证了这一点。</p>
+</div>
+<div id="def-Lehmer加速算法" class="definition theorem">
+<p><span class="theorem-title"><strong>Definition 4.12 (算法：Lehmer 加速算法)</strong></span> 输入正整数 <span class="math inline">\(a\)</span>，<span class="math inline">\(b\)</span>，且 <span class="math inline">\(a&gt;b\)</span>，计算 <span class="math inline">\(\gcd(a, b)\)</span>。设 <span class="math inline">\(M\)</span> 为单精度整数的上限（例如 <span class="math inline">\(2^{32}\)</span>），以下 <span class="math inline">\(\hat{a}\)</span>，<span class="math inline">\(\hat{b}\)</span>，<span class="math inline">\(A\)</span>，<span class="math inline">\(B\)</span>，$C <span class="math inline">\(，\)</span>D$ 均为单精度整数（即 <span class="math inline">\(&lt;M\)</span>）。1. 若 <span class="math inline">\(b&lt;M\)</span>，直接用 Euclid 算法计算输出 <span class="math inline">\(\gcd(a, b)\)</span>，算法终止；若 <span class="math inline">\(b\ge M\)</span>，记 <span class="math inline">\(\hat{a}\)</span>，<span class="math inline">\(\hat{b}\)</span> 为 <span class="math inline">\(M\)</span> 进制下 <span class="math inline">\(a\)</span>，<span class="math inline">\(b\)</span> 的最高位，<span class="math inline">\(\displaystyle\left({A \atop B}{C \atop D}\right)\leftarrow\left({1 \atop 0}{0 \atop 1}\right)\)</span>。2. 若 <span class="math inline">\(\hat{b}+C\ne0\)</span>，<span class="math inline">\(\hat{b}+D\ne0\)</span>，则令 <span class="math inline">\(q\leftarrow \left\lfloor\dfrac{\hat{a}+A}{\hat{b}+C}\right\rfloor\)</span>，否则跳到跳到第四步。若还有 <span class="math inline">\(q=\left\lfloor\dfrac{\hat{a}+B}{\hat{b}+D}\right\rfloor\)</span>，则跳到第三步，否则跳到第四步。3. 令 <span class="math inline">\(\displaystyle\left({A \atop B}{C \atop D}\right)\leftarrow\left({A \atop B}{C \atop D}\right)\left({0 \atop 1}{1 \atop -q}\right)\)</span>，<span class="math inline">\(\displaystyle(\hat{a}, \hat{b})\leftarrow(\hat{a}, \hat{b})\left({0 \atop 1}{1 \atop -q}\right)\)</span>，跳到第二步。4. 若 <span class="math inline">\(B\ne0\)</span>，令 <span class="math inline">\(\displaystyle(a, b)\leftarrow(a, b)\left({A \atop B}{C \atop D}\right)\)</span>，跳到第一步；否则用高精度运算直接求出 <span class="math inline">\((a, b)\leftarrow(b, a\bmod{b})\)</span>，跳到第一步。</p>
+</div>
+<div class="proof remark">
+<p><span class="proof-title"><em>Remark</em>. </span>Lehmer 的加速算法虽然步数和普通的 Euclid 算法是一样的，但除了第四步后一种情形外，都只需要单精度运算或单精度与高精度数的乘法，这起到了”加速”的作用。</p>
+</div>
+<div class="proof remark">
+<p><span class="proof-title"><em>Remark</em>. </span>注意算法的陈述中忽略了一种特殊情形，即当 <span class="math inline">\(\hat{a}=M-1, A=1\)</span> 或 <span class="math inline">\(\hat{b}=M-1, D=1\)</span> 时，计算可能超出单精度的范围，可以将 <span class="math inline">\(M\)</span> 取为略小与单精度整数上限即可。</p>
+</div>
+</section>
+<section id="二进方法-binary-gcd" class="level3" data-number="4.3.3">
+<h3 data-number="4.3.3" class="anchored" data-anchor-id="二进方法-binary-gcd"><span class="header-section-number">4.3.3</span> 二进方法 (Binary GCD)</h3>
+<p>另一种二进方法（<code>Binary GCD</code>）在实践中也很有用，其主要想法是用减法和移位来代替代价较大的试除。尽管需要的运算步数增多了，但由于减法和位移运算的简单性节省出的是时间还是很可观的。</p>
+<p>下面的定理精确地叙述了只用减法的合理性（参考 <span class="citation" data-cites="taocp2">(<a href="../references.html#ref-taocp2" role="doc-biblioref">Knuth 1997</a>)</span>）。</p>
+<div id="thm-th:qdist" class="theorem">
+<p><span class="theorem-title"><strong>Theorem 4.2 (定理)</strong></span> 设 <span class="math inline">\(b\)</span> 固定，<span class="math inline">\(a\)</span> 随机分布。对 <span class="math inline">\(a\)</span>，<span class="math inline">\(b\)</span> 施行 Euclid 算法，其中间步骤试商为 <span class="math inline">\(q\)</span> 的概率记为 <span class="math inline">\(P_b(q)\)</span>，则有<span class="math display">\[
+\lim_{b\rightarrow\infty}P_b(q)=\log\frac{(q+1)^2}{(q+1)^2-1}.
+\]</span></p>
+</div>
+<div class="proof remark">
+<p><span class="proof-title"><em>Remark</em>. </span>由定理 <a href="#thm-th:qdist" class="quarto-xref">Theorem&nbsp;<span>4.2</span></a> ，粗略地估计试商值为 1 的概率为 <span class="math inline">\(\log\frac{4}{3}\approx0.415\)</span>，试商值为 2 的概率为 <span class="math inline">\(\log\frac{9}{8}\approx0.170\)</span>。可见大部分情况下除数和被除数都是比较接近的，可以用减法来替代试除。</p>
+</div>
+<div id="def-Binary-GCD" class="definition theorem">
+<p><span class="theorem-title"><strong>Definition 4.13 (算法：Binary GCD)</strong></span> 输入正整数 <span class="math inline">\(a\)</span>，<span class="math inline">\(b\)</span>，且 <span class="math inline">\(a&gt;b\)</span>，计算 <span class="math inline">\(\gcd(a, b)\)</span>。1. 用高精度直接计算 <span class="math inline">\((a, b)\leftarrow (b, a\bmod{b})\)</span>。2. 若 <span class="math inline">\(b=0\)</span>，输出 <span class="math inline">\(a\)</span>，算法终止；否则设 <span class="math inline">\(a=2^m a_0\)</span>，<span class="math inline">\(b=2^nb_0\)</span>，<span class="math inline">\(a_0\)</span>，<span class="math inline">\(b_0\)</span> 为奇数。设 <span class="math inline">\(k=\min\{m,n\}\)</span>，通过位操作计算 <span class="math inline">\((a, b)\leftarrow(a\cdot2^{-m}, b\cdot2^{-n})\)</span>。3. 令 <span class="math inline">\(t\leftarrow a-b\)</span>，若 <span class="math inline">\(t=0\)</span>，输出 <span class="math inline">\(a\cdot2^k\)</span>，算法终止。4. 设 <span class="math inline">\(t=2^st_0\)</span>，<span class="math inline">\(t_0\)</span> 为奇数，若 <span class="math inline">\(t_0&gt;0\)</span>，令 <span class="math inline">\(a\leftarrow t_0\)</span>，否则令 <span class="math inline">\(b\leftarrow-t_0\)</span>，跳到第三步。</p>
+</div>
+<div class="proof remark">
+<p><span class="proof-title"><em>Remark</em>. </span>由于初始的 <span class="math inline">\(a\)</span> 和 <span class="math inline">\(b\)</span> 可能相差很大，不适宜反复做减法，因此还是需要第一步的高精度试除。</p>
+</div>
+<div class="proof remark">
+<p><span class="proof-title"><em>Remark</em>. </span>Gosper 提出了一个将 Binary GCD 想法与 Lehmer 加速算法结合起来的方法，参见 <span class="citation" data-cites="taocp2">(<a href="../references.html#ref-taocp2" role="doc-biblioref">Knuth 1997</a>)</span>。</p>
+</div>
+</section>
+<section id="扩展-euclid-算法" class="level3" data-number="4.3.4">
+<h3 data-number="4.3.4" class="anchored" data-anchor-id="扩展-euclid-算法"><span class="header-section-number">4.3.4</span> 扩展 Euclid 算法</h3>
+<p></p>
+<p>在很多问题中（例如求模 <span class="math inline">\(N\)</span> 的逆）不仅需要知道 <span class="math inline">\(\gcd(a, b)\)</span>，还要求出Bezout等式中的系数 <span class="math inline">\(u\)</span>，<span class="math inline">\(v\)</span>，使得成立<span class="math display">\[
+ua+vb=d(:=\gcd(a, b)).
+\]</span>这样的算法称为扩展 Euclid 算法。在原始的Euclid算法过程中保留所有的商和余数即可倒推出 <span class="math inline">\(u\)</span> 和 <span class="math inline">\(v\)</span> 来，不过这样做需要较大的空间开销。可以在计算过程中保留类似于Lehmer加速算法中的矩阵 <span class="math inline">\(\displaystyle\left({A \atop B}{C \atop D}\right)\)</span>，矩阵的列实际上就是新操作数作为 <span class="math inline">\(a\)</span>，<span class="math inline">\(b\)</span> 线性组合的系数。</p>
+<p>Lehmer加速算法本身就就具有了”扩展”的特性，但Binary GCD的”扩展”能力表面上看来就没有那么直接了。不过仔细追踪算法的行进过程，还是能够求出系数 <span class="math inline">\(u\)</span>，<span class="math inline">\(v\)</span> 来的。</p>
+<div id="def-algo-4-10" class="definition theorem">
+<p><span class="theorem-title"><strong>Definition 4.14 (算法：扩展Binary GCD)</strong></span> 输入正整数 <span class="math inline">\(a\)</span>，<span class="math inline">\(b\)</span>，且 <span class="math inline">\(a&gt;b\)</span>，计算三元组 <span class="math inline">\((u, v, d)\)</span>。</p>
+<ol type="1">
+<li>用高精度直接计算 <span class="math inline">\((a, b)\leftarrow (b, a\bmod{b})\)</span>。</li>
+<li>若 <span class="math inline">\(b=0\)</span>，输出 <span class="math inline">\((0, 1, b)\)</span>，算法终止； 否则设 <span class="math inline">\(a=2^m a_0\)</span>，<span class="math inline">\(b=2^nb_0\)</span>，<span class="math inline">\(a_0\)</span>，<span class="math inline">\(b_0\)</span> 为奇数。 设 <span class="math inline">\(k=\min\{m,n\}\)</span>，通过位操作计算 <span class="math inline">\((a, b)\leftarrow(a\cdot2^{-k}, b\cdot2^{-k})\)</span>。</li>
+<li>令 <span class="math inline">\((u_1, v_1, d_1)\leftarrow(1, 0 ,a)\)</span>，<span class="math inline">\((u_2, v_2, d_2)\leftarrow(b, 1-a, b)\)</span>。 若 <span class="math inline">\(a\)</span> 为奇数，令 <span class="math inline">\((u_0, v_0, d_0)\leftarrow(0, -1, -b)\)</span>，跳到第五步； 否则令 <span class="math inline">\((u_0, v_0, d_0)\leftarrow(1, 0, a)\)</span>。</li>
+<li>若 <span class="math inline">\(u_0, v_0\)</span> 均为偶数，令 <span class="math inline">\((u_0, v_0, d_0)\leftarrow(u_0, v_0, d_0)/2\)</span>； 否则令 <span class="math inline">\((u_0, v_0, d_0)\leftarrow(u_0+b, v_0-a, d_0)/2\)</span>。</li>
+<li>若 <span class="math inline">\(d_0\)</span> 为偶数，跳到第四步。</li>
+<li>若 <span class="math inline">\(d_0&gt;0\)</span>，令 <span class="math inline">\((u_1, v_1, d_1)\leftarrow(u_0, v_0, d_0)\)</span>； 否则令 <span class="math inline">\((u_2, v_2, d_2)\leftarrow(b-u_0,-a-v_0,-d_0)\)</span>。</li>
+<li>令 <span class="math inline">\((u_0, v_0, d_0)\leftarrow(u_1-u_2,v_1-v_2,d_1-d_2)\)</span>， 若 <span class="math inline">\(u_0\le0\)</span>，令 <span class="math inline">\((u_0,v_0)\leftarrow(u_0+b,v_0-a)\)</span>。 若 <span class="math inline">\(d_0=0\)</span>，输出 <span class="math inline">\((u_1,v_1,d_1\cdot2^k)\)</span>，算法终止； 否则跳到第四步。</li>
+</ol>
+</div>
+<div class="proof">
+<p><span class="proof-title"><em>Proof</em> (算法的有效性). </span>可以仔细验证每一步后都满足 <span class="math inline">\(0\le u_1,u_2,u_0\le b\)</span>，<span class="math inline">\(-a\le v_1,v_2,v_0\le0\)</span>，<span class="math inline">\(0&lt;d_1\le a\)</span>，<span class="math inline">\(0&lt;d_2\le b\)</span>，且满足 <span class="math inline">\(u_i a+v_i b=d_i\)</span>，对 <span class="math inline">\(i=1, 2, 3\)</span>。算法的终止性是明显的。</p>
+</div>
+<div class="proof remark">
+<p><span class="proof-title"><em>Remark</em>. </span>与原始的Binary GCD有区别的是第四步，这是为了保证系数也能除以2而做的微小改动。</p>
+</div>
+</section>
+<section id="dmod-和-bmod" class="level3" data-number="4.3.5">
+<h3 data-number="4.3.5" class="anchored" data-anchor-id="dmod-和-bmod"><span class="header-section-number">4.3.5</span> dmod 和 bmod</h3>
+<p>首先我们引进某种程度上相当于 <span class="math inline">\(\bmod\)</span> 的运算 <code>dmod</code>（digit mod）和 <code>bmod</code>（bit mod）。</p>
+<div id="def-4-2" class="definition theorem">
+<p><span class="theorem-title"><strong>Definition 4.15 (dmod 和 bmod)</strong></span> 设 <span class="math inline">\(\beta\)</span> 为一个进制的基，正整数 <span class="math inline">\(a\)</span>,<span class="math inline">\(b\)</span>，满足 <span class="math inline">\(a&gt;b\)</span>，<span class="math inline">\(\gcd(a,\beta)=1\)</span>，<span class="math inline">\(\gcd(b,\beta)=1\)</span>，<span class="math inline">\(l_\beta(a)\)</span> 表示 <span class="math inline">\(a\)</span> 在 <span class="math inline">\(\beta\)</span>-进制表示下的位数，记 <span class="math inline">\(\delta=l_\beta(a)-l_\beta(b)+1\)</span>。定义<span class="math display">\[
+a \dmod{\beta} b:=\frac{|a-(ab^{-1}\bmod \beta^\delta)b|}{\beta^\delta}.
+\]</span>当 <span class="math inline">\(\beta=2\)</span> 时（最常用的情形），简记为<span class="math display">\[
+a \bitmod b:=a \dmod{2}b.
+\]</span></p>
+</div>
+<div class="proof remark">
+<p><span class="proof-title"><em>Remark</em>. </span>由于 <span class="math inline">\(a-(ab^{-1}\bmod\beta^\delta)b\equiv a-a\equiv0\pmod{\beta^\delta}\)</span>，故dmod 和 bmod是可以定义好的。</p>
+</div>
+<div id="def-4-3" class="definition theorem">
+<p><span class="theorem-title"><strong>Definition 4.16 (例)</strong></span> 设 <span class="math inline">\(a=155=(10011011)_2\)</span>，<span class="math inline">\(b=15=(1111)_2\)</span>，则 <span class="math inline">\(l_2(a)=8\)</span>，<span class="math inline">\(l_2(b)=4\)</span>，<span class="math inline">\(2^\delta=2^{l_2(a)-l_2(b)+1}=32\)</span>，<span class="math inline">\(15^{-1}\equiv15\pmod{32}\)</span>。从而</p>
+<p><span class="math display">\[\begin{align*}
+  155 \bitmod 15 &amp;=\frac{|155-(155\cdot15 \bmod{32})\cdot15|}{32} \\
+  &amp;=\frac{|155-21\cdot15|}{32}=5.
+\end{align*}\]</span></p>
+<p>恰巧有 <span class="math inline">\(\gcd(155, 15)=5\)</span>。</p>
+</div>
+<p>可以直接验证 <span class="math inline">\(\gcd(a \dmod{\beta} b, b)=\gcd(a, b)\)</span>，而且 <span class="math inline">\(a \dmod{\beta} b&lt;b\)</span>，因此新定义的运算的确在某种程度上相当于mod。而且我们可以避免试除，只用减法和位操作来计算出 <span class="math inline">\(a \bitmod b\)</span>。最关键的是如何快速计算 <span class="math inline">\(m=ab^{-1}\bmod2^\delta\)</span>，接下来的算法只用减法和位操作解决了这个问题，想法类似于待定系数法求解 <span class="math inline">\(bm\equiv a
+\pmod{2^\delta}\)</span>，从低到高将 <span class="math inline">\(m\)</span> 的二进表达依次求出。</p>
+<div id="def-al:abinv" class="definition theorem">
+<p><span class="theorem-title"><strong>Definition 4.17 (算法：计算<span class="math inline">\(ab^{-1}\bmod2^\delta\)</span>)</strong></span> 输入正奇数 <span class="math inline">\(a\)</span>，<span class="math inline">\(b\)</span>，计算 <span class="math inline">\(ab^{-1}\bmod2^\delta\)</span>。1. 令 <span class="math inline">\(d\leftarrow a\)</span>，<span class="math inline">\(m\leftarrow0\)</span>。2. 重复以下步骤（<span class="math inline">\(i=0, 1, \ldots\delta-1\)</span>）：若 <span class="math inline">\(2^{i+1}\nmid d\)</span>，则令 <span class="math inline">\(d\leftarrow d-2^i\cdot b\)</span>，<span class="math inline">\(m\leftarrow m+2^i\)</span>。3. 输出 <span class="math inline">\(m\)</span>，算法终止。</p>
+</div>
+<div class="proof">
+<p><span class="proof-title"><em>Proof</em> (算法的有效性). </span>每次第二步的操作后均有 <span class="math inline">\(d=a-mb\equiv0\pmod{2^{i+1}}\)</span>，可知算法的有效性。</p>
+</div>
+<div class="proof remark">
+<p><span class="proof-title"><em>Remark</em>. </span>Weber <span class="citation" data-cites="web95">(<a href="../references.html#ref-web95" role="doc-biblioref">Weber 1995</a>)</span> 仅仅采用bmod代替Euclid算法中的mod操作，修改得到的算法比Binary GCD还要快一些。</p>
+</div>
+<div class="proof remark">
+<p><span class="proof-title"><em>Remark</em>. </span>设 <span class="math inline">\(M=2^w\)</span> 为单精度整数的上界，当 <span class="math inline">\(a\gg b\)</span>，<span class="math inline">\(l_2(a)-l_2(b)+1\gg w\)</span> 时，可以将bmod操作限制在 <span class="math inline">\(M\)</span> 下以提高速度，即取 <span class="math inline">\(\delta=w\)</span>，降低 <span class="math inline">\(l_2(a)\)</span> 若干次直到 <span class="math inline">\(l_2(a)-l_2(b)+1\le w\)</span>。</p>
+</div>
+</section>
+<section id="jebelean-weber-sorenson-加速算法" class="level3" data-number="4.3.6">
+<h3 data-number="4.3.6" class="anchored" data-anchor-id="jebelean-weber-sorenson-加速算法"><span class="header-section-number">4.3.6</span> Jebelean-Weber-Sorenson 加速算法</h3>
+<p><code>Jebelean-Weber-Sorenson 加速算法</code>的基本想法来自Sorenson <span class="citation" data-cites="sor94">(<a href="../references.html#ref-sor94" role="doc-biblioref">Sorenson 1994</a>)</span>。设 <span class="math inline">\(a\)</span>，<span class="math inline">\(b\)</span> 与 <span class="math inline">\(n\)</span> 互素，如果存在 <span class="math inline">\(u\)</span>，<span class="math inline">\(v\)</span> 满足 <span class="math inline">\(|u|,|v|&lt;\sqrt{n}\)</span> 使得 <span class="math inline">\(ua\equiv vb\pmod{n}\)</span>，为求 <span class="math inline">\(\gcd(a, b)\)</span>，考虑新的问题 <span class="math inline">\(\gcd(\frac{ua-vb}{n}, b)\)</span> 可以将 <span class="math inline">\(a\)</span> 缩小大约 <span class="math inline">\(\sqrt{n}\)</span> 倍（这类似于Binary GCD中除以2的过程，被称为 <span class="math inline">\(n\)</span>-约化）。这样的 <span class="math inline">\(u\)</span>，<span class="math inline">\(v\)</span> 很可能是存在的，例如考虑满足 <span class="math inline">\(|u_0|,|v_0|&lt;\sqrt{n}/2\)</span> 二元组 <span class="math inline">\((u_0 ,v_0)\)</span>，这样的二元组共有 <span class="math inline">\(n\)</span> 个，计算 <span class="math inline">\(u_0a-v_0b\)</span> 其中必有两组模 <span class="math inline">\(n\)</span> 同余，将其相减即得满足条件的 <span class="math inline">\((u ,v)\)</span>。下面的算法严格地构造出了 <span class="math inline">\((u, v)\)</span>。</p>
+<div id="def-al:uv" class="definition theorem">
+<p><span class="theorem-title"><strong>Definition 4.18 (算法)</strong></span> 输入正整数 <span class="math inline">\(a\)</span>，<span class="math inline">\(b\)</span>，<span class="math inline">\(n\)</span>，满足 <span class="math inline">\(a\)</span>，<span class="math inline">\(b\)</span> 与 <span class="math inline">\(n\)</span> 互素，计算 <span class="math inline">\((u, v)\)</span> 满足 <span class="math inline">\(0&lt;u,|v|&lt;\sqrt{n}\)</span> 且 <span class="math inline">\(ua\equiv vb\pmod{n}\)</span>。1. 计算 <span class="math inline">\(c\leftarrow ab^{-1}\pmod{n}\)</span>（当 <span class="math inline">\(n\)</span> 为2的幂时可使用算法 <a href="#def-al:abinv" class="quarto-xref">Definition&nbsp;<span>4.17</span></a>）。2. 令 <span class="math inline">\((u_1, v_1)\leftarrow(n, 0)\)</span>，<span class="math inline">\((u_2, v_2)\leftarrow(c, 1)\)</span>。3. 若 <span class="math inline">\(u_2\ge\sqrt{n}\)</span>，则令 <span class="math inline">\((u_1, v_1)\leftarrow(u_1, v_1)- \left\lfloor\dfrac{u_1}{u_2} \right\rfloor(u_2, v_2)\)</span>，交换 <span class="math inline">\((u_1, v_1)\)</span> 与 <span class="math inline">\((u_2, v_2)\)</span>，跳到第三步。4. 输出 <span class="math inline">\((u_2, v_2)\)</span>，算法终止。</p>
+</div>
+<div class="proof">
+<p><span class="proof-title"><em>Proof</em> (算法的有效性). </span>算法本质上就是一个Euclid算法。由于正数 <span class="math inline">\(u_1\)</span> 的严格递降，算法必在有限步后终止。终止时有 <span class="math inline">\(u_2&lt;\sqrt{n}\le u_1\)</span>，而算法过程中始终保持 <span class="math inline">\(u_1|v_2|+u_2|v_1|=n\)</span>，可知 <span class="math inline">\(u_1|v_2|&lt;n\)</span>，从而 <span class="math inline">\(|v_2|&lt;\sqrt{n}\)</span>。</p>
+</div>
+<div class="proof remark">
+<p><span class="proof-title"><em>Remark</em>. </span>算法 <a href="#def-al:uv" class="quarto-xref">Definition&nbsp;<span>4.18</span></a> 的第三步还可以用减法和位操作来避免试除，当 <span class="math inline">\(u\)</span>，<span class="math inline">\(v\)</span> 相差不大时更加高效。</p>
+</div>
+<p>现在我们可以高效的计算 <span class="math inline">\(\gcd(\frac{ua-vb}{n}, b)\)</span> 了，不过还有一个问题，一般来说 <span class="math inline">\(\gcd(a, b)\mid\gcd(\frac{ua-vb}{n}, b)\)</span>，但两者未必相等。如果直接计算前者，可能结果会包含”假因子”。通常情况下可以在最后一步处理假因子，因为根据Dirichlet的优美定理（参考 <span class="citation" data-cites="taocp2">(<a href="../references.html#ref-taocp2" role="doc-biblioref">Knuth 1997</a>)</span>），通常求出的最大公因子都会很小（<span class="math inline">\(\le3\)</span> 的比例为82.7%），最后一步的处理只花很少时间。</p>
+<div id="thm-4-3" class="theorem">
+<p><span class="theorem-title"><strong>Theorem 4.3 (Dirichlet，最大公因子的分布)</strong></span> 设 <span class="math inline">\(q_n(d)\)</span> 表示在 <span class="math inline">\(1\le a, b\le n\)</span> 范围内使 <span class="math inline">\(\gcd(a, b)\le d\)</span> 的有序数对 <span class="math inline">\((a, b)\)</span> 的个数，则有<span class="math display">\[
+\lim_{n\rightarrow\infty}\frac{q_n(d)}{n^2}=\frac{6}{\pi^2}\sum_{k=1}^d\frac{1}{k^2}.
+\]</span></p>
+</div>
+<div id="def-al:jws" class="definition theorem">
+<p><span class="theorem-title"><strong>Definition 4.19 (算法：Jebelean-Weber-Sorenson 加速算法)</strong></span> 设正整数 <span class="math inline">\(a_0\)</span>，<span class="math inline">\(b_0\)</span> 满足 <span class="math inline">\(a_0&gt;b_0\)</span> 且 <span class="math inline">\(\beta\)</span> 互素，依据 <span class="math inline">\(b_0\)</span> 的长度选取 <span class="math inline">\(s(b)\)</span> 与 <span class="math inline">\(t(b)\)</span>（例如当 <span class="math inline">\(\beta=2\)</span> 可固定为10与32）。1. 令 <span class="math inline">\(a\leftarrow a_0\)</span>，<span class="math inline">\(b\leftarrow b_0\)</span>。2. 若 <span class="math inline">\(b=0\)</span>，跳到第五步。3. 若 <span class="math inline">\(l_\beta(a)-l_\beta(b)&gt;s(b)\)</span>，则令 <span class="math inline">\(a\leftarrow a \dmod{\beta} b\)</span>，跳到第三步；否则根据算法 <a href="#def-al:uv" class="quarto-xref">Definition&nbsp;<span>4.18</span></a> 求得 <span class="math inline">\((u, v)\)</span> 使 <span class="math inline">\(ua\equiv vb\pmod{\beta^{2t(b)}}\)</span>，令 <span class="math inline">\(a\leftarrow\dfrac{|ua-vb|}{\beta^{2t(b)}}\)</span>。4. 将 <span class="math inline">\(a\)</span> 中的 <span class="math inline">\(\beta\)</span> 因子去除（当 <span class="math inline">\(\beta=2\)</span> 时移位即可），并交换 <span class="math inline">\(a\)</span> 与 <span class="math inline">\(b\)</span>，跳到第二步。5. 计算 <span class="math inline">\(x=\gcd(a, b_0 \dmod{\beta} a)\)</span>，计算输出 <span class="math inline">\(\gcd(x, a_0 \dmod{\beta} x)\)</span>，算法终止。</p>
+</div>
+<div class="proof remark">
+<p><span class="proof-title"><em>Remark</em>. </span>第五步相当于用dmod运算快速求得了 <span class="math inline">\(\gcd(\gcd(a, b_0), a_0)\)</span>。</p>
+</div>
+<div class="proof remark">
+<p><span class="proof-title"><em>Remark</em>. </span>根据Weber <span class="citation" data-cites="web95">(<a href="../references.html#ref-web95" role="doc-biblioref">Weber 1995</a>)</span> 的实验结果，在8个单精度整数长度时（大约77个十进制位），Jebelean-Weber-Sorenson 加速算法开始超过Binary GCD。</p>
+</div>
+<p>尽管一般来说”假因子”都很小，但也有例外的时候，Sedjelmaci <span class="citation" data-cites="sed07">(<a href="../references.html#ref-sed07" role="doc-biblioref">Sedjelmaci 2007</a>)</span> 以相邻的Fibonacci数 <span class="math inline">\((F_N, F_{N+1})\)</span> 为例，当 <span class="math inline">\(N=300\)</span> 时，假因子为5，<span class="math inline">\(N=2000\)</span> 时，假因子为122542875，而当 <span class="math inline">\(N=3000\)</span> 时，假因子已高达 <span class="math inline">\(1.02\times10^{15}\)</span>，而实际上相邻的Fibonacci数总是互素的。</p>
+<p>不过 Sedjelmaci 给出了一个改进来避免假因子的影响，这依赖于以下他证明的命题。</p>
+<div id="thm-4-2" class="theorem">
+<p><span class="theorem-title"><strong>Theorem 4.4 (Sedjelmaci)</strong></span> 设算法 <a href="#def-al:uv" class="quarto-xref">Definition&nbsp;<span>4.18</span></a> 终止时得到了 <span class="math inline">\((u_1, v_1)\)</span>，<span class="math inline">\((u_2, v_2)\)</span>，若有 <span class="math inline">\(\dfrac{a}{b}&lt;\sqrt{n}\)</span>，则满足<span class="math display">\[
+\gcd(a, b)=\gcd\left(\dfrac{|u_1a-v_1b|}{n}, \dfrac{|u_2a-v_2b|}{n}\right).
+\]</span></p>
+</div>
+<p>因此可以的到改进版的 <code>Jebelean-Weber-Sorenson 加速算法</code>：</p>
+<div id="def-algo-4-14" class="definition theorem">
+<p><span class="theorem-title"><strong>Definition 4.20 (算法：Sedjelmaci 改进算法)</strong></span> 设正整数 <span class="math inline">\(a_0\)</span>，<span class="math inline">\(b_0\)</span> 满足 <span class="math inline">\(a_0&gt;b_0\)</span> 且 <span class="math inline">\(\beta\)</span> 互素，依据 <span class="math inline">\(b_0\)</span> 的长度选取与 <span class="math inline">\(t(b)\)</span>（例如当 <span class="math inline">\(\beta=2\)</span> 可固定为32）。1. 令 <span class="math inline">\(a\leftarrow a_0\)</span>，<span class="math inline">\(b\leftarrow b_0\)</span>。2. 若 <span class="math inline">\(ab=0\)</span>，跳到第五步；否则令 <span class="math inline">\((a, b)\leftarrow(\max\{a, b\},\min\{a, b\})\)</span>。3. 若 <span class="math inline">\(\dfrac{a}{b}\ge\beta^{t(b)}\)</span>，则令 <span class="math inline">\((a, b)\leftarrow(b, a\dmod{\beta}b)\)</span>；否则根据算法 <a href="#def-al:uv" class="quarto-xref">Definition&nbsp;<span>4.18</span></a> 求得 <span class="math inline">\((u_1, v_1)\)</span>，<span class="math inline">\((u_2, v_2)\)</span>，使 <span class="math inline">\(u_2a\equiv v_2b\pmod{\beta^{2t(b)}}\)</span>，令 <span class="math inline">\((a, b)\leftarrow\left(\dfrac{|u_1a-v_1b|}{n}, \dfrac{|u_2a-v_2b|}{n}\right)\)</span>。4. 将 <span class="math inline">\(a\)</span>，<span class="math inline">\(b\)</span> 中的 <span class="math inline">\(\beta\)</span> 因子去除（当 <span class="math inline">\(\beta=2\)</span> 时移位即可），跳到第二步。5. 输出 <span class="math inline">\(a\)</span>，<span class="math inline">\(b\)</span> 中不为零的数，算法终止。</p>
+</div>
+<div class="proof remark">
+<p><span class="proof-title"><em>Remark</em>. </span>在算法的第三步可能牺牲了一些时间，但保证了最终得到的最大公因子是不掺”假”的。</p>
+</div>
+</section>
+</section>
+<section id="legendre-jacobi-kronecker-符号" class="level2" data-number="4.4">
+<h2 data-number="4.4" class="anchored" data-anchor-id="legendre-jacobi-kronecker-符号"><span class="header-section-number">4.4</span> Legendre-Jacobi-Kronecker 符号</h2>
+<p><code>Legendre符号</code>不仅本身很重要，而且在素性检测、因子分解等领域中也经常被用到。</p>
+<div id="def-4-3" class="definition theorem">
+<p><span class="theorem-title"><strong>Definition 4.21 (Legendre 符号)</strong></span> 设 <span class="math inline">\(p\)</span> 为奇素数，<span class="math inline">\(a\in\mathbb{Z}\)</span>，Legendre符号定义为<span class="math display">\[\begin{equation*}
+  \legendre{a}{p}:=
+  \begin{cases}
+    1&amp;a\text{为模}p\text{的二次剩余}, \\
+    -1&amp;a\text{为模}p\text{的二次非剩余}, \\
+    0&amp;p\mid a.
+  \end{cases}
+\end{equation*}\]</span></p>
+</div>
+<p>下面的性质是我们在初等数论教程中熟知的。</p>
+<div id="def-pr:legpr" class="definition theorem">
+<p><span class="theorem-title"><strong>Definition 4.22 (Legendre符号的基本性质)</strong></span> Legendre符号满足：1. （积性）<span class="math display">\[\legendre{a}{p}\legendre{b}{p}=\legendre{ab}{p}.\]</span> 2. 若 <span class="math inline">\(a\equiv b\pmod{p}\)</span>，则<span class="math display">\[\legendre{a}{p}=\legendre{b}{p}.\]</span> 3. （Euler准则）<span class="math display">\[\legendre{a}{p}\equiv a^{(p-1)/2}\pmod{p}.\]</span></p>
+</div>
+<p>利用命题 <a href="#def-pr:legpr" class="quarto-xref">Definition&nbsp;<span>4.22</span></a> 中的第三条便可以通过模幂运算用来计算Legendre符号，时间复杂度为 <span class="math inline">\(O(\log^3 p)\)</span>。对此方法本质上的改进依赖于著名的二次互反律。</p>
+<div id="thm-4-4" class="theorem">
+<p><span class="theorem-title"><strong>Theorem 4.5 (二次互反律)</strong></span> &nbsp;</p>
+<ol type="1">
+<li>若 <span class="math inline">\(p\)</span>，<span class="math inline">\(q\)</span> 为不相等的素数，则 <span class="math display">\[\legendre{p}{q}\legendre{q}{p}=(-1)^{\frac{(p-1)(q-1)}{4}}.\]</span></li>
+<li>（二次互反律的补充） <span class="math display">\[\legendre{-1}{p}=(-1)^{\frac{p-1}{2}},\quad \legendre{2}{p}=(-1)^{\frac{p^2-1}{8}}.\]</span></li>
+</ol>
+</div>
+<p>利用命题 <a href="#def-pr:legpr" class="quarto-xref">Definition&nbsp;<span>4.22</span></a> 中的第一、二条及二次互反律可以得到一个直接的计算 <span class="math inline">\(\legendre{a}{p}\)</span> 的方法（这也是我们在初等数论课程中掌握的）。不过此方法依赖于 <span class="math inline">\(a\)</span> 以及某些中间结果的因子分解，而分解往往不是一件易事。但幸运的是我们还有更好的方法，可以将时间复杂度降到 <span class="math inline">\(O(\log^2 p)\)</span>，这依赖于Legendre符号的推广——<code>Kronecker-Jacobi符号</code>。</p>
+<div id="def-4-4" class="definition theorem">
+<p><span class="theorem-title"><strong>Definition 4.23 (Kronecker-Jacobi 符号)</strong></span> 设 <span class="math inline">\(a, b\in\mathbb{Z}\)</span>，定义Kronecker-Jacobi符号：</p>
+<ol type="1">
+<li><p>若 <span class="math inline">\(b=-1\)</span>，</p>
+<p><span class="math display">\[\begin{equation*}
+\jacobi{a}{-1}:=
+\begin{cases}
+     1&amp;a\ge0, \\
+     -1&amp;a&lt;0.
+\end{cases}
+\end{equation*}\]</span></p></li>
+<li><p>若 <span class="math inline">\(b=2\)</span>，</p>
+<p><span class="math display">\[\begin{equation*}
+\jacobi{a}{2}:=
+\begin{cases}
+     0&amp;2\mid a, \\
+     (-1)^{\frac{a^2-1}{8}}&amp;2\nmid a.
+\end{cases}
+\end{equation*}\]</span></p></li>
+<li><p>若 <span class="math inline">\(b=1\)</span>，<span class="math display">\[\jacobi{a}{1}:=1.\]</span></p></li>
+<li><p>若 <span class="math inline">\(b\)</span> 为奇素数，<span class="math inline">\(\displaystyle\jacobi{a}{b}\)</span> 定义为Legendre符号。</p></li>
+<li><p>设 <span class="math inline">\(b=\varepsilon\cdot\prod\limits_{i=1}^mp_i^{e_i}\)</span>，其中 <span class="math inline">\(\varepsilon=\pm1\)</span>，<span class="math inline">\(p_i\)</span> 为素数，根据前四条定义<span class="math display">\[\jacobi{a}{b}:=\jacobi{a}{\varepsilon}\prod_{i=1}^m\jacobi{a}{p_i}^{e_i}.\]</span></p></li>
+<li><p>约定当 <span class="math inline">\(b=0\)</span> 时，</p>
+<p><span class="math display">\[\begin{equation*}
+\jacobi{a}{0}:=
+\begin{cases}
+     1&amp;a=\pm1, \\
+     0&amp;a\ne\pm1.
+\end{cases}
+\end{equation*}\]</span></p></li>
+</ol>
+</div>
+<div class="proof remark">
+<p><span class="proof-title"><em>Remark</em>. </span>设 <span class="math inline">\(b\)</span> 为奇数，和Legendre符号一致，若 <span class="math inline">\(\jacobi{a}{b}=-1\)</span> 则 <span class="math inline">\(a\)</span> 必为模 <span class="math inline">\(b\)</span> 的二次非剩余。但需要注意的是，<span class="math inline">\(\jacobi{a}{b}=1\)</span> 并不意味着 <span class="math inline">\(a\)</span> 为模 <span class="math inline">\(b\)</span> 的二次剩余。</p>
+</div>
+<p>Kronecker-Jacobi符号将Legendre符号推广到了所有整数的情形，并且成立以下良好的性质。</p>
+<div id="thm-ljk" class="theorem">
+<p><span class="theorem-title"><strong>Theorem 4.6 (Kronecker-Jacobi符号的基本性质)</strong></span> 如下几条成立：1. <span class="math inline">\(\jacobi{a}{b}=0\)</span> 当且仅当 <span class="math inline">\((a, b)\ne1\)</span>。2. 对任意 <span class="math inline">\(a, b, c\in\mathbb{Z}\)</span>，有<span class="math display">\[\jacobi{ab}{c}=\jacobi{a}{c}\jacobi{b}{c}.\]</span>若还有 <span class="math inline">\(b\ne0, c\ne0\)</span>，则<span class="math display">\[\jacobi{a}{bc}=\jacobi{a}{b}\jacobi{a}{c}.\]</span> 3. 设 <span class="math inline">\(b&gt;0\)</span>，<span class="math inline">\(x\)</span> 为任意整数。若 <span class="math inline">\(b\not\equiv2\pmod{4}\)</span>，则<span class="math display">\[\jacobi{x+b}{b}=\jacobi{x}{b},\]</span>若 <span class="math inline">\(b\equiv2\pmod{4}\)</span>，则<span class="math display">\[\jacobi{x+4b}{b}=\jacobi{x}{b}.\]</span> 4. 设 <span class="math inline">\(a\ne0\)</span>，<span class="math inline">\(x\)</span> 为任意整数。若 <span class="math inline">\(a\equiv0, 1\pmod{4}\)</span>，则<span class="math display">\[\jacobi{a}{x+|a|}=\jacobi{a}{x},\]</span>若 <span class="math inline">\(a\equiv2, 3\pmod{4}\)</span>，则<span class="math display">\[\jacobi{a}{x+4|a|}=\jacobi{a}{x}.\]</span> 5. 设 <span class="math inline">\(a\)</span>，<span class="math inline">\(b\)</span> 为正奇数，则有二次互反律：<span class="math display">\[\jacobi{a}{b}\jacobi{b}{a}=(-1)^{\frac{(a-1)(b-1)}{4}},\]</span>且<span class="math display">\[\jacobi{-1}{b}=(-1)^{\frac{n-1}{2}},\quad \jacobi{2}{b}=(-1)^{\frac{n^2-1}{8}}.\]</span></p>
+</div>
+<p>有了如上更一般的二次互反律，我们可以得到计算Legendre-Jacobi-Kronecker符号的算法了。</p>
+<div id="def-al:ljk" class="definition theorem">
+<p><span class="theorem-title"><strong>Definition 4.24 (算法：Legendre-Jacobi-Kronecker符号)</strong></span> 输入 <span class="math inline">\(a, b\in\mathbb{Z}\)</span>，计算 <span class="math inline">\(\jacobi{a}{b}\)</span>。1. 若 <span class="math inline">\(b=0\)</span>，输出1，算法终止；若 <span class="math inline">\(a\)</span>，<span class="math inline">\(b\)</span> 均为偶数，输出0，算法终止。2. 设 <span class="math inline">\(b=\varepsilon\cdot2^d\cdot b_0\)</span>，使 <span class="math inline">\(b_0\)</span> 为正奇数。由定义直接计算 <span class="math inline">\(m=\jacobi{a}{\varepsilon}\jacobi{a}{2}^d\)</span>。3. 若 <span class="math inline">\(a=0\)</span>，由定义直接计算 <span class="math inline">\(m\leftarrow\jacobi{0}{b_0}\cdot m\)</span>，输出 <span class="math inline">\(m\)</span>，算法终止；若 <span class="math inline">\(a\ne0\)</span>，设 <span class="math inline">\(a=\epsilon\cdot2^ea_0\)</span>，<span class="math inline">\(a_0\)</span> 为正奇数，计算 <span class="math inline">\(m\leftarrow\jacobi{\epsilon}{b_0}\jacobi{2}{b_0}^e\cdot m\)</span>。4. 运用二次互反律递归地求<span class="math display">\[\jacobi{a_0}{b_0}=\jacobi{b_0 \bmod{a_0}}{a_0}(-1)^{\frac{(a_0-1)(b_0-1)}{4}}.\]</span>计算 <span class="math inline">\(m\leftarrow\jacobi{a_0}{b_0}\cdot m\)</span>，输出 <span class="math inline">\(m\)</span>，算法终止。</p>
+</div>
+<div class="proof remark">
+<p><span class="proof-title"><em>Remark</em>. </span>在算法的第四步，我们保证了 <span class="math inline">\(a_0\)</span> 为奇数，从而可以使用定理 <a href="#thm-ljk" class="quarto-xref">Theorem&nbsp;<span>4.6</span></a> 的第三条。</p>
+</div>
+<div class="proof remark">
+<p><span class="proof-title"><em>Remark</em>. </span><span class="math inline">\((-1)^{\frac{a-1}{2}}\)</span>，<span class="math inline">\((-1)^{\frac{a^2-1}{8}}\)</span> 和 <span class="math inline">\((-1)^{\frac{(a-1)(b-1)}{4}}\)</span>均可通过位操作和查表获得，例如（<span class="math inline">\(\mathtt{\&amp;}\)</span> 表示位与操作）：</p>
+<p><span class="math display">\[\begin{equation*}
+  (-1)^{\frac{(a-1)(b-1)}{4}}=
+  \begin{cases}
+    -1 &amp; \text{若}\ \mathtt{a \&amp; b \&amp; 2}, \\
+    1 &amp; \text{其它情况}.
+  \end{cases}
+\end{equation*}\]</span></p>
+</div>
+<div class="proof remark">
+<p><span class="proof-title"><em>Remark</em>. </span>可以看出算法 <a href="#def-al:ljk" class="quarto-xref">Definition&nbsp;<span>4.24</span></a> 与Euclid算法的复杂度相同，为 <span class="math inline">\(O(\log^2 n)\)</span>，其中 <span class="math inline">\(n\)</span> 为 <span class="math inline">\(a\)</span>，<span class="math inline">\(b\)</span> 的一个上界，比直接用Legendre符号计算要高效一些。</p>
+</div>
+<div class="proof remark">
+<p><span class="proof-title"><em>Remark</em>. </span>算法 <a href="#def-al:ljk" class="quarto-xref">Definition&nbsp;<span>4.24</span></a> 中第四步也可以用类似于Binary GCD的方法，不用Euclid算法计算 <span class="math inline">\(\displaystyle\jacobi{b_0\bmod{a_0}}{a_0}\)</span>，而转而计算 <span class="math inline">\(\displaystyle\jacobi{b_0-a_0}{a_0}\)</span>，分离 <span class="math inline">\(b_0-a_0\)</span> 中2的幂，再用二次互反律。当 <span class="math inline">\(a_0\)</span>，<span class="math inline">\(b_0\)</span> 较大时，也可采用bmod操作。</p>
+</div>
+</section>
+<section id="中国剩余定理" class="level2" data-number="4.5">
+<h2 data-number="4.5" class="anchored" data-anchor-id="中国剩余定理"><span class="header-section-number">4.5</span> 中国剩余定理</h2>
+<p><code>中国剩余定理</code>是为数不多以”中国”命名的重要定理——关于交换幺环结构的经典结果。为了完整性，我们以常用的 <span class="math inline">\(\mathbb{Z}\)</span> 上的语言叙述如下。</p>
+<div id="thm-crt" class="theorem">
+<p><span class="theorem-title"><strong>Theorem 4.7 (算法：中国剩余定理)</strong></span> 设整数 <span class="math inline">\(m_i\)</span>（<span class="math inline">\(i=1, \ldots, n\)</span>）两两互素，则对任意的 <span class="math inline">\(x_i\)</span>（<span class="math inline">\(i=1, \ldots, n\)</span>），存在唯一的整数 <span class="math inline">\(x\)</span>（在模 <span class="math inline">\(M=\prod\limits_{i=1}^nm_i\)</span> 的意义下），满足 <span class="math inline">\(x\equiv x_i\pmod{m_i}\)</span>（<span class="math inline">\(i=1, \ldots, n\)</span>）。</p>
+</div>
+<div class="proof">
+<p><span class="proof-title"><em>Proof</em>. </span>记 <span class="math inline">\(M_i=M/m_i\)</span>，则对于任意 <span class="math inline">\(i\)</span>，存在 <span class="math inline">\(a_i\)</span>，满足 <span class="math inline">\(a_iM_i\equiv1\pmod{m_i}\)</span>，从而 <span class="math inline">\(x=\sum\limits_{i=1}^na_iM_ix_i\)</span> 即满足条件。唯一性是显然的。</p>
+</div>
+<p>这个构造性的证明可以得到一个直接的中国剩余定理算法，不过如果 <span class="math inline">\(M_i\)</span> 很大的话，直接求逆或许不那么划算，我们可以稍作改进。</p>
+<div id="def-算法:中国剩余定理-改进" class="definition theorem">
+<p><span class="theorem-title"><strong>Definition 4.25 (算法)</strong></span> 记号如定理 <a href="#thm-crt" class="quarto-xref">Theorem&nbsp;<span>4.7</span></a> 。</p>
+<ol type="1">
+<li><p>设 <span class="math inline">\(p_i=m_1\cdots m_{i-1}\bmod m_i\)</span>（<span class="math inline">\(i=2,\cdots,n\)</span>)，用扩展 Euclid 算法计算 <span class="math inline">\(u_i\)</span>，<span class="math inline">\(v_i\)</span> 使得 <span class="math inline">\(u_ip_i+v_im_i=1\)</span>。</p></li>
+<li><p>顺次计算</p>
+<p><span class="math display">\[\begin{align*}
+y_1&amp;=x_1 \bmod m_1, \\
+y_2&amp;=(x_2 -y_1)u_2 \bmod m_2, \\
+&amp;\vdots \\
+y_i&amp;=(x_i-(y_1+m_1(y_2+m_2(y_2+\cdots m_{i-2}y_{i-1})\cdots)))u_i\bmod m_i.
+\end{align*}\]</span></p></li>
+<li><p>输出 <span class="math inline">\(x=y_1+m_1(y_2+m_2(y_3+\cdots m_{n-1}y_n)\cdots)\)</span>。</p></li>
+</ol>
+</div>
+<p>算法本质上是求出 <span class="math inline">\(x=\sum\limits_{i=1}^ny_ip_i\)</span> 中的系数 <span class="math inline">\(y_i\)</span>，用 <span class="math inline">\(p_i\)</span> 代替原来的 <span class="math inline">\(M_i\)</span> 减小了求逆的复杂度。但由于需要第一步较复杂的预处理，因此更适合在 <span class="math inline">\(m_i\)</span> 给定的情况下进行多次求解的问题。如果 <span class="math inline">\(m_i\)</span> 总是变化的话，将 <span class="math inline">\(n\)</span> 个方程的方程组化为 <span class="math inline">\(n-1\)</span> 组两个方程的方程组更适合一些，也就是说先求出满足 <span class="math inline">\(x\equiv x_i\pmod{m_i}\)</span>（<span class="math inline">\(i=1,2\)</span>）的解 <span class="math inline">\(x_{12}\)</span>，再求出满足</p>
+<p><span class="math display">\[\begin{equation*}
+  \left\{
+  \begin{aligned}
+    x&amp;\equiv x_{12}\pmod{m_1m_2}, \\
+    x&amp;\equiv x_3\pmod{m_3}.
+  \end{aligned}\right.
+\end{equation*}\]</span></p>
+<p>的解 <span class="math inline">\(x_{123}\)</span> 等等，如此递推即可。</p>
+</section>
+<section id="连分数展式" class="level2" data-number="4.6">
+<h2 data-number="4.6" class="anchored" data-anchor-id="连分数展式"><span class="header-section-number">4.6</span> 连分数展式</h2>
+<p>任一实数的（简单）连分数展式可以按照定义逐项计算（倒数、取整）。我们熟知数论中一个优美的结论：一个数的<code>连分数</code>展式为循环的当且仅当其为二次无理数（二次整系数方程的根）。代数系统中尤其关心的也是二次无理数的展式可否有高效稳定的算法（例如应用在因子分解的CFRAC方法，Pell方程的求解）。</p>
+<p>不失一般性，设 <span class="math inline">\(b_0=\dfrac{\sqrt{d}+p_0}{q_0}\)</span> 为二次无理数，假设 <span class="math inline">\(q_0\mid d-p_0^2\)</span>（否则考虑<span class="math inline">\(\dfrac{\sqrt{dq_0^2}+p_0|q_0|}{q_0|q_0|}\)</span>）且有连分数展式<span class="math display">\[
+b_0=a_0+\dfrac{1}{b_1}=a_0+\cfrac{1}{a_1+\cfrac{1}{b_2}}=\cdots =a_0 + \cfrac{1}{a_1 + \cfrac{1}{a_2 + \cfrac{1}{a_3 + \cfrac{1}{\ddots\,}}}},
+\]</span>则由定义得到<span class="math display">\[b_i=a_i+\frac{1}{b_{i+1}}.\]</span>设<span class="math inline">\(b_i=\dfrac{\sqrt{d}+p_i}{q_i}\)</span>，则有<span class="math display">\[\frac{\sqrt{d}+p_i}{q_i}=a_i+\frac{q_{i+1}}{\sqrt{d}+p_{i+1}}.\]</span></p>
+<p>比较有理部分和无理部分可知</p>
+<p><span id="eq-frac"><span class="math display">\[
+\left\{
+  \begin{aligned}
+    d+p_ip_{i+1}&amp;=a_iq_iq_{i+1}+q_iq_{i+1}, \\
+    p_i+p_{i+1}&amp;=a_iq_i.
+  \end{aligned}\right.
+\tag{4.1}\]</span></span></p>
+<p>将式 <a href="#eq-frac" class="quarto-xref">Equation&nbsp;<span>4.1</span></a> 的第二式乘以<span class="math inline">\(p_{i+1}\)</span>减去第一式得到</p>
+<p><span id="eq-frac2"><span class="math display">\[
+d-p_{i+1}^2=q_iq_{i+1}.
+\tag{4.2}\]</span></span></p>
+<p>在式 <a href="#eq-frac2" class="quarto-xref">Equation&nbsp;<span>4.2</span></a> 中以$i <span class="math inline">\(代\)</span>i+1<span class="math inline">\(并作差得到\)</span><span class="math inline">\(p_i^2-p_{i+1}^2=q_i(q_{i+1}-q_{i-1}).\)</span>$</p>
+<p>再由 <a href="#eq-frac" class="quarto-xref">Equation&nbsp;<span>4.1</span></a> 中第二式可知<span class="math display">\[a_i(p_i-p_{i+1})=q_{i+1}-q_{i-1}.\]</span></p>
+<p>最终得到<span class="math display">\[\begin{equation*}
+  \left\{
+      \begin{aligned}
+        a_{i}&amp;=
+        \left\lfloor
+          \frac{\sqrt{d}+p_i}{q_i}
+        \right\rfloor,\\
+        p_{i+1}&amp;=a_iq_i-p_i, \\
+        q_{i+1}&amp;=a_i(p_i-p_{i+1})+q_{i-1}.
+      \end{aligned}\right.
+\end{equation*}\]</span></p>
+<p>其中约定 <span class="math inline">\(q_{-1}=\dfrac{d-p_0^2}{q_0}\)</span> （利用 <span class="math inline">\(\dfrac{d-p_0^2}{q_0}\)</span> 为整数）。</p>
+<div class="proof remark">
+<p><span class="proof-title"><em>Remark</em>. </span>若<span class="math inline">\(q_i=1\)</span>，则 <span class="math inline">\(a_i=\lfloor\sqrt{d}\rfloor+p_i\)</span>，而若 <span class="math inline">\(q_i&gt;1\)</span>，不难验证 <span class="math inline">\(a_i=\left\lfloor\dfrac{\lfloor\sqrt{d}\rfloor+p_i}{q_i}\right\rfloor\)</span>，利用整数开方算法 <a href="#def-al:intsqrt" class="quarto-xref">Definition&nbsp;<span>4.6</span></a> 可以只动用整数运算来递推计算展式中的<span class="math inline">\(a_{i}\)</span>。</p>
+</div>
+</section>
+<section id="素数计数函数-pix" class="level2" data-number="4.7">
+<h2 data-number="4.7" class="anchored" data-anchor-id="素数计数函数-pix"><span class="header-section-number">4.7</span> 素数计数函数 <span class="math inline">\(\pi(x)\)</span></h2>
+<p></p>
+<p>很早人们就考虑计算小于等于<span class="math inline">\(x\)</span>的素数个数 <span class="math inline">\(\pi(x)\)</span> 的问题，并且数论中的一个基本问题便是研究 <span class="math inline">\(\pi(x)\)</span> 的性质（例如著名的素数定理）。古希腊人有一个直接的方法：用Eratosthenes筛将所有<span class="math inline">\(x\)</span>以下的素数给找出来，最后统计一下总数。根据Mertens第二定理（参考<span class="citation" data-cites="yao07">(<a href="../references.html#ref-yao07" role="doc-biblioref">M. Mendès France, Tenenbaum, and 姚家燕译 2007</a>)</span>），<span class="math display">\[\sum_{p\le x}\frac{1}{p}=\ln\ln x+a+O\left(\frac{1}{\ln x}\right),\]</span>其中<span class="math inline">\(a\)</span>为常数，求和针对素数<span class="math inline">\(p\)</span>。因此这种完全筛法需要的操作次数为<span class="math display">\[\sum_{p\le \sqrt{x}}\frac{x}{p}=x\ln\ln \sqrt{x}+ax+O\left(\frac{x}{\ln \sqrt{x}}\right)=O(x\ln\ln x).\]</span></p>
+<p>除了直接把所有素数求出还有没有其他办法呢？可以使用组合的工具。设<span class="math inline">\(p_i\)</span>代表第<span class="math inline">\(i\)</span>个素数，根据容斥原理计算<span class="math inline">\(x\)</span>以下的合数个数可以得到</p>
+<p><span class="math display">\[\begin{equation*}
+\begin{split}
+  1+\pi(x)-\pi(\sqrt{x})=\lfloor x\rfloor-\sum_{p_i\le\sqrt{x}}\left\lfloor \frac{x}{p_i}\right\rfloor+\sum_{p_i&lt;p_j\le\sqrt{x}}\left\lfloor \frac{x}{p_ip_j}\right\rfloor\\-  \sum_{p_i&lt;p_j&lt;p_k\le\sqrt{x}}\left\lfloor \frac{x}{p_ip_jp_k}\right\rfloor+\cdots.  
+\end{split}
+\end{equation*}\]</span></p>
+<p>等式右端称为<code>Legendre 和</code>。然而Lengendre和中的非零项非常多（大约有 <span class="math inline">\(\dfrac{6}{\pi}(1-\ln2)x\)</span> 项，可参考<span class="citation" data-cites="lag85">(<a href="../references.html#ref-lag85" role="doc-biblioref">Lagaria, Miller, and Odlyzko 1985</a>)</span>），并不适合直接应用于 <span class="math inline">\(\pi(x)\)</span> 的计算。为了减少Legendre 和中的项数，19世纪德国天文学家Meissel提出了部分筛法并正确求得了 <span class="math inline">\(\pi(10^8)\)</span>。1959年，Lehmer改进了Meissel的方法，并用计算机求得了 <span class="math inline">\(\pi(10^{10})\)</span>。1985年，Lagarias，Miller，Odlyzko<span class="citation" data-cites="lag85">(<a href="../references.html#ref-lag85" role="doc-biblioref">Lagaria, Miller, and Odlyzko 1985</a>)</span>用更精细的Meissel-Lehmer方法求得了 <span class="math inline">\(\pi(4\times10^{16})\)</span>，1996年，Del'eglise和Rivat<span class="citation" data-cites="del96">(<a href="../references.html#ref-del96" role="doc-biblioref">Deléglise and Rivat 1996b</a>)</span>证明了可以在 <span class="math inline">\(O\left(\dfrac{x^{2/3}}{\ln^2x}\right)\)</span> 时间和 <span class="math inline">\(O(x^{1/3}\ln^3x\ln\ln x)\)</span> 空间内计算 <span class="math inline">\(\pi(x)\)</span>，并将计算记录提高到了<span class="math inline">\(\pi(10^{18})\)</span>。目前的世界纪录为分布式计算项目<a href="http://numbers.computation.free.fr/Constants/Primes/Pix/pixproject.html">pi(x)</a>保持的<span class="math inline">\(\pi(4\times10^{22})\)</span>。</p>
+<section id="部分筛函数" class="level3" data-number="4.7.1">
+<h3 data-number="4.7.1" class="anchored" data-anchor-id="部分筛函数"><span class="header-section-number">4.7.1</span> 部分筛函数</h3>
+<p><code>部分筛函数</code>定义为<span class="math display">\[\phi(x,a):=\#\{\text{正整数}~n\le x\mid n~\text{的所有素因子}&gt;p_a\},\]</span>再设<span class="math display">\[P_k(x,a):=\#\{\text{正整数}~n\le x\mid n~\text{恰有}~k~\text{个素因子且所有素因子}&gt;p_a\}.\]</span>约定 <span class="math inline">\(P_0(x,a):=1\)</span>，根据定义可以得到<span class="math display">\[\phi(x,a)=\sum_{k=0}^\infty P_k(x,a),\]</span>其中的求和实际上是有限和，因为当 <span class="math inline">\(k\ge\log_{p_a}x\)</span> 时 <span class="math inline">\(P_k(x,a)\)</span> 恒为零。为了减少求和的项数，我们取 <span class="math inline">\(y\)</span> 满足 <span class="math inline">\(x^{1/3}\le y\le x^{1/2}\)</span>，<span class="math inline">\(a=\pi(y)\)</span>，则求和只有三项非零：<span class="math display">\[\begin{align*}
+  \phi(x,a)&amp;=P_0(x,a)+P_1(x,a)+P_2(x,a) \\
+  &amp;=1+(\pi(x)-a)+P_2(x,a).
+\end{align*}\]</span></p>
+<p>从而<span class="math display">\[\pi(x)=\phi(x,a)+P_2(x,a)+a-1,\]</span>我们只需要高效地求出 <span class="math inline">\(\phi(x,a)\)</span> 与 <span class="math inline">\(P_2(x,a)\)</span> 即可。</p>
+</section>
+<section id="计算p_2xa" class="level3" data-number="4.7.2">
+<h3 data-number="4.7.2" class="anchored" data-anchor-id="计算p_2xa"><span class="header-section-number">4.7.2</span> 计算<span class="math inline">\(P_2(x,a)\)</span></h3>
+<p>由定义（总假定<span class="math inline">\(n\)</span>为正整数），<span class="math display">\[P_2(x,a)=\#\{n\le x\mid n=pq,\text{素数}~p,q&gt;p_a\},\]</span>故有<span class="math display">\[\begin{align*}
+  P_2(x,a)&amp;=\sum_{y&lt;p\le\sqrt{x}}\#\{\text{素数}~q\mid p\le q\le\frac{x}{p}\} \\
+  &amp;=\sum_{y&lt;p\le\sqrt{x}}\pi\left(\frac{x}{p}\right)-\pi(p)+1.
+\end{align*}\]</span></p>
+<p>由于 <span class="math inline">\(\dfrac{x}{p}\le x^{2/3}\)</span>，<span class="math inline">\(p\le x^{1/2}\)</span>，因此可用直接用 <span class="math inline">\([1, x^{2/3}]\)</span> 上的完全筛法在 <span class="math inline">\(O(x^{2/3+\varepsilon})\)</span> 时间内求得 <span class="math inline">\(P_2(x,a)\)</span>。</p>
+</section>
+<section id="计算phixa" class="level3" data-number="4.7.3">
+<h3 data-number="4.7.3" class="anchored" data-anchor-id="计算phixa"><span class="header-section-number">4.7.3</span> 计算<span class="math inline">\(\phi(x,a)\)</span></h3>
+<p>部分筛函数最重要的组合性质之一是如下的等式<span class="math display">\[\phi(x,a-1)=\phi(x,a)+\phi(\frac{x}{p_a},a-1),\]</span>右边第一项的组合意义为<span class="math inline">\(\phi(x,a-1)\)</span>对应的数中不含有因子<span class="math inline">\(p_a\)</span>的那部分，而第二项则表示含有因子<span class="math inline">\(p_a\)</span>的那部分。从而可得递推关系<span class="math display">\[\begin{equation*}
+  \left\{
+    \begin{aligned}
+      \phi(x,a)&amp;=\phi(x,a-1)-\phi(\frac{x}{p_a},a-1), \\
+      \phi(x,0)&amp;=\lfloor x\rfloor.
+    \end{aligned}\right.
+\end{equation*}\]</span></p>
+<p>由此可画出 <span class="math inline">\(\phi(x,a)\)</span> 的二叉树（仅画出前三层），</p>
+<p><code>![计算 $\phi(x,a)$ 的二叉树](images/btree.png)</code></p>
+<p>递归到二叉树的叶结点最终得到<span id="eq-phixa"><span class="math display">\[
+\phi(x,a)=\sum_{n\le x\atop P^+(n)\le y}\mu(n)\left\lfloor\frac{x}{n}\right\rfloor,  
+\tag{4.3}\]</span></span></p>
+<p>其中<span class="math inline">\(\mu(n)\)</span>为M"obius函数，<span class="math inline">\(P^+(n)\)</span>表示<span class="math inline">\(n\)</span>的最大素因子。</p>
+<p>但 <a href="#eq-phixa" class="quarto-xref">Equation&nbsp;<span>4.3</span></a> 中的求和项仍然太多，例如有三个素因子均<span class="math inline">\(\le y\)</span>的数的个数为<span class="math inline">\(O((x^{1/3}/\ln x^{1/3})^3)=O(x/\ln^3 x)\)</span>。因此我们需要对二叉树进行剪枝，例如可以采取如下的剪枝规则：1. <span class="math inline">\(a=0\)</span>且<span class="math inline">\(n\le y\)</span>；（叶结点）2. <span class="math inline">\(n&gt;y\)</span>。（层数过深）</p>
+<p>由如上的剪枝规则可得 <span class="math inline">\(\phi(x,a)=S_0+S\)</span>，其中<span class="math display">\[S_0=\sum_{n\le y}\mu(n)\left\lfloor\frac{x}{n}\right\rfloor,\]</span></p>
+<p><span id="eq-sums"><span class="math display">\[
+S=\sum_{n/P^-(n)\le y&lt;n}\mu(n)\phi\left(\frac{x}{n},\pi(P^-(n))-1\right),  
+\tag{4.4}\]</span></span></p>
+<p><span class="math inline">\(P^-(n)\)</span> 表示<span class="math inline">\(n\)</span>的最小素因子。</p>
+<p>由于 <span class="math inline">\(n\le x^{1/2}\)</span>，<span class="math inline">\(\dfrac{x}{n}\le x^{2/3}\)</span>，可以在 <span class="math inline">\(O(x^{2/3})\)</span> 的时间内计算 <span class="math inline">\(S_0\)</span>。</p>
+</section>
+<section id="计算s" class="level3" data-number="4.7.4">
+<h3 data-number="4.7.4" class="anchored" data-anchor-id="计算s"><span class="header-section-number">4.7.4</span> 计算<span class="math inline">\(S\)</span></h3>
+<p>设 <span class="math inline">\(p=P^-(n)\)</span>，<span class="math inline">\(n=mp\)</span>，则 <span class="math inline">\(\mu(n)=-\mu(m)\)</span> 且 <span class="math inline">\(P^-(m)&gt;p\)</span>，式 <a href="#eq-sums" class="quarto-xref">Equation&nbsp;<span>4.4</span></a> 变为<span class="math display">\[
+S=-\sum_{p\le y}\sum_{P^-(m)&gt;p\atop m\le y&lt;mp}\mu(m)\phi\left(\frac{x}{mp},\pi(p)-1\right).
+\]</span>可将 <span class="math inline">\(S\)</span> 的外层求和拆为三项 <span class="math inline">\(S_1+S_2+S_3\)</span>，求和分别对 <span class="math inline">\(x^{1/3}&lt;p\le y\)</span>，<span class="math inline">\(x^{1/4}&lt;p\le x^{1/3}\)</span> 及 <span class="math inline">\(p\le x^{1/4}\)</span>。注意到当 <span class="math inline">\(p&gt;x^{1/4}\)</span> 时，若 <span class="math inline">\(m\)</span> 非素数，由 <span class="math inline">\(P^-(m)&gt;p\)</span>可知<span class="math inline">\(m&gt;p^2&gt;x^{1/2}\ge y\)</span>，从而内层的求和为零，因此对<span class="math inline">\(S_1\)</span>和<span class="math inline">\(S_2\)</span>可以考虑<span class="math inline">\(m\)</span>为素数<span class="math inline">\(q\)</span>的情形，且此时<span class="math inline">\(\mu(m)=-1\)</span>。</p>
+</section>
+<section id="计算s_1" class="level3" data-number="4.7.5">
+<h3 data-number="4.7.5" class="anchored" data-anchor-id="计算s_1"><span class="header-section-number">4.7.5</span> 计算<span class="math inline">\(S_1\)</span></h3>
+<p>我们需要计算<span class="math display">\[
+S_1=\sum_{x^{1/3}&lt;p\le y}\,\sum_{p&lt;q\le y}\phi\left(\frac{x}{pq},\pi(p)-1\right).
+\]</span>注意到当 <span class="math inline">\(q&gt;p&gt;x^{1/3}\)</span> 时，<span class="math inline">\(\dfrac{x}{pq}&lt;x^{1/3}&lt;p\)</span>，故 <span class="math inline">\(\phi\left(\dfrac{x}{pq},\pi(p)-1\right)=1\)</span>。由<span class="math inline">\(x^{1/3}&lt;p&lt;q\le y\)</span>可知<span class="math display">\[
+S_1={\pi(y)-\pi(x^{1/3})\choose 2},
+\]</span>可直接计算。</p>
+</section>
+<section id="计算s_3" class="level3" data-number="4.7.6">
+<h3 data-number="4.7.6" class="anchored" data-anchor-id="计算s_3"><span class="header-section-number">4.7.6</span> 计算<span class="math inline">\(S_3\)</span></h3>
+<p>我们需要计算<span class="math display">\[
+S_3=-\sum_{p\le x^{1/4}}\sum_{P^-(m)&gt;p\atop m\le y&lt;mp}\mu(m)\phi\left(\frac{x}{mp},\pi(p)-1\right).
+\]</span>可以如下进行：首先用 <span class="math inline">\(x^{1/4}\)</span> 以下的素数对 <span class="math inline">\([1,\frac{x}{y}]\)</span> 进行一次筛法，每次用一个素数 <span class="math inline">\(p_k\)</span> 筛选过后，对所有 <span class="math inline">\([\frac{y}{p},y]\)</span> 中的无平方因子且还没有被之前素数筛出的的 <span class="math inline">\(m\)</span> 累加<span class="math inline">\(\mu(m)\phi\left(\frac{x}{mp},\pi(p)-1\right)\)</span> （这些值可在前面量的计算过程中进行保存）。由于 <span class="math inline">\(m\le y\)</span>，<span class="math inline">\(p\le x^{1/4}\)</span>，计数过程的时间复杂度为 <span class="math inline">\(O(yx^{1/4})\)</span>。</p>
+</section>
+<section id="计算s_2" class="level3" data-number="4.7.7">
+<h3 data-number="4.7.7" class="anchored" data-anchor-id="计算s_2"><span class="header-section-number">4.7.7</span> 计算<span class="math inline">\(S_2\)</span></h3>
+<p>我们需要计算<span class="math display">\[
+S_2=\sum_{x^{1/4}&lt;p\le x^{1/3}}\,\sum_{p&lt;q\le y}\phi\left(\frac{x}{pq},\pi(p)-1\right).
+\]</span>注意到当 <span class="math inline">\(q&gt;\dfrac{x}{p^2}\)</span> 时，有 <span class="math inline">\(\dfrac{x}{pq}&lt;p\)</span>，从而 <span class="math inline">\(\phi(\frac{x}{pq},\pi(p)-1)\)</span> 恒为1。从而可将内层的求和分为 <span class="math inline">\(q&gt;\dfrac{x}{p^2}\)</span> 与 <span class="math inline">\(q\le\dfrac{x}{p^2}\)</span> 两段，记为 <span class="math inline">\(S_2=U+V\)</span>。立即可知<span class="math display">\[\begin{align*}
+  U&amp;=\sum_{x^{1/4}&lt;p\le x^{1/3}}\#\{\text{素数}~q\mid \frac{x}{p^2}&lt;q\le y\} \\
+  &amp;=\sum_{x^{1/4}&lt;p\le x^{1/3}}\pi(y)-\pi(\frac{x}{p^2}).
+\end{align*}\]</span></p>
+<p>由于 <span class="math inline">\(\dfrac{x}{p^2},y\le\sqrt{x}\)</span>，因此可以通过完全筛法在 <span class="math inline">\(O(x^{1/2+\varepsilon})\)</span> 时间内求得 <span class="math inline">\(U\)</span>。</p>
+</section>
+<section id="计算v" class="level3" data-number="4.7.8">
+<h3 data-number="4.7.8" class="anchored" data-anchor-id="计算v"><span class="header-section-number">4.7.8</span> 计算<span class="math inline">\(V\)</span></h3>
+<p>此时有 <span class="math inline">\(q\le \dfrac{x}{p^2}\)</span>，即 <span class="math inline">\(p\le\dfrac{x}{pq}&lt;x^{1/2}&lt;p^2\)</span>，从而<span class="math display">\[\begin{align*}
+  \phi\left(\frac{x}{pq},\pi(p)-1\right)&amp;=P_0\left(\frac{x}{pq},\pi(p)-1\right)+P_1\left(\frac{x}{pq},\pi(p)-1\right) \\
+  &amp;=1+\pi\left(\frac{x}{pq}\right)-(\pi(p)-1) \\
+  &amp;=2-\pi(p)+\pi\left(\frac{x}{pq}\right).
+\end{align*}\]</span></p>
+<p>因此有<span class="math display">\[\begin{align*}
+  V&amp;=\sum_{x^{1/4}&lt;p\le x^{1/3}}\sum_{p&lt;q\le y\atop q\le x/p^2}(2-\pi(p))+\sum_{x^{1/4}&lt;p\le x^{1/3}}\sum_{p&lt;q\le y\atop  q\le x/p^2}\pi\left(\frac{x}{pq}\right) \\
+  &amp;=:V_1+V_2.
+\end{align*}\]</span></p>
+<p>由于 <span class="math inline">\(p\le x^{1/3}\)</span>，<span class="math inline">\(V_1\)</span> 可以通过之前的筛法结果直接求得。</p>
+</section>
+<section id="计算-v_2" class="level3" data-number="4.7.9">
+<h3 data-number="4.7.9" class="anchored" data-anchor-id="计算-v_2"><span class="header-section-number">4.7.9</span> 计算 <span class="math inline">\(V_2\)</span></h3>
+<p>我们需要计算<span class="math display">\[
+V_2=\sum_{x^{1/4}&lt;p\le x^{1/3}}\sum_{p&lt;q\le y\atop  q\le x/p^2}\pi\left(\frac{x}{pq}\right).
+\]</span></p>
+<p>这里求和的项数非常之多，因此也是算法中最复杂的部分。首先简化关于 <span class="math inline">\(q\)</span> 的两个限制，改写为<span class="math display">\[
+V_2=\sum_{x^{1/4}&lt;p&lt;\sqrt{\frac{x}{y}}}\,\sum_{p&lt;q\le y}\pi\left(\frac{x}{pq}\right)+\sum_{\sqrt{\frac{x}{y}}&lt;p&lt;x^{1/3}}\,\sum_{p&lt;q\le y}\pi\left(\frac{x}{pq}\right).
+\]</span></p>
+<p>将内外层求和分为五段，分别记为（省去求和项）<span class="math display">\[\begin{align*}
+  W_1&amp;=\sum_{x^{1/4}&lt;p\le\frac{x}{y^2}}\ \sum_{p&lt;q\le y}, \\
+  W_2&amp;=\sum_{\frac{x}{y^2}&lt;p\le\sqrt{\frac{x}{y}}}\ \sum_{p&lt;q\le\sqrt{\frac{x}{p}}}, \\
+  W_3&amp;=\sum_{\frac{x}{y^2}&lt;p\le\sqrt{\frac{x}{y}}}\ \sum_{\sqrt{\frac{x}{p}}&lt;q\le y}, \\
+  W_4&amp;=\sum_{\frac{x}{y^2}&lt;p\le x^{1/3}}\ \sum_{p&lt;q\le\sqrt{\frac{x}{p}}}, \\
+  W_5&amp;=\sum_{\frac{x}{y^2}&lt;p\le x^{1/3}}\ \sum_{\sqrt{\frac{x}{p}}&lt;q\le \frac{x}{p^2}}.
+\end{align*}\]</span></p>
+<p><span class="math inline">\(W_1\)</span>，<span class="math inline">\(W_2\)</span> 中的求和项满足 <span class="math inline">\(y&lt;\frac{x}{pq}&lt;x^{1/2}\)</span>，可以通过的筛法结果进行计算，而 <span class="math inline">\(W_3\)</span>，<span class="math inline">\(W_4\)</span>，<span class="math inline">\(W_5\)</span> 只能”老老实实”地通过求和进行计算了。由于 <span class="math inline">\(W_3\)</span> 与 <span class="math inline">\(W_5\)</span> 中当固定 <span class="math inline">\(p\)</span> 遍历时 <span class="math inline">\(\pi\left(\frac{x}{pq}\right)\)</span> 变化不大，因此可以做一个略微的改进：通过查表来确定下一个 <span class="math inline">\(\pi\left(\frac{x}{pq}\right)\)</span> 值改变的 <span class="math inline">\(q\)</span>，从而减小计算量。至此我们已经得到了计算 <span class="math inline">\(\pi(x)\)</span> 的完整算法。</p>
+<div class="proof remark">
+<p><span class="proof-title"><em>Remark</em>. </span>1987年 Lagarias 和 Odlyzko <span class="citation" data-cites="lag87">(<a href="../references.html#ref-lag87" role="doc-biblioref">Lagarias and Odlyzko 1987</a>)</span> 提出了完全不同的分析方法来计算 <span class="math inline">\(\pi(x)\)</span>，方法基于对 Riemann <span class="math inline">\(\zeta\)</span> 函数的积分变换的数值积分，其中一个版本的算法需要 <span class="math inline">\(O(x^{3/5+\varepsilon})\)</span> 时间与 <span class="math inline">\(O(x^{\varepsilon})\)</span> 空间，另一个版本的算法需要 <span class="math inline">\(O(x^{1/2+\varepsilon})\)</span> 时间与 <span class="math inline">\(O(x^{1/4+\varepsilon})\)</span> 空间。但目前为止还没有被真正实现，并且估计在 <span class="math inline">\(10^{17}\)</span> 以下还是要比 Lagarias-Miller-Odlyzko 方法慢。</p>
+</div>
+<div class="proof remark">
+<p><span class="proof-title"><em>Remark</em>. </span>Gourdon <span class="citation" data-cites="gou01">(<a href="../references.html#ref-gou01" role="doc-biblioref">Gourdon 2001</a>)</span> 在2001年提出了一个新的改进方法（主要是针对 <span class="math inline">\(V_2\)</span> 的计算），并给出了可行的并行化算法。</p>
+</div>
+</section>
+</section>
+<section id="第-n-个素数-p_n" class="level2" data-number="4.8">
+<h2 data-number="4.8" class="anchored" data-anchor-id="第-n-个素数-p_n"><span class="header-section-number">4.8</span> 第 <span class="math inline">\(n\)</span> 个素数 <span class="math inline">\(p_n\)</span></h2>
+<p>相对对给定的数进行素性判定来说，给出第 <span class="math inline">\(n\)</span> 个素数是更为困难的事情，对于很大的 <span class="math inline">\(n\)</span> 来说，纯粹使用素性检测挨个找素数，或者利用筛法找出所有素数，都不切实际。不过我们已经知道 <span class="math inline">\(\pi(n)\)</span> 如何计算，而 <span class="math inline">\(p_n\)</span> 在某种意义上是 <span class="math inline">\(\pi(n)\)</span> 的”反函数”（<span class="math inline">\(\pi(p_n)=n\)</span>，<span class="math inline">\(p_{\pi(n)}\le n\)</span> 且当 <span class="math inline">\(n\)</span> 为素数时等号成立），我们利用这一点可以反过来计算 <span class="math inline">\(p_n\)</span>。</p>
+<p>Lehmer <span class="citation" data-cites="leh32">(<a href="../references.html#ref-leh32" role="doc-biblioref">Lehmer 1932</a>)</span> 提出了一个一般的求此类”逆函数”的算法，他考虑迭代<span class="math display">\[
+S_k=S_{k-1}+n-\pi(S_{k-1}),
+\]</span></p>
+<p>取适当的初值 <span class="math inline">\(S_0&lt;\pi(n)\)</span>，容易看出 <span class="math inline">\(S_k\)</span> 严格单调递增，直到 <span class="math inline">\(S_k=\pi(n)\)</span> 后恒为常数。然而此迭代过程收敛过慢，例如求 <span class="math inline">\(n=1000\)</span> 时的 <span class="math inline">\(p_n=7919\)</span>，取 <span class="math inline">\(S_0=7000\)</span> 仍需要49步迭代。</p>
+<p>我们可以考虑二分搜索的办法，估计一个区间范围 <span class="math inline">\([a,b]\)</span> 使得 <span class="math inline">\(p_n\)</span> 落在其中，（可通过计算 <span class="math inline">\(\pi(a)\le n\le\pi(b)\)</span> 来确证）。然后二分区间 <span class="math inline">\([a,b]\)</span> 为 <span class="math inline">\([a,\lfloor\frac{a+b}{2}\rfloor]\)</span>，<span class="math inline">\([\lfloor\frac{a+b}{2}\rfloor,b]\)</span>，并计算 <span class="math inline">\(\pi(\lfloor\frac{a+b}{2}\rfloor)\)</span> 判断 <span class="math inline">\(p_n\)</span> 落在哪一个子区间中，如此续行，最终搜索出 <span class="math inline">\(p_n\)</span> 的位置。</p>
+</section>
+<section id="mobius-函数-mun-和-euler-函数-varphin" class="level2" data-number="4.9">
+<h2 data-number="4.9" class="anchored" data-anchor-id="mobius-函数-mun-和-euler-函数-varphin"><span class="header-section-number">4.9</span> M"obius 函数 <span class="math inline">\(\mu(n)\)</span> 和 Euler 函数 <span class="math inline">\(\varphi(n)\)</span></h2>
+<p>M"obius函数 <span class="math inline">\(\mu(n)\)</span> 和Euler函数 <span class="math inline">\(\varphi(n)\)</span> 均为重要的数论函数。</p>
+<p>M"obius 函数定义为<span class="math display">\[\begin{equation*}
+  \mu(n)=
+  \begin{cases}
+    0 &amp; \text{若}~n~\text{有平方因子}, \\
+    1 &amp; \text{若}~n=1, \\
+    (-1)^k &amp; \text{若}~n~\text{为}~k~\text{个不同素因子的乘积}.
+  \end{cases}
+\end{equation*}\]</span></p>
+<p>Euler 函数定义为<span class="math display">\[
+\varphi(n)=n\prod_{p\mid n}(1-\frac{1}{p}).
+\]</span></p>
+<p>可以用类似于计算 <span class="math inline">\(\pi(x)\)</span> 的方法计算 <span class="math inline">\(M(n)=\sum\limits_{k=1}^n\mu(k)\)</span>，从而反求出 <span class="math inline">\(\mu(n)\)</span>（参见 <span class="citation" data-cites="del96m">(<a href="../references.html#ref-del96m" role="doc-biblioref">Deléglise and Rivat 1996a</a>)</span>）。这种组合方法的时间复杂度为 <span class="math inline">\(O(x^{2/3+\varepsilon})\)</span>，但实践中未必比直接对 <span class="math inline">\(n\)</span> 分解根据定义计算更优，因为就算 <span class="math inline">\(n\)</span> 很大（例如 <span class="math inline">\(n&gt;10^{20}\)</span>），往往也有机会可以快速地分解，然而组合方法则由于规模太大而无法使用。</p>
+<p>对于 Euler 函数，我们熟知理论上重要的 <code>反演公式</code> <span class="math display">\[
+\varphi(n)=\sum_{d\mid n}\mu(d)\cdot\frac{n}{d},
+\]</span></p>
+<p>但同样无法直接用于 <span class="math inline">\(\varphi(n)\)</span> 的计算。实践中宜直接采取分解并根据定义计算的方法。</p>
+
+
+<div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list" style="display: none">
+<div id="ref-bos90" class="csl-entry" role="listitem">
+Bos, Jurjen, and Matthijs Coster. 1990. <span>“Addition Chain Heuristics.”</span> In <em>Advances in Cryptology - Proceedings of Crypto ’89</em>, 435:400–407. Springer-Verlag.
+</div>
+<div id="ref-cohen" class="csl-entry" role="listitem">
+Cohen, Henri. 1993. <em>A Course in Computational Algebraic Number Theory</em>. GTM 138. Springer Verlag.
+</div>
+<div id="ref-del96m" class="csl-entry" role="listitem">
+Deléglise, M., and J. Rivat. 1996a. <span>“Computing the Summation of the Möbius Function.”</span> <em>Experimental Mathematics</em> 5 (4): 291–95.
+</div>
+<div id="ref-del96" class="csl-entry" role="listitem">
+———. 1996b. <span>“Computing <span class="math inline">\(\pi(x)\)</span>: The Meissel, Lehmer, Lagarias, Miller, Odlyzko Method.”</span> <em>Mathematics of Computation</em> 65 (213): 235–45.
+</div>
+<div id="ref-gor98" class="csl-entry" role="listitem">
+Gordon, Daniel M. 1998. <span>“A Survey of Fast Exponentiation Methods.”</span> <em>Journal of Algorithms</em> 27 (1): 129–46.
+</div>
+<div id="ref-gou01" class="csl-entry" role="listitem">
+Gourdon, X. 2001. <span>“Computation of <span class="math inline">\(\ pi(x)\)</span> : Improvements to the Meissel, Lehmer, Lagarias, Miller, Odlyzko, Deleglise and Rivat Method.”</span>
+</div>
+<div id="ref-hong96" class="csl-entry" role="listitem">
+Hong, Seong Min, Sang Yeop Oh, and Hyun Soo Yoon. 1996. <span>“New Modular Multiplication Algorithms for Fast Modular Exponentiation.”</span> In <em>Advances in Cryptology—Proceedings of Eurocrypt ’96</em>, 1070:166–77. Lecture Notes in Computer Science. Springer Berlin / Heidelberg.
+</div>
+<div id="ref-jeb03" class="csl-entry" role="listitem">
+Jebelean, T. 1993. <span>“A Generalization of the Binary GCD Algorithm.”</span> <em>Proceedings of the 1993 International Symposium on Symbolic and Algebraic Computation</em>, 111–16.
+</div>
+<div id="ref-taocp2" class="csl-entry" role="listitem">
+Knuth, Donald E. 1997. <em>The Art of Computer Programming, Volume 2: Seminumerical Algorithms</em>. 3rd ed. Boston, MA, USA: Addison-Wesley Longman Publishing Co., Inc.
+</div>
+<div id="ref-lag85" class="csl-entry" role="listitem">
+Lagaria, J. C., V. S. Miller, and A. M. Odlyzko. 1985. <span>“Computing <span class="math inline">\(\pi(x)\)</span>: The Meissel-Lehmer Method.”</span> <em>Mathematics of Computation</em> 44 (170): 537–60.
+</div>
+<div id="ref-lag87" class="csl-entry" role="listitem">
+Lagarias, J. C., and A. M. Odlyzko. 1987. <span>“Computing <span class="math inline">\(\pi(x)\)</span>: An Analytic Method.”</span> <em>Journal of Algorithms</em> 8 (2): 173–91.
+</div>
+<div id="ref-leh32" class="csl-entry" role="listitem">
+Lehmer, D. H. 1932. <span>“An Inversive Algorithm.”</span> <em>Bulletin of the American Mathematical Society</em> 38 (10): 693–94.
+</div>
+<div id="ref-yao07" class="csl-entry" role="listitem">
+M. Mendès France, G. Tenenbaum, and 姚家燕译. 2007. <em>素数论</em>. 研究生数学丛书. 北京: 清华大学出版社.
+</div>
+<div id="ref-mon85" class="csl-entry" role="listitem">
+Montgomery, Peter L. 1985. <span>“Modular Multiplication Without Trial Division.”</span> <em>Mathematics of Computation</em> 44 (170): 519–21.
+</div>
+<div id="ref-sed07" class="csl-entry" role="listitem">
+Sedjelmaci, Sidi Mohamed. 2007. <span>“Jebelean–Weber’s Algorithm Without Spurious Factors.”</span> <em>Information Processing Letters</em> 102 (6): 247–52.
+</div>
+<div id="ref-sor94" class="csl-entry" role="listitem">
+Sorenson, Jonathan. 1994. <span>“Two Fast GCD Algorithms.”</span> <em>Journal of Algorithms</em> 16 (1): 110–44.
+</div>
+<div id="ref-web95" class="csl-entry" role="listitem">
+Weber, Kenneth. 1995. <span>“The Accelerated Integer GCD Algorithm.”</span> <em>ACM Transactions on Mathematical Software</em> 21 (March): 111–22.
+</div>
+<div id="ref-fkq03" class="csl-entry" role="listitem">
+冯克勤. 2003. <em>初等数论及应用</em>. 走进数学新课程丛书. 北京: 北京师范大学出版社.
+</div>
+</div>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    // Ensure there is a toggle, if there isn't float one in the top right
+    if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+      const a = window.document.createElement('a');
+      a.classList.add('top-right');
+      a.classList.add('quarto-color-scheme-toggle');
+      a.href = "";
+      a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+      const i = window.document.createElement("i");
+      i.classList.add('bi');
+      a.appendChild(i);
+      window.document.body.appendChild(a);
+    }
+    setColorSchemeToggle(hasAlternateSentinel())
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="../chapters/ch3.html" class="pagination-link" aria-label="整数因子分解">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">整数因子分解</span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="../chapters/ch5.html" class="pagination-link" aria-label="数学常数">
+        <span class="nav-page-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">数学常数</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+
+
+
+
+</body></html>

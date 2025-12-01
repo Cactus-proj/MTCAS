@@ -1,0 +1,1182 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.8.26">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>参考文献 – 计算机代数系统的数学理论</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./chapters/ch5.html" rel="prev">
+<script src="site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="site_libs/quarto-html/axe/axe-check.js" type="module"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-587c61ba64f3a5504c4d52d930310e48.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark-b758ccaa5987ceb1b75504551e579abf.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-587c61ba64f3a5504c4d52d930310e48.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap-0dd2bd5de344125cf763a379ddc3eb04.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-dark-7e34ecb6a0e7991f0346b0751d4a7c3f.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="site_libs/bootstrap/bootstrap-0dd2bd5de344125cf763a379ddc3eb04.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+<script>
+window.MathJax = {
+  tex: {
+    macros: {
+      legendre: ['\\left(\\frac{#1}{#2}\\right)', 2],
+      jacobi: ['\\left(\\frac{#1}{#2}\\right)', 2],
+      dmod: ["\\mathop{\\mathrm{dmod}_{#1}}", 1],
+      bitmod: "\\mathop{\\mathrm{bmod}}",
+      ul: ["\\underset{#2}{\\underline{#1}}", 2],
+    }
+  }
+};
+</script>
+
+
+</head>
+
+<body class="nav-sidebar floating quarto-light"><script id="quarto-html-before-body" type="application/javascript">
+    const toggleBodyColorMode = (bsSheetEl) => {
+      const mode = bsSheetEl.getAttribute("data-mode");
+      const bodyEl = window.document.querySelector("body");
+      if (mode === "dark") {
+        bodyEl.classList.add("quarto-dark");
+        bodyEl.classList.remove("quarto-light");
+      } else {
+        bodyEl.classList.add("quarto-light");
+        bodyEl.classList.remove("quarto-dark");
+      }
+    }
+    const toggleBodyColorPrimary = () => {
+      const bsSheetEl = window.document.querySelector("link#quarto-bootstrap:not([rel=disabled-stylesheet])");
+      if (bsSheetEl) {
+        toggleBodyColorMode(bsSheetEl);
+      }
+    }
+    const setColorSchemeToggle = (alternate) => {
+      const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+      for (let i=0; i < toggles.length; i++) {
+        const toggle = toggles[i];
+        if (toggle) {
+          if (alternate) {
+            toggle.classList.add("alternate");
+          } else {
+            toggle.classList.remove("alternate");
+          }
+        }
+      }
+    };
+    const toggleColorMode = (alternate) => {
+      // Switch the stylesheets
+      const primaryStylesheets = window.document.querySelectorAll('link.quarto-color-scheme:not(.quarto-color-alternate)');
+      const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+      manageTransitions('#quarto-margin-sidebar .nav-link', false);
+      if (alternate) {
+        // note: dark is layered on light, we don't disable primary!
+        enableStylesheet(alternateStylesheets);
+        for (const sheetNode of alternateStylesheets) {
+          if (sheetNode.id === "quarto-bootstrap") {
+            toggleBodyColorMode(sheetNode);
+          }
+        }
+      } else {
+        disableStylesheet(alternateStylesheets);
+        enableStylesheet(primaryStylesheets)
+        toggleBodyColorPrimary();
+      }
+      manageTransitions('#quarto-margin-sidebar .nav-link', true);
+      // Switch the toggles
+      setColorSchemeToggle(alternate)
+      // Hack to workaround the fact that safari doesn't
+      // properly recolor the scrollbar when toggling (#1455)
+      if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+        manageTransitions("body", false);
+        window.scrollTo(0, 1);
+        setTimeout(() => {
+          window.scrollTo(0, 0);
+          manageTransitions("body", true);
+        }, 40);
+      }
+    }
+    const disableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        stylesheet.rel = 'disabled-stylesheet';
+      }
+    }
+    const enableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        if(stylesheet.rel !== 'stylesheet') { // for Chrome, which will still FOUC without this check
+          stylesheet.rel = 'stylesheet';
+        }
+      }
+    }
+    const manageTransitions = (selector, allowTransitions) => {
+      const els = window.document.querySelectorAll(selector);
+      for (let i=0; i < els.length; i++) {
+        const el = els[i];
+        if (allowTransitions) {
+          el.classList.remove('notransition');
+        } else {
+          el.classList.add('notransition');
+        }
+      }
+    }
+    const isFileUrl = () => {
+      return window.location.protocol === 'file:';
+    }
+    const hasAlternateSentinel = () => {
+      let styleSentinel = getColorSchemeSentinel();
+      if (styleSentinel !== null) {
+        return styleSentinel === "alternate";
+      } else {
+        return false;
+      }
+    }
+    const setStyleSentinel = (alternate) => {
+      const value = alternate ? "alternate" : "default";
+      if (!isFileUrl()) {
+        window.localStorage.setItem("quarto-color-scheme", value);
+      } else {
+        localAlternateSentinel = value;
+      }
+    }
+    const getColorSchemeSentinel = () => {
+      if (!isFileUrl()) {
+        const storageValue = window.localStorage.getItem("quarto-color-scheme");
+        return storageValue != null ? storageValue : localAlternateSentinel;
+      } else {
+        return localAlternateSentinel;
+      }
+    }
+    const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
+      const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
+      const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
+      let newTheme = '';
+      if(authorPrefersDark) {
+        newTheme = isAlternate ? baseTheme : alternateTheme;
+      } else {
+        newTheme = isAlternate ? alternateTheme : baseTheme;
+      }
+      const changeGiscusTheme = () => {
+        // From: https://github.com/giscus/giscus/issues/336
+        const sendMessage = (message) => {
+          const iframe = document.querySelector('iframe.giscus-frame');
+          if (!iframe) return;
+          iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+        }
+        sendMessage({
+          setConfig: {
+            theme: newTheme
+          }
+        });
+      }
+      const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
+      if (isGiscussLoaded) {
+        changeGiscusTheme();
+      }
+    };
+    const authorPrefersDark = false;
+    const queryPrefersDark = window.matchMedia('(prefers-color-scheme: dark)');
+    const darkModeDefault = queryPrefersDark.matches;
+      document.querySelector('link#quarto-text-highlighting-styles.quarto-color-scheme-extra').rel = 'disabled-stylesheet';
+      document.querySelector('link#quarto-bootstrap.quarto-color-scheme-extra').rel = 'disabled-stylesheet';
+    let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
+    // Dark / light mode switch
+    window.quartoToggleColorScheme = () => {
+      // Read the current dark / light value
+      let toAlternate = !hasAlternateSentinel();
+      toggleColorMode(toAlternate);
+      setStyleSentinel(toAlternate);
+      toggleGiscusIfUsed(toAlternate, darkModeDefault);
+      window.dispatchEvent(new Event('resize'));
+    };
+    queryPrefersDark.addEventListener("change", e => {
+      if(window.localStorage.getItem("quarto-color-scheme") !== null)
+        return;
+      const alternate = e.matches
+      toggleColorMode(alternate);
+      localAlternateSentinel = e.matches ? 'alternate' : 'default'; // this is used alongside local storage!
+      toggleGiscusIfUsed(alternate, darkModeDefault);
+    });
+    // Switch to dark mode if need be
+    if (hasAlternateSentinel()) {
+      toggleColorMode(true);
+    } else {
+      toggleColorMode(false);
+    }
+  </script>
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./references.html">参考文献</a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="./">计算机代数系统的数学理论</a> 
+        <div class="sidebar-tools-main">
+  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
+</div>
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">目录</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./chapters/intro.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">序</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./chapters/preface.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">前言</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./chapters/ch1.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">高精度运算</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./chapters/ch2.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">素数判定</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./chapters/ch3.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">整数因子分解</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./chapters/ch4.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">基础数论算法</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./chapters/ch5.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">数学常数</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./references.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">参考文献</span></a>
+  </div>
+</li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
+        
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">参考文献</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
+<div id="ref-apr" class="csl-entry" role="listitem">
+Adleman, Leonard M. 1980. <span>“On Distinguishing Prime Numbers from
+Composite Numbers.”</span> In <em>21st Annual Symposium on Foundations
+of Computer Science (Sfcs 1980)</em>, 387–406. IEEE. <a href="https://doi.org/10.1109/sfcs.1980.28">https://doi.org/10.1109/sfcs.1980.28</a>.
+</div>
+<div id="ref-aks04" class="csl-entry" role="listitem">
+Agrawal, Manindra, Neeraj Kayal, and Nitin Saxena. 2004. <span>“PRIMES
+Is in p.”</span> <em>Annals of Mathematics</em> 160 (2): 781–93.
+</div>
+<div id="ref-atk93" class="csl-entry" role="listitem">
+Atkin, A. O. L., and F. Morain. 1993. <span>“Elliptic Curves and
+Primality Proving.”</span> <em>Mathematics of Computation</em> 61:
+29–68.
+</div>
+<div id="ref-BBP" class="csl-entry" role="listitem">
+Bailey, D. H., P. B. Borwein, and S. Plouffe. 1996. <span>“On the
+Computation of the n’th Decimal Digit of Various Transcendental
+Numbers.”</span> <em>Mathematics of Computation</em>, 1–2. <a href="http://lacim.uqam.ca/~plouffe/Simon/articlepi.html">http://lacim.uqam.ca/~plouffe/Simon/articlepi.html</a>.
+</div>
+<div id="ref-bai80" class="csl-entry" role="listitem">
+Baillie, Robert, and Samuel S. Wagstaff Jr. 1980. <span>“Lucas
+Pseudoprimes.”</span> <em>Mathematics of Computation</em> 35 (152):
+1391–1417.
+</div>
+<div id="ref-Beeler-iter" class="csl-entry" role="listitem">
+Beeler, M., R. W. Gosper, and R. Schroeppel. 1972. <em>HAKMEM</em>.
+Cambridge, MA: MIT Artificial Intelligence Laboratory, Memo AIM-239.
+</div>
+<div id="ref-Bellard-BBP" class="csl-entry" role="listitem">
+Bellard, F. 1997. <span>“A New Formula to Compute the n’th Binary Digit
+of Pi.”</span> <em>Bellard’s Website</em>, 1–2. <a href="http://fabrice.bellard.free.fr/pi/pi_bin/pi_bin.html">http://fabrice.bellard.free.fr/pi/pi_bin/pi_bin.html</a>.
+</div>
+<div id="ref-Berndt-rama" class="csl-entry" role="listitem">
+Berndt, B. C. 1994. <em>Ramanujan’s Notebooks, Part IV</em>. New York:
+Springer-Verlag.
+</div>
+<div id="ref-piandtheagm" class="csl-entry" role="listitem">
+Borwein, J. M., and P. B. Borwein. 1987. <em>Pi and the AGM</em>.
+Addison-Wesley Longman Publishing Co., Inc.
+</div>
+<div id="ref-Borwein-rama" class="csl-entry" role="listitem">
+———. 1988. <span>“More Ramanujan-Type Series for 1/PI.”</span> In
+<em>Ramanujan Revisited: Proceedings of the Centenary Conference,
+University of Illinois at Urbana-Champaign, June 1-5, 1987</em>, edited
+by G. E. Andrews, B. C. Berndt, and R. A. Rankin, 359–74. New York:
+Academic Press.
+</div>
+<div id="ref-Borwein-iter" class="csl-entry" role="listitem">
+Borwein, J. M., P. B. Borwein, and D. H. Bailey. 1989. <span>“Ramanujan,
+Modular Equations, and Approximations to Pi, or How to Compute One
+Billion Digits of Pi.”</span> <em>Amer. Math. Monthly 96</em>, 201–19.
+</div>
+<div id="ref-bos90" class="csl-entry" role="listitem">
+Bos, Jurjen, and Matthijs Coster. 1990. <span>“Addition Chain
+Heuristics.”</span> In <em>Advances in Cryptology - Proceedings of
+Crypto ’89</em>, 435:400–407. Springer-Verlag.
+</div>
+<div id="ref-Brent-agm" class="csl-entry" role="listitem">
+Brent, R. P. 1975. <span>“Multiple-Precision Zero-Finding Methods and
+the Complexity of Elementary Function Evaluation.”</span> <em>Analytic
+Computational Complexity</em>, 151–76. <a href="http://wwwmaths.anu.edu.au/~brent/pub/pub028.html">http://wwwmaths.anu.edu.au/~brent/pub/pub028.html</a>.
+</div>
+<div id="ref-brent1980" class="csl-entry" role="listitem">
+Brent, Richard P. 1980. <span>“An Improved Monte Carlo Factorization
+Algorithm.”</span> <em>BIT Numerical Mathematics</em> 20 (2): 176–94.
+</div>
+<div id="ref-bruce" class="csl-entry" role="listitem">
+Bruce, J. W. 1993. <span>“A Really Trivial Proof of the Lucas-Lehmer
+Test.”</span> <em>The American Mathematical Monthly</em> 100 (4):
+370–71. <a href="https://doi.org/10.1080/00029890.1993.11990414">https://doi.org/10.1080/00029890.1993.11990414</a>.
+</div>
+<div id="ref-Burnikel-fastrecursive" class="csl-entry" role="listitem">
+Burnikel, C., J. Ziegler, I. Stadtwald, and D. Saarbrucken. 1998.
+<span>“Fast Recursive Division.”</span>
+</div>
+<div id="ref-Chudnovsky-rama" class="csl-entry" role="listitem">
+Chudnovsky, David V., and Gregory V. Chudnovsky. 1987.
+<span>“Approximations and Complex Multiplication According to
+Ramanujan.”</span> In <em>Ramanujan Revisited: Proceedings of the
+Centenary Conference, University of Illinois at Urbana-Champaign, June
+1-5, 1987</em>, edited by G. E. Andrews, B. C. Berndt, and R. A. Rankin,
+375–472. Boston, MA: Academic Press.
+</div>
+<div id="ref-bs" class="csl-entry" role="listitem">
+———. 1990. <span>“Computer Algebra in the Service of Mathematical
+Physics and Number Theory.”</span> <em>Computers and Mathematics</em>
+09: 232.
+</div>
+<div id="ref-cohen" class="csl-entry" role="listitem">
+Cohen, Henri. 1993. <em>A Course in Computational Algebraic Number
+Theory</em>. GTM 138. Springer Verlag.
+</div>
+<div id="ref-cl" class="csl-entry" role="listitem">
+Cohen, H., and H. W. Lenstra. 1984. <span>“Primality Testing and Jacobi
+Sums.”</span> <em>Mathematics of Computation</em> 42 (165): 297–330. <a href="https://doi.org/10.1090/s0025-5718-1984-0726006-x">https://doi.org/10.1090/s0025-5718-1984-0726006-x</a>.
+</div>
+<div id="ref-ita" class="csl-entry" role="listitem">
+Corman著，潘金贵等译, H. 2006. <em>算法导论(原书第2版)</em>.
+机械工业出版社.
+</div>
+<div id="ref-del96m" class="csl-entry" role="listitem">
+Deléglise, M., and J. Rivat. 1996a. <span>“Computing the Summation of
+the Möbius Function.”</span> <em>Experimental Mathematics</em> 5 (4):
+291–95.
+</div>
+<div id="ref-del96" class="csl-entry" role="listitem">
+———. 1996b. <span>“Computing <span class="math inline"><em>π</em>(<em>x</em>)</span>: The Meissel, Lehmer,
+Lagarias, Miller, Odlyzko Method.”</span> <em>Mathematics of
+Computation</em> 65 (213): 235–45.
+</div>
+<div id="ref-dixon" class="csl-entry" role="listitem">
+Dixon, John D. 1981. <span>“Asymptotically Fast Factorization of
+Integers.”</span> <em>Mathematics of Computation</em> 36 (153): 255–60.
+</div>
+<div id="ref-mca" class="csl-entry" role="listitem">
+Gathen, Joachim von zur, and Jürgen Gerhard. 2002. <em>Modern Computer
+Algebra</em>. 2nd ed. Cambridge University Press.
+</div>
+<div id="ref-gk86" class="csl-entry" role="listitem">
+Goldwasser, S., and J. Kilian. 1986. <span>“Almost All Primes Can Be
+Quickly Certified.”</span> In <em>Proceedings of the Eighteenth Annual
+ACM Symposium on Theory of Computing</em>, 316–29.
+</div>
+<div id="ref-gor98" class="csl-entry" role="listitem">
+Gordon, Daniel M. 1998. <span>“A Survey of Fast Exponentiation
+Methods.”</span> <em>Journal of Algorithms</em> 27 (1): 129–46.
+</div>
+<div id="ref-gou01" class="csl-entry" role="listitem">
+Gourdon, X. 2001. <span>“Computation of <span class="math inline">&nbsp;<em>p</em><em>i</em>(<em>x</em>)</span> :
+Improvements to the Meissel, Lehmer, Lagarias, Miller, Odlyzko,
+Deleglise and Rivat Method.”</span>
+</div>
+<div id="ref-gower08" class="csl-entry" role="listitem">
+Gower, Jason E., and Samuel S. Wagstaff. 2008. <span>“Square Form
+Factorization.”</span> <em>Mathematics of Computation</em> 77 (261):
+551–88. <a href="https://doi.org/10.1090/s0025-5718-07-02010-8">https://doi.org/10.1090/s0025-5718-07-02010-8</a>.
+</div>
+<div id="ref-Gutierrez-fastinverse" class="csl-entry" role="listitem">
+Gutierrez, C., and M. Monsalve. 2005. <span>“Fast Inverse for Big
+Numbers: Picarte’s Iteration.”</span>
+</div>
+<div id="ref-Nussbaumer82" class="csl-entry" role="listitem">
+H．J．Nussbaumer. 1982. <em>Fast Fourier Transform and Convolution
+Algorithms</em>. Berlin: Springer-Verlag.
+</div>
+<div id="ref-fftca" class="csl-entry" role="listitem">
+H．J．Nussbaumer, and 胡光锐译. 1984. <em>快速付里叶变换和卷积算法</em>.
+上海: 上海科学技术文献出版社.
+</div>
+<div id="ref-hong96" class="csl-entry" role="listitem">
+Hong, Seong Min, Sang Yeop Oh, and Hyun Soo Yoon. 1996. <span>“New
+Modular Multiplication Algorithms for Fast Modular
+Exponentiation.”</span> In <em>Advances in Cryptology—Proceedings of
+Eurocrypt ’96</em>, 1070:166–77. Lecture Notes in Computer Science.
+Springer Berlin / Heidelberg.
+</div>
+<div id="ref-Hwang-machin" class="csl-entry" role="listitem">
+Hwang, C. L. 1997. <span>“<a href="">More Machin-Type
+Identities.</a>”</span> <em>Math. Gaz.</em> 81: 120–21.
+</div>
+<div id="ref-jeb03" class="csl-entry" role="listitem">
+Jebelean, T. 1993. <span>“A Generalization of the Binary GCD
+Algorithm.”</span> <em>Proceedings of the 1993 International Symposium
+on Symbolic and Algebraic Computation</em>, 111–16.
+</div>
+<div id="ref-pi-record" class="csl-entry" role="listitem">
+Kanada, Yasumasa. 2005. <span>“Current Published World Record of Pi
+Calculation.”</span>
+</div>
+<div id="ref-Karatsuba-multiply" class="csl-entry" role="listitem">
+Karatsuba, A., and P. Ofman. 1962. <span>“Multiplication of Many-Digital
+Numbers by Automatic Computers.”</span> <em>Proceedings of the USSR
+Academy of Sciences</em>, no. 145: 293–94.
+</div>
+<div id="ref-taocp2" class="csl-entry" role="listitem">
+Knuth, Donald E. 1997. <em>The Art of Computer Programming, Volume 2:
+Seminumerical Algorithms</em>. 3rd ed. Boston, MA, USA: Addison-Wesley
+Longman Publishing Co., Inc.
+</div>
+<div id="ref-lag85" class="csl-entry" role="listitem">
+Lagaria, J. C., V. S. Miller, and A. M. Odlyzko. 1985. <span>“Computing
+<span class="math inline"><em>π</em>(<em>x</em>)</span>: The
+Meissel-Lehmer Method.”</span> <em>Mathematics of Computation</em> 44
+(170): 537–60.
+</div>
+<div id="ref-lag87" class="csl-entry" role="listitem">
+Lagarias, J. C., and A. M. Odlyzko. 1987. <span>“Computing <span class="math inline"><em>π</em>(<em>x</em>)</span>: An Analytic
+Method.”</span> <em>Journal of Algorithms</em> 8 (2): 173–91.
+</div>
+<div id="ref-lehmer1930" class="csl-entry" role="listitem">
+Lehmer, D. H. 1930. <span>“An Extended Theory of Lucas’
+Functions.”</span> <em>The Annals of Mathematics</em> 31 (3): 419. <a href="https://doi.org/10.2307/1968235">https://doi.org/10.2307/1968235</a>.
+</div>
+<div id="ref-leh32" class="csl-entry" role="listitem">
+———. 1932. <span>“An Inversive Algorithm.”</span> <em>Bulletin of the
+American Mathematical Society</em> 38 (10): 693–94.
+</div>
+<div id="ref-Lehmer-machin" class="csl-entry" role="listitem">
+———. 1938. <span>“<a href="">On Arccotangent Relations for <span class="math inline"><em>π</em></span></a>.”</span> <em>Amer. Math.
+Monthly</em> 45: 657–64.
+</div>
+<div id="ref-llmp" class="csl-entry" role="listitem">
+Lenstra, A. K., H. W. Lenstra Jr., M. S. Manasse, and J. M. Pollard.
+1993. <span>“The Factorization of the Ninth Fermat Number.”</span>
+<em>Mathematics of Computation</em> 61 (203): 319–49.
+</div>
+<div id="ref-len87" class="csl-entry" role="listitem">
+Lenstra, H. W., Jr. 1987. <span>“Factoring Integers with Elliptic
+Curves.”</span> <em>The Annals of Mathematics</em> 126 (3): 649–73.
+</div>
+<div id="ref-yao07" class="csl-entry" role="listitem">
+M. Mendès France, G. Tenenbaum, and 姚家燕译. 2007. <em>素数论</em>.
+研究生数学丛书. 北京: 清华大学出版社.
+</div>
+<div id="ref-mar04" class="csl-entry" role="listitem">
+Martin, M. 2004. <span>“Re: Baillie-PSW - Which Variant Is
+Correct?”</span>
+</div>
+<div id="ref-mon85" class="csl-entry" role="listitem">
+Montgomery, Peter L. 1985. <span>“Modular Multiplication Without Trial
+Division.”</span> <em>Mathematics of Computation</em> 44 (170): 519–21.
+</div>
+<div id="ref-mon87" class="csl-entry" role="listitem">
+———. 1987. <span>“Speeding the Pollard and Elliptic Curve Methods of
+Factorization.”</span> <em>Mathematics of Computation</em> 48 (177):
+243–64.
+</div>
+<div id="ref-mor75" class="csl-entry" role="listitem">
+Morrison, Michael A., and John Brillhart. 1975. <span>“A Method of
+Factoring and the Factorization of <span class="math inline"><em>F</em><sub>7</sub></span>.”</span>
+<em>Mathematics of Computation</em> 29 (129): 183–205.
+</div>
+<div id="ref-qpi" class="csl-entry" role="listitem">
+Pagliarulo, Steve. 2007. <span>“Stu’s Pi Page: Other Constants.”</span>
+<a href="https://web.archive.org/web/20080825030820/http://home.istar.ca/~lyster/otherconstants.html">https://web.archive.org/web/20080825030820/http://home.istar.ca/~lyster/otherconstants.html</a>.
+</div>
+<div id="ref-pol74" class="csl-entry" role="listitem">
+Pollard, J. M. 1974. <span>“Theorems on Factorization and Primality
+Testing.”</span> <em>Mathematical Proceedings of the Cambridge
+Philosophical Society</em> 76 (3): 521–28.
+</div>
+<div id="ref-pol75" class="csl-entry" role="listitem">
+———. 1975. <span>“A Monte Carlo Method for Factorization.”</span>
+<em>BIT Numerical Mathematics</em> 15 (3): 331–34.
+</div>
+<div id="ref-pom82" class="csl-entry" role="listitem">
+Pomerance, Carl. 1982. <span>“Analysis and Comparison of Some Integer
+Factoring Algorithms.”</span> In <em>Computational Methods in Number
+Theory</em>, 89–139. Mathematisch Centrum.
+</div>
+<div id="ref-pom84" class="csl-entry" role="listitem">
+———. 1984. <span>“Are There Counterexamples to the Baillie-PSW Primality
+Test?”</span>
+</div>
+<div id="ref-psw" class="csl-entry" role="listitem">
+Pomerance, Carl, J. L. Selfridge, and Samuel S. Wagstaff. 1980.
+<span>“The Pseudoprimes to <span class="math inline">25 ⋅ 10<sup>9</sup></span>.”</span> <em>Mathematics
+of Computation</em> 35 (151): 1003–26. <a href="https://doi.org/10.1090/s0025-5718-1980-0572872-7">https://doi.org/10.1090/s0025-5718-1980-0572872-7</a>.
+</div>
+<div id="ref-rabin" class="csl-entry" role="listitem">
+Rabin, Michael O. 1980. <span>“Probabilistic Algorithm for Testing
+Primality.”</span> <em>Journal of Number Theory</em> 12 (1): 128–38. <a href="https://doi.org/10.1016/0022-314x(80)90084-0">https://doi.org/10.1016/0022-314x(80)90084-0</a>.
+</div>
+<div id="ref-riesel" class="csl-entry" role="listitem">
+Riesel, Hans. 1985. <em>Prime Numbers and Computer Methods for
+Factorization</em>. PM 57. Boston; Basel; Stuttgart: Birkhäuser.
+</div>
+<div id="ref-Schoenhage-multiply" class="csl-entry" role="listitem">
+Schoenhage, A., and V. Strassen. 1971. <span>“Schnelle Multiplikation
+Groeer Zahlen.”</span> <em>Computing</em>, no. 7: 281–92.
+</div>
+<div id="ref-sed07" class="csl-entry" role="listitem">
+Sedjelmaci, Sidi Mohamed. 2007. <span>“Jebelean–Weber’s Algorithm
+Without Spurious Factors.”</span> <em>Information Processing
+Letters</em> 102 (6): 247–52.
+</div>
+<div id="ref-sel64" class="csl-entry" role="listitem">
+Selfridge, J. L., and A. Hurwitz. 1964. <span>“Fermat Numbers and
+Mersenne Numbers.”</span> <em>Mathematics of Computation</em> 18:
+146–48.
+</div>
+<div id="ref-solovay" class="csl-entry" role="listitem">
+Solovay, R., and V. Strassen. 1977. <span>“A Fast Monte-Carlo Test for
+Primality.”</span> <em>SIAM Journal on Computing</em> 6 (1): 84–85. <a href="https://doi.org/10.1137/0206006">https://doi.org/10.1137/0206006</a>.
+</div>
+<div id="ref-sor94" class="csl-entry" role="listitem">
+Sorenson, Jonathan. 1994. <span>“Two Fast GCD Algorithms.”</span>
+<em>Journal of Algorithms</em> 16 (1): 110–44.
+</div>
+<div id="ref-gmpman" class="csl-entry" role="listitem">
+The GMP team. 2008. <em>The GNU Multiple Precision Arithmetic
+Library</em>. 4.2.3 ed.
+</div>
+<div id="ref-gmplib" class="csl-entry" role="listitem">
+———. n.d. <span>“The GNU MP Bignum Library.”</span>
+</div>
+<div id="ref-web95" class="csl-entry" role="listitem">
+Weber, Kenneth. 1995. <span>“The Accelerated Integer GCD
+Algorithm.”</span> <em>ACM Transactions on Mathematical Software</em> 21
+(March): 111–22.
+</div>
+<div id="ref-Weisstein-horner" class="csl-entry" role="listitem">
+Weisstein, Eric W. n.d.a. <span>“Horner’s Rule.”</span> <em>MathWorld–A
+Wolfram Web Resource</em>. <a href="https://mathworld.wolfram.com/HornersRule.html">https://mathworld.wolfram.com/HornersRule.html</a>.
+</div>
+<div id="ref-Weisstein-machin" class="csl-entry" role="listitem">
+———. n.d.b. <span>“Machin-Like Formulas.”</span> <em>MathWorld–A Wolfram
+Web Resource</em>. <a href="https://mathworld.wolfram.com/Machin-LikeFormulas.html">https://mathworld.wolfram.com/Machin-LikeFormulas.html</a>.
+</div>
+<div id="ref-Weisstein-form" class="csl-entry" role="listitem">
+———. n.d.c. <span>“Pi Formulas.”</span> <em>MathWorld–A Wolfram Web
+Resource</em>. <a href="https://mathworld.wolfram.com/PiFormulas.html">https://mathworld.wolfram.com/PiFormulas.html</a>.
+</div>
+<div id="ref-williams" class="csl-entry" role="listitem">
+Williams, H. C. 1982. <span>“A <span class="math inline"><em>p</em> + 1</span> Method of Factoring.”</span>
+<em>Mathematics of Computation</em> 39 (159): 225–34.
+</div>
+<div id="ref-fkq03" class="csl-entry" role="listitem">
+冯克勤. 2003. <em>初等数论及应用</em>. 走进数学新课程丛书. 北京:
+北京师范大学出版社.
+</div>
+<div id="ref-shuzhifenxi" class="csl-entry" role="listitem">
+李庆扬, 王能超, and 易大义. 2001. <em>数值分析</em>. 4th ed. 北京:
+清华大学出版社.
+</div>
+<div id="ref-wangdongming" class="csl-entry" role="listitem">
+王东明, 夏壁灿, and 李子明. 2007. <em>计算机代数（第二版）</em>. 2nd ed.
+计算科学丛书. 北京: 清华大学出版社.
+</div>
+<div id="ref-wangzhuxi" class="csl-entry" role="listitem">
+王竹溪, and 郭敦仁. 1965. <em>特殊函数概论</em>. 1st ed. 北京:
+科学出版社.
+</div>
+<div id="ref-nlzdss00" class="csl-entry" role="listitem">
+聂灵沼, and 丁石孙. 2000. <em>代数学引论（第2版）</em>. 2nd ed.
+面向21世纪课程教材（数学类）. 北京: 高等教育出版社.
+</div>
+<div id="ref-pei02" class="csl-entry" role="listitem">
+裴定一, and 祝跃飞. 2002. <em>算法数论</em>. 中国科学院研究生教学丛书.
+北京: 科学出版社.
+</div>
+<div id="ref-yan08" class="csl-entry" role="listitem">
+颜松远. 2008. <em>计算数论</em>. 2nd ed. 北京: 清华大学出版社.
+</div>
+</div>
+
+
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    // Ensure there is a toggle, if there isn't float one in the top right
+    if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+      const a = window.document.createElement('a');
+      a.classList.add('top-right');
+      a.classList.add('quarto-color-scheme-toggle');
+      a.href = "";
+      a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+      const i = window.document.createElement("i");
+      i.classList.add('bi');
+      a.appendChild(i);
+      window.document.body.appendChild(a);
+    }
+    setColorSchemeToggle(hasAlternateSentinel())
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="./chapters/ch5.html" class="pagination-link" aria-label="数学常数">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">数学常数</span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+  </div>
+</nav>
+</div> <!-- /content -->
+
+
+
+
+</body></html>
