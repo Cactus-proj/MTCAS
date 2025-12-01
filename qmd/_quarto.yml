@@ -24,6 +24,7 @@ book:
     - chapters/ch4.qmd
     - chapters/ch5.qmd
     - references.qmd
+  site-url: https://cactus-proj.github.io/MTCAS/
 
 # https://quarto.org/docs/authoring/citations.html#sec-citations-style
 bibliography: "../main.bib"
