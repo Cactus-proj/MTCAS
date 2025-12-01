@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.7.31">
+<meta name="generator" content="quarto-1.8.26">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -54,18 +54,19 @@ div.csl-indent {
 <link href="../chapters/ch2.html" rel="prev">
 <script src="../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-e1a5c8363afafaef2c763b6775fbf3ca.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark-8ef56b68f8fa1e9d2ba328e99e439f80.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-e1a5c8363afafaef2c763b6775fbf3ca.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-587c61ba64f3a5504c4d52d930310e48.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark-b758ccaa5987ceb1b75504551e579abf.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-587c61ba64f3a5504c4d52d930310e48.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-f8cb7fe94b71c4ea6759b609738bfe9c.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="../site_libs/bootstrap/bootstrap-dark-68d834354916604f5f41eae73f500b81.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
-<link href="../site_libs/bootstrap/bootstrap-f8cb7fe94b71c4ea6759b609738bfe9c.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-0dd2bd5de344125cf763a379ddc3eb04.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-dark-7e34ecb6a0e7991f0346b0751d4a7c3f.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="../site_libs/bootstrap/bootstrap-0dd2bd5de344125cf763a379ddc3eb04.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -121,7 +122,7 @@ const typesetMath = (el) => {
     var macros = [];
     for (var i = 0; i < mathElements.length; i++) {
       var texText = mathElements[i].firstChild;
-      if (mathElements[i].tagName == "SPAN") {
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
         window.katex.render(texText.data, mathElements[i], {
           displayMode: mathElements[i].classList.contains('display'),
           throwOnError: false,
@@ -451,11 +452,11 @@ window.Quarto = {
 
 <p>相对于素数判定来说，因子分解的实现就没办法达到那么快速了。因子分解至今仍没有类似于素数判定的多项式算法，这也成为了RSA公钥系统安全得以保障的基础。鉴于这两个问题的难度相差较大，在我们施行分解之前，最好是预先知道目标整数的确不是一个素数，否则很可能花费了很大力气只干了素数判定的活——杀鸡用牛刀了。</p>
 <p><code>因子分解</code>的方法分为一般方法和特殊方法两大类，通常倾向于先针对数的特殊性（例如 <span class="math inline">\(N=2^n-1\)</span>）使用特殊方法，如果目标数的形式不那么特殊，再尝试使用一般方法。当然，前者往往要比后者快上许多。</p>
-<p>我们在本章中着重介绍因子分解的一般方法，且总是用<span class="math inline">\(N\)</span>表示待分解的目标数。阅读本章需要读者具有初等数论和抽象代数的基础知识（例如<span class="citation" data-cites="fkq03">(<a href="../references.html#ref-fkq03" role="doc-biblioref">冯克勤 2003</a>)</span>,<span class="citation" data-cites="nlzdss00">(<a href="../references.html#ref-nlzdss00" role="doc-biblioref">聂灵沼，丁石孙 2000</a>)</span>）。本章的主要参考书是<span class="citation" data-cites="cohen">(<a href="../references.html#ref-cohen" role="doc-biblioref">Cohen 1993</a>)</span>,<span class="citation" data-cites="mca">(<a href="../references.html#ref-mca" role="doc-biblioref">Gathen and Gerhard 2002</a>)</span>。读者也可以参考写的十分通俗易懂的<span class="citation" data-cites="yan08">(<a href="../references.html#ref-yan08" role="doc-biblioref">颜松远 2008</a>)</span>及其他算法/计算数论方面的相关文献。</p>
+<p>我们在本章中着重介绍因子分解的一般方法，且总是用<span class="math inline">\(N\)</span>表示待分解的目标数。阅读本章需要读者具有初等数论和抽象代数的基础知识（例如<span class="citation" data-cites="fkq03">(<a href="../references.html#ref-fkq03" role="doc-biblioref">冯克勤 2003</a>)</span>,<span class="citation" data-cites="nlzdss00">(<a href="../references.html#ref-nlzdss00" role="doc-biblioref">聂灵沼 and 丁石孙 2000</a>)</span>）。本章的主要参考书是<span class="citation" data-cites="cohen">(<a href="../references.html#ref-cohen" role="doc-biblioref">Cohen 1993</a>)</span>,<span class="citation" data-cites="mca">(<a href="../references.html#ref-mca" role="doc-biblioref">Gathen and Gerhard 2002</a>)</span>。读者也可以参考写的十分通俗易懂的<span class="citation" data-cites="yan08">(<a href="../references.html#ref-yan08" role="doc-biblioref">颜松远 2008</a>)</span>及其他算法/计算数论方面的相关文献。</p>
 <section id="试除法" class="level2" data-number="3.1">
 <h2 data-number="3.1" class="anchored" data-anchor-id="试除法"><span class="header-section-number">3.1</span> 试除法</h2>
 <p>无论素数判定还是因子分解，<code>试除法</code>(Trial Division)都是首先要进行的步骤。在试除的策略上有两种不同的选择：- 用足够大的空间来储存试除用的素数因子。储存方法可以相当紧凑，比如使用一个大整数，此大整数二进制表达的第<span class="math inline">\(2k-1,2k\)</span>位来代表<span class="math inline">\(6k\pm1\)</span>是否为素数。- 不耗费大量空间来储存所有需要的素因子，这时需要一个快速生成素数的子程序，或者干脆只用2,3以及<span class="math inline">\(6k\pm1\)</span>型的整数来作为试除因子。</p>
-<p>很少能发生一个数没有小因子的情况，例如根据<code>Mertens定理</code>（参见<span class="citation" data-cites="yao07">(<a href="../references.html#ref-yao07" role="doc-biblioref">M. Mendès France and Tenenbaum著，姚家燕译 2007</a>)</span>），奇数中没有<span class="math inline">\(x\)</span>以下因子的比例<span class="math display">\[P=\prod_{p\ge3}^x(1-\frac{1}{p})\sim \frac{2e^{-\gamma}}{\ln x},\quad x\rightarrow+\infty.\]</span>可以知道76%的奇数都有小于100的素因子，而没有小于<span class="math inline">\(10^8\)</span>因子的奇数比例仅为6.1%（可参看<span class="citation" data-cites="riesel">(<a href="../references.html#ref-riesel" role="doc-biblioref">Riesel 1985</a>)</span>）。因此在大多数情况，试除法的第二种选择已经足够，实现也是最为简单的。</p>
+<p>很少能发生一个数没有小因子的情况，例如根据<code>Mertens定理</code>（参见<span class="citation" data-cites="yao07">(<a href="../references.html#ref-yao07" role="doc-biblioref">M. Mendès France, Tenenbaum, and 姚家燕译 2007</a>)</span>），奇数中没有<span class="math inline">\(x\)</span>以下因子的比例<span class="math display">\[P=\prod_{p\ge3}^x(1-\frac{1}{p})\sim \frac{2e^{-\gamma}}{\ln x},\quad x\rightarrow+\infty.\]</span>可以知道76%的奇数都有小于100的素因子，而没有小于<span class="math inline">\(10^8\)</span>因子的奇数比例仅为6.1%（可参看<span class="citation" data-cites="riesel">(<a href="../references.html#ref-riesel" role="doc-biblioref">Riesel 1985</a>)</span>）。因此在大多数情况，试除法的第二种选择已经足够，实现也是最为简单的。</p>
 </section>
 <section id="euclid-算法" class="level2" data-number="3.2">
 <h2 data-number="3.2" class="anchored" data-anchor-id="euclid-算法"><span class="header-section-number">3.2</span> Euclid 算法</h2>
@@ -707,7 +708,7 @@ y_3=\lambda(x_1-x_3)-y_1.
 </section>
 <section id="数域筛法-nfs" class="level2" data-number="3.11">
 <h2 data-number="3.11" class="anchored" data-anchor-id="数域筛法-nfs"><span class="header-section-number">3.11</span> 数域筛法 (NFS)</h2>
-<p><code>NFS</code><code>数域筛法</code>(Number Field Sieve) 是由 <span class="citation" data-cites="llmp">(<a href="../references.html#ref-llmp" role="doc-biblioref">A. K. Lenstra et al. 1993</a>)</span> 在 1993 年提出的，为目前渐进最快的通用因子分解方法，其时间复杂度为 <span class="math inline">\(L_N[\frac{1}{3},c]\)</span>，其中常数 <span class="math inline">\(c\)</span> 依赖于不同的算法实现。例如对于针对 <span class="math inline">\(r^e-s\)</span> 形式整数的特殊数域筛法（<code>SNFS</code>）有 <span class="math inline">\(c=(\frac{32}{9})^{\frac{1}{3}}\)</span>，而对于一般数域筛法（<code>GNFS</code>）有 <span class="math inline">\(c=(\frac{64}{9})^{\frac{1}{3}}\)</span>。对于 120 位以上的大数，NFS 是最强有力的分解算法。例如互联网上的分布式大整数分解项目 <a href="http://www.nfsnet.org/">NFSNet</a> 采用的便是此法。由于数域筛法涉及代数数域理论，需要较多的准备，限于篇幅我们不再赘述，感兴趣的读者可参看 <span class="citation" data-cites="cohen">(<a href="../references.html#ref-cohen" role="doc-biblioref">Cohen 1993</a>)</span>，<span class="citation" data-cites="pei02">(<a href="../references.html#ref-pei02" role="doc-biblioref">裴定一，祝跃飞 2002</a>)</span> 或其他相关文献。</p>
+<p><code>NFS</code><code>数域筛法</code>(Number Field Sieve) 是由 <span class="citation" data-cites="llmp">(<a href="../references.html#ref-llmp" role="doc-biblioref">A. K. Lenstra et al. 1993</a>)</span> 在 1993 年提出的，为目前渐进最快的通用因子分解方法，其时间复杂度为 <span class="math inline">\(L_N[\frac{1}{3},c]\)</span>，其中常数 <span class="math inline">\(c\)</span> 依赖于不同的算法实现。例如对于针对 <span class="math inline">\(r^e-s\)</span> 形式整数的特殊数域筛法（<code>SNFS</code>）有 <span class="math inline">\(c=(\frac{32}{9})^{\frac{1}{3}}\)</span>，而对于一般数域筛法（<code>GNFS</code>）有 <span class="math inline">\(c=(\frac{64}{9})^{\frac{1}{3}}\)</span>。对于 120 位以上的大数，NFS 是最强有力的分解算法。例如互联网上的分布式大整数分解项目 <a href="http://www.nfsnet.org/">NFSNet</a> 采用的便是此法。由于数域筛法涉及代数数域理论，需要较多的准备，限于篇幅我们不再赘述，感兴趣的读者可参看 <span class="citation" data-cites="cohen">(<a href="../references.html#ref-cohen" role="doc-biblioref">Cohen 1993</a>)</span>，<span class="citation" data-cites="pei02">(<a href="../references.html#ref-pei02" role="doc-biblioref">裴定一 and 祝跃飞 2002</a>)</span> 或其他相关文献。</p>
 
 
 <div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list" style="display: none">
@@ -733,7 +734,7 @@ Lenstra, A. K., H. W. Lenstra Jr., M. S. Manasse, and J. M. Pollard. 1993. <span
 Lenstra, H. W., Jr. 1987. <span>“Factoring Integers with Elliptic Curves.”</span> <em>The Annals of Mathematics</em> 126 (3): 649–73.
 </div>
 <div id="ref-yao07" class="csl-entry" role="listitem">
-M. Mendès France, and G. Tenenbaum著，姚家燕译. 2007. <em>素数论</em>. 研究生数学丛书. 北京: 清华大学出版社.
+M. Mendès France, G. Tenenbaum, and 姚家燕译. 2007. <em>素数论</em>. 研究生数学丛书. 北京: 清华大学出版社.
 </div>
 <div id="ref-mon87" class="csl-entry" role="listitem">
 Montgomery, Peter L. 1987. <span>“Speeding the Pollard and Elliptic Curve Methods of Factorization.”</span> <em>Mathematics of Computation</em> 48 (177): 243–64.
@@ -757,13 +758,13 @@ Riesel, Hans. 1985. <em>Prime Numbers and Computer Methods for Factorization</em
 Williams, H. C. 1982. <span>“A <span class="math inline">\(p+1\)</span> Method of Factoring.”</span> <em>Mathematics of Computation</em> 39 (159): 225–34.
 </div>
 <div id="ref-fkq03" class="csl-entry" role="listitem">
-冯克勤. 2003. <em>初等数论及应用</em>. 北京: 北京师范大学出版社.
+冯克勤. 2003. <em>初等数论及应用</em>. 走进数学新课程丛书. 北京: 北京师范大学出版社.
 </div>
 <div id="ref-nlzdss00" class="csl-entry" role="listitem">
-聂灵沼，丁石孙. 2000. <em>代数学引论（第2版）</em>. 北京: 高等教育出版社.
+聂灵沼, and 丁石孙. 2000. <em>代数学引论（第2版）</em>. 2nd ed. 面向21世纪课程教材（数学类）. 北京: 高等教育出版社.
 </div>
 <div id="ref-pei02" class="csl-entry" role="listitem">
-裴定一，祝跃飞. 2002. <em>算法数论</em>. 中国科学院研究生教学丛书. 北京: 科学出版社.
+裴定一, and 祝跃飞. 2002. <em>算法数论</em>. 中国科学院研究生教学丛书. 北京: 科学出版社.
 </div>
 <div id="ref-yan08" class="csl-entry" role="listitem">
 颜松远. 2008. <em>计算数论</em>. 2nd ed. 北京: 清华大学出版社.
@@ -836,13 +837,14 @@ Williams, H. C. 1982. <span>“A <span class="math inline">\(p+1\)</span> Method
       e.clearSelection();
     }
     const getTextToCopy = function(trigger) {
-        const codeEl = trigger.previousElementSibling.cloneNode(true);
-        for (const childEl of codeEl.children) {
-          if (isCodeAnnotation(childEl)) {
-            childEl.remove();
-          }
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
         }
-        return codeEl.innerText;
+      }
+      return codeEl.innerText;
     }
     const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
       text: getTextToCopy

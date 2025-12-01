@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.7.31">
+<meta name="generator" content="quarto-1.8.26">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -54,18 +54,19 @@ div.csl-indent {
 <link href="../chapters/ch3.html" rel="prev">
 <script src="../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-e1a5c8363afafaef2c763b6775fbf3ca.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark-8ef56b68f8fa1e9d2ba328e99e439f80.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-e1a5c8363afafaef2c763b6775fbf3ca.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-587c61ba64f3a5504c4d52d930310e48.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark-b758ccaa5987ceb1b75504551e579abf.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-587c61ba64f3a5504c4d52d930310e48.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-f8cb7fe94b71c4ea6759b609738bfe9c.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="../site_libs/bootstrap/bootstrap-dark-68d834354916604f5f41eae73f500b81.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
-<link href="../site_libs/bootstrap/bootstrap-f8cb7fe94b71c4ea6759b609738bfe9c.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-0dd2bd5de344125cf763a379ddc3eb04.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-dark-7e34ecb6a0e7991f0346b0751d4a7c3f.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="../site_libs/bootstrap/bootstrap-0dd2bd5de344125cf763a379ddc3eb04.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -121,7 +122,7 @@ const typesetMath = (el) => {
     var macros = [];
     for (var i = 0; i < mathElements.length; i++) {
       var texText = mathElements[i].firstChild;
-      if (mathElements[i].tagName == "SPAN") {
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
         window.katex.render(texText.data, mathElements[i], {
           displayMode: mathElements[i].classList.contains('display'),
           throwOnError: false,
@@ -941,7 +942,7 @@ d-p_{i+1}^2=q_iq_{i+1}.
 <section id="素数计数函数-pix" class="level2" data-number="4.7">
 <h2 data-number="4.7" class="anchored" data-anchor-id="素数计数函数-pix"><span class="header-section-number">4.7</span> 素数计数函数 <span class="math inline">\(\pi(x)\)</span></h2>
 <p></p>
-<p>很早人们就考虑计算小于等于<span class="math inline">\(x\)</span>的素数个数 <span class="math inline">\(\pi(x)\)</span> 的问题，并且数论中的一个基本问题便是研究 <span class="math inline">\(\pi(x)\)</span> 的性质（例如著名的素数定理）。古希腊人有一个直接的方法：用Eratosthenes筛将所有<span class="math inline">\(x\)</span>以下的素数给找出来，最后统计一下总数。根据Mertens第二定理（参考<span class="citation" data-cites="yao07">(<a href="../references.html#ref-yao07" role="doc-biblioref">M. Mendès France and Tenenbaum著，姚家燕译 2007</a>)</span>），<span class="math display">\[\sum_{p\le x}\frac{1}{p}=\ln\ln x+a+O\left(\frac{1}{\ln x}\right),\]</span>其中<span class="math inline">\(a\)</span>为常数，求和针对素数<span class="math inline">\(p\)</span>。因此这种完全筛法需要的操作次数为<span class="math display">\[\sum_{p\le \sqrt{x}}\frac{x}{p}=x\ln\ln \sqrt{x}+ax+O\left(\frac{x}{\ln \sqrt{x}}\right)=O(x\ln\ln x).\]</span></p>
+<p>很早人们就考虑计算小于等于<span class="math inline">\(x\)</span>的素数个数 <span class="math inline">\(\pi(x)\)</span> 的问题，并且数论中的一个基本问题便是研究 <span class="math inline">\(\pi(x)\)</span> 的性质（例如著名的素数定理）。古希腊人有一个直接的方法：用Eratosthenes筛将所有<span class="math inline">\(x\)</span>以下的素数给找出来，最后统计一下总数。根据Mertens第二定理（参考<span class="citation" data-cites="yao07">(<a href="../references.html#ref-yao07" role="doc-biblioref">M. Mendès France, Tenenbaum, and 姚家燕译 2007</a>)</span>），<span class="math display">\[\sum_{p\le x}\frac{1}{p}=\ln\ln x+a+O\left(\frac{1}{\ln x}\right),\]</span>其中<span class="math inline">\(a\)</span>为常数，求和针对素数<span class="math inline">\(p\)</span>。因此这种完全筛法需要的操作次数为<span class="math display">\[\sum_{p\le \sqrt{x}}\frac{x}{p}=x\ln\ln \sqrt{x}+ax+O\left(\frac{x}{\ln \sqrt{x}}\right)=O(x\ln\ln x).\]</span></p>
 <p>除了直接把所有素数求出还有没有其他办法呢？可以使用组合的工具。设<span class="math inline">\(p_i\)</span>代表第<span class="math inline">\(i\)</span>个素数，根据容斥原理计算<span class="math inline">\(x\)</span>以下的合数个数可以得到</p>
 <p><span class="math display">\[\begin{equation*}
 \begin{split}
@@ -1123,7 +1124,7 @@ Lagarias, J. C., and A. M. Odlyzko. 1987. <span>“Computing <span class="math i
 Lehmer, D. H. 1932. <span>“An Inversive Algorithm.”</span> <em>Bulletin of the American Mathematical Society</em> 38 (10): 693–94.
 </div>
 <div id="ref-yao07" class="csl-entry" role="listitem">
-M. Mendès France, and G. Tenenbaum著，姚家燕译. 2007. <em>素数论</em>. 研究生数学丛书. 北京: 清华大学出版社.
+M. Mendès France, G. Tenenbaum, and 姚家燕译. 2007. <em>素数论</em>. 研究生数学丛书. 北京: 清华大学出版社.
 </div>
 <div id="ref-mon85" class="csl-entry" role="listitem">
 Montgomery, Peter L. 1985. <span>“Modular Multiplication Without Trial Division.”</span> <em>Mathematics of Computation</em> 44 (170): 519–21.
@@ -1138,7 +1139,7 @@ Sorenson, Jonathan. 1994. <span>“Two Fast GCD Algorithms.”</span> <em>Journa
 Weber, Kenneth. 1995. <span>“The Accelerated Integer GCD Algorithm.”</span> <em>ACM Transactions on Mathematical Software</em> 21 (March): 111–22.
 </div>
 <div id="ref-fkq03" class="csl-entry" role="listitem">
-冯克勤. 2003. <em>初等数论及应用</em>. 北京: 北京师范大学出版社.
+冯克勤. 2003. <em>初等数论及应用</em>. 走进数学新课程丛书. 北京: 北京师范大学出版社.
 </div>
 </div>
 </section>
@@ -1208,13 +1209,14 @@ Weber, Kenneth. 1995. <span>“The Accelerated Integer GCD Algorithm.”</span> 
       e.clearSelection();
     }
     const getTextToCopy = function(trigger) {
-        const codeEl = trigger.previousElementSibling.cloneNode(true);
-        for (const childEl of codeEl.children) {
-          if (isCodeAnnotation(childEl)) {
-            childEl.remove();
-          }
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
         }
-        return codeEl.innerText;
+      }
+      return codeEl.innerText;
     }
     const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
       text: getTextToCopy

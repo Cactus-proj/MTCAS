@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.7.31">
+<meta name="generator" content="quarto-1.8.26">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -54,18 +54,19 @@ div.csl-indent {
 <link href="../chapters/ch1.html" rel="prev">
 <script src="../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-e1a5c8363afafaef2c763b6775fbf3ca.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark-8ef56b68f8fa1e9d2ba328e99e439f80.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-e1a5c8363afafaef2c763b6775fbf3ca.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-587c61ba64f3a5504c4d52d930310e48.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark-b758ccaa5987ceb1b75504551e579abf.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-587c61ba64f3a5504c4d52d930310e48.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-f8cb7fe94b71c4ea6759b609738bfe9c.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="../site_libs/bootstrap/bootstrap-dark-68d834354916604f5f41eae73f500b81.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
-<link href="../site_libs/bootstrap/bootstrap-f8cb7fe94b71c4ea6759b609738bfe9c.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-0dd2bd5de344125cf763a379ddc3eb04.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-dark-7e34ecb6a0e7991f0346b0751d4a7c3f.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="../site_libs/bootstrap/bootstrap-0dd2bd5de344125cf763a379ddc3eb04.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -121,7 +122,7 @@ const typesetMath = (el) => {
     var macros = [];
     for (var i = 0; i < mathElements.length; i++) {
       var texText = mathElements[i].firstChild;
-      if (mathElements[i].tagName == "SPAN") {
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
         window.katex.render(texText.data, mathElements[i], {
           displayMode: mathElements[i].classList.contains('display'),
           throwOnError: false,
@@ -441,11 +442,11 @@ window.Quarto = {
 </header>
 
 
-<p><code>素数判定</code>(Primality Test)是一个数论中十分基本,却又趣味盎然的问题.判定一个整数是否是素数,最为朴素的想法是直接利用素数的定义,用小的素数去一一试除,如果能整除的话,那就能确定无疑为合数了.根据Mertens定理（参见<span class="citation" data-cites="yao07">(<a href="../references.html#ref-yao07" role="doc-biblioref">M. Mendès France and Tenenbaum著，姚家燕译 2007</a>)</span>），可以估算出大约有76%的奇数有小于100的素因子,可见这种最平凡的方法有时十分有效.在本章中，我们将用<span class="math inline">\(N\)</span>来表示待判定的目标数.</p>
+<p><code>素数判定</code>(Primality Test)是一个数论中十分基本,却又趣味盎然的问题.判定一个整数是否是素数,最为朴素的想法是直接利用素数的定义,用小的素数去一一试除,如果能整除的话,那就能确定无疑为合数了.根据Mertens定理（参见<span class="citation" data-cites="yao07">(<a href="../references.html#ref-yao07" role="doc-biblioref">M. Mendès France, Tenenbaum, and 姚家燕译 2007</a>)</span>），可以估算出大约有76%的奇数有小于100的素因子,可见这种最平凡的方法有时十分有效.在本章中，我们将用<span class="math inline">\(N\)</span>来表示待判定的目标数.</p>
 <p>相比整数的因子分解，素数判定一直以来被认为是较为容易的问题。2002年三位印度计算机科学家Agrawal，Kayal，Saxena<span class="citation" data-cites="aks04">(<a href="../references.html#ref-aks04" role="doc-biblioref">Agrawal, Kayal, and Saxena 2004</a>)</span>找到了素数判定的多项式算法（被称为<code>AKS算法</code>），其时间复杂度为<span class="math inline">\(O(\ln^{12} N)\)</span>。AKS算法在理论上有重要的意义，不过实践中还要更多地考虑效率问题。实践中的素数检测方法大致分为两类，一类是确定性的，例如Lehmer <span class="math inline">\(N-1\)</span>检测，Lucas <span class="math inline">\(N+1\)</span>检测，<code>椭圆曲线素性证明</code>(<code>ECPP</code>)等等，当输出结果为”素数”时，能够保证被检测数一定为素数；另一类是概率性的，如Rabin-Miller检测，Baillie-PSW检测等等，当输出结果为”素数”时，仅以一定的高概率保证被检测数的素性。不过概率性检测一般要比确定性检测快得多。</p>
 <p><code>APRCL方法</code>将Fermat类型的想法运用到分圆域中,最先由Adleman,Pomerance,Rumely<span class="citation" data-cites="apr">(<a href="../references.html#ref-apr" role="doc-biblioref">Adleman 1980</a>)</span>提出,后经Cohen,Lenstra<span class="citation" data-cites="cl">(<a href="../references.html#ref-cl" role="doc-biblioref">H. Cohen and Lenstra 1984</a>)</span>的改进，时间复杂度为”近似”多项式的<span class="math inline">\(O((\ln N)^{c\ln\ln\ln N})\)</span>，其中<span class="math inline">\(c\)</span>为一个常数。椭圆曲线素数证明最早由Goldwasser,Kilian<span class="citation" data-cites="gk86">(<a href="../references.html#ref-gk86" role="doc-biblioref">Goldwasser and Kilian 1986</a>)</span>提出，后经Atikin，Morain<span class="citation" data-cites="atk93">(<a href="../references.html#ref-atk93" role="doc-biblioref">Atkin and Morain 1993</a>)</span>改进和实现，平均时间复杂度达到了<span class="math inline">\(O(\ln^6 N)\)</span>。这两种方法已经成为目前实践上最快的确定性检测方法，并在密码学等领域有重要的应用。鉴于我们的目的，不能用太多篇幅来介绍这两种方法，详细可参阅文献<span class="citation" data-cites="cohen">(<a href="../references.html#ref-cohen" role="doc-biblioref">Henri Cohen 1993</a>)</span>.</p>
 <p>有些素数判定方法严格来说应当是<code>合性检测</code>(Compositeness Test),这类方法总可以有效地把素数判定出来,而有可能把一个合数判定为素数.也就是说,此类方法判定一个数为合数总是准确无误的,而”漏网的”,即无法判定的合数往往称为<code>伪素数</code>(Pseudoprimes).</p>
-<p>阅读本章需要读者初等数论和抽象代数的基础知识（例如<span class="citation" data-cites="fkq03">(<a href="../references.html#ref-fkq03" role="doc-biblioref">冯克勤 2003</a>)</span>,<span class="citation" data-cites="nlzdss00">(<a href="../references.html#ref-nlzdss00" role="doc-biblioref">聂灵沼，丁石孙 2000</a>)</span>）。本章的主要参考书是<span class="citation" data-cites="riesel">(<a href="../references.html#ref-riesel" role="doc-biblioref">Riesel 1985</a>)</span>，<span class="citation" data-cites="cohen">(<a href="../references.html#ref-cohen" role="doc-biblioref">Henri Cohen 1993</a>)</span>和<span class="citation" data-cites="pei02">(<a href="../references.html#ref-pei02" role="doc-biblioref">裴定一，祝跃飞 2002</a>)</span>.读者也可以参考写的十分通俗易懂的<span class="citation" data-cites="yan08">(<a href="../references.html#ref-yan08" role="doc-biblioref">颜松远 2008</a>)</span>及其他算法/计算数论方面的相关文献。</p>
+<p>阅读本章需要读者初等数论和抽象代数的基础知识（例如<span class="citation" data-cites="fkq03">(<a href="../references.html#ref-fkq03" role="doc-biblioref">冯克勤 2003</a>)</span>,<span class="citation" data-cites="nlzdss00">(<a href="../references.html#ref-nlzdss00" role="doc-biblioref">聂灵沼 and 丁石孙 2000</a>)</span>）。本章的主要参考书是<span class="citation" data-cites="riesel">(<a href="../references.html#ref-riesel" role="doc-biblioref">Riesel 1985</a>)</span>，<span class="citation" data-cites="cohen">(<a href="../references.html#ref-cohen" role="doc-biblioref">Henri Cohen 1993</a>)</span>和<span class="citation" data-cites="pei02">(<a href="../references.html#ref-pei02" role="doc-biblioref">裴定一 and 祝跃飞 2002</a>)</span>.读者也可以参考写的十分通俗易懂的<span class="citation" data-cites="yan08">(<a href="../references.html#ref-yan08" role="doc-biblioref">颜松远 2008</a>)</span>及其他算法/计算数论方面的相关文献。</p>
 <section id="fermat检测" class="level2" data-number="2.1">
 <h2 data-number="2.1" class="anchored" data-anchor-id="fermat检测"><span class="header-section-number">2.1</span> Fermat检测</h2>
 <p>几乎所有素数检测的想法之基石均为著名的<code>Fermat小定理</code>，即若<span class="math inline">\(p\)</span>为素数，<span class="math inline">\((a,p)=1\)</span>，则</p>
@@ -578,7 +579,7 @@ a^{(N-1)/2}\equiv-1 \pmod{N} .
 <section id="lucas-伪素数检测与-n1-型检测" class="level2" data-number="2.4">
 <h2 data-number="2.4" class="anchored" data-anchor-id="lucas-伪素数检测与-n1-型检测"><span class="header-section-number">2.4</span> Lucas 伪素数检测与 <span class="math inline">\(N+1\)</span> 型检测</h2>
 <p>如果<span class="math inline">\(N-1\)</span>也是很难分解的，这里的方法就将分解的困难转移到<span class="math inline">\(N+1\)</span>上去。想法是与<span class="math inline">\(N-1\)</span>型检测是类似的，不过要将Fermat小定理从 <span class="math inline">\(\mathbb{Z}\)</span> 上推广到二次域的代数整数环上去，替代那里的<span class="math inline">\(a^{N-1}-1\)</span>的则是所谓Lucas序列<span class="math inline">\(U_{N+1}\)</span>。</p>
-<p>设<span class="math inline">\(D\)</span>为无平方整数，记<span class="math inline">\(O\)</span>为二次域<span class="math inline">\(\mathbb{Q}(\sqrt{D})\)</span>的代数整数环，我们熟知(参见<span class="citation" data-cites="nlzdss00">(<a href="../references.html#ref-nlzdss00" role="doc-biblioref">聂灵沼，丁石孙 2000</a>)</span>，P139)当<span class="math inline">\(D\equiv2,3\pmod{4}\)</span>时，<span class="math display">\[
+<p>设<span class="math inline">\(D\)</span>为无平方整数，记<span class="math inline">\(O\)</span>为二次域<span class="math inline">\(\mathbb{Q}(\sqrt{D})\)</span>的代数整数环，我们熟知(参见<span class="citation" data-cites="nlzdss00">(<a href="../references.html#ref-nlzdss00" role="doc-biblioref">聂灵沼 and 丁石孙 2000</a>)</span>，P139)当<span class="math inline">\(D\equiv2,3\pmod{4}\)</span>时，<span class="math display">\[
 O=\{m+n\sqrt{D}\mid m,n\in\mathbb{Z}\},
 \]</span></p>
 <p>而当<span class="math inline">\(D\equiv1\pmod{4}\)</span>时，<span class="math display">\[
@@ -982,7 +983,7 @@ Knuth, Donald E. 1997. <em>The Art of Computer Programming, Volume 2: Seminumeri
 Lehmer, D. H. 1930. <span>“An Extended Theory of Lucas’ Functions.”</span> <em>The Annals of Mathematics</em> 31 (3): 419. <a href="https://doi.org/10.2307/1968235">https://doi.org/10.2307/1968235</a>.
 </div>
 <div id="ref-yao07" class="csl-entry" role="listitem">
-M. Mendès France, and G. Tenenbaum著，姚家燕译. 2007. <em>素数论</em>. 研究生数学丛书. 北京: 清华大学出版社.
+M. Mendès France, G. Tenenbaum, and 姚家燕译. 2007. <em>素数论</em>. 研究生数学丛书. 北京: 清华大学出版社.
 </div>
 <div id="ref-mar04" class="csl-entry" role="listitem">
 Martin, M. 2004. <span>“Re: Baillie-PSW - Which Variant Is Correct?”</span>
@@ -1006,13 +1007,13 @@ Selfridge, J. L., and A. Hurwitz. 1964. <span>“Fermat Numbers and Mersenne Num
 Solovay, R., and V. Strassen. 1977. <span>“A Fast Monte-Carlo Test for Primality.”</span> <em>SIAM Journal on Computing</em> 6 (1): 84–85. <a href="https://doi.org/10.1137/0206006">https://doi.org/10.1137/0206006</a>.
 </div>
 <div id="ref-fkq03" class="csl-entry" role="listitem">
-冯克勤. 2003. <em>初等数论及应用</em>. 北京: 北京师范大学出版社.
+冯克勤. 2003. <em>初等数论及应用</em>. 走进数学新课程丛书. 北京: 北京师范大学出版社.
 </div>
 <div id="ref-nlzdss00" class="csl-entry" role="listitem">
-聂灵沼，丁石孙. 2000. <em>代数学引论（第2版）</em>. 北京: 高等教育出版社.
+聂灵沼, and 丁石孙. 2000. <em>代数学引论（第2版）</em>. 2nd ed. 面向21世纪课程教材（数学类）. 北京: 高等教育出版社.
 </div>
 <div id="ref-pei02" class="csl-entry" role="listitem">
-裴定一，祝跃飞. 2002. <em>算法数论</em>. 中国科学院研究生教学丛书. 北京: 科学出版社.
+裴定一, and 祝跃飞. 2002. <em>算法数论</em>. 中国科学院研究生教学丛书. 北京: 科学出版社.
 </div>
 <div id="ref-yan08" class="csl-entry" role="listitem">
 颜松远. 2008. <em>计算数论</em>. 2nd ed. 北京: 清华大学出版社.
@@ -1086,13 +1087,14 @@ Solovay, R., and V. Strassen. 1977. <span>“A Fast Monte-Carlo Test for Primali
       e.clearSelection();
     }
     const getTextToCopy = function(trigger) {
-        const codeEl = trigger.previousElementSibling.cloneNode(true);
-        for (const childEl of codeEl.children) {
-          if (isCodeAnnotation(childEl)) {
-            childEl.remove();
-          }
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
         }
-        return codeEl.innerText;
+      }
+      return codeEl.innerText;
     }
     const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
       text: getTextToCopy

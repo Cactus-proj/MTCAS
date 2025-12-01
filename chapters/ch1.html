@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.7.31">
+<meta name="generator" content="quarto-1.8.26">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -54,18 +54,19 @@ div.csl-indent {
 <link href="../chapters/preface.html" rel="prev">
 <script src="../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-e1a5c8363afafaef2c763b6775fbf3ca.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark-8ef56b68f8fa1e9d2ba328e99e439f80.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-e1a5c8363afafaef2c763b6775fbf3ca.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-587c61ba64f3a5504c4d52d930310e48.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark-b758ccaa5987ceb1b75504551e579abf.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-587c61ba64f3a5504c4d52d930310e48.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-f8cb7fe94b71c4ea6759b609738bfe9c.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="../site_libs/bootstrap/bootstrap-dark-68d834354916604f5f41eae73f500b81.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
-<link href="../site_libs/bootstrap/bootstrap-f8cb7fe94b71c4ea6759b609738bfe9c.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-0dd2bd5de344125cf763a379ddc3eb04.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-dark-7e34ecb6a0e7991f0346b0751d4a7c3f.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="../site_libs/bootstrap/bootstrap-0dd2bd5de344125cf763a379ddc3eb04.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -121,7 +122,7 @@ const typesetMath = (el) => {
     var macros = [];
     for (var i = 0; i < mathElements.length; i++) {
       var texText = mathElements[i].firstChild;
-      if (mathElements[i].tagName == "SPAN") {
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
         window.katex.render(texText.data, mathElements[i], {
           displayMode: mathElements[i].classList.contains('display'),
           throwOnError: false,
@@ -460,11 +461,11 @@ window.Quarto = {
 </header>
 
 
-<p>我们所熟知的科学计算一般就是指数值计算.数值计算是计算数学的一个主要部分,它研究用计算机求解各种数学问题的数值计算方法及其理论与软件实现.关于数值计算的研究在计算机被发明之前就已经有了相当的基础,它涉及到的内容包括函数的数值逼近,数值微分与数值积分,非线性方程数值解,数值线性代数,常微分方程与偏微分方程数值解等(参见 <span class="citation" data-cites="shuzhifenxi">(<a href="../references.html#ref-shuzhifenxi" role="doc-biblioref">李庆扬，王能超，易大义 2001</a>)</span> ).数值计算中处理的对象并不仅仅是数值,还包括由数值构成的简单数据结构,例如一般的多项式,无穷级数,矩阵等,数值计算处理问题的一般方法是通过数学推导将问题化归到这些数学对象的运算上.</p>
+<p>我们所熟知的科学计算一般就是指数值计算.数值计算是计算数学的一个主要部分,它研究用计算机求解各种数学问题的数值计算方法及其理论与软件实现.关于数值计算的研究在计算机被发明之前就已经有了相当的基础,它涉及到的内容包括函数的数值逼近,数值微分与数值积分,非线性方程数值解,数值线性代数,常微分方程与偏微分方程数值解等(参见 <span class="citation" data-cites="shuzhifenxi">(<a href="../references.html#ref-shuzhifenxi" role="doc-biblioref">李庆扬, 王能超, and 易大义 2001</a>)</span> ).数值计算中处理的对象并不仅仅是数值,还包括由数值构成的简单数据结构,例如一般的多项式,无穷级数,矩阵等,数值计算处理问题的一般方法是通过数学推导将问题化归到这些数学对象的运算上.</p>
 <p>作为应用数学,数值计算的主要目标是解决来自于生产实践的工程学问题.与此同时,数学工作者做数学研究本身也是一种生产实践,数学研究过程中同样会产生许多问题,与工程学问题不同,这些问题往往只能用抽象的符号来表达,仅用数值计算的方法是不易解决的,对于这类问题解决方案的研究逐渐形成了应用数学的一个新的分支,为了与数值计算相区别,常常称之为符号计算.类似地,我们可以给符号计算下一个简单的定义:符号计算是一门研究用计算机求解各种数学问题的符号计算方法及其理论与软件实现的科学,它是数学(家)的计算数学.符号计算中处理的数据和结果都是符号,这种符号可以是字母,公式,也可以是数.与数值计算不同的是,数是作为一种符号出现在符号计算中的,这就要求关于数的运算应该是绝对精确的,我们接下来就要讨论数的 <code>高精度运算</code>.</p>
 <section id="整数" class="level2" data-number="1.1">
 <h2 data-number="1.1" class="anchored" data-anchor-id="整数"><span class="header-section-number">1.1</span> 整数</h2>
-<p>在基于硬件的整数指令中,计算机能够处理的整数是有界的,在目前典型的计算机中整数的溢出界都不超过 <span class="math inline">\(2^{64}\)</span>,而符号计算中常常需要处理更大的整数,例如阶乘, Fibonacci 数列这样简单的数论函数计算.另一个不平凡的例子是所谓的 <code>中间表示膨胀</code>(intermediate expression swell)(参见 <span class="citation" data-cites="wangdongming">(<a href="../references.html#ref-wangdongming" role="doc-biblioref">王东明，夏壁灿，李子明 2007</a>)</span> 第2章),例如采用 Euclid 算法计算两个整系数多项式的最大公因子时,即使输入的两个多项式和输出的最大公因子都具有绝对值较小的系数,计算过程中的中间结果仍然很可能出现绝对值非常大的系数.设</p>
+<p>在基于硬件的整数指令中,计算机能够处理的整数是有界的,在目前典型的计算机中整数的溢出界都不超过 <span class="math inline">\(2^{64}\)</span>,而符号计算中常常需要处理更大的整数,例如阶乘, Fibonacci 数列这样简单的数论函数计算.另一个不平凡的例子是所谓的 <code>中间表示膨胀</code>(intermediate expression swell)(参见 <span class="citation" data-cites="wangdongming">(<a href="../references.html#ref-wangdongming" role="doc-biblioref">王东明, 夏壁灿, and 李子明 2007</a>)</span> 第2章),例如采用 Euclid 算法计算两个整系数多项式的最大公因子时,即使输入的两个多项式和输出的最大公因子都具有绝对值较小的系数,计算过程中的中间结果仍然很可能出现绝对值非常大的系数.设</p>
 <p><span class="math display">\[\begin{align*}
 F&amp;=7x^7+2x^6-3x^5-3x^3+x+5,\\
 G&amp;=9x^5-3x^4-4x^2+7x+7,
@@ -651,7 +652,7 @@ a&amp;\ge a_{s+1}B^2+a_sB+a_{s-1}\\
 <p><span class="proof-title"><em>Remark</em>. </span>与普通乘法类似，在第4步中乘上<span class="math inline">\(B^k\)</span>时只需要在右边添上<span class="math inline">\(k\)</span>个0，或者说左移<span class="math inline">\(k\)</span>位。</p>
 </div>
 <p>记 <span class="math inline">\(T(n)\)</span> 是递归地利用Karatsuba乘法将两个<span class="math inline">\(n\)</span>位<span class="math inline">\(B\)</span>进制数相乘所需要的<span class="math inline">\(B\)</span>进制个位数乘法次数，那么有 <span class="math inline">\(T(2n)\le 3T(n)\)</span>，由此推出 <span class="math inline">\(T(n)=O(n^{\log_2{3}})\approx O(n^{1.59})\)</span>。</p>
-<p>关于Karatsuba算法更详细的介绍请参阅<span class="citation" data-cites="wangdongming">(<a href="../references.html#ref-wangdongming" role="doc-biblioref">王东明，夏壁灿，李子明 2007</a>)</span>第2章，<span class="citation" data-cites="mca">(<a href="../references.html#ref-mca" role="doc-biblioref">Gathen and Gerhard 2002</a>)</span>，<span class="citation" data-cites="taocp2">(<a href="../references.html#ref-taocp2" role="doc-biblioref">Knuth 1997</a>)</span>和A. Karatsuba的原始论文<span class="citation" data-cites="Karatsuba-multiply">(<a href="../references.html#ref-Karatsuba-multiply" role="doc-biblioref">Karatsuba and Ofman 1962</a>)</span>。</p>
+<p>关于Karatsuba算法更详细的介绍请参阅<span class="citation" data-cites="wangdongming">(<a href="../references.html#ref-wangdongming" role="doc-biblioref">王东明, 夏壁灿, and 李子明 2007</a>)</span>第2章，<span class="citation" data-cites="mca">(<a href="../references.html#ref-mca" role="doc-biblioref">Gathen and Gerhard 2002</a>)</span>，<span class="citation" data-cites="taocp2">(<a href="../references.html#ref-taocp2" role="doc-biblioref">Knuth 1997</a>)</span>和A. Karatsuba的原始论文<span class="citation" data-cites="Karatsuba-multiply">(<a href="../references.html#ref-Karatsuba-multiply" role="doc-biblioref">Karatsuba and Ofman 1962</a>)</span>。</p>
 <p>值得一提的是，采用和Karatsuba乘法完全类似的想法，还可以得到一种整数除法的快速算法（参见<span class="citation" data-cites="Burnikel-fastrecursive">(<a href="../references.html#ref-Burnikel-fastrecursive" role="doc-biblioref">Burnikel et al. 1998</a>)</span>）。</p>
 </section>
 </section>
@@ -820,9 +821,9 @@ f(\omega^j)=\sum_{k=0}^{n-1}f_k\omega^{jk}=\sum_{k=0}^{n/2-1}f_{2k}(\omega^{2j})
 <p>如果<span class="math inline">\(R=\mathbb{C}\)</span>，即使<span class="math inline">\(m\)</span>很大，也很容易求出<span class="math inline">\(n=2^m\)</span>次单位原根。但是对于有限域，前面已经提到过，如果<span class="math inline">\(q\)</span>是素数的整数次幂，那么当且仅当 <span class="math inline">\(n|q-1\)</span> 时有限域<span class="math inline">\(\mathbb{F}_q\)</span>才存在<span class="math inline">\(n\)</span>次单位原根，当<span class="math inline">\(m\)</span>很大时，并非总能轻易地找到这样的素数<span class="math inline">\(q\)</span>。</p>
 <p>尽管如此，相比于复数域而言，使用有限域上的原根做FFT不会涉及到浮点操作，因此也不用考虑中间精度的问题，正因为这样，在利用FFT计算整系数多项式的乘积或者计算高精度整数乘法时，我们还是希望使用有限域。注意到有限域 <span class="math inline">\(F_q=\mathbb{Z}/q\mathbb{Z}\)</span> 上的算术都是以<span class="math inline">\(q\)</span>为模的，因此利用<span class="math inline">\(F_q\)</span>上的FFT求出的点值向量的各项系数都不应该超过<span class="math inline">\(q\)</span>，否则最后无法将结果还原到<span class="math inline">\(\mathbb{Z}\)</span>中。</p>
 <p>设<span class="math inline">\(a=(a_s\ldots a_0)_B\)</span>，<span class="math inline">\(b=(b_s\ldots b_0)_B\)</span>，那么<span class="math inline">\(a,b\)</span>分别对应于多项式<span class="math display">\[a(B)=\sum_{k=0}^sa_kB^k,\quad b(B)=\sum_{k=0}^sb_kB^k,\]</span> <span class="math inline">\(a,b\)</span>的乘积<span class="math inline">\(c\)</span>对应于多项式<span class="math inline">\(C(B)=\sum\limits_{k=0}^{2s}c_kB^k\)</span>，其中<span class="math display">\[c_k=\sum_{i+j=k}a_ib_j&lt;\sum_{i+j=k}B^2\le(s+1)\cdot B^2,\quad 0\le k\le 2s.\]</span>在典型的计算机代数系统中，机器精度整数的溢出界<span class="math inline">\(B=2^{64}\)</span>，整数位数<span class="math inline">\(s\)</span>的界也取为<span class="math inline">\(2^{64}\)</span>，那么根据<span class="math inline">\(F_q\)</span>的限制应该有<span class="math inline">\(q&gt;(s+1)B^2\approx 2^{192}\)</span>，这样大的素数<span class="math inline">\(q\)</span>以及有限域<span class="math inline">\(F_q\)</span>是不容易使用的。</p>
-<p>为了解决这个问题，可以借用模方法中的技术，选取三个机器精度的素数 <span class="math inline">\(2^{63}\le q_0,q_1,q_2&lt;2^{64}\)</span>，分别在 <span class="math inline">\(F_{q_i}\)</span> 中计算出模乘积<span class="math inline">\(a\cdot b\bmod q_i\)</span>，然后利用中国剩余定理（参见<span class="citation" data-cites="nlzdss00">(<a href="../references.html#ref-nlzdss00" role="doc-biblioref">聂灵沼，丁石孙 2000</a>)</span>）计算出 <span class="math inline">\(\mathbb{Z}\)</span> 中的乘积 <span class="math inline">\(a\cdot b\)</span>。</p>
+<p>为了解决这个问题，可以借用模方法中的技术，选取三个机器精度的素数 <span class="math inline">\(2^{63}\le q_0,q_1,q_2&lt;2^{64}\)</span>，分别在 <span class="math inline">\(F_{q_i}\)</span> 中计算出模乘积<span class="math inline">\(a\cdot b\bmod q_i\)</span>，然后利用中国剩余定理（参见<span class="citation" data-cites="nlzdss00">(<a href="../references.html#ref-nlzdss00" role="doc-biblioref">聂灵沼 and 丁石孙 2000</a>)</span>）计算出 <span class="math inline">\(\mathbb{Z}\)</span> 中的乘积 <span class="math inline">\(a\cdot b\)</span>。</p>
 <p>考虑到中国剩余定理的计算，利用有限域上的FFT进行整数乘法的计算复杂度为<span class="math display">\[O(n(\log{n})(\log{\log{n}})).\]</span>关于有限域上的FFT更详细的介绍请参阅<span class="citation" data-cites="mca">(<a href="../references.html#ref-mca" role="doc-biblioref">Gathen and Gerhard 2002</a>)</span>和<span class="citation" data-cites="Schoenhage-multiply">(<a href="../references.html#ref-Schoenhage-multiply" role="doc-biblioref">Schoenhage and Strassen 1971</a>)</span>。</p>
-<p>除了以上两种最常用的算法之外，还有许多类似于FFT的算法也可以用于快速计算DFT，如NTT（Number theoretic transform），WFT（Winograd Fourier Transform）和PFT（Polynomial Fourier Transform）等，关于FFT，NTT，WFT和PFT更详细的介绍请参阅Nussbaumer<span class="citation" data-cites="Nussbaumer82">(<a href="../references.html#ref-Nussbaumer82" role="doc-biblioref">H．J．Nussbaumer 1982</a>)</span>或中译本<span class="citation" data-cites="fftca">(<a href="../references.html#ref-fftca" role="doc-biblioref">H．J．Nussbaumer著，胡光锐译 1984</a>)</span>。</p>
+<p>除了以上两种最常用的算法之外，还有许多类似于FFT的算法也可以用于快速计算DFT，如NTT（Number theoretic transform），WFT（Winograd Fourier Transform）和PFT（Polynomial Fourier Transform）等，关于FFT，NTT，WFT和PFT更详细的介绍请参阅Nussbaumer<span class="citation" data-cites="Nussbaumer82">(<a href="../references.html#ref-Nussbaumer82" role="doc-biblioref">H．J．Nussbaumer 1982</a>)</span>或中译本<span class="citation" data-cites="fftca">(<a href="../references.html#ref-fftca" role="doc-biblioref">H．J．Nussbaumer and 胡光锐译 1984</a>)</span>。</p>
 
 
 <div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list" style="display: none">
@@ -842,7 +843,7 @@ Gutierrez, C., and M. Monsalve. 2005. <span>“Fast Inverse for Big Numbers: Pic
 H．J．Nussbaumer. 1982. <em>Fast Fourier Transform and Convolution Algorithms</em>. Berlin: Springer-Verlag.
 </div>
 <div id="ref-fftca" class="csl-entry" role="listitem">
-H．J．Nussbaumer著，胡光锐译. 1984. <em>快速付里叶变换和卷积算法</em>. 上海: 上海科学技术文献出版社.
+H．J．Nussbaumer, and 胡光锐译. 1984. <em>快速付里叶变换和卷积算法</em>. 上海: 上海科学技术文献出版社.
 </div>
 <div id="ref-Karatsuba-multiply" class="csl-entry" role="listitem">
 Karatsuba, A., and P. Ofman. 1962. <span>“Multiplication of Many-Digital Numbers by Automatic Computers.”</span> <em>Proceedings of the USSR Academy of Sciences</em>, no. 145: 293–94.
@@ -863,13 +864,13 @@ The GMP team. 2008. <em>The GNU Multiple Precision Arithmetic Library</em>. 4.2.
 Weisstein, Eric W. n.d. <span>“Horner’s Rule.”</span> <em>MathWorld–A Wolfram Web Resource</em>. <a href="https://mathworld.wolfram.com/HornersRule.html">https://mathworld.wolfram.com/HornersRule.html</a>.
 </div>
 <div id="ref-shuzhifenxi" class="csl-entry" role="listitem">
-李庆扬，王能超，易大义. 2001. <em>数值分析</em>. 北京: 清华大学出版社.
+李庆扬, 王能超, and 易大义. 2001. <em>数值分析</em>. 4th ed. 北京: 清华大学出版社.
 </div>
 <div id="ref-wangdongming" class="csl-entry" role="listitem">
-王东明，夏壁灿，李子明. 2007. <em>计算机代数（第2版）</em>. 北京: 清华大学出版社.
+王东明, 夏壁灿, and 李子明. 2007. <em>计算机代数（第二版）</em>. 2nd ed. 计算科学丛书. 北京: 清华大学出版社.
 </div>
 <div id="ref-nlzdss00" class="csl-entry" role="listitem">
-聂灵沼，丁石孙. 2000. <em>代数学引论（第2版）</em>. 北京: 高等教育出版社.
+聂灵沼, and 丁石孙. 2000. <em>代数学引论（第2版）</em>. 2nd ed. 面向21世纪课程教材（数学类）. 北京: 高等教育出版社.
 </div>
 </div>
 </section>
@@ -939,13 +940,14 @@ Weisstein, Eric W. n.d. <span>“Horner’s Rule.”</span> <em>MathWorld–A Wo
       e.clearSelection();
     }
     const getTextToCopy = function(trigger) {
-        const codeEl = trigger.previousElementSibling.cloneNode(true);
-        for (const childEl of codeEl.children) {
-          if (isCodeAnnotation(childEl)) {
-            childEl.remove();
-          }
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
         }
-        return codeEl.innerText;
+      }
+      return codeEl.innerText;
     }
     const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
       text: getTextToCopy
