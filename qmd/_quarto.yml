@@ -22,6 +22,7 @@ book:
     - chapters/ch2.qmd
     - chapters/ch3.qmd
     - chapters/ch4.qmd
+    - chapters/ch5.qmd
     - references.qmd
 
 # https://quarto.org/docs/authoring/citations.html#sec-citations-style
